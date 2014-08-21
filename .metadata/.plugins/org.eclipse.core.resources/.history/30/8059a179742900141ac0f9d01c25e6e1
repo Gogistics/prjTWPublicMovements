@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hant">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="mayor_candidate" content="wen_che_ke">
+<meta name="brand_title" content="{{brand_title}}">
+<meta name="html_page_token" content="{{token_html_page}}">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- icon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+{% block css_content %} {% endblock %}
+
+<!-- JavaScript -->
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<!-- Map -->
+<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+
+{% block js_content %} {% endblock %}
+
+<title>{{ brand_title }}</title>
+</head>
+<body>
+
+	<div>
+		{% block main_content %}
+		<p>NO Templates Found</p>
+		{% endblock %}
+	</div>
+
+</body>
+</html>

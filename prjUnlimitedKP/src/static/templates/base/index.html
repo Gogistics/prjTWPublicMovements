@@ -1,19 +1,15 @@
-<html>
-<head>
-	<meta charset="UTF-8" />
-	
-	<title>柯文哲文章集</title>
+{% extends "/base/base.html"%}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<style>
-		.category,.article{	
-			cursor:pointer;
-		}
-	</style>
-</head>
-<body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<!-- css block -->
+{% block css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+{% endblock %}
+
+{% block main_content %}
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
 	  <div class="container">
 	    <div class="navbar-header">
 	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -58,6 +54,7 @@
 		</div>
 	</div>
 	
+	<!-- retrieve from KP.Taipei -->
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script>
 		var API_SERVER = "http://api.kptaipei.tw/v1/";
@@ -91,5 +88,5 @@
 			$(".categories").find(".category:first").click();
 		});
 	</script>
-</body>
-</html>
+	<!-- retrieve from KP.Taipei -->
+{% endblock %}

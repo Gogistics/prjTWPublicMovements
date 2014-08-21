@@ -1,23 +1,15 @@
-<html>
-<head>
-	<meta charset="UTF-8" />
-	
-	<title>柯文哲相簿集</title>
+{% extends "/base/base.html"%}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<style>
-		.album{	
-			cursor:pointer;
-		}
-		
-		.photo{
-			padding:4px;
-		}
-	</style>
-</head>
-<body>
-	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<!-- css block -->
+{% block css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+{% endblock %}
+
+{% block main_content %}
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
 	  <div class="container">
 	    <div class="navbar-header">
 	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -86,5 +78,4 @@
 			$(".categories").find(".album:first").click();
 		});
 	</script>
-</body>
-</html>
+{% endblock %}

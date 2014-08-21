@@ -25,15 +25,21 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 # dispatchers
 class BaseDispatcher(BaseHandler):
     def get(self):
-        self.render_template('/base/index.html')
+        template_values = {}
+        template_values.update({'title':u'柯文哲-"文"之有物'})
+        self.render_template('/base/index.html', template_values)
         
 class AlbumsDispatcher(BaseHandler):
     def get(self):
-        self.render_template('/base/album.html')
+        template_values = {}
+        template_values.update({'title':u'柯文哲照片集'})
+        self.render_template('/base/album.html', template_values)
         
 class VideosDispatcher(BaseHandler):
     def get(self):
-        self.render_template('/base/video.html')
+        template_values = {}
+        template_values.update({'title':u'柯文哲影像集'})
+        self.render_template('/base/video.html', template_values)
 
 # configuration
 config = dict_general.config_setting
