@@ -1,1 +1,16 @@
-0
+test_parse_repository_tag
+root
+tag
+__name__
+parse_repository_tag
+url
+main
+__main__
+UtilsTest
+unittest
+docker
+utils
+TestCase
+assertEqual
+repo
+user

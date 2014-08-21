@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Jun 24, 2014
+
+@author: Alan Tai
+'''
+__author__ = 'Alan Tai'
+
+
+import logging
+import jinja2
+import webapp2
+
+
+# jinja environment
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
+
+# language handler
+language_handler_madarin = MandarinHandler()
+
+# dictionaries
+dict_general = KeysVaulesGeneral()
+dict_token = KeysVaulesGeneral()
+dict_html_pages_reference = HtmlPagesReference()
+
+# dispatchers
+class TestLayout(BaseHandler):
+    def get(self):
+        self.render_template('/test/front_page_prototype_single_page_1.html')
+
+class TestMap(BaseHandler):
+    def get(self):
+        self.render_template('/test/geocode_sample.html')
+
+# configuration
+config = dict_general.config_setting
+
+# app
+app = webapp2.WSGIApplication([
+    webapp2.Route('/test_layout_prototype', TestLayout, name='layout_prototype_1'),
+    webapp2.Route('/test_google_map', TestMap, name='test_map')
+], debug=True, config=config)
+
+# log
+logging.getLogger().setLevel(logging.DEBUG) 
+    

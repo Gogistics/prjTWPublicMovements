@@ -1,1 +1,11 @@
-0
+get_table_list
+get_relations
+get_table_description
+db
+backends
+get_indexes
+base
+django
+complain
+dummy
+DATA_TYPES_REVERSE

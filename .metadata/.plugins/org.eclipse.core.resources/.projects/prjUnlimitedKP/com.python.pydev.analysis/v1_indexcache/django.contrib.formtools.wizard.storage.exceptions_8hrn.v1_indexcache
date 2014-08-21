@@ -1,1 +1,7 @@
-0
+MissingStorageModule
+exceptions
+MissingStorageClass
+django
+core
+ImproperlyConfigured
+NoFileStorageConfigured

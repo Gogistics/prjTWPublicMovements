@@ -1,1 +1,6 @@
-0
+django
+gis
+contrib
+forms
+GeometryField
+fields

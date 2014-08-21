@@ -1,1 +1,14 @@
-0
+sites
+site
+Site
+django
+register
+models
+SiteAdmin
+ModelAdmin
+list_display
+admin
+name
+domain
+contrib
+search_fields

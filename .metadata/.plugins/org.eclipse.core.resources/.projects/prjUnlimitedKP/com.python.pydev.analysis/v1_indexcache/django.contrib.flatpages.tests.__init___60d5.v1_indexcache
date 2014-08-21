@@ -1,1 +1,7 @@
-0
+csrf
+tests
+views
+middleware
+django
+contrib
+flatpages

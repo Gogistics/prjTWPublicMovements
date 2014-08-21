@@ -1,1 +1,11 @@
-0
+DEFAULT_TAGS
+SUCCESS
+error
+ERROR
+WARNING
+debug
+INFO
+success
+warning
+DEBUG
+info

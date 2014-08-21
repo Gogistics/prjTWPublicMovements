@@ -1,1 +1,8 @@
-0
+user_logged_in
+Signal
+request
+django
+dispatch
+user
+providing_args
+user_logged_out

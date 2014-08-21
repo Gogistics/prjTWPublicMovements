@@ -1,1 +1,6 @@
-0
+connection
+Signal
+connection_created
+django
+dispatch
+providing_args

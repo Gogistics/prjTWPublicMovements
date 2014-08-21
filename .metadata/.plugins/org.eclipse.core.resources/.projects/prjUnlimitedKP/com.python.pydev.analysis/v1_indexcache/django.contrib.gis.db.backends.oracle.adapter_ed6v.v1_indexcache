@@ -1,1 +1,11 @@
-0
+CLOB
+db
+OracleSpatialAdapter
+backends
+input_size
+django
+WKTAdapter
+gis
+contrib
+adapter
+cx_Oracle

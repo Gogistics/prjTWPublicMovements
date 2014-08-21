@@ -29,8 +29,9 @@ handlers:
 - url: /leaflet
   static_dir: static/leaflet-0.7
 
-- url: /(index.*)?
-  script: dispatchers.dispatchers_index.app
+- url: /(base/.*)?
+  script: dispatchers.dispatchers_base.app
+  secure: always
 
 
 inbound_services:
