@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;prjUnlimitedKP/src/static/leaflet-0.6.4&apos; to &apos;leaflet-0.7&apos;" description="Rename resource &apos;leaflet-0.6.4&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/static/leaflet-0.6.4" name="leaflet-0.7" stamp="1408647905037" updateReferences="true"/>
+</session>

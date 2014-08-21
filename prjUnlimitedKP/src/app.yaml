@@ -1,0 +1,44 @@
+application: unlimited-kp
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /favicon.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+
+- url: /noto_cjk/(.*\.(otf|tcc))$
+  static_files: static/noto_font_style/\1
+  upload: static/noto_font_style/(.*\.(otf|tcc))$
+  mime_type: application/x-font-otf
+
+- url: /css
+  static_dir: static/css
+
+- url: /js
+  static_dir: static/javascripts
+
+- url: /img
+  static_dir: static/images
+
+- url: /ng_templates
+  static_dir: static/ng_templates
+
+- url: /leaflet
+  static_dir: static/leaflet-0.7
+
+- url: /(index.*)?
+  script: dispatchers.dispatchers_index.app
+
+
+inbound_services:
+- channel_presence
+
+libraries:
+- name: webapp2
+  version: latest
+
+- name: jinja2
+  version: latest
