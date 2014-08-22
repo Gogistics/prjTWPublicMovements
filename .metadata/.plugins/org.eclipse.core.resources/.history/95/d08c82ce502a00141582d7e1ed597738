@@ -82,9 +82,9 @@
 							role="navigation">
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="/base/articles" target="_blank"
-									style="color: #fff; font-size: 18px; letter-spacing: 2px;">柯"文"集</a></li>
-								<li><a href="/base/albums" style="color: #fff; font-size: 18px; letter-spacing: 2px;" target="_blank">照片集</a></li>
-								<li><a href="/base/videos" style="color: #fff; font-size: 18px; letter-spacing: 2px;" target="_blank">錄像紀實</a></li>
+									style="color: #fff; font-size: 16px; letter-spacing: 2px;">柯"文"集</a></li>
+								<li><a href="/base/albums" style="color: #fff; font-size: 16px; letter-spacing: 2px;" target="_blank">照片集</a></li>
+								<li><a href="/base/videos" style="color: #fff; font-size: 16px; letter-spacing: 2px;" target="_blank">錄像紀實</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -94,7 +94,8 @@
 		</div>
 
 <div style="height: 20px; width: 100%; display: block;"></div>
-		<div style="display: block; margin-left: 21px;">
+
+		<div style="display: block; margin-left: 20px;">
 
 			<!--  -->
 			<header class="navbar navbar-static-top bs-docs-nav" id="top"
