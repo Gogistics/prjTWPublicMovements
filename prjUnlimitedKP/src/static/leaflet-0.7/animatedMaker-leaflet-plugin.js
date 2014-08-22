@@ -12,7 +12,8 @@ L.AnimatedMarker = L.Marker.extend({
     clickable: true,
     
     //location descriptions
-    geo_descriptions: []
+    geo_descriptions: [],
+    geo_imgs: []
   },
 
   initialize: function (latlngs, options) {
@@ -85,12 +86,12 @@ L.AnimatedMarker = L.Marker.extend({
 	     .openOn(map);*/
     
     //draw polyline
-    polyline = L.polyline([this._latlngs[this._i - 1], this._latlngs[this._i]], {color: '#000', weight: 1, "dashArray" : "5, 5"}).addTo(map);
+    polyline = L.polyline([this._latlngs[this._i - 1], this._latlngs[this._i]], {color: '#ee8c00', weight: 2, "dashArray" : "5, 1, 5"}).addTo(map);
     
     //add popup layers
     if(this._i < len - 1){
         var popupLocation1 = this._latlngs[this._i];
-        var popupContent1 = '<img alt="taipei_station" src="/img/taipei_station.jpg" style="width: 150px;"><p style="color:#000;">'+ this.options.geo_descriptions[this._i] +'</p>',
+        var popupContent1 = '<img alt="taipei_station" src="'+ this.options.geo_imgs[this._i] +'" style="width: 150px;"><p style="color:#000;">'+ this.options.geo_descriptions[this._i] +'</p>',
         popup1 = new L.Popup();
 
         popup1.setLatLng(popupLocation1);
@@ -99,11 +100,11 @@ L.AnimatedMarker = L.Marker.extend({
     }
     
     
-    circle = L.circle(this._latlngs[this._i], 20, {
+    circle = L.circle(this._latlngs[this._i], 15, {
 	    color: '#f00',
 	    fillColor: '#f06',
 	    fillOpacity: 0.5
-	}).bindPopup('<img alt="taipei_station" src="/img/taipei_station.jpg" style="width: 200px;"><p style="color:#000;">'+ this.options.geo_descriptions[this._i] +' </p>', {keepInView: true}).addTo(map).openPopup();
+	}).bindPopup('<img alt="taipei_station" src="'+ this.options.geo_imgs[this._i] +'" style="width: 200px;"><p style="color:#000;">'+ this.options.geo_descriptions[this._i] +' </p>', {keepInView: true}).addTo(map).openPopup();
     
     //set center of map view
     map.setView(this._latlngs[this._i],2); //openOn( <Map> map )

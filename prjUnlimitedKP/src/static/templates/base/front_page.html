@@ -55,34 +55,43 @@
 			maxZoom : 15
 		};
 
-		//taipei station: 25.048104, 121.517033; 
+		//temporary images paths which will be replaced with url paths
 		var geo_info = [ {
 			'geo_location' : [ 25.048104, 121.517033 ],
-			'geo_description' : '台灣-台北車站 '
+			'geo_description' : '台灣-台北車站 ',
+			'geo_img' : '/img/locations/taipei_station.jpg'
 		}, {
 			'geo_location' : [ 25.040420, 121.516180 ],
-			'geo_description' : '台大醫院'
+			'geo_description' : '台大醫院',
+			'geo_img' : '/img/locations/taiwan_national_hospital.jpg'
 		}, {
 			'geo_location' : [ 25.031827, 121.497941 ],
-			'geo_description' : '台北歐陽商行'
+			'geo_description' : '台北-萬華區',
+			'geo_img' : '/img/locations/wang_hwa.jpg'
 		}, {
 			'geo_location' : [ 25.029805, 121.533131 ],
-			'geo_description' : '台北-大安區'
+			'geo_description' : '台北-大安區',
+			'geo_img' : '/img/locations/da_an_park.jpg'
 		}, {
 			'geo_location' : [ 25.028561, 121.570725 ],
-			'geo_description' : '台北-世貿'
+			'geo_description' : '台北-信義區',
+			'geo_img' : '/img/locations/xin_yi_district.jpg'
 		}, {
 			'geo_location' : [ 25.060909, 121.550641 ],
-			'geo_description' : '台北-松山區'
+			'geo_description' : '台北-松山區',
+			'geo_img' : '/img/locations/shung_shang_airport.jpg'
 		},{
 			'geo_location' : [ 25.048104, 121.517033 ],
-			'geo_description' : '終點-台北車站'
+			'geo_description' : '終點-台北車站',
+			'geo_img' : '/img/locations/taipei_station.jpg'
 		} ];
+		//end of temporary geo-info
 
-		var descriptions = [], locations = [];
+		var descriptions = [], locations = [], imgs = [];
 		$.each(geo_info, function(ith, elem) {
 			locations.push(elem['geo_location']);
 			descriptions.push(elem['geo_description']);
+			imgs.push(elem['geo_img']);
 
 		});
 
@@ -112,7 +121,7 @@
 				color : '#f00',
 				fillColor : '#f05',
 				fillOpacity : 0.8
-			}).bindPopup('<p style="color:#000;">柯P行腳- 台北車站</p>', {
+			}).bindPopup('<img alt="taipei_station" src="/img/locations/taipei_station.jpg" style="width: 200px;"><p style="color:#000;">柯P行腳- 台北車站</p>', {
 				keepInView : true
 			}).addTo(map);
 
@@ -130,6 +139,7 @@
 													distance : 200, // meters
 													interval : 1000, // milliseconds
 													geo_descriptions : descriptions, //locations descriptions
+													geo_imgs : imgs,
 													onEnd : function() {
 														//remove marker icon
 														/* $(this._shadow).fadeOut(100);
@@ -140,7 +150,7 @@
 														//bind popup message on marker
 														this
 																.bindPopup(
-																		'<img alt="taipei_station" src="/img/taipei_station.jpg" style="width: 200px;"><p style="color: #000;">'
+																		'<img alt="taipei_station" src="/img/locations/taipei_station.jpg" style="width: 200px;"><p style="color: #000;">'
 																				+ descriptions[descriptions.length - 1]
 																				+ '</p>',
 																		{
@@ -157,7 +167,7 @@
 								//add marker on map and push it into array
 								marker
 										.bindPopup(
-												'<p style="color: #000;">K-Map 柯P行腳</p><p style="color: #000;">請按地圖開始動畫</p>',
+												'<img alt="taipei_station" src="/img/kp_attitute.jpg" style="width: 280px;"><p style="color: #000;">K-Map 柯P行腳</p><p style="color: #000;">請按地圖開始動畫</p>',
 												{
 													keepInView : true
 												}).addTo(map).openPopup();

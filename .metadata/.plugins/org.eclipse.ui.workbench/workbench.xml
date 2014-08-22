@@ -53,11 +53,11 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="base.html" partName="base.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/base.html" title="base.html" tooltip="prjUnlimitedKP/src/static/templates/base/base.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5426" selectionTopPixel="1418"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3567" selectionTopPixel="1104"/>
 </editor>
 <editor id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" partName="front_page.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/front_page.html" title="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1422" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4809" selectionTopPixel="159"/>
 </editor>
 <editor id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" partName="index.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/index.html" title="index.html" tooltip="prjUnlimitedKP/src/static/templates/base/index.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/index.html"/>
@@ -98,11 +98,9 @@
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/images"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7/images"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base"/>
-<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7/images"/>
+<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/images/kp_map.png"/>
 </viewState>
 </view>
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
@@ -309,13 +307,9 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/index.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
 </editors>
-<item historyLabel="base.html" index="0">
-<position info="not_deleted" x="3008" y="0"/>
-</item>
-<item historyLabel="front_page.html" index="1">
-<position info="not_deleted" x="288" y="0"/>
-</item>
 <item historyLabel="base.html" index="0">
 <position/>
 </item>
@@ -457,8 +451,14 @@
 <item historyLabel="front_page.html" index="7">
 <position info="not_deleted" x="1392" y="0"/>
 </item>
-<item active="true" historyLabel="base.html" index="10">
+<item historyLabel="base.html" index="10">
 <position info="not_deleted" x="1934" y="0"/>
+</item>
+<item historyLabel="front_page.html" index="11">
+<position info="not_deleted" x="1422" y="0"/>
+</item>
+<item active="true" historyLabel="base.html" index="12">
+<position info="not_deleted" x="3375" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -479,6 +479,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="kp_map.png" tooltip="prjUnlimitedKP/src/static/images/kp_map.png">
+<persistable path="/prjUnlimitedKP/src/static/images/kp_map.png"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KP_CI_fin_out__original.jpg" tooltip="prjUnlimitedKP/src/static/images/KP_CI_fin_out__original.jpg">
+<persistable path="/prjUnlimitedKP/src/static/images/KP_CI_fin_out__original.jpg"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="kp_icon_2.png" tooltip="prjUnlimitedKP/src/static/images/kp_icon_2.png">
 <persistable path="/prjUnlimitedKP/src/static/images/kp_icon_2.png"/>
 </file>
@@ -517,9 +523,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="__init__.py" tooltip="prjUnlimitedKP/src/models/__init__.py">
 <persistable path="/prjUnlimitedKP/src/models/__init__.py"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="__init__.py" tooltip="prjUnlimitedKP/src/dictionaries/__init__.py">
-<persistable path="/prjUnlimitedKP/src/dictionaries/__init__.py"/>
 </file>
 </mruList>
 </workbench>
