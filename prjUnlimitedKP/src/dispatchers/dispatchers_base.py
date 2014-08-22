@@ -26,7 +26,13 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 class BaseDispatcher(BaseHandler):
     def get(self):
         template_values = {}
-        template_values.update({'title':u'柯文哲-"文"之有物'})
+        template_values.update({'title':u'柯文哲-柯map'})
+        self.render_template('/base/front_page.html', template_values)
+
+class ArticlesDispatcher(BaseHandler):
+    def get(self):
+        template_values = {}
+        template_values.update({'title':u'柯文哲-柯"文"集'})
         self.render_template('/base/index.html', template_values)
         
 class AlbumsDispatcher(BaseHandler):
@@ -46,7 +52,8 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/', BaseDispatcher, name='base'),
+    webapp2.Route(r'/', BaseDispatcher, name='front_page'),
+    webapp2.Route(r'/base/articles', ArticlesDispatcher, name='articles'),
     webapp2.Route(r'/base/albums', AlbumsDispatcher, name='albums'),
     webapp2.Route(r'/base/videos', VideosDispatcher, name='videos')
 ], debug=True, config=config)

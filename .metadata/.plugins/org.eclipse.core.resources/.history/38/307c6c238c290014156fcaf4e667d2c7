@@ -1,0 +1,12 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %} {% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %} {% block main_content %}
+<div id="map_kp_journey"
+	style="height: 100%; width:100%; margin: 0px auto; z-index: 1;">
+</div>
+
+{% endblock %}

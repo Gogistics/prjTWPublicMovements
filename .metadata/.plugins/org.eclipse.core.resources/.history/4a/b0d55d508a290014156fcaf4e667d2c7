@@ -1,0 +1,13 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %} {% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %} {% block main_content %}
+<div id="map_company_introduction"
+	style="height: 100%; width:100%; margin: 0px auto; z-index: 900; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;">
+	<p
+		style="right: 0px; left: 0px; z-index: 1000; position: relative; background-color: #000; opacity: 0.85; margin: 0 auto; padding-top: 15px; padding-bottom: 15px;">{{company_introduction_content}}</p>
+</div>
+{% endblock %}

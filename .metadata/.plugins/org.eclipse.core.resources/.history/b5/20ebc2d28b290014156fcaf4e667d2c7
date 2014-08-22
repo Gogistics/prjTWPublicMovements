@@ -1,0 +1,165 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %} {% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %} {% block main_content %}
+<div id="map_kp_journey"
+	style="height: 100%; width:100%; margin: 0px auto; z-index: 1;">
+</div>
+
+<script type="text/javascript">
+//show leaflet map
+var map;
+(function() {
+
+	//map attr. info.
+	var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+			+ '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+			+ 'Imagery © <a href="http://mapbox.com">Mapbox</a>', mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+
+	//gray scale map
+	var grayscale = L.tileLayer(mbUrl, {
+		id : 'examples.map-20v6611k',
+		attribution : mbAttr
+	}), streets = L.tileLayer(mbUrl, {
+		id : 'examples.map-i86knfo3',
+		attribution : mbAttr
+	});
+
+	//marker config.
+	var myIcon = L.icon({
+		iconUrl : '/leaflet/images/winever_logo_map_marker_pin.png',
+		shadowUrl : '/leaflet/images/marker-shadow.png',
+
+		iconSize : [ 50, 50 ],
+		shadowSize : [ 40, 40 ],
+		iconAnchor : [ 25, 49 ],
+		shadowAnchor : [ 12, 37 ],
+		popupAnchor : [ -3, -40 ]
+	});
+
+	//defualt config. of map view
+	var config = {
+		initLatLng : new L.LatLng(22.605028, 120.298636), // kaohsiung software 22.605028, 120.298636 ; mountain view 37.380498, -122.061526
+		initZoom : 2,
+		minZoom : 2,
+		maxZoom : 2
+	};
+
+	
+	//
+	var geo_info = [{'geo_location':[ 22.605028, 120.298636 ], 'geo_description':'台灣-高雄'},
+	                {'geo_location':[ 48.8566140, 2.3522220 ], 'geo_description':'法國-巴黎'},
+	                {'geo_location':[ 37.380498, -122.061526 ], 'geo_description':'美國-加州'},
+	                {'geo_location':[ 22.605028, 120.298636 ], 'geo_description':'回到溫暖的故鄉-高雄'}];
+	
+	var descriptions = [], locations = [];
+	$.each(geo_info, function(ith, elem){
+		locations.push(elem['geo_location']);
+		descriptions.push(elem['geo_description']);
+		
+	});
+	
+	var routeLines = [ L.polyline(locations) ], markers = [];
+
+	map = L.map('map_kp_journey', {
+		minZoom : config.minZoom,
+		maxZoom : config.maxZoom,
+		zoomControl : false,
+		dragging : true,
+		zoom : config.initZoom,
+		center : config.initLatLng,
+		layers : grayscale,
+		attributionControl : false
+
+	});
+	
+	//map.addLayer(new L.TileLayer(config.tileUrl));
+	//map.setView(config.initLatLng, config.initZoom);
+	
+	//defualt location of popup
+	var popup, circle, marker, polyline;
+	var is_start = false;
+	function do_animation() {
+		//set init popup and location circle
+		circle = L.circle([ 22.605028, 120.298636 ], 200, {
+		    color: '#f00',
+		    fillColor: '#f05',
+		    fillOpacity: 0.8
+		}).bindPopup('<p style="color:#000;">高雄- 美麗島</p>', {keepInView: true}).addTo(map);
+	
+		
+		//iterate LatLng array
+		$.each(routeLines, function(i, routeLine) {
+			marker = L.animatedMarker(routeLine.getLatLngs(), {
+				icon : myIcon,
+				autoStart : false,
+				distance : 100000, // meters
+				interval : 100, // milliseconds
+				geo_descriptions: descriptions, //locations descriptions
+				onEnd : function() {
+					//remove marker icon
+					/* $(this._shadow).fadeOut(100);
+					$(this._icon).fadeOut(1000, function() {
+						map.removeLayer(this);
+					}); */
+					
+					//bind popup message on marker
+					this.bindPopup('<p style="color: #000;">'+ descriptions[descriptions.length - 1] +'</p>', {keepInView: true}).addTo(map).openPopup();
+					
+					//inifite animation
+					//setTimeout(restart_animation(), 5000);
+				}
+			});
+			
+			//add marker on map and push it into array
+			marker.bindPopup('<p style="color: #000;">高雄- 美麗島</p><p style="color: #000;">請按地圖開始動畫</p>', {keepInView: true}).addTo(map).openPopup();
+			map.addLayer(marker);
+			markers.push(marker);
+			
+			//click event is fired up while clicking map
+			map.on('click', function(e) {
+				if(!is_start){
+					marker.start();
+					is_start = !is_start;
+				}
+			});
+		});
+	}
+	
+	//restart animation
+	function restart_animation(){
+		clearMap(map);
+		
+		//apply promise to this animation
+		do_animation();
+		if(typeof marker !== undefined){
+			marker.start();
+		}
+	}
+	
+	//clear layers on map
+	function clearMap(m) {
+		//
+		m.closePopup();
+		
+		//
+	    for(i in m._layers) {
+	        if(m._layers[i]._path != undefined) {
+	            try {
+	                m.removeLayer(m._layers[i]);
+	            }
+	            catch(e) {
+	                console.log("problem with " + e + m._layers[i]);
+	            }
+	        }
+	    }
+	}
+	
+	//start animation after 500 mil-sec
+	do_animation();
+	/* end of animation */
+</script>
+{% endblock %}
