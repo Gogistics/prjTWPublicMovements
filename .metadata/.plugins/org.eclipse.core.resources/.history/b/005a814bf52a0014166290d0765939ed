@@ -37,6 +37,8 @@
 {% block css_content %} {% endblock %}
 
 <!-- JS -->
+<!-- self-defined -->
+<script type="text/javascript" src="/js/base.js"></script>
 
 <!-- js/jquery -->
 <script data-require="jquery@*" data-semver="2.0.3"
@@ -51,10 +53,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>	
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
 <script type="text/javascript" src="/js/angular-ui-router.js"></script>
-
-<!-- self-defined -->
-<!-- base.js should be put after Angularjs -->
-<script type="text/javascript" src="/js/base.js"></script>
 {% block js_content %} {% endblock %}
 
 <title>{{ title|safe }}</title>

@@ -39,13 +39,13 @@ class AlbumsDispatcher(BaseHandler):
     def get(self):
         template_values = {}
         template_values.update({'title':u'柯文哲照片集'})
-        self.render_template('/base/albums.html', template_values)
+        self.render_template('/base/album.html', template_values)
         
 class VideosDispatcher(BaseHandler):
     def get(self):
         template_values = {}
         template_values.update({'title':u'柯文哲影像集'})
-        self.render_template('/base/videos.html', template_values)
+        self.render_template('/base/video.html', template_values)
 
 # configuration
 config = dict_general.config_setting

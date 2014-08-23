@@ -53,7 +53,7 @@
 <script type="text/javascript" src="/js/angular-ui-router.js"></script>
 
 <!-- self-defined -->
-<!-- base.js should be put after Angularjs -->
+<!-- base.js shouldbe put after Angularjs -->
 <script type="text/javascript" src="/js/base.js"></script>
 {% block js_content %} {% endblock %}
 
