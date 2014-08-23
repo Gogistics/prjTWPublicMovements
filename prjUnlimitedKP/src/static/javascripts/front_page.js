@@ -172,7 +172,7 @@ var map;
 							// add marker on map and push it into array
 							marker
 									.bindPopup(
-											'<img alt="taipei_station" src="/img/kp_attitute.jpg" style="width: 280px;"><p style="color: #000;">K-Map 柯P行腳</p><p style="color: #000;">請按地圖開始動畫</p>',
+											'<img alt="taipei_station" src="/img/kp_attitute.jpg" style="width: 280px;"><p style="color: #000;">MA柯P (請按地圖開始動畫)</p><p style="color: #000; letter-spacing: 1px;">目前動畫資料為Demo用，希望未來能改版成聯繫到柯P真實的行腳記錄</p>',
 											{
 												keepInView : true
 											}).addTo(map).openPopup();

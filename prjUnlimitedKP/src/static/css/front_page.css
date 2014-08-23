@@ -26,11 +26,25 @@
 		font-size: 12px;
 		padding: 10px;
 		letter-spacing: 1px;
+		transition: color .3s ease-in-out;
+		-o-transition: color .3s ease-in-out;
+		-moz-transition: color .3s ease-in-out;
+		-webkit-transition: color .3s ease-in-out;
 	}
 	.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus
 		{
-		color: #000;
+		color: #333;
 	}
+	
+	/**/
+	.navbar-default .navbar-nav>li>p {
+		color: #000;
+		font-size: 12px;
+		padding: 10px;
+		letter-spacing: 1px;
+	}
+	/**/
+	
 	.navbar-default .navbar-nav>.active {
 		color: #8a0e0b;
 		background: #d65c14;

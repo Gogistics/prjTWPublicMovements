@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="taipei_mayor_candidate" content="Dr. Ke(Wen-Che Ke)">
+<meta name="developer" content="Alan Tai">
+<meta name="location" content="california_millbrae">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- icon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- css -->
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+
+<!-- jquery -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	
+<!-- bootstrap -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<!-- css/leaflet -->
+<link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
+<style>
+.category,.article {
+	cursor: pointer;
+}
+</style>
+{% block css_content %} {% endblock %}
+
+<!-- JS -->
+<!-- jquery -->
+<script data-require="jquery@*" data-semver="2.0.3"
+	src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+<!-- leaflet map -->
+<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+<script type="text/javascript"
+	src="/leaflet/animatedMaker-leaflet-plugin.js"></script>
+
+<!-- ng -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>	
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+<script type="text/javascript" src="/js/angular-ui-router.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+{% block js_content %} {% endblock %}
+
+<title>{{ title|safe }}</title>
+</head>
+<body ng-app = "unlimited_kp_app">
+	{% block main_content %}
+	<p>NO Templates Found</p>
+	{% endblock %}
+</body>
+</html>

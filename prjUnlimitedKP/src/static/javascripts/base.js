@@ -1,0 +1,5 @@
+/* init ng-app */
+var kp_app = angular.module('unlimited_kp_app', ['ngRoute'], function($interpolateProvider) {
+	$interpolateProvider.startSymbol('[[');
+	$interpolateProvider.endSymbol(']]');
+});

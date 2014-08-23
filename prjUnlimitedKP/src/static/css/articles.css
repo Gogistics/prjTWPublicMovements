@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: Bisque;
+	src: url(/font_styles/bisque.ttf); /* TTF file for CSS3 browsers */
+}
+
+@media all and (min-device-width: 901px) {
+	/* override ng-scope */
+	.ng-scope{
+	
+	}
+}
+
+@media all and (max-device-width: 900px) {
+	
+}

@@ -33,7 +33,7 @@ class ArticlesDispatcher(BaseHandler):
     def get(self):
         template_values = {}
         template_values.update({'title':u'柯文哲-柯"文"集'})
-        self.render_template('/base/index.html', template_values)
+        self.render_template('/base/articles.html', template_values)
         
 class AlbumsDispatcher(BaseHandler):
     def get(self):
