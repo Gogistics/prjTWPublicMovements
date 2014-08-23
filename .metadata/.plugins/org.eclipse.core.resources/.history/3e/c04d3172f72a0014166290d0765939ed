@@ -26,7 +26,7 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 class BaseDispatcher(BaseHandler):
     def get(self):
         template_values = {}
-        template_values.update({'title':u'柯文哲-MA柯P'})
+        template_values.update({'title':u'柯文哲-柯map'})
         self.render_template('/base/front_page.html', template_values)
 
 class ArticlesDispatcher(BaseHandler):

@@ -196,7 +196,10 @@ var map;
 
 	// clear layers on map
 	function clearMap(m) {
-		//remove layers
+		//
+		m.closePopup();
+
+		//
 		for (i in m._layers) {
 			if (m._layers[i]._path != undefined) {
 				try {

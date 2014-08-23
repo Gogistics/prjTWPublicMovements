@@ -35,7 +35,13 @@ var map;
 
 	// defualt config. of map view
 	var config = {
-		initLatLng : new L.LatLng(25.048104, 121.517033),
+		initLatLng : new L.LatLng(25.048104, 121.517033), // kaohsiung
+															// software
+															// 22.605028,
+															// 120.298636 ;
+															// mountain view
+															// 37.380498,
+															// -122.061526
 		initZoom : 15,
 		minZoom : 15,
 		maxZoom : 15
@@ -173,7 +179,7 @@ var map;
 							map.addLayer(marker);
 							markers.push(marker);
 
-							// click event is fired up while clicking map; restart_animation() not used for current project
+							// click event is fired up while clicking map
 							map.on('click', function(e) {
 								if (!is_start) {
 									marker.start();
@@ -196,7 +202,10 @@ var map;
 
 	// clear layers on map
 	function clearMap(m) {
-		//remove layers
+		//
+		m.closePopup();
+
+		//
 		for (i in m._layers) {
 			if (m._layers[i]._path != undefined) {
 				try {
