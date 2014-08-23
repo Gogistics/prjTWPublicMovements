@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: Bisque;
+	src: url(/font_styles/bisque.ttf); /* TTF file for CSS3 browsers */
+}
+
+@media all and (min-device-width: 901px) {
+	.navbar-default {
+		background-color: #692B0A;
+		background-image: none;
+		color: #fff;
+	}
+	.navbar-default .navbar-brand {
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav>li>a {
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus
+		{
+		color: #000;
+	}
+	.navbar-default .navbar-nav>.active {
+		color: #000;
+		background: #fff;
+	}
+	.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>.open>a:focus
+		{
+		color: #000;
+		background-color: #fff;
+	}
+	.navbar-default .navbar-nav>.dropdown>a .caret {
+		border-top-color: #ffffff;
+		border-bottom-color: #ffffff;
+	}
+	.navbar-default .navbar-nav>.dropdown>a:hover .caret,.navbar-default .navbar-nav>.dropdown>a:focus .caret
+		{
+	}
+	.navbar-default .navbar-nav>.open>a .caret,.navbar-default .navbar-nav>.open>a:hover .caret,.navbar-default .navbar-nav>.open>a:focus .caret
+		{
+	}
+	.navbar-default .navbar-toggle {
+		border-color: #00f;
+	}
+	.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus
+		{
+		background-color: #00f;
+	}
+	.navbar-default .navbar-toggle .icon-bar {
+		background-color: #ffffff;
+	}
+	.navbar-default .navbar-nav>.active {
+		
+	}
+	.navbar-default .navbar-nav>.active {
+		color: #000;
+		background: #fff;
+	}
+	.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus
+		{
+		color: #000;
+		background: #fff;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+}

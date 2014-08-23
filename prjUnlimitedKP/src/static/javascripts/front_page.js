@@ -79,6 +79,7 @@ var map;
 	} ];
 	// end of temporary geo-info
 
+	//iterate array to retrieve info.
 	var descriptions = [], locations = [], imgs = [];
 	$.each(geo_info, function(ith, elem) {
 		locations.push(elem['geo_location']);
@@ -87,8 +88,10 @@ var map;
 
 	});
 
+	//set route lines
 	var routeLines = [ L.polyline(locations) ], markers = [];
 
+	//init map
 	map = L.map('map_kp_journey', {
 		minZoom : config.minZoom,
 		maxZoom : config.maxZoom,
@@ -101,14 +104,14 @@ var map;
 
 	});
 
+	//add tileUrl
 	// map.addLayer(new L.TileLayer(config.tileUrl));
-	// map.setView(config.initLatLng, config.initZoom);
 
 	// defualt location of popup
 	var popup, circle, marker, polyline;
 	var is_start = false;
 	function do_animation() {
-		// set init popup and location circle
+		// init popup and location circle
 		circle = L
 				.circle([ 25.048104, 121.517033 ], 10, {
 					color : '#f00',
@@ -132,7 +135,7 @@ var map;
 											{
 												icon : myIcon,
 												autoStart : false,
-												distance : 150, // meters
+												distance : 180, // meters
 												interval : 1000, // milliseconds
 												geo_descriptions : descriptions, // locations
 																					// descriptions
@@ -162,7 +165,7 @@ var map;
 
 													// inifite animation
 													// setTimeout(restart_animation(),
-													// 5000);
+													// 500);
 												}
 											});
 
@@ -216,7 +219,6 @@ var map;
 
 	// start animation after 500 mil-sec
 	do_animation();
-	// setTimeout(marker.start(), 10000);
 	/* end of animation */
 }());
 // end of show map

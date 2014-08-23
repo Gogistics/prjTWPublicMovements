@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="taipei_mayor_candidate" content="Dr. Ke(Wen-Che Ke)">
+<meta name="developer" content="Alan Tai">
+<meta name="location" content="california_millbrae">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- icon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
+<style>
+.category,.article {
+	cursor: pointer;
+}
+</style>
+{% block css_content %} {% endblock %}
+
+<!-- JS -->
+<!-- jquery -->
+<script data-require="jquery@*" data-semver="2.0.3"
+	src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+<!-- leaflet map -->
+<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+<script type="text/javascript"
+	src="/leaflet/animatedMaker-leaflet-plugin.js"></script>
+
+<!-- ng -->
+<script data-require="angular.js@1.3.0-beta.5"
+	data-semver="1.3.0-beta.5"
+	src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+<script type="text/javascript" src="/js/angular-ui-router.js"></script>
+{% block js_content %} {% endblock %}
+
+<title>{{ title|safe }}</title>
+</head>
+<body>
+	{% block main_content %}
+	<p>NO Templates Found</p>
+	{% endblock %}
+
+	<div
+		style="z-index: 1000; position: absolute; bottom: 15px; width: 100%; min-width: 1200px; height: 250px; background-color: rgba(255, 62, 1, 0.93); padding: 3px; box-shadow: 0 0 2px rgba(255, 62, 1, 1);">
+
+		<img alt="kp_map" src="/img/kp_map.png"
+			style="height: 100px; margin-top: -40px; margin-left: 25px; position: relative;">
+		<div style="display: block; width: 100%; height: 10px;"></div>
+
+		<div
+			style="width: 500px; position: relative; float: right; top: -60px;">
+
+			<!-- background sound track from SoundCloud -->
+			<iframe scrolling="no" frameborder="no"
+				style="display: block; width: 100%; height: 120px;"
+				src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/164078512&amp;auto_play=true&amp;loop=true&amp;"></iframe>
+		</div>
+		<div style="display: block;">
+			<div
+				style="width: 500px; background-color: transparent; display: inline-block; color: #fff;">
+
+				<header class="navbar navbar-static-top bs-docs-nav" id="top"
+					role="banner">
+					<div class="container">
+						<nav class="collapse navbar-collapse bs-navbar-collapse"
+							role="navigation">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="/base/articles" target="_blank"
+									style="color: #fff; font-size: 18px; letter-spacing: 2px;">柯"文"集</a></li>
+								<li><a href="/base/albums"
+									style="color: #fff; font-size: 18px; letter-spacing: 2px;"
+									target="_blank">照片集</a></li>
+								<li><a href="/base/videos"
+									style="color: #fff; font-size: 18px; letter-spacing: 2px;"
+									target="_blank">錄像紀實</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+
+			</div>
+		</div>
+
+		<div style="height: 5px; width: 100%; display: block;"></div>
+		<div style="display: block; margin-left: 21px; position: relative;">
+			<!--  -->
+				<ul class="nav navbar-nav" style="width: 100%; margin: 0px auto;">
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/" target="_blank">柯文哲本尊官網&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://rgba.tw" target="_blank">RGBA&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/kp-ton/" target="_blank">台北調你來定調&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/" target="_blank">柯P新政&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/?page_id=2723" target="_blank">真・柯文哲&#8230;</a>
+					</li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/kp-ton/" target="_blank">臺北調，你來定調&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="https://donate.kptaipei.tw" target="_blank">捐款支持&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tw/?page_id=2836" target="_blank">新聞稿&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="https://www.facebook.com/wildkp" target="_blank">野生柯P記錄團&#8230;</a>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav" style="width: 100%; margin: 0px auto;">
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="https://www.facebook.com/DoctorKoWJ" target="_blank"><i
+							class="ss ss-facebook"></i>facebook 粉絲專頁&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="https://www.flickr.com/photos/110839995@N06/"
+						target="_blank"><i class="ss ss-flickr"></i>flickr 相簿&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="http://kptaipei.tumblr.com" target="_blank"><i
+							class="ss ss-tumblr"></i>tumblr 柯P新政&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="https://www.youtube.com/channel/UCllMvuz1DIPIoqNnur7_Pig"
+						target="_blank"><i class="ss ss-youtube"></i>youtube 影音&#8230;</a></li>
+					<li><a style="color: #fff; font-size: 12px; padding: 10px;"
+						href="mailto:open@kptaipei.tw"><i class="ss ss-mail"></i>Email
+							客服&#8230;</a></li>
+				</ul>
+		</div>
+	</div>
+</body>
+</html>

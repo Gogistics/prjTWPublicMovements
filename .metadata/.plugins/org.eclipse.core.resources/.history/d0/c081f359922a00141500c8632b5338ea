@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: Bisque;
+	src: url(/font_styles/bisque.ttf); /* TTF file for CSS3 browsers */
+}
+
+@media all and (min-device-width: 901px) {
+	.links_bar>li {
+		display: inline-block;
+	}
+	.footer_links {
+		font-size: 12px;
+		padding: 10px;
+		color: #fff;
+		transition: color .1s ease-in-out;
+		-moz-transition: color .1s ease-in-out;
+		-webkit-transition: color .1s ease-in-out;
+	}
+	.footer_links:hover,.footer_links:active,.footer_links:focus {
+		color: #555;
+		outline: 0;
+		cursor: pointer;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+}
