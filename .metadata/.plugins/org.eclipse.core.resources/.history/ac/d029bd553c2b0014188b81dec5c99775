@@ -1,0 +1,29 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/articles.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+{% endblock %}
+
+{% block content %}
+<div ng-controller="MainCtrl as main" style="height: 100%; width: 100%; margin-bottom: 0px;">
+	<div class="container">
+		<div class="col-md-4">
+			<h2> 文章類別目錄</h2>
+			<ul class="categories">
+				<li class='category' ng-repeat="(key, item) in main.categories" ng-click="main.clickOnCategory(item.id)">[[item.name]]
+					<ul class='articles'>
+						<li class='article' ng-repeat="(key, article) in item.posts" ng-click="main.clickOnArticle($event, article)">[[article.title]]</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="page col-xs-12 col-sm-6 col-md-8 col-xs-6" ng-bind-html="main.content">
+		</div>
+	</div>
+</div>
+{% endblock %}

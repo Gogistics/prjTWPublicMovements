@@ -1,0 +1,7 @@
+/* init ng-app */
+// contributed by 保哥 and modified by Alan Tai
+// Integrated with Google App Engine, the $interpolateProvider should change; the startSymbol and endSymbol should be consistent 
+var kp_app = angular.module('unlimited_kp_app', ['ngRoute'], function($interpolateProvider) {
+	$interpolateProvider.startSymbol('[[');
+	$interpolateProvider.endSymbol(']]');
+});

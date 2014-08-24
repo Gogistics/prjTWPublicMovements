@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+@media all and (min-device-width: 901px) {
+	body {
+		background-color: rgba(255, 62, 1, 1);
+	}
+	/* override ng-scope */
+	.ng-scope {
+		height: 100%;
+		overflow: hidden;
+	}
+	.main_content_links{
+		display: inline-block;
+	}
+	
+	.navbar-nav>li>a {
+		color: #fff;
+		font-size: 12px;
+		padding: 10px;
+		letter-spacing: 1px;
+		transition: color .3s ease-in-out;
+		-o-transition: color .3s ease-in-out;
+		-moz-transition: color .3s ease-in-out;
+		-webkit-transition: color .3s ease-in-out;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+}

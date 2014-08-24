@@ -1,17 +1,19 @@
+/* init ng-app controllers */
 kp_app
 .value('API',{
-	KEY:"kp53f5626b5f4bd7.27954991",
+	KEY:"kp53f5626b5f4bd7.27954991", //personal api key
 	SERVER:"http://api.kptaipei.tw/v1/"
 })
 .controller('MainCtrl', MainController)
 .controller('AlbumCtrl', AlbumController)
 .controller('VideoCtrl', VideoController)
-.service('kptService', kptService);
+.service('kptService', kptService); //
 
-// 用來讀取api資料的service
+// service for retrieving data
 kptService.$injector = ['$http','API'];
 function kptService($http,API){
 	
+	//get articles category
 	this.getCategory = function(id) {			
         console.log(API.SERVER+"category/"+id+"?accessToken="+API.KEY);
 		return $http({
@@ -20,6 +22,7 @@ function kptService($http,API){
 		});
 	};
 
+	//get albums category
 	this.getAlbums = function(id){
         console.log(API.SERVER+"albums/"+id+"?accessToken="+API.KEY);
 		return $http({
@@ -28,6 +31,7 @@ function kptService($http,API){
 		})			
 	};
 
+	//get videos category
 	this.getVideos = function(id){
         console.log(API.SERVER+"videos/"+id+"?accessToken="+API.KEY);
 		return $http({
@@ -37,7 +41,7 @@ function kptService($http,API){
 	}
 }
 
-// 文章範例頁面
+// articles content
 MainController.$injector = ['$sce','kptService'];
 function MainController($sce,kptService){
 	var vm = this;
@@ -67,6 +71,9 @@ function MainController($sce,kptService){
 				vm.categories[category_id].posts.push(item);
 			});
 			vm.clickOnArticle(undefined, initial_article);
+			
+			//apply jquery toggle animation
+			$('#article_category_' + category_id).toggle("slow");
 		});
 	};
 
@@ -78,7 +85,8 @@ function MainController($sce,kptService){
 		vm.content = $sce.trustAsHtml(article.content);
 	};
 }
-// 相簿範例頁面
+
+// albums
 AlbumController.$injector = ['$sce','kptService'];
 function AlbumController($sce,kptService){
 	var vm = this;
@@ -105,7 +113,7 @@ function AlbumController($sce,kptService){
 	}
 }
 
-// 影片範例頁面
+// videos
 VideoController.$injector = ['$sce','kptService'];
 function VideoController($sce,kptService){
 	var vm = this;
@@ -139,7 +147,10 @@ function VideoController($sce,kptService){
 	}
 
 	function clickOnCategory(category_id) {
-		getVideos(category_id);		
+		getVideos(category_id);
+		
+		//apply jquery toggle animation
+		$('#video_category_' + category_id).toggle("slow");
 	};
 
 	function clickOnVideo($event, video) {

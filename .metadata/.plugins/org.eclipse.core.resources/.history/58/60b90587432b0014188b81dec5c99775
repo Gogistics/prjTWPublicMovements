@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+@media all and (min-device-width: 901px) {
+	body{
+		background-color: rgba(255, 62, 1, 1);
+	}
+	/* override ng-scope */
+	.ng-scope{
+	height: 100%;
+	overflow: hidden;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+	
+}

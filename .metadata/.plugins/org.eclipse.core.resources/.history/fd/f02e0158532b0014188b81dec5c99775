@@ -1,0 +1,22 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/main_content.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %}
+
+<!-- content -->
+{% block main_content %}
+
+	<!-- content block -->
+	{% block content %} {% endblock %}
+	<!-- end of content block -->
+	
+	<div id="bottom_bar" style="width: 100%; height: 80px;"> <img alt="kp_map_small_logo" src="/img/kp_map.png" style="height: 70px; margin: auto 20px; position: fixed;"> </div>
+
+<!-- init ng controllers, etc. -->
+<script type="text/javascript" src="/js/main_content.js"></script>
+{% endblock %}

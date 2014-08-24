@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: Bisque;
+	src: url(/font_styles/bisque.ttf); /* TTF file for CSS3 browsers */
+}
+
+@media all and (min-device-width: 901px) {
+	body,html {
+		width: 100%;
+		height: 100%;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin: 0px 0px;
+		top: 0px;
+		left: 0px;
+		overflow: auto;
+		font-family: Bisque, 微軟宋體, segoe ui;
+		background-color: background-color: rgba(255, 62, 1, 1);;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+	body,html {
+		width: 100%;
+		height: 100%;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin: 0px 0px;
+		top: 0px;
+		left: 0px;
+		overflow: auto;
+		font-family: Bisque, 微軟宋體, segoe ui;
+		background-color: #000;
+	}
+}

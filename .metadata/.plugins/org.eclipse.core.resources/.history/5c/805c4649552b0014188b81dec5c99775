@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+@media all and (min-device-width: 901px) {
+	body {
+		background-color: rgba(255, 62, 1, 1);
+	}
+	/* override ng-scope */
+	.ng-scope {
+		height: 100%;
+		overflow: hidden;
+	}
+	.main_content_links{
+		
+	}
+	.main_content_links > a {
+		font-size: 12px;
+		margin: 10px 10px;
+	}
+}
+
+@media all and (max-device-width: 900px) {
+}

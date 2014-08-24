@@ -1,0 +1,39 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/videos.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %} {% block content %}
+<div class="ng_controller" ng-controller="VideoCtrl as vc">
+
+	<div class="col-md-4 list_block">
+		<h2>播放清單列表</h2>
+		<ul class="categories">
+			<li id="" class='playlist' ng-repeat="item in vc.categories"
+				ng-click="vc.clickOnCategory(item.id)">[[item.title]]
+				<ul class='videos'>
+					<li class='video' ng-repeat="video in item.videos"
+						ng-click="vc.clickOnVideo($event, video)">[[video.title]]</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="page col-xs-12 col-sm-6 col-md-8 col-xs-6 content_block">
+		<h2>[[vc.content.title]]</h2>
+		<iframe ng-src='[[vc.content.url]]' width='600' height='450'></iframe>
+		<br />
+		<pre>[[vc.content.description]]</pre>
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+
+
+//-->
+</script>
+{% endblock %}

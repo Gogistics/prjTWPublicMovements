@@ -1,0 +1,73 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/main_content.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %}
+
+<!-- content -->
+{% block main_content %}
+
+<!-- content block -->
+{% block content %} {% endblock %}
+<!-- end of content block -->
+
+<div id="bottom_bar"
+	style="width: 100%; height: 80px; position: fixed; bottom: 0px;">
+	<img alt="kp_map_small_logo" src="/img/kp_map.png"
+		style="height: 70px; margin: auto 20px; display: inline-block;">
+	<div style="display: inline-block;">
+	</div>
+</div>
+
+<nav class="navbar navbar-default" style="margin-left: 21px; position: fixed ; bottom: 20px;">
+			<!--  -->
+				<ul class="nav navbar-nav" style="width: 100%; margin: 0px auto; display: block;">
+					<li><a
+						href="http://kptaipei.tw/" target="_blank">柯文哲本尊官網&#8230;</a></li>
+					<li><a
+						href="http://rgba.tw" target="_blank">RGBA&#8230;</a></li>
+					<li><a
+						href="http://kptaipei.tw/kp-ton/" target="_blank">台北調你來定調&#8230;</a></li>
+					<li><a
+						href="http://kptaipei.tw/" target="_blank">柯P新政&#8230;</a></li>
+					<li><a
+						href="http://kptaipei.tw/?page_id=2723" target="_blank">真・柯文哲&#8230;</a>
+					</li>
+					<li><a
+						href="http://kptaipei.tw/kp-ton/" target="_blank">臺北調，你來定調&#8230;</a></li>
+					<li><a
+						href="https://donate.kptaipei.tw" target="_blank">捐款支持&#8230;</a></li>
+					<li><a
+						href="http://kptaipei.tw/?page_id=2836" target="_blank">新聞稿&#8230;</a></li>
+					<li><a
+						href="https://www.facebook.com/wildkp" target="_blank">野生柯P記錄團&#8230;</a>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav" style="width: 100%; margin: 0px auto; display: block;">
+					<li><a
+						href="https://www.facebook.com/DoctorKoWJ" target="_blank"><i
+							class="ss ss-facebook"></i>facebook 粉絲專頁&#8230;</a></li>
+					<li><a
+						href="https://www.flickr.com/photos/110839995@N06/"
+						target="_blank"><i class="ss ss-flickr"></i>flickr 相簿&#8230;</a></li>
+					<li><a
+						href="http://kptaipei.tumblr.com" target="_blank"><i
+							class="ss ss-tumblr"></i>tumblr 柯P新政&#8230;</a></li>
+					<li><a
+						href="https://www.youtube.com/channel/UCllMvuz1DIPIoqNnur7_Pig"
+						target="_blank"><i class="ss ss-youtube"></i>youtube 影音&#8230;</a></li>
+					<li><a
+						href="mailto:open@kptaipei.tw"><i class="ss ss-mail"></i>Email
+							客服&#8230;</a></li>
+					<li><p>© RGBA + 零時前端教學松 + 柯文哲辦公室  + Gogistics Since 2014</p></li>
+				</ul>
+		</nav>
+
+<!-- init ng controllers, etc. -->
+<script type="text/javascript" src="/js/main_content.js"></script>
+{% endblock %}
