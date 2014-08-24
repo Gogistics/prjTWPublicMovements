@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="79" version="2.0">
+<workbench progressCount="75" version="2.0">
 <workbenchAdvisor/>
 <window height="728" maximized="true" width="1024" x="352" y="66">
 <fastViewData fastViewLocation="1024"/>
@@ -24,8 +24,8 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -45,37 +45,62 @@
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.python.pydev.editor.PythonEditor" name="dispatchers_base.py" partName="dispatchers_base" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers/dispatchers_base.py" title="dispatchers_base" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_base.py" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="607" selectionTopPixel="390"/>
+<editorState selectionHorizontalPixel="0" selectionLength="1807" selectionOffset="0" selectionTopPixel="390"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="main_content.html" partName="main_content.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/main_content.html" title="main_content.html" tooltip="prjUnlimitedKP/src/static/templates/base/main_content.html" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="main_content.html" partName="main_content.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/main_content.html" title="main_content.html" tooltip="prjUnlimitedKP/src/static/templates/base/main_content.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/main_content.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="392" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" partName="front_page.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/front_page.html" title="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2537" selectionTopPixel="825"/>
-</editor>
-<editor id="org.eclipse.wst.css.core.csssource.source" name="main_content.css" partName="main_content.css" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css/main_content.css" title="main_content.css" tooltip="prjUnlimitedKP/src/static/css/main_content.css" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/css/main_content.css"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="183" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="153" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.wst.html.core.htmlsource.source" name="articles.html" partName="articles.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/articles.html" title="articles.html" tooltip="prjUnlimitedKP/src/static/templates/base/articles.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/articles.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="68" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" partName="albums.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/albums.html" title="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3656" selectionTopPixel="908"/>
+</editor>
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" partName="main_content.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/main_content.js" title="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3159" selectionTopPixel="1365"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="models_geo_info.py" partName="models_geo_info" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/models/models_geo_info.py" title="models_geo_info" tooltip="prjUnlimitedKP/src/models/models_geo_info.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/models/models_geo_info.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="346" selectionTopPixel="0"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" partName="dispatchers_albums" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" title="dispatchers_albums" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="523" selectionTopPixel="8"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="geo_info.js" partName="geo_info.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js" title="geo_info.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="70" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="leaflet.markercluster-src.js" partName="leaflet.markercluster-src.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js" title="leaflet.markercluster-src.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="435" selectionTopPixel="16372"/>
+</editor>
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" partName="front_page.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/front_page.js" title="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3742" selectionTopPixel="1597"/>
+</editor>
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="animatedMaker-leaflet-plugin.js" partName="animatedMaker-leaflet-plugin.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js" title="animatedMaker-leaflet-plugin.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.wst.css.core.csssource.source" name="articles.css" partName="articles.css" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css/articles.css" title="articles.css" tooltip="prjUnlimitedKP/src/static/css/articles.css" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/css/articles.css"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="233" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.wst.css.core.csssource.source" name="albums.css" partName="albums.css" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css/albums.css" title="albums.css" tooltip="prjUnlimitedKP/src/static/css/albums.css" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/css/albums.css"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="94" selectionTopPixel="0"/>
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="albums.js" partName="albums.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/albums.js" title="albums.js" tooltip="prjUnlimitedKP/src/static/javascripts/albums.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -105,17 +130,21 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/models"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/images/locations"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/leaflet-0.7"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/ng_templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base"/>
-<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css/albums.css"/>
+<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts"/>
 </viewState>
 </view>
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 </views>
-<perspectives activePart="org.eclipse.wst.html.core.htmlsource.source" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -289,7 +318,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.16011861" ratioLeft="216" ratioRight="1133" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.2342476" ratioLeft="316" ratioRight="1033" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.74958813" ratioLeft="455" ratioRight="152" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
@@ -306,164 +335,169 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/main_content.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/main_content.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/front_page.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/articles.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/articles.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/base.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/models/models_people.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/models/models_geo_info.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.default.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/albums.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
 </editors>
-<item historyLabel="main_content.html" index="0">
-<position/>
+<item historyLabel="dispatchers_albums" index="4">
+<position info="not_deleted" x="523" y="0"/>
 </item>
-<item historyLabel="main_content.css" index="2">
-<position/>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3448" y="0"/>
 </item>
-<item historyLabel="main_content.html" index="0">
-<position/>
+<item historyLabel="models_people" index="2">
+<position info="not_deleted" x="0" y="1125"/>
 </item>
-<item historyLabel="front_page.html" index="1">
-<position info="not_deleted" x="1782" y="1932"/>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3448" y="0"/>
 </item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="678" y="0"/>
+<item historyLabel="dispatchers_albums" index="4">
+<position info="not_deleted" x="523" y="0"/>
 </item>
-<item historyLabel="main_content.css" index="2">
-<position/>
+<item historyLabel="models_geo_info" index="3">
+<position info="not_deleted" x="346" y="0"/>
 </item>
-<item historyLabel="front_page.css" index="3">
-<position info="not_deleted" x="178" y="2251"/>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="3159" y="0"/>
 </item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="467" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="633" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position/>
-</item>
-<item historyLabel="front_page.html" index="1">
-<position info="not_deleted" x="1782" y="1932"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="204" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="388" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="articles.css" index="4">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="articles.html" index="5">
+<item historyLabel="geo_info.js" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="articles.css" index="4">
-<position info="not_deleted" x="196" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="front_page.html" index="1">
-<position info="not_deleted" x="2537" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
+<item historyLabel="animatedMaker-leaflet-plugin.js" index="6">
 <position/>
 </item>
-<item historyLabel="articles.css" index="4">
-<position info="not_deleted" x="196" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="articles.html" index="5">
+<item historyLabel="geo_info.js" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="644" y="0"/>
+<item historyLabel="leaflet.markercluster-src.js" index="7">
+<position info="not_deleted" x="4" y="0"/>
 </item>
-<item historyLabel="main_content.css" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="158" y="0"/>
-</item>
-<item historyLabel="base.css" index="6">
+<item historyLabel="marker_cluster.css" index="8">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="158" y="0"/>
-</item>
-<item historyLabel="articles.css" index="4">
-<position/>
-</item>
-<item historyLabel="albums.css" index="7">
-<position info="not_deleted" x="233" y="0"/>
-</item>
-<item historyLabel="articles.css" index="4">
-<position info="not_deleted" x="233" y="0"/>
-</item>
-<item historyLabel="albums.css" index="7">
-<position info="not_deleted" x="158" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="158" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main_content.css" index="2">
-<position info="not_deleted" x="183" y="0"/>
-</item>
-<item historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="643" y="0"/>
-</item>
-<item historyLabel="articles.html" index="5">
+<item historyLabel="marker_cluster.default.css" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="albums.css" index="7">
-<position info="not_deleted" x="94" y="19"/>
+<item historyLabel="marker_cluster.css" index="8">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="main_content.html" index="0">
-<position info="not_deleted" x="643" y="0"/>
+<item historyLabel="leaflet.markercluster-src.js" index="7">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="geo_info.js" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="leaflet.markercluster-src.js" index="7">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3448" y="0"/>
+</item>
+<item historyLabel="leaflet.markercluster-src.js" index="7">
+<position info="not_deleted" x="435" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position/>
+</item>
+<item historyLabel="animatedMaker-leaflet-plugin.js" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position/>
+</item>
+<item historyLabel="front_page.js" index="10">
+<position info="not_deleted" x="787" y="289"/>
+</item>
+<item historyLabel="geo_info.js" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="models_geo_info" index="3">
+<position info="not_deleted" x="346" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position/>
+</item>
+<item historyLabel="front_page.js" index="10">
+<position info="not_deleted" x="787" y="289"/>
+</item>
+<item historyLabel="animatedMaker-leaflet-plugin.js" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="front_page.js" index="10">
+<position info="not_deleted" x="787" y="289"/>
+</item>
+<item historyLabel="animatedMaker-leaflet-plugin.js" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="geo_info.js" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="models_geo_info" index="3">
+<position info="not_deleted" x="346" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position/>
+</item>
+<item historyLabel="front_page.js" index="10">
+<position info="not_deleted" x="3742" y="0"/>
+</item>
+<item historyLabel="geo_info.js" index="5">
+<position info="not_deleted" x="428" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3336" y="9"/>
+</item>
+<item historyLabel="albums.css" index="11">
+<position info="not_deleted" x="2615" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3336" y="9"/>
+</item>
+<item historyLabel="albums.css" index="11">
+<position info="not_deleted" x="2612" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3321" y="0"/>
+</item>
+<item historyLabel="albums.css" index="11">
+<position info="not_deleted" x="2612" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3321" y="0"/>
+</item>
+<item historyLabel="albums.css" index="11">
+<position info="not_deleted" x="2551" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3358" y="0"/>
+</item>
+<item historyLabel="albums.js" index="12">
+<position info="not_deleted" x="1321" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position/>
+</item>
+<item historyLabel="albums.js" index="12">
+<position info="not_deleted" x="1321" y="0"/>
+</item>
+<item historyLabel="albums.html" index="0">
+<position info="not_deleted" x="3656" y="0"/>
+</item>
+<item historyLabel="albums.js" index="12">
+<position info="not_deleted" x="14" y="0"/>
+</item>
+<item active="true" historyLabel="geo_info.js" index="5">
+<position info="not_deleted" x="428" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -471,9 +505,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -487,50 +518,50 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="albums.js" tooltip="prjUnlimitedKP/src/static/javascripts/albums.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="albums.css" tooltip="prjUnlimitedKP/src/static/css/albums.css">
 <persistable path="/prjUnlimitedKP/src/static/css/albums.css"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="articles.css" tooltip="prjUnlimitedKP/src/static/css/articles.css">
-<persistable path="/prjUnlimitedKP/src/static/css/articles.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="animatedMaker-leaflet-plugin.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js">
+<persistable path="/prjUnlimitedKP/src/static/leaflet-0.7/animatedMaker-leaflet-plugin.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="base.css" tooltip="prjUnlimitedKP/src/static/css/base.css">
-<persistable path="/prjUnlimitedKP/src/static/css/base.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="articles.html" tooltip="prjUnlimitedKP/src/static/templates/base/articles.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/articles.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="marker_cluster.default.css" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.default.css">
+<persistable path="/prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.default.css"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="front_page.css" tooltip="prjUnlimitedKP/src/static/css/front_page.css">
-<persistable path="/prjUnlimitedKP/src/static/css/front_page.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="marker_cluster.css" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.css">
+<persistable path="/prjUnlimitedKP/src/static/leaflet-0.7/marker_cluster.css"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="main_content.css" tooltip="prjUnlimitedKP/src/static/css/main_content.css">
-<persistable path="/prjUnlimitedKP/src/static/css/main_content.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="leaflet.markercluster-src.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js">
+<persistable path="/prjUnlimitedKP/src/static/leaflet-0.7/leaflet.markercluster-src.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="geo_info.js" tooltip="prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js">
+<persistable path="/prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="main_content.html" tooltip="prjUnlimitedKP/src/static/templates/base/main_content.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/main_content.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py">
+<persistable path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="models_geo_info.py" tooltip="prjUnlimitedKP/src/models/models_geo_info.py">
+<persistable path="/prjUnlimitedKP/src/models/models_geo_info.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="models_people.py" tooltip="prjUnlimitedKP/src/models/models_people.py">
+<persistable path="/prjUnlimitedKP/src/models/models_people.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="dir-pagination.js" tooltip="prjUnlimitedKP/src/static/javascripts/dir-pagination.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/dir-pagination.js"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="videos.css" tooltip="prjUnlimitedKP/src/static/css/videos.css">
 <persistable path="/prjUnlimitedKP/src/static/css/videos.css"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js">
-<persistable path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="dir_pagination_tpl.html" tooltip="prjUnlimitedKP/src/static/ng_templates/dir_pagination_tpl.html">
+<persistable path="/prjUnlimitedKP/src/static/ng_templates/dir_pagination_tpl.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="videos.html" tooltip="prjUnlimitedKP/src/static/templates/base/videos.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/videos.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="base.html" tooltip="prjUnlimitedKP/src/static/templates/base/base.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="base.js" tooltip="prjUnlimitedKP/src/static/javascripts/base.js">
-<persistable path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js">
-<persistable path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="app.yaml" tooltip="prjUnlimitedKP/src/app.yaml">
+<persistable path="/prjUnlimitedKP/src/app.yaml"/>
 </file>
 </mruList>
 </workbench>
