@@ -4,6 +4,7 @@
 	body {
 		background-color: rgba(255, 62, 1, 1);
 	}
+	
 	/* override ng-scope */
 	.ng-scope {
 		overflow: hidden;
@@ -24,12 +25,12 @@
 
 	/**/
 	.list_block {
-		max-height: 450px;
+		max-height: 480px;
 		overflow: auto;
 		border-right: 1px dotted rgba(200, 200, 200, 0.8);
 	}
 	.list_block::-webkit-scrollbar {
-		width: 4px;
+		width: 3px;
 		z-index: 100;
 	}
 	.list_block::-webkit-scrollbar-button:hover {
@@ -90,6 +91,13 @@
 	}
 	.content_block::-webkit-scrollbar-corner {
 		border-radius: 50%;
+	}
+	.album {
+		margin: 15px auto;
+		border-bottom: dashed 1px #aaa;
+	}
+	.album:hover{
+		cursor: pointer;
 	}
 }
 

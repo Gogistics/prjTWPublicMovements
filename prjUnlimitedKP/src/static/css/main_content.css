@@ -8,6 +8,17 @@
 	.ng-scope {
 		overflow: hidden;
 	}
+	#nav_bottom_main_content {
+		width: 100%;
+		position: fixed;
+		bottom: 0px;
+		background-color: rgba(255, 62, 1, 1);
+		box-shadow: rgba(255, 62, 1, 1);
+		-o-box-shadow: rgba(255, 62, 1, 1);
+		-moz-box-shadow: rgba(255, 62, 1, 1);
+		-webkit-box-shadow: rgba(255, 62, 1, 1);
+		padding: 10px;
+	}
 }
 
 @media all and (max-device-width: 900px) {

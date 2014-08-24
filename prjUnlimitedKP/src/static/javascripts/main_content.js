@@ -7,6 +7,7 @@ kp_app
 .controller('MainCtrl', MainController)
 .controller('AlbumCtrl', AlbumController)
 .controller('VideoCtrl', VideoController)
+.controller('PaginationCtrl', PaginationController)
 .service('kptService', kptService); //
 
 // service for retrieving data
@@ -70,10 +71,11 @@ function MainController($sce,kptService){
 				initial_article = initial_article || item;
 				vm.categories[category_id].posts.push(item);
 			});
-			vm.clickOnArticle(undefined, initial_article);
-			
+
 			//apply jquery toggle animation
 			$('#article_category_' + category_id).toggle("slow");
+			
+			vm.clickOnArticle(undefined, initial_article);
 		});
 	};
 
@@ -88,7 +90,7 @@ function MainController($sce,kptService){
 
 // albums
 AlbumController.$injector = ['$sce','kptService'];
-function AlbumController($sce,kptService){
+function AlbumController($sce,kptService,$scope){
 	var vm = this;
 	vm.albums = [];
 	vm.getAlbum = getAlbum;
@@ -111,6 +113,12 @@ function AlbumController($sce,kptService){
 			}
 		});
 	}
+	
+	
+	//ng-pginator
+	$scope.currentPage = 1;
+	$scope.pageSize = 5;
+	//end of ng-paginator
 }
 
 // videos
@@ -164,3 +172,12 @@ function VideoController($sce,kptService){
 	};
 
 };
+
+
+
+/* pagination controller */
+function PaginationController($scope) {
+	$scope.pageChangeHandler = function(num) {
+		console.log('meals page changed to ' + num);
+	};
+}
