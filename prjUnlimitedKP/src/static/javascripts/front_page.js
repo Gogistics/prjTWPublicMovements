@@ -22,7 +22,7 @@ var map;
 					});
 
 	// marker config.
-	var myIcon = L.icon({
+	var my_icon = L.icon({
 		iconUrl : '/leaflet/images/kp_icon_2.png',
 		shadowUrl : '/leaflet/images/marker-shadow.png',
 
@@ -127,7 +127,7 @@ var map;
 									.animatedMarker(
 											routeLine.getLatLngs(),
 											{
-												icon : myIcon,
+												icon : my_icon,
 												autoStart : false,
 												distance : 180, // meters
 												interval : 1000, // milliseconds

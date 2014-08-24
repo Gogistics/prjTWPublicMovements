@@ -6,7 +6,7 @@
         <a href="" ng-click="setCurrent(pagination.current - 1)" class="ng-binding">‹</a>
     </li>
     <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
-        <a href="" ng-click="setCurrent(pageNumber)">[[ pageNumber ]]</a>
+        <a href="" ng-click="setCurrent(pageNumber)">[[ pageNumber ]]</a> <!-- be careful about the interpolate symbol -->
     </li>
 
     <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">

@@ -218,7 +218,7 @@ kp_app.directive(
 									paginationId = attrs.paginationId
 											|| "__default";
 									if (!scope.maxSize) {
-										scope.maxSize = 5; //
+										scope.maxSize = 5; //set amount of pagination button
 									}
 									scope.directionLinks = angular
 											.isDefined(attrs.directionLinks) ? scope.$parent

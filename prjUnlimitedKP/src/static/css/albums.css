@@ -9,8 +9,17 @@
 	.ng-scope {
 		overflow: hidden;
 	}
+	
+	/* override album class */
+	.album {
+		margin: 15px auto;
+		border-bottom: dashed 1px #aaa;
+	}
+	.album:hover{
+		cursor: pointer;
+	}
 
-	/**/
+	/* override ng_controller */
 	.ng_controller {
 		max-height: 500px;
 		width: 100%;
@@ -23,7 +32,7 @@
 		box-shadow: 0 2px 4px rgba(191, 54, 12, 0.8);
 	}
 
-	/**/
+	/* self-defined */
 	.list_block {
 		max-height: 480px;
 		overflow: auto;
@@ -92,12 +101,10 @@
 	.content_block::-webkit-scrollbar-corner {
 		border-radius: 50%;
 	}
-	.album {
-		margin: 15px auto;
-		border-bottom: dashed 1px #aaa;
-	}
-	.album:hover{
-		cursor: pointer;
+	
+	/* temp button of closing albums map */
+	#close_map:hover{
+	cursor: pointer;
 	}
 }
 

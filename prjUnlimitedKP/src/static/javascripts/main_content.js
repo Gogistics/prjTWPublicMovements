@@ -7,7 +7,7 @@ kp_app
 .controller('MainCtrl', MainController)
 .controller('AlbumCtrl', AlbumController)
 .controller('VideoCtrl', VideoController)
-.controller('PaginationCtrl', PaginationController)
+.controller('PaginationCtrl', PaginationController) //dir pagination
 .service('kptService', kptService); //
 
 // service for retrieving data
@@ -99,6 +99,7 @@ function AlbumController($sce,kptService,$scope){
 	// init albums
 	vm.getAlbum("");
 
+	//click
 	function clickOnAlbum(album_id) {
 		vm.getAlbum(album_id);
 	};
@@ -107,6 +108,18 @@ function AlbumController($sce,kptService,$scope){
 		kptService.getAlbums(id).success(function(results) {			
 			if(id == ""){
 				vm.albums = results.data;
+				
+				//build geo info. and pass the info. back to server and save in database
+				if(typeof(vm.albums) !== 'undefined'){
+					var geo_info_albums = {};
+					angular.forEach(vm.albums,function(item,ind){
+						geo_info_albums[item.id] = {'album_title':item.title, 'album_description':item.description , 'album_thumbnail':item.thumbnails.medium, 'lat': 0, 'lng': 0};
+					});	
+					
+					console.log(JSON.stringify(geo_info_albums, 2, 2));
+				}
+				//end
+				
 				vm.clickOnAlbum(results.data[0].id);
 			}else{
 				vm.album = results.data;
