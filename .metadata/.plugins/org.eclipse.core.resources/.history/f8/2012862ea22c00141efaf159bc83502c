@@ -100,8 +100,11 @@
 	}
 }
 
+
+
+
 /*
-For mobile devices, the css will need to be modified and modification is not done yet
+For mobile devices, the css will need to be modified
 */
 @media all and (max-device-width: 900px) {
 	body {

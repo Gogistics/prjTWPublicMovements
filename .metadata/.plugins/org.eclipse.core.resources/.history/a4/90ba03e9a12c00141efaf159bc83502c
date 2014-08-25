@@ -97,10 +97,6 @@
 
 
 <script type="text/javascript">
-/*
-* pass data from back-end to front-end and parse data into jSON
-*/
-
 var albums_geo_info;
 var original_geo_info;
 var address_points;
