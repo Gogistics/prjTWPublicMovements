@@ -38,38 +38,56 @@ function kptService($http, API) {
 		});
 	}
 
-	/**/
-	// get geo-info
-	this.getAlbumsGeoInfo = function(arg_new_geo_info,
-			arg_original_albums_geo_info) {
-		var diff_elems;
-		var keys_new_geo_info;
-		if (arg_original_albums_geo_info === 'None') {
-			diff_elems = arg_new_geo_info;
+	/* communicate with Google App Engine*/
+	// handle geo-info
+	this.handleAlbumsGeoInfo = function(arg_new_albums){
+		var geo_info_albums = {};
+		//loop through albums info; temp latlng is (25.052063, 121.529980)
+		angular.forEach(arg_new_albums, function(item, ind) {
+			geo_info_albums[item.id] = {
+				'album_title' : item.title,
+				'album_description' : item.description,
+				'album_thumbnail' : item.thumbnails.medium,
+				'album_lat' : 25.052063,
+				'album_lng' : 121.529980
+			};
+		});
+
+		// original albums geo info. from backend
+		var original_geo_info = albums_geo_info; // old_geo_info
+													// from
+													// Google
+													// Datastore
+		
+		var diff_elems = {};
+		if(original_geo_info === 'None'){
+			//loop through all info
+			diff_elems = geo_info_albums;
+			
 			console.log(diff_elems);
-
-			return diff_elems;
-		} else if (arg_original_albums_geo_info !== 'None'
-				&& typeof (arg_new_geo_info) !== 'undefined') {
-			keys_new_geo_info = Object.keys(arg_new_geo_info);
-			keys_original_geo_info = Object.keys(arg_original_albums_geo_info);
-
+		}
+		else if(original_geo_info !== 'None'
+			&& typeof (geo_info_albums) !== 'undefined'){
+			// get keys set for both original and new sets of albums info
+			var keys_new_geo_info = Object.keys(geo_info_albums);
+			var keys_original_geo_info = Object.keys(original_geo_info);
+			
+			//get diff keys
 			diff_keys = this.getDiff(keys_new_geo_info, keys_original_geo_info);
 			
-			var filtered_geo_data ={};
+			//get filtered info set
 			angular.forEach(diff_keys, function(item,ind){
-				filtered_geo_data[item] = arg_new_geo_info[item];
+				diff_elems[item] = geo_info_albums[item];
 			});
-			console.log(JSON.stringify(filtered_geo_data, 2, 2));
-
-			/*
-			 * angular.forEach(diff_keys,function(item,ind){ diff_geo_info[item] =
-			 * {'album_title':geo_info_albums[item].album_title,
-			 * 'album_description':geo_info_albums[item].album_description,
-			 * 'album_thumbnail':geo_info_albums[item].album_thumbnail}; });
-			 */
-			var geo_data = $.param({'geo_data':JSON.stringify(filtered_geo_data, 2, 2)});
 			
+			console.log(JSON.stringify(diff_elems, 2, 2));
+		}
+		
+		if(Object.keys(diff_elems).length !== 0){
+			// put diff_elems into $.param and will be send to backend
+			var geo_data = $.param({'geo_data':JSON.stringify(diff_elems, 2, 2)});
+			
+			// use $http post
 			var response_promise = $http({
 	            url: '/albums/geo_info_handler',
 	            method: "POST",
@@ -77,21 +95,21 @@ function kptService($http, API) {
 	            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 	        });
 			response_promise.success(function(data, status, headers, config) {
-                
-                albums_geo_info = data.processing_status;
-                //alert(albums_geo_info);
+                console.log(data.processing_status);
             });
 			response_promise.error(function(data, status, headers, config) {
-                alert("AJAX failed!");
+                console.log("AJAX failed! " + status);
             });
 		}
+		else{
+			console.log('No data need to update')
+		}
+	};
 
-	}
-
+	// filter the new albums info; currently jQuery is doing this task
 	this.getDiff = function(arg_update_geo_info, arg_original_albums_geo_info) {
 		return $(arg_update_geo_info).not(arg_original_albums_geo_info).get();
 	}
-	// end
 
 }
 
@@ -166,30 +184,8 @@ function AlbumController($sce, kptService, $scope) {
 						vm.albums = results.data;
 
 						// build geo info. and pass the info. back to server and
-						// save in database
 						if (typeof (vm.albums) !== 'undefined') {
-							var geo_info_albums = {};
-							angular.forEach(vm.albums, function(item, ind) {
-								geo_info_albums[item.id] = {
-									'album_title' : item.title,
-									'album_description' : item.description,
-									'album_thumbnail' : item.thumbnails.medium,
-									'lat' : 0,
-									'lng' : 0
-								};
-							});
-
-							// get diff elements
-							var original_geo_info = albums_geo_info; // old_geo_info
-																		// from
-																		// Google
-																		// Datastore
-							original_geo_info = {
-								'312' : 'test_1',
-								'423' : 'test_2',
-								'342' : 'tes_3'
-							};
-							kptService.getAlbumsGeoInfo(geo_info_albums, original_geo_info);
+							kptService.handleAlbumsGeoInfo(vm.albums);
 						}
 						// end
 
@@ -264,6 +260,6 @@ function VideoController($sce, kptService) {
 /* pagination controller */
 function PaginationController($scope) {
 	$scope.pageChangeHandler = function(num) {
-		console.log('meals page changed to ' + num);
+		console.log('page changed to ' + num);
 	};
 }

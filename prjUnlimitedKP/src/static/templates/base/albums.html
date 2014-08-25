@@ -35,11 +35,11 @@
 						ng-model="pageSize">
 				</div>
 				<div class="col-xs-4">
-				<label for="search" style="color: #fff;">地圖資訊</label>
-						<input id="btn_map_cluster" type="button" class="form-control"
-							style="height: 30px; font-size: 13px; background-color: #fff; color: #000; border: none;"
-							value="活動分佈">
-					</div>
+					<label for="search" style="color: #fff;">地圖資訊</label> <input
+						id="btn_map_cluster" type="button" class="form-control"
+						style="height: 30px; font-size: 13px; background-color: #fff; color: #000; border: none;"
+						value="活動分佈">
+				</div>
 			</div>
 			<hr
 				style="border: none; border-bottom: #428bca dotted 1px; margin: 1px auto;">
@@ -83,18 +83,45 @@
 	</div>
 </div>
 
-<div id="map_albums" style="width: 100%; height: 100%; position: fixed; top:0px; bottom:0px; left:0px; right:0px; display: none; z-index: 1000; background-color: rgba(0,0,0, 0.5)">
+<div id="map_albums"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5)">
 	<!-- temp button of closing albums map -->
-	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png" style="position: fixed; top: 20px; left: 20px; width: 30px;">
-	
+	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
+		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+
 	<div id="map_markers_cluster"
 		style="margin: 5px auto; width: 800px; height: 600px; border: solid 1px #bbb; border-radius: 3px;">
 
 	</div>
 </div>
 <script type="text/javascript">
-var albums_geo_info = '{{albums_geo_info}}';
-console.log(albums_geo_info);
+var albums_geo_info;
+var address_points;
+var album_map_center_lat = 22.619673; //default lat
+var album_map_center_lng = 120.301826; //defualt lng
+var temp_sum_lat = 0, temp_sum_lng = 0, total_amount_albums = 0;
+
+{% if albums_geo_info %}
+albums_geo_info = "{{albums_geo_info|safe}}";
+address_points = [];
+
+{% for elem in albums_geo_info %}
+temp_sum_lat += Number('{{elem.album_lat|float}}');
+temp_sum_lng += Number('{{elem.album_lng|float}}');
+total_amount_albums += 1;
+
+address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '<p>{{elem.album_title|safe}}</p><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;">']);
+{% endfor %}
+
+album_map_center_lat = temp_sum_lat / total_amount_albums;
+album_map_center_lng = temp_sum_lng / total_amount_albums;
+console.log(album_map_center_lat + album_map_center_lng);
+
+{% else %}
+albums_geo_info = 'None';
+{% endif %}
+
+console.log(JSON.stringify(address_points, 2, 2));
 </script>
 <script type="text/javascript" src="/js/albums.js"></script>
 {% endblock %}

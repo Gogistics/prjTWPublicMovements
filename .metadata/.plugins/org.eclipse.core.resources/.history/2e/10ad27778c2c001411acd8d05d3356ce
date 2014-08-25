@@ -1,0 +1,52 @@
+/* map cluster */
+$('#close_map').click(function(){
+	$('#map_albums').toggle("slow");
+});
+$('#btn_map_cluster').click(function(){
+	$('#map_albums').toggle("slow");
+
+	/* leaflet marker cluster */
+	var tiles = L
+			.tileLayer(
+					'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+					{
+						maxZoom : 18,
+						attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+					}), latlng = L.latLng(album_map_center_lat, album_map_center_lng); //replace the geo location with average of all geo data ; 22.639673, 120.301826
+
+	var map = L.map('map_markers_cluster', {
+		center : latlng,
+		zoom : 13,
+		layers : [ tiles ]
+	});
+
+	/* cluster */
+	var markers = L.markerClusterGroup();
+	
+	/* marker config */
+	var my_icon = L.icon({
+		iconUrl : '/leaflet/images/kp_icon_2.png',
+		shadowUrl : '/leaflet/images/marker-shadow.png',
+
+		iconSize : [ 48, 50 ],
+		shadowSize : [ 50, 50 ],
+		iconAnchor : [ 25, 49 ],
+		shadowAnchor : [ 12, 48 ],
+		popupAnchor : [ -3, -43 ]
+	});
+	
+	//address_points is defined and obtained in albums.html
+	if(typeof(address_points) !== 'undefined'){
+		for ( var i = 0; i < address_points.length; i++) {
+			var a = address_points[i];
+			var title = a[2];
+			var marker = L.marker(new L.LatLng(a[0], a[1]), {
+				title : title,
+				icon : my_icon
+			});
+			marker.bindPopup(title, {maxHeight : 300});
+			markers.addLayer(marker);
+		}
+		map.addLayer(markers);
+	}
+});

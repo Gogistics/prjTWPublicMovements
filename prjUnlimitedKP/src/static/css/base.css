@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 @font-face {
-	font-family: Bisque;
-	src: url(/font_styles/bisque.ttf); /* TTF file for CSS3 browsers */
+	font-family: noto_cjk;
+	src: url(/noto_cjk/NotoSansCJK-Thin.otf); /* TTF file for CSS3 browsers */
 }
 
 @media all and (min-device-width: 901px) {
@@ -17,7 +17,7 @@
 		top: 0px;
 		left: 0px;
 		overflow: auto;
-		font-family: Bisque, 微軟宋體, segoe ui;
+		font-family: noto_cjk, 微軟宋體, segoe ui;
 		background-color: rgba(255, 62, 1, 1);
 	}
 }
@@ -34,7 +34,7 @@
 		top: 0px;
 		left: 0px;
 		overflow: auto;
-		font-family: Bisque, 微軟宋體, segoe ui;
+		font-family: noto_cjk, 微軟宋體, segoe ui;
 		background-color: #000;
 	}
 }

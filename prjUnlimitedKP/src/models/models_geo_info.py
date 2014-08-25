@@ -10,10 +10,11 @@ __author__ = 'Alan Tai'
 from google.appengine.ext import ndb
 
 class AlbumGeoInfo(ndb.Model):
-    id = ndb.StringProperty()
-    title = ndb.StringProperty()
-    description = ndb.StringProperty()
+    album_id = ndb.StringProperty()
+    album_title = ndb.StringProperty()
+    album_description = ndb.StringProperty()
+    album_thumbnail = ndb.StringProperty()
     
     #lat and lng also can be replaced by GeoptProperty
-    lat = ndb.FloatProperty()
-    lng = ndb.FloatProperty()
+    album_lat = ndb.FloatProperty()
+    album_lng = ndb.FloatProperty()
