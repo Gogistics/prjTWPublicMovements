@@ -36,7 +36,7 @@
 				</div>
 				<div class="col-xs-4">
 					<label for="search" style="color: #fff;">地圖資訊</label> <input
-						id="btn_show_map_cluster" type="button" class="form-control"
+						id="btn_map_cluster" type="button" class="form-control"
 						style="height: 30px; font-size: 13px; background-color: #fff; color: #000; border: none;"
 						value="活動分佈">
 				</div>

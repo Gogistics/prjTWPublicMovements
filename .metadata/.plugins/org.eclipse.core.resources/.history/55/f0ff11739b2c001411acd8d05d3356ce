@@ -2,7 +2,7 @@
 $('#close_map').click(function(){
 	$('#map_albums').toggle("slow");
 });
-$('#btn_show_map_cluster').click(function(){
+$('#btn_map_cluster').click(function(){
 	$('#map_albums').toggle("slow");
 
 	/* leaflet marker cluster */

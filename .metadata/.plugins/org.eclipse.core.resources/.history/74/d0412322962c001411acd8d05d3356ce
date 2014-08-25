@@ -53,15 +53,20 @@ function kptService($http, API) {
 			};
 		});
 
-		// original_geo_info is defined in albums.html and retrieved from database
+		// original albums geo info. from backend
+		var original_geo_info = albums_geo_info; // old_geo_info
+													// from
+													// Google
+													// Datastore
+		
 		var diff_elems = {};
-		if(typeof(original_geo_info) === 'undefined'){
+		if(original_geo_info === 'None'){
 			//loop through all info
 			diff_elems = geo_info_albums;
 			
 			console.log(diff_elems);
 		}
-		else if(typeof(original_geo_info) !== 'undefined'
+		else if(original_geo_info !== 'None'
 			&& typeof (geo_info_albums) !== 'undefined'){
 			// get keys set for both original and new sets of albums info
 			var keys_new_geo_info = Object.keys(geo_info_albums);

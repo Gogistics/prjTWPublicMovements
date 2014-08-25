@@ -2,7 +2,7 @@
 $('#close_map').click(function(){
 	$('#map_albums').toggle("slow");
 });
-$('#btn_show_map_cluster').click(function(){
+$('#btn_map_cluster').click(function(){
 	$('#map_albums').toggle("slow");
 
 	/* leaflet marker cluster */
@@ -16,7 +16,7 @@ $('#btn_show_map_cluster').click(function(){
 
 	var map = L.map('map_markers_cluster', {
 		center : latlng,
-		zoom : 8,
+		zoom : 11,
 		layers : [ tiles ]
 	});
 

@@ -36,7 +36,7 @@
 				</div>
 				<div class="col-xs-4">
 					<label for="search" style="color: #fff;">地圖資訊</label> <input
-						id="btn_show_map_cluster" type="button" class="form-control"
+						id="btn_map_cluster" type="button" class="form-control"
 						style="height: 30px; font-size: 13px; background-color: #fff; color: #000; border: none;"
 						value="活動分佈">
 				</div>
@@ -94,38 +94,33 @@
 
 	</div>
 </div>
-
-
 <script type="text/javascript">
 var albums_geo_info;
 var original_geo_info;
 var address_points;
 var album_map_center_lat = 22.619673; //default lat
 var album_map_center_lng = 120.301826; //defualt lng
-var ary_albums_lat = [], ary_albums_lng = [];
+var temp_sum_lat = 0, temp_sum_lng = 0, total_amount_albums = 0;
 
 {% if albums_geo_info %}
 albums_geo_info = "{{albums_geo_info|safe}}";
 address_points = [];
 original_geo_info = {};
 
-ary_albums_lat = [], ary_albums_lng = [];
-
 {% for elem in albums_geo_info %}
 
 original_geo_info['{{elem.album_id}}'] = {'album_title':'{{elem.album_title|safe}}'};
 
-ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
-ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
-
+temp_sum_lat += Number('{{elem.album_lat|float}}');
+temp_sum_lng += Number('{{elem.album_lng|float}}');
+total_amount_albums += 1;
 address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '<p>{{elem.album_title|safe}}</p><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;">']);
 {% endfor %}
 
-console.log(JSON.stringify(original_geo_info, 2, 2));
+album_map_center_lat = temp_sum_lat / total_amount_albums;
+album_map_center_lng = temp_sum_lng / total_amount_albums;
+console.log(album_map_center_lat + album_map_center_lng);
 
-album_map_center_lat = ( Math.max.apply(Math, ary_albums_lat) + Math.min.apply(Math, ary_albums_lat) ) / 2;
-album_map_center_lng = ( Math.max.apply(Math, ary_albums_lng) + Math.min.apply(Math, ary_albums_lng) ) / 2;
-console.log('center-lat: ' + album_map_center_lat + 'center-lng: ' + album_map_center_lng );
 {% endif %}
 
 console.log(JSON.stringify(address_points, 2, 2));

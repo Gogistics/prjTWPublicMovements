@@ -53,7 +53,8 @@ function kptService($http, API) {
 			};
 		});
 
-		// original_geo_info is defined in albums.html and retrieved from database
+		// original albums geo info. from backend
+		
 		var diff_elems = {};
 		if(typeof(original_geo_info) === 'undefined'){
 			//loop through all info
