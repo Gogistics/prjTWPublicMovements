@@ -1,5 +1,5 @@
 /*
- *  init ng-app controllers and the service
+ *  init ng-app controllers and service
  *  original version was contributed by Will Huang(保哥) and modified by Alan Tai
  *  
  *   */
@@ -87,7 +87,7 @@ function kptService($http, API) {
 			// put diff_elems into $.param and will be send to backend
 			var geo_data = $.param({'geo_data':JSON.stringify(diff_elems, 2, 2)});
 			
-			// use $http post to send data back to server and save data in Google datastore
+			// use $http post
 			var response_promise = $http({
 	            url: '/albums/geo_info_handler',
 	            method: "POST",
@@ -169,6 +169,7 @@ function AlbumController($sce, kptService, $scope) {
 	vm.getAlbum = getAlbum;
 	vm.clickOnAlbum = clickOnAlbum;
 
+	// init albums
 	vm.getAlbum("");
 
 	// click
