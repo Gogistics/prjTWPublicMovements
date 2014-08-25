@@ -1,0 +1,267 @@
+/* init ng-app controllers */
+kp_app.value('API', {
+	KEY : "kp53f5626b5f4bd7.27954991", // personal api key
+	SERVER : "http://api.kptaipei.tw/v1/"
+}).controller('MainCtrl', MainController).controller('AlbumCtrl',
+		AlbumController).controller('VideoCtrl', VideoController).controller(
+		'PaginationCtrl', PaginationController) // dir pagination
+.service('kptService', kptService);
+
+// service for retrieving data
+kptService.$injector = [ '$http', 'API' ];
+function kptService($http, API) {
+
+	// get articles category
+	this.getCategory = function(id) {
+		console.log(API.SERVER + "category/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "category/" + id + "?accessToken=" + API.KEY
+		});
+	};
+
+	// get albums category
+	this.getAlbums = function(id) {
+		console.log(API.SERVER + "albums/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "albums/" + id + "?accessToken=" + API.KEY
+		})
+	};
+
+	// get videos category
+	this.getVideos = function(id) {
+		console.log(API.SERVER + "videos/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "videos/" + id + "?accessToken=" + API.KEY
+		});
+	}
+
+	/**/
+	// get geo-info
+	this.getAlbumsGeoInfo = function(arg_new_geo_info,
+			arg_original_albums_geo_info) {
+		var diff_elems;
+		var keys_new_geo_info;
+		if (arg_original_albums_geo_info === 'None') {
+			diff_elems = arg_new_geo_info;
+			console.log(diff_elems);
+
+			return diff_elems;
+		} else if (arg_original_albums_geo_info !== 'None'
+				&& typeof (arg_new_geo_info) !== 'undefined') {
+			keys_new_geo_info = Object.keys(arg_new_geo_info);
+			keys_original_geo_info = Object.keys(arg_original_albums_geo_info);
+
+			diff_keys = this.getDiff(keys_new_geo_info, keys_original_geo_info);
+			
+			var sent_data ={};
+			angular.forEach(diff_keys, function(item,ind){
+				sent_data[item] = arg_new_geo_info[item];
+			});
+			console.log(JSON.stringify(sent_data, 2, 2));
+
+			/*
+			 * angular.forEach(diff_keys,function(item,ind){ diff_geo_info[item] =
+			 * {'album_title':geo_info_albums[item].album_title,
+			 * 'album_description':geo_info_albums[item].album_description,
+			 * 'album_thumbnail':geo_info_albums[item].album_thumbnail}; });
+			 */
+			var response_promise = $http.post('/albums/geo_info_handler', { data : sent_data });
+			response_promise.success(function(data, status, headers, config) {
+                alert(data.processing_status);
+
+    			return data.processing_status;
+            });
+			response_promise.error(function(data, status, headers, config) {
+                alert("AJAX failed!");
+            });
+		}
+
+	}
+
+	this.getDiff = function(arg_update_geo_info, arg_original_albums_geo_info) {
+		return $(arg_update_geo_info).not(arg_original_albums_geo_info).get();
+	}
+	// end
+
+}
+
+// articles content
+MainController.$injector = [ '$sce', 'kptService' ];
+function MainController($sce, kptService) {
+	var vm = this;
+	vm.clickOnCategory = clickOnCategory;
+	vm.clickOnArticle = clickOnArticle;
+	vm.categories = {};
+	vm.content = $sce.trustAsHtml("請選擇文章");
+
+	kptService.getCategory("").success(function(results) {
+		console.log(results);
+		var initial_category_id;
+		angular.forEach(results.data, function(item, ind) {
+			initial_category_id = initial_category_id || item.id;
+			vm.categories[item.id] = item;
+			vm.categories[item.id].posts = [];
+		});
+		vm.clickOnCategory(initial_category_id);
+	});
+
+	function clickOnCategory(category_id) {
+		kptService.getCategory(category_id).success(function(results) {
+			console.log(results);
+			var initial_article;
+			vm.categories[category_id].posts = [];
+			angular.forEach(results.data, function(item) {
+				initial_article = initial_article || item;
+				vm.categories[category_id].posts.push(item);
+			});
+
+			// apply jquery toggle animation
+			$('#article_category_' + category_id).toggle("slow");
+
+			vm.clickOnArticle(undefined, initial_article);
+		});
+	}
+	;
+
+	function clickOnArticle($event, article) {
+		if (typeof ($event) != 'undefined') {
+			$event.preventDefault();
+			$event.stopPropagation();
+		}
+		vm.content = $sce.trustAsHtml(article.content);
+	}
+	;
+}
+
+// albums
+AlbumController.$injector = [ '$sce', 'kptService' ];
+function AlbumController($sce, kptService, $scope) {
+	var vm = this;
+	vm.albums = [];
+	vm.getAlbum = getAlbum;
+	vm.clickOnAlbum = clickOnAlbum;
+
+	// init albums
+	vm.getAlbum("");
+
+	// click
+	function clickOnAlbum(album_id) {
+		vm.getAlbum(album_id);
+	}
+	;
+
+	function getAlbum(id) {
+		kptService.getAlbums(id).success(
+				function(results) {
+					if (id == "") {
+						vm.albums = results.data;
+
+						// build geo info. and pass the info. back to server and
+						// save in database
+						if (typeof (vm.albums) !== 'undefined') {
+							var geo_info_albums = {};
+							angular.forEach(vm.albums, function(item, ind) {
+								geo_info_albums[item.id] = {
+									'album_title' : item.title,
+									'album_description' : item.description,
+									'album_thumbnail' : item.thumbnails.medium,
+									'lat' : 0,
+									'lng' : 0
+								};
+							});
+							console.log(JSON.stringify(geo_info_albums, 2, 2));
+
+							// get diff elements
+							var original_geo_info = albums_geo_info; // old_geo_info
+																		// from
+																		// Google
+																		// Datastore
+							original_geo_info = {
+								'312' : 'test_1',
+								'423' : 'test_2',
+								'342' : 'tes_3'
+							};
+							var geo_info = kptService.getAlbumsGeoInfo(
+									geo_info_albums, original_geo_info);
+
+							console.log(JSON.stringify(geo_info, 2, 2));
+						}
+						// end
+
+						vm.clickOnAlbum(results.data[0].id);
+					} else {
+						vm.album = results.data;
+					}
+				});
+	}
+
+	// ng-pginator
+	$scope.currentPage = 1;
+	$scope.pageSize = 5;
+	// end of ng-paginator
+}
+
+// videos
+VideoController.$injector = [ '$sce', 'kptService' ];
+function VideoController($sce, kptService) {
+	var vm = this;
+	vm.categories = {};
+	vm.clickOnCategory = clickOnCategory;
+	vm.clickOnVideo = clickOnVideo;
+	vm.getVideos = getVideos;
+
+	vm.getVideos("");
+
+	function getVideos(category_id) {
+		kptService.getVideos(category_id).success(function(results) {
+			var initial_category_id;
+			var initial_playlist;
+			if (category_id == "") {
+				angular.forEach(results.data, function(item, ind) {
+					initial_category_id = initial_category_id || item.id;
+					vm.categories[item.id] = item;
+					vm.categories[item.id].videos = [];
+				});
+				vm.clickOnCategory(results.data[0].id);
+			} else {
+				vm.categories[category_id].videos = [];
+				angular.forEach(results.data, function(item) {
+					initial_playlist = initial_playlist || item;
+					vm.categories[category_id].videos.push(item);
+				});
+				vm.clickOnVideo(undefined, initial_playlist);
+			}
+		});
+	}
+
+	function clickOnCategory(category_id) {
+		getVideos(category_id);
+
+		// apply jquery toggle animation
+		$('#video_category_' + category_id).toggle("slow");
+	}
+	;
+
+	function clickOnVideo($event, video) {
+		console.log(video);
+		if (typeof ($event) != 'undefined') {
+			$event.preventDefault();
+			$event.stopPropagation();
+		}
+		vm.content = video;
+		vm.content.url = $sce
+				.trustAsResourceUrl('http://www.youtube.com/embed/' + video.id);
+	}
+	;
+
+};
+
+/* pagination controller */
+function PaginationController($scope) {
+	$scope.pageChangeHandler = function(num) {
+		console.log('meals page changed to ' + num);
+	};
+}

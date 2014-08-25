@@ -12,7 +12,6 @@
 <!-- js block -->
 {% block js_content %}
 <script type="text/javascript" src="/js/dir-pagination.js"></script>
-<script type="text/javascript" src="/leaflet/geo_info.js"></script>
 <script type="text/javascript"
 	src="/leaflet/leaflet.markercluster-src.js"></script>
 {% endblock %} {% block content %}
@@ -93,6 +92,9 @@
 
 	</div>
 </div>
-
+<script type="text/javascript">
+var albums_geo_info = '{{albums_geo_info}}';
+console.log(albums_geo_info);
+</script>
 <script type="text/javascript" src="/js/albums.js"></script>
 {% endblock %}

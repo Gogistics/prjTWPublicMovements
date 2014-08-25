@@ -10,12 +10,12 @@
 		overflow: hidden;
 	}
 	
-	/**/
+	/* override playlist */
 	.playlist:hover{
 		cursor: pointer;
 	}
 
-	/**/
+	/* override ng_controller */
 	.ng_controller {
 		max-height: 500px;
 		width: 100%;
@@ -28,7 +28,7 @@
 		box-shadow: 0 2px 4px rgba(191, 54, 12, 0.8);
 	}
 
-	/**/
+	/* category */
 	.list_block {
 		max-height: 450px;
 		height: 100%;

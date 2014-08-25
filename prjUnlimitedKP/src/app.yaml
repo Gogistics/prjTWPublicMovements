@@ -33,6 +33,10 @@ handlers:
   script: dispatchers.dispatchers_base.app
   secure: always
 
+- url: /albums/.*
+  script: dispatchers.dispatchers_albums.app
+  secure: always
+
 
 inbound_services:
 - channel_presence

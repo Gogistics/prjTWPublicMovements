@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js&apos;" deleteContents="false" description="Delete resource &apos;prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js&apos;" element1="/prjUnlimitedKP/src/static/leaflet-0.7/geo_info.js" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1408930308650"/>
+</session>
