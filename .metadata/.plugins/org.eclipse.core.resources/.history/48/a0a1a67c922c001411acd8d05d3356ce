@@ -23,7 +23,7 @@ dict_general = KeysVaulesGeneral()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class AlbumsGeoInfoDispatcher(BaseHandler):
+class AlbumsGeoInfoHandler(BaseHandler):
     def post(self):
         json_geo_data = json.loads(self.request.get('geo_data'))
         for key in json_geo_data.keys():
@@ -48,7 +48,7 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/albums/geo_info_handler', AlbumsGeoInfoDispatcher, name='albums_geo_info_handler')
+    webapp2.Route(r'/albums/geo_info_handler', AlbumsGeoInfoHandler, name='albums_geo_info_handler')
 ], debug=True, config=config)
 
 # log
