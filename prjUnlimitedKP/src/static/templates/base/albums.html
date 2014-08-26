@@ -14,7 +14,10 @@
 <script type="text/javascript" src="/js/dir-pagination.js"></script>
 <script type="text/javascript"
 	src="/leaflet/leaflet.markercluster-src.js"></script>
-{% endblock %} {% block content %}
+{% endblock %}
+
+<!-- content block -->
+{% block content %}
 <div class="ng_controller" ng-controller="AlbumCtrl as album">
 	<div class="col-md-4 list_block">
 		<h2>相簿目錄</h2>
@@ -95,14 +98,14 @@
 
 	<!-- map -->
 	<div id="map_markers_cluster"
-		style="margin: 5px auto; width: 800px; height: 600px; border: solid 1px #bbb; border-radius: 3px;">
+		style="margin: 30px auto; width: 800px; height: 600px; border: solid 1px #bbb; border-radius: 3px;">
 	</div>
 </div>
 
 
 <script type="text/javascript">
 /*
-* pass data from back-end to front-end and parse data into jSON
+* pass data from back-end to front-end and parse data to what you want
 */
 
 var albums_geo_info; // query result from back-end is a query object
@@ -128,14 +131,18 @@ original_geo_info['{{elem.album_id}}'] = {'album_title':'{{elem.album_title|safe
 ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
 ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
 
-address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>']);
+//array can be changed to object; it's easy to get the value with the corresponding key
+address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '{{elem.album_title|safe}}' ,'<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>']);
+
 {% endfor %}
 // end of loo through the query result
 // console.log(JSON.stringify(original_geo_info, 2, 2));
 
+//find out map center
 album_map_center_lat = ( Math.max.apply(Math, ary_albums_lat) + Math.min.apply(Math, ary_albums_lat) ) / 2;
 album_map_center_lng = ( Math.max.apply(Math, ary_albums_lng) + Math.min.apply(Math, ary_albums_lng) ) / 2;
 console.log('center-lat: ' + album_map_center_lat + 'center-lng: ' + album_map_center_lng );
+
 {% endif %}
 //console.log(JSON.stringify(address_points, 2, 2));
 

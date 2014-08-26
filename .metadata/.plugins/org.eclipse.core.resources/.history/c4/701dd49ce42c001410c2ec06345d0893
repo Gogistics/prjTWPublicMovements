@@ -1,0 +1,147 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/albums.css" />
+<link type="text/css" rel="stylesheet"
+	href="/leaflet/marker_cluster.default.css" />
+<link type="text/css" rel="stylesheet"
+	href="/leaflet/marker_cluster.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript"
+	src="/leaflet/leaflet.markercluster-src.js"></script>
+{% endblock %}
+
+<!-- content block -->
+{% block content %}
+<div class="ng_controller" ng-controller="AlbumCtrl as album">
+	<div class="col-md-4 list_block">
+		<h2>相簿目錄</h2>
+
+		<!-- ng-paginator -->
+		<div
+			style="margin: 0px auto; padding: 5px; background-color: #428bca; border-radius: 4px;">
+			<div class="row" style="margin: 5px auto;">
+				<div class="col-xs-4">
+					<label for="search" style="color: #fff;">收尋/過濾</label> <input
+						ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+						class="form-control" placeholder="過濾關鍵字">
+				</div>
+				<div class="col-xs-4">
+					<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+						type="number" min="1" max="100"
+						style="height: 30px; font-size: 13px;" class="form-control"
+						ng-model="pageSize">
+				</div>
+				<div class="col-xs-4">
+					<label for="search" style="color: #fff;">地圖資訊</label> <input
+						id="btn_show_map_markers_cluster" type="button"
+						class="form-control"
+						style="height: 30px; font-size: 13px; background-color: #fff; color: #000; border: none;"
+						value="活動分佈">
+				</div>
+			</div>
+			<hr
+				style="border: none; border-bottom: #428bca dotted 1px; margin: 1px auto;">
+		</div>
+		<!-- end of ng-paginator -->
+
+
+		<ul class="categories" style="margin-bottom: 30px;">
+			<!-- original li -->
+			<!-- li class='album' ng-repeat="item in album.albums" ng-click="album.clickOnAlbum(item.id)">[[item.title]]</li>
+				
+			<!-- new ng list to meet pagination requirement -->
+			<li
+				dir-paginate="item in album.albums | filter:q | itemsPerPage: pageSize"
+				ng-click="album.clickOnAlbum(item.id)" class='album'
+				current-page="currentPage">[[item.title]]</li>
+			<!-- end of new ng list -->
+		</ul>
+
+		<!-- pagination controller block -->
+		<div ng-controller="PaginationCtrl">
+			<hr
+				style="border: none; border-bottom: #428bca dotted 1px; margin: 1px auto;">
+			<small>頁面選單 </small>
+			<div class="text-center">
+				<dir-pagination-controls boundary-links="true"
+					on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+			</div>
+		</div>
+		<!-- end of pagination controller block -->
+
+	</div>
+
+	<!-- photos block -->
+	<div
+		class="photo-container col-xs-12 col-sm-6 col-md-8 col-xs-6 content_block">
+		<h2>[[album.set.title]]</h2>
+		<ul class="photos row">
+			<li class="col-md-4 photo" ng-repeat="item in album.album.photos"><a
+				target="_blank" ng-href="[[item.link]]"><img
+					class="img-rounded img-responsive" ng-src="[[item.images.medium]]" /></a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- map cluster for albums -->
+<div id="map_albums"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5)">
+	<!-- temp button of closing albums map -->
+	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
+		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+
+	<!-- map -->
+	<div id="map_markers_cluster"
+		style="margin: 10px auto; width: 800px; height: 90%; border: solid 1px #bbb; border-radius: 3px;">
+	</div>
+</div>
+
+
+<script type="text/javascript">
+/*
+* pass data from back-end to front-end and parse data into jSON
+*/
+
+var albums_geo_info; // query result from back-end is a query object
+var original_geo_info; // object built based on albums_geo_info
+var address_points; // array built based on albums_geo_info and is used for markers cluster
+var album_map_center_lat = 22.619673; //default lat
+var album_map_center_lng = 120.301826; //defualt lng
+var ary_albums_lat = [], ary_albums_lng = []; //arrays storing latlng info are used for finding out max and min values of lat and lng
+
+//check if query result from back-end is None; if so, no need to parse query result
+{% if albums_geo_info %}
+albums_geo_info = "{{albums_geo_info|safe}}";
+address_points = [];
+original_geo_info = {};
+
+ary_albums_lat = [], ary_albums_lng = [];
+
+//loo through the query result
+{% for elem in albums_geo_info %}
+
+original_geo_info['{{elem.album_id}}'] = {'album_title':'{{elem.album_title|safe}}'};
+
+ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
+ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
+
+address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>']);
+{% endfor %}
+// end of loo through the query result
+// console.log(JSON.stringify(original_geo_info, 2, 2));
+
+album_map_center_lat = ( Math.max.apply(Math, ary_albums_lat) + Math.min.apply(Math, ary_albums_lat) ) / 2;
+album_map_center_lng = ( Math.max.apply(Math, ary_albums_lng) + Math.min.apply(Math, ary_albums_lng) ) / 2;
+console.log('center-lat: ' + album_map_center_lat + 'center-lng: ' + album_map_center_lng );
+{% endif %}
+//console.log(JSON.stringify(address_points, 2, 2));
+
+</script>
+<script type="text/javascript" src="/js/albums.js"></script>
+{% endblock %}

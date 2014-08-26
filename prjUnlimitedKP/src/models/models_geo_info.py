@@ -9,6 +9,7 @@ __author__ = 'Alan Tai'
 
 from google.appengine.ext import ndb
 
+#old model without link album_link
 class AlbumGeoInfo(ndb.Model):
     """ albums geo info properties; all properties can be also created dynamically """
     album_id = ndb.StringProperty()
@@ -20,6 +21,8 @@ class AlbumGeoInfo(ndb.Model):
     album_lat = ndb.FloatProperty()
     album_lng = ndb.FloatProperty()
     
+    
+#new temp. model with album_link
 class NewAlbumGeoInfo(ndb.Model):
     """ albums geo info properties; all properties can be also created dynamically """
     album_id = ndb.StringProperty()

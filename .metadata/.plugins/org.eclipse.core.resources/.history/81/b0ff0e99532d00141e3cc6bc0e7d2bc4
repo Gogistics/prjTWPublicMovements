@@ -1,0 +1,21 @@
+'''
+Created on Jun 29, 2014
+
+@author: Alan Tai
+'''
+
+class HtmlPagesReference():
+    def __init__(self):
+        """ url path dictionary """
+        self.front_page = '/base/front_page.html'
+        self.index_page = '/base/articles.html'
+        self.customer_services_page = '/base/albums.html'
+        
+        self.auth_home = '/auth/home.html'
+        self.auth_authenticated = '/auth/authenticated.html'
+        self.auth_forgot = '/auth/forgot.html'
+        self.auth_login = '/auth/login.html'
+        self.auth_message = '/auth/message.html'
+        self.auth_resetpassword = '/auth/resetpassword.html'
+        self.auth_signup = '/auth/signup.html'
+        

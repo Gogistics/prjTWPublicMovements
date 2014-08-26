@@ -3,7 +3,9 @@
  https://github.com/Leaflet/Leaflet.markercluster
  (c) 2012-2013, Dave Leaver, smartrak
 */
-(function (window, document, undefined) {/*
+(function (window, document, undefined) {
+	
+/*
  * L.MarkerClusterGroup extends L.FeatureGroup by clustering the markers contained within
  */
 

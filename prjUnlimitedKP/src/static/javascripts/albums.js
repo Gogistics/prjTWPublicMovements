@@ -44,11 +44,12 @@ $('#btn_show_map_markers_cluster').click(function(){
 		for ( var i = 0; i < address_points.length; i++) {
 			var a = address_points[i];
 			var title = a[2];
+			var popup_content = a[3];
 			var marker = L.marker(new L.LatLng(a[0], a[1]), {
 				title : title,
 				icon : my_icon
 			});
-			marker.bindPopup(title, {maxHeight : 500, keepInView: true});
+			marker.bindPopup(popup_content, {maxHeight : 500, keepInView: true});
 			markers.addLayer(marker);
 		}
 		map.addLayer(markers);

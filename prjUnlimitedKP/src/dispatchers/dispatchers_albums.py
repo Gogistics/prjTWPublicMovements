@@ -25,7 +25,7 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 # dispatchers
 class AlbumsGeoInfoDispatcher(BaseHandler):
     def post(self):
-        """"""
+        """ handler of dealing with geo info update """
         if self.request.get('geo_data'):
             json_geo_data = json.loads(self.request.get('geo_data'))
             for key in json_geo_data.keys():

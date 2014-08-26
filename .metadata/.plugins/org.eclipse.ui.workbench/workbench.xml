@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="42" version="2.0">
+<workbench progressCount="94" version="2.0">
 <workbenchAdvisor/>
 <window height="632" maximized="true" width="1362" x="6" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -27,7 +27,7 @@
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -42,13 +42,6 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
-</presentation>
-</folder>
-</info>
-<info part="org.eclipse.ui.internal.EditorStack@4e422a" ratio="0.5332152" ratioLeft="602" ratioRight="527" relationship="2" relative="DefaultEditorWorkbook">
-<folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -67,11 +60,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" partName="albums.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/albums.html" title="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4137" selectionTopPixel="1598"/>
-</editor>
-<editor focus="true" id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" partName="dispatchers_albums" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" title="dispatchers_albums" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" workbook="org.eclipse.ui.internal.EditorStack@4e422a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="626" selectionTopPixel="248"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3532" selectionTopPixel="1349"/>
 </editor>
 </editors>
 <views>
