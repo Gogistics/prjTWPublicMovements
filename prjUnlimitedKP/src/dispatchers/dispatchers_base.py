@@ -4,7 +4,7 @@ Created on Jun 24, 2014
 
 @author: Alan Tai
 '''
-from models.models_geo_info import AlbumGeoInfo
+from models.models_geo_info import NewAlbumGeoInfo
 __author__ = 'Alan Tai'
 
 
@@ -39,7 +39,9 @@ class ArticlesDispatcher(BaseHandler):
 class AlbumsDispatcher(BaseHandler):
     def get(self):
         template_values = {}
-        albums_geo_info = AlbumGeoInfo.query()
+        albums_geo_info = NewAlbumGeoInfo.query()
+        
+        
         if albums_geo_info.count() <= 0:
             albums_geo_info = None
         

@@ -1,8 +1,12 @@
-/* map cluster */
+/* marker cluster */
+
+//close map
 $('#close_map').click(function(){
 	$('#map_albums').toggle("slow");
 });
-$('#btn_show_map_cluster').click(function(){
+
+//show map
+$('#btn_show_map_markers_cluster').click(function(){
 	$('#map_albums').toggle("slow");
 
 	/* leaflet marker cluster */

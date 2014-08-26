@@ -47,12 +47,13 @@ function kptService($http, API) {
 	// handle geo-info
 	this.handleAlbumsGeoInfo = function(arg_new_albums){
 		var geo_info_albums = {};
-		//loop through albums info; temp latlng is (25.052063, 121.529980)
+		//loop through albums info; temp latlng is set as (25.052063, 121.529980)
 		angular.forEach(arg_new_albums, function(item, ind) {
 			geo_info_albums[item.id] = {
 				'album_title' : item.title,
 				'album_description' : item.description,
 				'album_thumbnail' : item.thumbnails.medium,
+				'album_link' : item.link,
 				'album_lat' : 25.052063,
 				'album_lng' : 121.529980
 			};
@@ -102,7 +103,7 @@ function kptService($http, API) {
             });
 		}
 		else{
-			console.log('No data need to update')
+			console.log('Nothing needs to update')
 		}
 	};
 
@@ -181,8 +182,10 @@ function AlbumController($sce, kptService, $scope) {
 				function(results) {
 					if (id == "") {
 						vm.albums = results.data;
+						//console.log(JSON.stringify(vm.albums, 2, 2));
 
 						// build geo info. and pass the info. back to server and
+						// update albums geo info
 						if (vm.albums.length > 0) {
 							kptService.handleAlbumsGeoInfo(vm.albums);
 						}

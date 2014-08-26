@@ -10,6 +10,7 @@ __author__ = 'Alan Tai'
 from google.appengine.ext import ndb
 
 class AlbumGeoInfo(ndb.Model):
+    """ albums geo info properties; all properties can be also created dynamically """
     album_id = ndb.StringProperty()
     album_title = ndb.StringProperty()
     album_description = ndb.StringProperty()
@@ -18,3 +19,18 @@ class AlbumGeoInfo(ndb.Model):
     #lat and lng also can be replaced by GeoptProperty
     album_lat = ndb.FloatProperty()
     album_lng = ndb.FloatProperty()
+    
+class NewAlbumGeoInfo(ndb.Model):
+    """ albums geo info properties; all properties can be also created dynamically """
+    album_id = ndb.StringProperty()
+    album_title = ndb.StringProperty()
+    album_description = ndb.StringProperty()
+    album_thumbnail = ndb.StringProperty()
+    album_link = ndb.StringProperty()
+    
+    #lat and lng also can be replaced by GeoptProperty
+    album_lat = ndb.FloatProperty()
+    album_lng = ndb.FloatProperty()
+    
+    create_date_time = ndb.DateTimeProperty(auto_now_add = True)
+    update_date_time = ndb.DateTimeProperty(auto_now = True)

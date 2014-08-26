@@ -14,7 +14,7 @@ import json
 
 from dictionaries.dict_keys_values import KeysVaulesGeneral
 from handlers.handler_webapp2_extra_auth import BaseHandler
-from models.models_geo_info import AlbumGeoInfo
+from models.models_geo_info import AlbumGeoInfo, NewAlbumGeoInfo
 # dictionaries
 dict_general = KeysVaulesGeneral()
 
@@ -25,23 +25,45 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 # dispatchers
 class AlbumsGeoInfoDispatcher(BaseHandler):
     def post(self):
-        json_geo_data = json.loads(self.request.get('geo_data'))
-        for key in json_geo_data.keys():
-            new_geo_info = AlbumGeoInfo( id = key )
-            new_geo_info.album_id = key
-            new_geo_info.album_title = json_geo_data[key]['album_title']
-            new_geo_info.album_description = json_geo_data[key]['album_description']
-            new_geo_info.album_thumbnail = json_geo_data[key]['album_thumbnail']
-            new_geo_info.album_lat = json_geo_data[key]['album_lat']
-            new_geo_info.album_lng = json_geo_data[key]['album_lng']
-            
-            new_geo_info.put()
-            
+        """"""
+        if self.request.get('geo_data'):
+            json_geo_data = json.loads(self.request.get('geo_data'))
+            for key in json_geo_data.keys():
+                new_geo_info = NewAlbumGeoInfo( id = key )
+                new_geo_info.album_id = key
+                new_geo_info.album_title = json_geo_data[key]['album_title']
+                new_geo_info.album_description = json_geo_data[key]['album_description']
+                new_geo_info.album_thumbnail = json_geo_data[key]['album_thumbnail']
+                new_geo_info.album_link = json_geo_data[key]['album_link']
+                new_geo_info.album_lat = json_geo_data[key]['album_lat']
+                new_geo_info.album_lng = json_geo_data[key]['album_lng']
+                
+                new_geo_info.put()
         
         # ajax response
         ajax_response = {'processing_status': 'success'}
         self.response.out.headers['Content-Type'] = 'text/json'
         self.response.out.write(json.dumps(ajax_response))
+     
+#for data migration use; not open now   
+class AlbumsDataMigration(BaseHandler):
+    def get(self):
+        """ temp function for handling data migration; not running """
+        old_albums_info = AlbumGeoInfo.query()
+        if old_albums_info.count() > 0:
+            for entity in old_albums_info:
+                new_entity = NewAlbumGeoInfo( id = entity.album_id)
+                new_entity.album_id = entity.album_id
+                new_entity.album_title = entity.album_title
+                new_entity.album_description = entity.album_description
+                new_entity.album_thumbnail = entity.album_thumbnail
+                new_entity.album_lat = entity.album_lat
+                new_entity.album_lng = entity.album_lng
+                
+                new_entity.put()
+        
+        self.response.out.headers['Content-Type'] = 'text/plain'
+        self.response.out.write('Migration Successfully Done')
 
 # configuration
 config = dict_general.config_setting
