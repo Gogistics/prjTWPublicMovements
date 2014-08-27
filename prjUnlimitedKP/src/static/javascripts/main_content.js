@@ -43,7 +43,7 @@ function kptService($http, API) {
 		});
 	}
 
-	/* communicate with Google App Engine*/
+	/* update albums geo info stored in Google datastore */
 	// handle geo-info
 	this.handleAlbumsGeoInfo = function(arg_new_albums){
 		var geo_info_albums = {};
@@ -110,7 +110,85 @@ function kptService($http, API) {
 	// filter the new albums info; currently jQuery is doing this task
 	this.getDiff = function(arg_update_geo_info, arg_original_albums_geo_info) {
 		return $(arg_update_geo_info).not(arg_original_albums_geo_info).get();
-	}
+	};
+	// end of "handle geo-info"
+	
+	//simple cluster for grouping albums based on geo-location
+	this.clusterAlbumsGeoLocations = function(){
+		var groups;
+		
+		if (typeof(address_points) !== 'undefined' && address_points.length > 0){
+			//init group
+			groups = [];
+			
+			//start clusetring
+			angular.forEach(address_points, function(item, ind){
+				
+				if(groups.length <= 0){
+					groups.push([item]);
+				}
+				else{
+					//this.clusterItem(groups, item);
+					groups = this.clusterItem(groups, item);
+				}
+			}, this);
+			
+			// show groups info
+			var group_index = 0;
+			angular.forEach(groups, function(elem, ind){
+				group_index += 1;
+				console.log('Group-' + group_index + '-size: ' + elem.length + '\n' + JSON.stringify(elem, 2, 2));
+			});
+		}
+	};
+	
+	this.clusterItem = function(arg_groups, arg_item){
+		//assign new item to each group
+		//var temp_groups = [];
+		var evaluation_result = []; //analyze temp_groups
+		
+		// calculate threshold ; ary_albums_lat & ary_albums_lng from albums.html
+		var max_lat = Math.max.apply(Math, ary_albums_lat);
+		var min_lat = Math.min.apply(Math, ary_albums_lat);
+		var max_lng = Math.max.apply(Math, ary_albums_lng);
+		var min_lng = Math.min.apply(Math, ary_albums_lng);
+		
+		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
+		var threshold = (max_distance / 20).toFixed(6); //can be adjusted for different results
+		
+		//
+		angular.forEach(arg_groups, function(group, ind){
+			//puhs new item temp group for evaluation
+			//group.push(arg_item);
+			
+			var total_amount = 0, sum_lat = 0, sum_lng = 0, avg_lat = 0, avg_lng = 0;
+			angular.forEach(group, function(item, ind){
+				total_amount += 1;
+				sum_lat += item['album_lat'];
+				sum_lng += item['album_lng'];
+			});
+			avg_lat = (sum_lat / total_amount).toFixed(6);
+			avg_lng = (sum_lng /total_amount).toFixed(6);
+			
+			//calculate the distance from new address point to centroid of the current group
+			var distance = Math.sqrt( Math.pow((avg_lat - arg_item['album_lat']), 2) + Math.pow((avg_lng - arg_item['album_lng']), 2)).toFixed(2);
+			
+			//push calculated result into to evaluation array
+			evaluation_result.push(Number(distance));
+		});
+		
+		
+		//find min
+		var min_distance = Math.min.apply(Math, evaluation_result);
+		var group_index = evaluation_result.indexOf(min_distance);
+		//update groups
+		if(min_distance <= threshold ){
+			arg_groups[group_index].push(arg_item);
+		}else{
+			arg_groups.push([arg_item]);
+		}
+		return arg_groups;
+	};
 
 }
 
@@ -175,10 +253,10 @@ function AlbumController($sce, kptService, $scope) {
 	vm.getAlbum = getAlbum;
 	vm.clickOnAlbum = clickOnAlbum;
 
-	//init
+	//init albums page
 	vm.getAlbum("");
 
-	// click
+	// click event on album
 	function clickOnAlbum(album_id) {
 		vm.getAlbum(album_id);
 	};
@@ -191,12 +269,17 @@ function AlbumController($sce, kptService, $scope) {
 						//console.log(JSON.stringify(vm.albums, 2, 2));
 
 						// build geo info. and pass the info. back to server and
-						// update albums geo info
 						if (vm.albums.length > 0) {
+
+							// update albums geo info
 							kptService.handleAlbumsGeoInfo(vm.albums);
+
+							// cluster albums based on geo-location
+							kptService.clusterAlbumsGeoLocations();
 						}
 						// end
 
+						// show first album
 						vm.clickOnAlbum(results.data[0].id);
 					} else {
 						vm.album = results.data;

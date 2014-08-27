@@ -104,6 +104,7 @@ var map;
 	// defualt location of popup
 	var popup, circle, marker, polyline;
 	var is_start = false;
+	
 	function do_animation() {
 		// init popup and location circle
 		circle = L
@@ -119,12 +120,9 @@ var map;
 						}).addTo(map);
 
 		// iterate LatLng array
-		$
-				.each(
-						routeLines,
-						function(i, routeLine) {
-							marker = L
-									.animatedMarker(
+		$.each(routeLines,
+					function(i, routeLine) {
+							marker = L.animatedMarker(
 											routeLine.getLatLngs(),
 											{
 												icon : my_icon,
