@@ -5,9 +5,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /favicon.ico
+- url: /favicon\.ico
   static_files: static/images/favicon.ico
   upload: static/images/favicon.ico
+
+- url: /apple-touch-icon\.png
+  static_files: static/images/kp_map.png
+  upload: static/images/kp_map.png
 
 - url: /noto_cjk/(.*\.(otf|tcc))$
   static_files: static/noto_font_style/\1
@@ -28,6 +32,10 @@ handlers:
 
 - url: /leaflet
   static_dir: static/leaflet-0.7
+
+- url: /robots\.txt
+  static_files: static/mis/robots.txt
+  upload: static/mis/robots.txt
 
 - url: /(base/.*)?
   script: dispatchers.dispatchers_base.app

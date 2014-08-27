@@ -24,7 +24,7 @@ $('#btn_show_map_markers_cluster').click(function(){
 								attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
 							}), latlng = L.latLng(album_map_center_lat, album_map_center_lng); //replace the geo location with average of all geo data ; 22.639673, 120.301826
 
-			map = L.map('map_markers_cluster', {
+			var map = L.map('map_markers_cluster', {
 				center : latlng,
 				zoom : 8,
 				layers : [ tiles ]
