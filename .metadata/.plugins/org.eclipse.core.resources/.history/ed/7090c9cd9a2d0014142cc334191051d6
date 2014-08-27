@@ -1,0 +1,24 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %} {% endblock %}
+
+<!-- content -->
+{% block main_content %}
+
+<!-- content block -->
+{% block content %} {% endblock %}
+<!-- end of content block -->
+
+<div id="nav_bottom_main_content">
+	<img alt="kp_map_small_logo" src="/img/kp_map.png"
+		style="height: 70px; margin: auto 20px; z-index: 1000;">
+</div>
+
+<!-- init ng controllers, etc. -->
+<script type="text/javascript" src="/js/main_content.js"></script>
+{% endblock %}

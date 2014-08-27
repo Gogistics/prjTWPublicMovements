@@ -15,6 +15,11 @@
 		font-family: 微軟宋體, segoe ui;
 		background-color: rgba(255, 62, 1, 1);
 	}
+	
+	/* override ng-scope */
+	.ng-scope {
+		overflow: hidden;
+	}
 
 	/**/
 	.ng_controller {
