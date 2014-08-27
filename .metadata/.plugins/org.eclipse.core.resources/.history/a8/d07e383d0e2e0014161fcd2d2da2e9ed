@@ -130,12 +130,9 @@ function MainController($sce, kptService) {
 			initial_category_id = initial_category_id || item.id;
 			vm.categories[item.id] = item;
 			vm.categories[item.id].posts = [];
-			
-			//get all categories
-			vm.clickOnCategory(item.id);
 		});
 		
-		//get first articles category
+		console.log(initial_category_id);
 		vm.clickOnCategory(initial_category_id);
 	});
 
@@ -231,9 +228,6 @@ function VideoController($sce, kptService) {
 					initial_category_id = initial_category_id || item.id;
 					vm.categories[item.id] = item;
 					vm.categories[item.id].videos = [];
-					
-					//get all categories
-					vm.clickOnCategory(item.id);
 				});
 				
 				//show first category

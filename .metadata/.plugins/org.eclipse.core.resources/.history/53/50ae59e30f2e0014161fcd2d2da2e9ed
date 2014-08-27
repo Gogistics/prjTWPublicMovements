@@ -233,7 +233,7 @@ function VideoController($sce, kptService) {
 					vm.categories[item.id].videos = [];
 					
 					//get all categories
-					vm.clickOnCategory(item.id);
+					vm.clickOnCategory(results.data[0].id);
 				});
 				
 				//show first category

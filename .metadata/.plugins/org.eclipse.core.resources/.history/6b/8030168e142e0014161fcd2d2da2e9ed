@@ -50,8 +50,8 @@ $('#btn_show_map_markers_cluster').click(function(){
 				for ( var i = 0; i < address_points.length; i++) {
 					var a = address_points[i];
 					var title = a['album_title'];
-					var popup_content = a['album_popup_content'];
-					var marker = L.marker(new L.LatLng(a['album_lat'], a['album_lng']), {
+					var popup_content = a[''];
+					var marker = L.marker(new L.LatLng(a[0], a[1]), {
 						title : title,
 						icon : my_icon
 					});

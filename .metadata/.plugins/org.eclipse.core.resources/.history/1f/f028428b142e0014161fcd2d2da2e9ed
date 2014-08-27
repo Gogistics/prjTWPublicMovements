@@ -113,7 +113,7 @@ var original_geo_info; // object built based on albums_geo_info
 var address_points; // array built based on albums_geo_info and is used for markers cluster
 var album_map_center_lat = 22.619673; //default lat
 var album_map_center_lng = 120.301826; //defualt lng
-var ary_albums_lat = [], ary_albums_lng = []; //arrays storing latlng info for finding out max and min values of lat and lng
+var ary_albums_lat = [], ary_albums_lng = []; //arrays storing latlng info are used for finding out max and min values of lat and lng
 
 //check if query result from back-end is None; if so, no need to parse query result
 {% if albums_geo_info %}
@@ -137,7 +137,7 @@ address_points.push({'album_id' : '{{elem.album_id}}',
 	                 'album_lat' : Number('{{elem.album_lat|float}}'),
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
 	                 'album_title' : '{{elem.album_title|safe}}',
-	                 'album_popup_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
+	                 'album_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
 
 {% endfor %}
 // end of loo through the query result

@@ -130,12 +130,7 @@ function MainController($sce, kptService) {
 			initial_category_id = initial_category_id || item.id;
 			vm.categories[item.id] = item;
 			vm.categories[item.id].posts = [];
-			
-			//get all categories
-			vm.clickOnCategory(item.id);
 		});
-		
-		//get first articles category
 		vm.clickOnCategory(initial_category_id);
 	});
 
@@ -149,7 +144,7 @@ function MainController($sce, kptService) {
 				vm.categories[category_id].posts.push(item);
 			});
 
-			// apply jquery toggle animation (temp)
+			// apply jquery toggle animation
 			$('#article_category_' + category_id).toggle("slow");
 
 			vm.clickOnArticle(undefined, initial_article);
@@ -175,7 +170,6 @@ function AlbumController($sce, kptService, $scope) {
 	vm.getAlbum = getAlbum;
 	vm.clickOnAlbum = clickOnAlbum;
 
-	//init
 	vm.getAlbum("");
 
 	// click
@@ -204,10 +198,10 @@ function AlbumController($sce, kptService, $scope) {
 				});
 	};
 
-	// ng-pagination
+	// ng-pginator
 	$scope.currentPage = 1;
 	$scope.pageSize = 5;
-	// end of ng-pagination
+	// end of ng-paginator
 }
 
 // videos
@@ -219,7 +213,6 @@ function VideoController($sce, kptService) {
 	vm.clickOnVideo = clickOnVideo;
 	vm.getVideos = getVideos;
 
-	//init
 	vm.getVideos("");
 
 	function getVideos(category_id) {
@@ -231,12 +224,7 @@ function VideoController($sce, kptService) {
 					initial_category_id = initial_category_id || item.id;
 					vm.categories[item.id] = item;
 					vm.categories[item.id].videos = [];
-					
-					//get all categories
-					vm.clickOnCategory(item.id);
 				});
-				
-				//show first category
 				vm.clickOnCategory(results.data[0].id);
 			} else {
 				vm.categories[category_id].videos = [];
@@ -265,7 +253,7 @@ function VideoController($sce, kptService) {
 		}
 		vm.content = video;
 		vm.content.url = $sce
-				.trustAsResourceUrl('https://www.youtube.com/embed/' + video.id);
+				.trustAsResourceUrl('http://www.youtube.com/embed/' + video.id);
 	}
 	;
 
