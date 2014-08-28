@@ -53,11 +53,11 @@ var map;
 	}, {
 		'geo_location' : [ 25.031827, 121.497941 ],
 		'geo_description' : '台北-萬華區',
-		'geo_img' : '/img/locations/wang_hwa.jpg'
+		'geo_img' : '/img/locations/wang_hwa_district.jpg'
 	}, {
 		'geo_location' : [ 25.029805, 121.533131 ],
 		'geo_description' : '台北-大安區',
-		'geo_img' : '/img/locations/da_an_park.jpg'
+		'geo_img' : '/img/locations/da_an_district.jpg'
 	}, {
 		'geo_location' : [ 25.028561, 121.570725 ],
 		'geo_description' : '台北-信義區',
@@ -65,7 +65,7 @@ var map;
 	}, {
 		'geo_location' : [ 25.060909, 121.550641 ],
 		'geo_description' : '台北-松山區',
-		'geo_img' : '/img/locations/shung_shang_airport.jpg'
+		'geo_img' : '/img/locations/song_shan_district.jpg'
 	}, {
 		'geo_location' : [ 25.048104, 121.517033 ],
 		'geo_description' : '終點-台北車站',

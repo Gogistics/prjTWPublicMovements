@@ -34,19 +34,19 @@
 </coolbarLayout>
 <page focus="true" label="Workspace - PyDev">
 <editors>
-<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@883dff">
+<editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.internal.EditorStack@883dff" ratio="0.41017228" ratioLeft="500" ratioRight="719" relationship="2" relative="DefaultEditorWorkbook">
+<info part="org.eclipse.ui.internal.EditorStack@883dff" ratio="0.21093082" ratioLeft="247" ratioRight="924" relationship="2" relative="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="2"/>
 <part id="0"/>
 <part id="1"/>
 </presentation>
@@ -57,21 +57,21 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1021" selectionTopPixel="180"/>
 </editor>
-<editor focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" partName="albums.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/albums.html" title="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" partName="albums.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/albums.html" title="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4510" selectionTopPixel="1785"/>
+<editorState selectionHorizontalPixel="969" selectionLength="0" selectionOffset="4039" selectionTopPixel="1463"/>
 </editor>
-<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="albums.js" partName="albums.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/albums.js" title="albums.js" tooltip="prjUnlimitedKP/src/static/javascripts/albums.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4" selectionTopPixel="353"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" partName="main_content.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/main_content.js" title="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js" workbook="org.eclipse.ui.internal.EditorStack@883dff">
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" partName="main_content.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/main_content.js" title="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js" workbook="org.eclipse.ui.internal.EditorStack@883dff">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4441" selectionTopPixel="2280"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5084" selectionTopPixel="2031"/>
 </editor>
 <editor id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" partName="front_page.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/front_page.html" title="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html" workbook="org.eclipse.ui.internal.EditorStack@883dff">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
 <editorState selectionHorizontalPixel="84" selectionLength="0" selectionOffset="2147" selectionTopPixel="788"/>
+</editor>
+<editor focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="albums.js" partName="albums.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/albums.js" title="albums.js" tooltip="prjUnlimitedKP/src/static/javascripts/albums.js" workbook="org.eclipse.ui.internal.EditorStack@883dff">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2103" selectionTopPixel="705"/>
 </editor>
 </editors>
 <views>
@@ -103,14 +103,15 @@
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base"/>
-<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/albums.js"/>
 </viewState>
 </view>
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 </views>
-<perspectives activePart="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="org.eclipse.wst.html.core.htmlsource.source" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -284,7 +285,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.09414381" ratioLeft="127" ratioRight="1222" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.12972572" ratioLeft="175" ratioRight="1174" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.74958813" ratioLeft="455" ratioRight="152" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
@@ -301,161 +302,162 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
 </editors>
-<item historyLabel="dispatchers_base" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="8801" y="0"/>
-</item>
-<item historyLabel="front_page.js" index="4">
+<item historyLabel="front_page.js" index="2">
 <position info="not_deleted" x="3625" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="8801" y="0"/>
-</item>
-<item historyLabel="albums.js" index="0">
-<position info="not_deleted" x="4" y="0"/>
-</item>
-<item historyLabel="front_page.js" index="4">
-<position info="not_deleted" x="3625" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="8801" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
 <position/>
 </item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5081" y="14"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="4308" y="0"/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5940" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="4139" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="4382" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="4714" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="5402" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="6468" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="4776" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="5131" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="5719" y="0"/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5940" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="6236" y="0"/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5940" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="6198" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="6446" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5712" y="14"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5691" y="36"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5799" y="36"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position info="not_deleted" x="6446" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="front_page.js" index="4">
-<position info="not_deleted" x="3625" y="0"/>
-</item>
-<item historyLabel="main_content.js" index="2">
-<position/>
-</item>
-<item historyLabel="albums.html" index="1">
+<item historyLabel="albums.html" index="0">
 <position info="not_deleted" x="4510" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
 <position/>
 </item>
-<item historyLabel="front_page.html" index="5">
+<item historyLabel="front_page.html" index="3">
 <position info="not_deleted" x="2147" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
 <position info="not_deleted" x="6553" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
 <position info="not_deleted" x="6679" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
 <position info="not_deleted" x="6354" y="0"/>
 </item>
-<item active="true" historyLabel="main_content.js" index="2">
+<item historyLabel="main_content.js" index="1">
+<position/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="12491" y="129"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="567" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="1991" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="4123" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="4009" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="4541" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2058" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2058" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2058" y="0"/>
+</item>
+<item historyLabel="base.html" index="6">
+<position info="not_deleted" x="1021" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="4541" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2058" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="4541" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2123" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="8563" y="15"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2118" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="8563" y="15"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2118" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="1992" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="1969" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2116" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="8563" y="15"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2116" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2529" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="4311" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2529" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="4076" y="29"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="5370" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position info="not_deleted" x="3887" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="3110" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="3110" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="1">
+<position info="not_deleted" x="5084" y="0"/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="3110" y="0"/>
+</item>
+<item historyLabel="albums.html" index="4">
+<position/>
+</item>
+<item historyLabel="albums.js" index="5">
+<position info="not_deleted" x="2103" y="0"/>
+</item>
+<item active="true" historyLabel="albums.html" index="4">
 <position/>
 </item>
 </navigationHistory>
@@ -477,11 +479,11 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="albums.js" tooltip="prjUnlimitedKP/src/static/javascripts/albums.js">
 <persistable path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js">
 <persistable path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>

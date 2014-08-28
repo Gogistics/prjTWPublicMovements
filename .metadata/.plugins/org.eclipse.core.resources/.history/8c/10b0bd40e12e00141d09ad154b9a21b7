@@ -1,0 +1,160 @@
+/*
+ * marker cluster 
+ * 
+ * */
+
+//close map
+$('#close_map').click(function(){
+	$('#map_albums').toggle("slow");
+});
+
+//show map
+var map;
+$('#btn_show_map_markers_cluster').click(function(){
+	$('#map_albums').toggle("slow", function(){
+		//init map
+		if(typeof(map) === 'undefined'){
+			console.log(map);
+			/* leaflet marker cluster */
+			var tiles = L
+					.tileLayer(
+							'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+							{
+								maxZoom : 16,
+								attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+							}), latlng = L.latLng(album_map_center_lat, album_map_center_lng); //replace the geo location with average of all geo data ; 22.639673, 120.301826
+
+			map = L.map('map_markers_cluster', {
+				center : latlng,
+				zoom : 8,
+				layers : [ tiles ]
+			});
+
+			/* cluster */
+			var markers = L.markerClusterGroup();
+			
+			/* marker config */
+			var my_icon = L.icon({
+				iconUrl : '/leaflet/images/kp_icon_2.png',
+				shadowUrl : '/leaflet/images/marker-shadow.png',
+
+				iconSize : [ 48, 50 ],
+				shadowSize : [ 50, 50 ],
+				iconAnchor : [ 25, 49 ],
+				shadowAnchor : [ 12, 48 ],
+				popupAnchor : [ -3, -43 ]
+			});
+			
+			//address_points is defined and obtained in albums.html
+			if(typeof(address_points) !== 'undefined'){
+				for ( var i = 0; i < address_points.length; i++) {
+					var a = address_points[i];
+					var title = a['album_title'];
+					var popup_content = a['album_popup_content'];
+					var marker = L.marker(new L.LatLng(a['album_lat'], a['album_lng']), {
+						title : title,
+						icon : my_icon
+					});
+					marker.bindPopup(popup_content, {maxHeight : 500, keepInView: true});
+					markers.addLayer(marker);
+				}
+				map.addLayer(markers);
+			}
+		}
+		//end show markers cluster
+		
+		//show pie chart
+		if(typeof(albums_clusters) !== 'undefined' && $('#albums_geo_location_pie_chart').has('svg').length < 1){
+			//show pie map
+			showPieChart(albums_clusters);
+		}
+	});
+
+});
+
+/* 
+ * 
+ * pie chart
+ * 
+ *  */
+
+function showPieChart(arg_albums_clusters){
+	var albums_clusters_size = [], clusters_colors = [];
+	$.each(arg_albums_clusters, function(ith, elem){
+		console.log('Group-'+ (ith + 1) + ' ; Size-'+ elem.length);
+		albums_clusters_size.push(elem.length);
+	});
+	
+	// build data set for d3 pie chart
+	var albums_clusters = { label: '活動分部比例圖', pct: albums_clusters_size }, data = albums_clusters;
+	
+	var w = 320,                       // width and height, natch
+	    h = 320,
+	    r = Math.min(w, h) / 2,        // arc radius
+	    dur = 750,                     // duration, in milliseconds
+	    color = d3.scale.category20(),
+	    donut = d3.layout.pie().sort(null),
+	    arc = d3.svg.arc().innerRadius(r - 80).outerRadius(r - 20);
+	
+	// ---------------------------------------------------------------------
+	var svg = d3.select("#albums_geo_location_pie_chart").append("svg:svg")
+	    .attr("width", w).attr("height", h);
+	
+	var arc_grp = svg.append("svg:g")
+	    .attr("class", "arcGrp")
+	    .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+	
+	var label_group = svg.append("svg:g")
+	    .attr("class", "lblGroup")
+	    .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+	
+	// GROUP FOR CENTER TEXT
+	var center_group = svg.append("svg:g")
+	    .attr("class", "ctrGroup")
+	    .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+	
+	// CENTER LABEL
+	var pieLabel = center_group.append("svg:text")
+	    .attr("dy", ".35em").attr("class", "chartLabel")
+	    .attr("text-anchor", "middle")
+	    .text(data.label);
+	
+	// DRAW ARC PATHS
+	var arcs = arc_grp.selectAll("path")
+	    .data(donut(data.pct));
+	arcs.enter().append("svg:path")
+	    .attr("stroke", "white")
+	    .attr("stroke-width", 0.5)
+	    .attr("fill", function(d, i) {
+	    	
+	    	// get color corresponding to each cluster
+	    	alert(color(i));
+	    	return color(i);
+	    	})
+	    .attr("d", arc)
+	    .each(function(d) {this._current = d});
+
+	function arcTween(a) {
+	    var i = d3.interpolate(this._current, a);
+	    this._current = i(0);
+	    return function(t) {
+	        return arc(i(t));
+	    };
+	}
+	
+	// update chart
+	function updateChart(model) {
+	    data = eval(model); // which model?
+	
+	    arcs.data(donut(data.pct)); // recompute angles, rebind data
+	    arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
+	
+	    sliceLabel.data(donut(data.pct));
+	    sliceLabel.transition().ease("elastic").duration(dur)
+	        .attr("transform", function(d) {return "translate(" + arc.centroid(d) + ")"; })
+	        .style("fill-opacity", function(d) {return d.value==0 ? 1e-6 : 1;});
+	        
+	    pieLabel.text(data.label);
+	}
+
+}

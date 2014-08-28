@@ -26,7 +26,7 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/te
 class AlbumsGeoInfoDispatcher(BaseHandler):
     def post(self):
         """ handler of dealing with geo info update """
-        if self.request.get('geo_data'):
+        if self._is_json(self.request.get('geo_data')):
             json_geo_data = json.loads(self.request.get('geo_data'))
             for key in json_geo_data.keys():
                 new_geo_info = NewAlbumGeoInfo( id = key )
@@ -39,11 +39,24 @@ class AlbumsGeoInfoDispatcher(BaseHandler):
                 new_geo_info.album_lng = json_geo_data[key]['album_lng']
                 
                 new_geo_info.put()
+                
+            processing_status = 'success'
+            
+        else:
+            processing_status = 'received variable is not in JSON format'
         
         # ajax response
-        ajax_response = {'processing_status': 'success'}
+        ajax_response = {'processing_status': processing_status}
         self.response.out.headers['Content-Type'] = 'text/json'
         self.response.out.write(json.dumps(ajax_response))
+        
+    # check if variable is in json format
+    def _is_json(self, arg_json):
+        try:
+            json.loads(arg_json)
+        except ValueError:
+            return False
+        return True
      
 #for data migration use; not open now   
 class AlbumsDataMigration(BaseHandler):

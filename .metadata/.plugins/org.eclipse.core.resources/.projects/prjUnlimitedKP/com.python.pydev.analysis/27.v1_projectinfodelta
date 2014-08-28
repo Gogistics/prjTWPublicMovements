@@ -1,13 +1,1 @@
-INSTUPdispatchers.dispatchers_albums
-D:\prjTWPublicMovements\prjUnlimitedKP\src\dispatchers\dispatchers_albums.py
-INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&1|5|2|0&&2|6|2|5&&1|7|2|0&&2|8|2|7&&3|9|2|0&&3|10|2|0
-app=10
-post=6
-get=8
-__author__=1
-jinja_environment=4
-AlbumsDataMigration=7
-AlbumsGeoInfoDispatcher=5
-dispatchers.dispatchers_albums=2
-config=9
-dict_general=3
+DELSTRdispatchers.dispatchers_albums
