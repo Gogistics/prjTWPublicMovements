@@ -128,20 +128,17 @@ function kptService($http, API) {
 					groups.push([item]);
 				}
 				else{
-					//this.clusterItem(groups, item);
+					
 					groups = this.clusterItem(groups, item);
 				}
 			}, this);
 			
-			// show groups info
-			var group_index = 0;
-			angular.forEach(groups, function(elem, ind){
-				group_index += 1;
-				console.log('Group-' + group_index + '-size: ' + elem.length + '\n' + JSON.stringify(elem, 2, 2));
-			});
 		}
+		
+		return groups;
 	};
 	
+	//cluster albums based on geo-location
 	this.clusterItem = function(arg_groups, arg_item){
 		//assign new item to each group
 		//var temp_groups = [];
@@ -154,7 +151,7 @@ function kptService($http, API) {
 		var min_lng = Math.min.apply(Math, ary_albums_lng);
 		
 		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
-		var threshold = (max_distance / 20).toFixed(6); //can be adjusted for different results
+		var threshold = (max_distance / 30).toFixed(6); //can be adjusted for different results
 		
 		//
 		angular.forEach(arg_groups, function(group, ind){
@@ -274,8 +271,8 @@ function AlbumController($sce, kptService, $scope) {
 							// update albums geo info
 							kptService.handleAlbumsGeoInfo(vm.albums);
 
-							// cluster albums based on geo-location
-							kptService.clusterAlbumsGeoLocations();
+							// albums_clusters defined in albums.html
+							albums_clusters = kptService.clusterAlbumsGeoLocations();
 						}
 						// end
 
