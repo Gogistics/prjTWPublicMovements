@@ -95,7 +95,7 @@
 	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5)">
 	<!-- temp button of closing albums map -->
 	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
-		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+		style=" position: fixed; top: 20px; left: 20px; width: 30px;">
 
 	<!-- map & pie chart -->
 	<div style="margin: 30px auto; text-align: center;">
@@ -107,7 +107,12 @@
 		<!-- pie chart -->
 		<div
 			style="margin: 0px auto; width: 400px; height: 600px; border: solid 1px #bbb; border-radius: 3px; background-color: rgba(255, 255, 255, 0.95); display: inline-block; vertical-align: top;">
-			<div id="albums_geo_location_pie_chart"></div>
+			<div id="albums_geo_location_pie_chart">
+				<!-- show percentage -->
+				<div id="explanation" style="visibility:hidden ; margin: 10px auto;">
+					<span id="percentage"></span>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -141,14 +146,14 @@ ary_albums_lat = [], ary_albums_lng = [];
 //loop through the query result
 {% for elem in albums_geo_info %}
 
-original_geo_info['{{elem.album_id}}'] = {'album_title':'{{elem.album_title|safe}}'};
+original_geo_info['{{elem.album_id|safe}}'] = {'album_title':'{{elem.album_title|safe}}'};
 
 ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
 ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
 
 //array can be changed to object; it's easy to get the value with the corresponding key
 //address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '{{elem.album_title|safe}}' ,'<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>']);
-address_points.push({'album_id' : '{{elem.album_id}}',
+address_points.push({'album_id' : '{{elem.album_id|safe}}',
 	                 'album_lat' : Number('{{elem.album_lat|float}}'),
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
 	                 'album_title' : '{{elem.album_title|safe}}',
