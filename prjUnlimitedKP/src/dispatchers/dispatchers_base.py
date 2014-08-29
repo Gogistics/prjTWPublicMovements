@@ -25,7 +25,7 @@ dict_html_ref = HtmlPagesReference()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class BaseDispatcher(BaseHandler):
+class CollapsibleTreeDemoDispatcher(BaseHandler):
     def get(self):
         """ front page dispatcher """
         template_values = {}
@@ -64,7 +64,7 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/', BaseDispatcher, name='front_page'),
+    webapp2.Route(r'/', CollapsibleTreeDemoDispatcher, name='front_page'),
     webapp2.Route(r'/base/articles', ArticlesDispatcher, name='articles'),
     webapp2.Route(r'/base/albums', AlbumsDispatcher, name='albums'),
     webapp2.Route(r'/base/videos', VideosDispatcher, name='videos')

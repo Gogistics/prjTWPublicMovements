@@ -33,6 +33,9 @@ handlers:
 - url: /leaflet
   static_dir: static/leaflet-0.7
 
+- url: /mis
+  static_dir: static/mis
+
 - url: /robots\.txt
   static_files: static/mis/robots.txt
   upload: static/mis/robots.txt
@@ -45,6 +48,9 @@ handlers:
   script: dispatchers.dispatchers_albums.app
   secure: always
 
+- url: /demos/.*
+  script: dispatchers.dispatchers_demos.app
+  secure: always
 
 inbound_services:
 - channel_presence

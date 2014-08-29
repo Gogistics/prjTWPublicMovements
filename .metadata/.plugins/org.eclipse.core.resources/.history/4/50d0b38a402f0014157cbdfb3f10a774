@@ -1,0 +1,17 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+{% endblock %}
+
+{% block main_content %}
+<div id="collapsible_tree"
+	style="height: 100%; width: 100%; margin: 0px auto; z-index: 1; position: fixed;">
+
+</div>
+{% endblock %}

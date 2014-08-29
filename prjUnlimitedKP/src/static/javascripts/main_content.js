@@ -1,6 +1,7 @@
 /*
  *  init ng-app controllers and the service
  *  original version was contributed by Will Huang(保哥) and modified by Alan Tai
+ *  Tools: Angularjs & JQuery (for animation)
  *  
  *   */
 
@@ -84,6 +85,7 @@ function kptService($http, API) {
 			console.log(JSON.stringify(diff_elems, 2, 2));
 		}
 		
+		// if there exist any key, then send new data to server for database update
 		if(Object.keys(diff_elems).length > 0){
 			// put diff_elems into $.param and will be send to backend
 			var geo_data = $.param({'geo_data':JSON.stringify(diff_elems, 2, 2)});
@@ -95,9 +97,12 @@ function kptService($http, API) {
 	            data: geo_data,
 	            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 	        });
+			
+			// success handler
 			response_promise.success(function(data, status, headers, config) {
                 console.log(data.processing_status);
             });
+			// fail handler
 			response_promise.error(function(data, status, headers, config) {
                 console.log("AJAX failed! " + status);
             });
@@ -124,18 +129,19 @@ function kptService($http, API) {
 			//start clusetring
 			angular.forEach(address_points, function(item, ind){
 				
+				// if no group exists, then create one and push the first element to the array
 				if(groups.length <= 0){
 					groups.push([item]);
 				}
 				else{
-					
+					// clustering process
 					groups = this.clusterItem(groups, item);
 				}
 			}, this);
 			
 		}
 		
-		return groups;
+		return groups; //clustering result
 	};
 	
 	//cluster albums based on geo-location
@@ -153,7 +159,7 @@ function kptService($http, API) {
 		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
 		var threshold = (max_distance / 30).toFixed(6); //can be adjusted for different results
 		
-		//
+		// iterate groups
 		angular.forEach(arg_groups, function(group, ind){
 			//puhs new item temp group for evaluation
 			//group.push(arg_item);
