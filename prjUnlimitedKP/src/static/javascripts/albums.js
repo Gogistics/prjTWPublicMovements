@@ -172,18 +172,20 @@ function showPieChart(arg_albums_clusters){
 	// append groups' introduction (temp)
 	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據)</p></div>');
 	$.each(clusters_colors, function(ith, elem){
-		$('div#albums_groups_introduction').append('<p style="color:'+ elem +' ; font-size: 12px;">'+ 'Group-' + (ith + 1) + '&nbsp;:&nbsp;' + '<span style="color: #000;">' + arg_albums_clusters[ith].length + '</span>' + '<span style="color: #000;">&nbsp;' + albums_clusters_avg_geo_location[ith] + '&nbsp;</span>' + '</p>');
+		$('div#albums_groups_introduction').append('<p style="color:'+ elem +' ; font-size: 12px; color: #f00;">'+ 'Group-' + (ith + 1) + '&nbsp;:&nbsp;' + '<span style="color: #000;">' + arg_albums_clusters[ith].length + '</span>' + '<span style="color: #000;">&nbsp;' + albums_clusters_avg_geo_location[ith] + '&nbsp;</span>' + '</p>');
 	});
 	
 	
 	/* mouse hover event */
 	var totalSize = address_points.length; // address_points is defined in albums.html (temp)
-	// Fade all but the current sequence, and show it in the breadcrumb trail.
+	// fade all but the current sequence, and show it in the breadcrumb trail.
 	function mouseover(d, i) {
 
-	  //calculate percentage
+	  // calculate percentage
 	  var percentage = (100 * d.value / totalSize).toPrecision(3);
-	  var percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage + "%";
+	  var percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage + "%"; // build brief information string
+	  
+	  //if percentage is kind of too small, just show the percentage is smaller than 0.1%
 	  if (percentage < 0.1) {
 	    percentageString = "< 0.1%";
 	  }
@@ -196,7 +198,7 @@ function showPieChart(arg_albums_clusters){
 	  d3.select("#brief_information")
 	      .style("visibility", "visible");
 
-	  // Fade all the segments.
+	  // fade hovered segments.
 	  var selected_val = d.value;
 	  d3.select(this)
 	      .style("opacity", 0.3);
@@ -205,7 +207,7 @@ function showPieChart(arg_albums_clusters){
 
 	// Restore everything to full opacity when moving off the visualization.
 	function mouseleave(d) {
-	  // Transition each segment to full opacity and then reactivate it.
+	  // Transition the segment mouse just left to full opacity
 	  d3.select(this)
 	      .transition()
 	      .duration(500)
