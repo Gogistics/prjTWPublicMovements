@@ -169,18 +169,16 @@ function showPieChart(arg_albums_clusters){
 	// Fade all but the current sequence, and show it in the breadcrumb trail.
 	function mouseover(d, i) {
 
-	  //calculate percentage
+	  //
 	  var percentage = (100 * d.value / totalSize).toPrecision(3);
 	  var percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage + "%";
 	  if (percentage < 0.1) {
 	    percentageString = "< 0.1%";
 	  }
 
-	  // select element and add brief information on Text
 	  d3.select("#percentage")
 	      .text(percentageString);
 
-	  // show brief information
 	  d3.select("#brief_information")
 	      .style("visibility", "visible");
 
@@ -199,7 +197,6 @@ function showPieChart(arg_albums_clusters){
 	      .duration(500)
 	      .style("opacity", 1);
 
-	  // hide brief information
 	  d3.select("#brief_information")
 	      .style("visibility", "hidden");
 	}

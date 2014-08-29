@@ -176,11 +176,10 @@ function showPieChart(arg_albums_clusters){
 	    percentageString = "< 0.1%";
 	  }
 
-	  // select element and add brief information on Text
+	  //show percentage and brief information
 	  d3.select("#percentage")
 	      .text(percentageString);
 
-	  // show brief information
 	  d3.select("#brief_information")
 	      .style("visibility", "visible");
 
@@ -199,7 +198,6 @@ function showPieChart(arg_albums_clusters){
 	      .duration(500)
 	      .style("opacity", 1);
 
-	  // hide brief information
 	  d3.select("#brief_information")
 	      .style("visibility", "hidden");
 	}

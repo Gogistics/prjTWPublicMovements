@@ -199,7 +199,6 @@ function showPieChart(arg_albums_clusters){
 	      .duration(500)
 	      .style("opacity", 1);
 
-	  // hide brief information
 	  d3.select("#brief_information")
 	      .style("visibility", "hidden");
 	}

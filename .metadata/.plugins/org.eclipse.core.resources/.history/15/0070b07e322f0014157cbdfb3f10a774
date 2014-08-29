@@ -1,6 +1,6 @@
 /*
  * Markers Clusters on OpenStreetMap
- * Tools: Leaflet.js & JQuery 
+ * Tools: JQuery 
  * 
  * */
 
@@ -75,21 +75,16 @@ $('#btn_show_map_markers_cluster').click(function(){
 
 /* 
  * 
- * Pie Chart
- * Tools: D3
+ * pie chart
  * 
  *  */
 
 function showPieChart(arg_albums_clusters){
-	// variables for sorting info
 	var albums_clusters_size = [], albums_clusters_avg_geo_location = [], clusters_colors = [];
-	
-	// retrieve data from each element
 	$.each(arg_albums_clusters, function(ith, elem){
 		console.log('Group-'+ (ith + 1) + ' ; Size-'+ elem.length);
 		albums_clusters_size.push(elem.length);
 		
-		// variables related to latlng for calculating avg. latlng
 		var sum_lat = 0, sum_lng = 0, avg_lat = 0, avg_lng = 0;
 		$.each(elem, function(sub_ith, sub_elem){
 			sum_lat += sub_elem.album_lat;
@@ -97,8 +92,6 @@ function showPieChart(arg_albums_clusters){
 		});
 		avg_lat = (sum_lat / elem.length).toFixed(6);
 		avg_lng = (sum_lng / elem.length).toFixed(6);
-		
-		// info string
 		var avg_geo_location = '(Avg. Lat: ' + avg_lat + '&nbsp;;&nbsp;' + 'Avg. Lng: ' + avg_lng + ')';
 		albums_clusters_avg_geo_location.push(avg_geo_location);
 	});
@@ -106,17 +99,16 @@ function showPieChart(arg_albums_clusters){
 	// build data set for d3 pie chart
 	var albums_clusters = { label: '活動分佈比例圖', pct: albums_clusters_size }, data = albums_clusters;
 	
-	// variables config
 	var w = 320,                       // width and height, natch
 	    h = 320,
 	    r = Math.min(w, h) / 2,        // arc radius
 	    dur = 750,                     // duration, in milliseconds
-	    color = d3.scale.category20(), // color category
+	    color = d3.scale.category20(),
 	    donut = d3.layout.pie().sort(null),
 	    arc = d3.svg.arc().innerRadius(r - 80).outerRadius(r - 20);
 	
 	
-	// init svg
+	// ---------------------------------------------------------------------
 	var svg = d3.select("div#albums_geo_location_pie_chart").append("svg:svg")
 	    .attr("width", w).attr("height", h).attr("id", "container");
 	
@@ -164,24 +156,21 @@ function showPieChart(arg_albums_clusters){
 	});
 	
 	
-	/* mouse hover event */
+	/**/
 	var totalSize = address_points.length; // address_points is defined in albums.html (temp)
 	// Fade all but the current sequence, and show it in the breadcrumb trail.
-	function mouseover(d, i) {
+	function mouseover(d) {
 
-	  //calculate percentage
 	  var percentage = (100 * d.value / totalSize).toPrecision(3);
-	  var percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage + "%";
+	  var percentageString = '此群組比例: ' + percentage + "%";
 	  if (percentage < 0.1) {
 	    percentageString = "< 0.1%";
 	  }
 
-	  // select element and add brief information on Text
 	  d3.select("#percentage")
 	      .text(percentageString);
 
-	  // show brief information
-	  d3.select("#brief_information")
+	  d3.select("#explanation")
 	      .style("visibility", "visible");
 
 	  // Fade all the segments.
@@ -199,14 +188,13 @@ function showPieChart(arg_albums_clusters){
 	      .duration(500)
 	      .style("opacity", 1);
 
-	  // hide brief information
-	  d3.select("#brief_information")
+	  d3.select("#explanation")
 	      .style("visibility", "hidden");
 	}
-	/* end */
+	
+	/**/
 	
 	
-	/* functions for toggling chart (future use) */
 	// tweening arc
 	function arcTween(a) {
 	    var i = d3.interpolate(this._current, a);
@@ -230,5 +218,4 @@ function showPieChart(arg_albums_clusters){
 	        
 	    pieLabel.text(data.label);
 	}
-	/* end */
 }
