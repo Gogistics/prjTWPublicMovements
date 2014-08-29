@@ -32,12 +32,21 @@ class CollapsibleTreeDemoDispatcher(BaseHandler):
         template_values.update({'title':u'柯文哲-MA柯P'})
         self.render_template('/demos/collapsible_tree_chart.html', template_values)
 
+class LineChartDemoDispatcher(BaseHandler):
+    def get(self):
+        """ collpasible tree dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯文哲-MA柯P'})
+        self.render_template('/demos/line_chart.html', template_values)
+
+
 # configuration
 config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/demos/collapsible_tree_chart', CollapsibleTreeDemoDispatcher, name='collapsible_tree_chart')
+    webapp2.Route(r'/demos/collapsible_tree_chart', CollapsibleTreeDemoDispatcher, name='collapsible_tree_chart'),
+    webapp2.Route(r'/demos/line_chart', LineChartDemoDispatcher, name='line_chart')
 ], debug=True, config=config)
 
 # log

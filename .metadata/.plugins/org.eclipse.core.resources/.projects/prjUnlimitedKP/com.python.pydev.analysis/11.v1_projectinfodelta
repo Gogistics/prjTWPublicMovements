@@ -1,1 +1,13 @@
-DELSTRdispatchers.dispatchers_demos
+INSTUPdispatchers.dispatchers_demos
+D:\prjTWPublicMovements\prjUnlimitedKP\src\dispatchers\dispatchers_demos.py
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&1|6|2|0&&2|7|2|6&&1|8|2|0&&2|7|2|8&&3|9|2|0&&3|10|2|0
+app=10
+LineChartDemoDispatcher=8
+CollapsibleTreeDemoDispatcher=6
+get=7
+__author__=1
+jinja_environment=5
+dispatchers.dispatchers_demos=2
+config=9
+dict_general=3
+dict_html_ref=4

@@ -1,15 +1,27 @@
 /*
+ * 
  * Markers Clusters on OpenStreetMap
- * Tools: Leaflet.js & JQuery 
+ * Tools: Leaflet & JQuery
+ * Leaflet is for handling events on OpenStreetMap
+ * JQuery is for animation 
  * 
  * */
 
-//close map
+
+//-- not applied yet --
+//trigger flags; if the value is true, then do the data visualization
+var trigger_flag = {
+		is_map_markers_cluster_ready : false,
+		is_donnut_chart_ready : false
+}
+//-- not applied yet --
+
+// close map (temp)
 $('#close_map').click(function(){
 	$('#map_albums').toggle("slow");
 });
 
-//show map
+// show map
 var map;
 $('#btn_show_map_markers_cluster').click(function(){
 	$('#map_albums').toggle("slow", function(){
@@ -158,7 +170,7 @@ function showPieChart(arg_albums_clusters){
 	
 
 	// append groups' introduction (temp)
-	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 13px;">各群組活動數目統計</p></div>');
+	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據)</p></div>');
 	$.each(clusters_colors, function(ith, elem){
 		$('div#albums_groups_introduction').append('<p style="color:'+ elem +' ; font-size: 12px;">'+ 'Group-' + (ith + 1) + '&nbsp;:&nbsp;' + '<span style="color: #000;">' + arg_albums_clusters[ith].length + '</span>' + '<span style="color: #000;">&nbsp;' + albums_clusters_avg_geo_location[ith] + '&nbsp;</span>' + '</p>');
 	});
