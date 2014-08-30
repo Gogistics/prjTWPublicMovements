@@ -122,7 +122,7 @@ function showPieChart(arg_albums_clusters){
 		.circle(
 				[ avg_lat,
 				  avg_lng ],
-				100,
+				50,
 				{
 					color : 'red',
 					fillColor : '#f03',
@@ -196,7 +196,7 @@ function showPieChart(arg_albums_clusters){
 	
 
 	// append groups' introduction (temp)
-	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據及相對應地圖位置)</p></div>');
+	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據)</p></div>');
 	$.each(clusters_colors, function(ith, elem){
 		$('div#albums_groups_introduction').append('<p style="color:'+ elem +' ; font-size: 12px;">'+ 'Group-' + (ith + 1) + '&nbsp;:&nbsp;' + '<span style="color: #000;">' + arg_albums_clusters[ith].length + '</span>' + '<span style="color: #000;">&nbsp;' + albums_clusters_avg_geo_location[ith] + '&nbsp;</span>' + '</p>');
 	});
@@ -236,16 +236,16 @@ function showPieChart(arg_albums_clusters){
 	  var avg_latlng_popup = L.popup();
 	  var selected_avg_latlng = albums_clusters_latlng_set[i];
 	  avg_latlng_popup.setLatLng(selected_avg_latlng)
-		.setContent('Group-' + (i + 1)
-				+'<br>'
-				+ 'Avg. Lat: '
+		.setContent(
+				'Lat: '
 						+ selected_avg_latlng.lat
 						+ '<br>'
-						+ 'Avg. Lng: '
+						+ 'Lng: '
 						+ selected_avg_latlng.lng)
-		.openOn(map);
+		.openOn(
+				map);
 	  
-	  map.setView({lat:selected_avg_latlng.lat, lng:selected_avg_latlng.lng},10);
+	  map.setView({lat:selected_avg_latlng.lat, lng:selected_avg_latlng.lng},5);
 	}
 
 	// Restore everything to full opacity when moving off the visualization.

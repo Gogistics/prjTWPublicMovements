@@ -95,7 +95,6 @@ $('#btn_show_map_markers_cluster').click(function(){
 function showPieChart(arg_albums_clusters){
 	// variables for sorting info
 	var albums_clusters_size = [], albums_clusters_avg_geo_location = [], albums_clusters_latlng_set = [], clusters_colors = [];
-	var avg_latlng_group = L.layerGroup(); // avg. latlng layers on map
 	
 	// retrieve data from each element
 	$.each(arg_albums_clusters, function(ith, elem){
@@ -117,28 +116,6 @@ function showPieChart(arg_albums_clusters){
 		
 		var latlng = {lat:avg_lat, lng:avg_lng};
 		albums_clusters_latlng_set.push(latlng);
-		
-		var new_circle = L
-		.circle(
-				[ avg_lat,
-				  avg_lng ],
-				100,
-				{
-					color : 'red',
-					fillColor : '#f03',
-					fillOpacity : 0.5,
-					draggable : false
-				})
-		.addTo(
-				map)
-		.bindPopup(
-				'Group-'+ (ith + 1) +' avg. Lat:'
-						+ avg_lat
-						+ ' ; avg. Lng:'
-						+ avg_lng);
-	  avg_latlng_group
-		.addLayer(new_circle);
-	  
 	});
 	
 	// build data set for d3 pie chart
@@ -196,7 +173,7 @@ function showPieChart(arg_albums_clusters){
 	
 
 	// append groups' introduction (temp)
-	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據及相對應地圖位置)</p></div>');
+	$('div#albums_geo_location_pie_chart').append('<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據)</p></div>');
 	$.each(clusters_colors, function(ith, elem){
 		$('div#albums_groups_introduction').append('<p style="color:'+ elem +' ; font-size: 12px;">'+ 'Group-' + (ith + 1) + '&nbsp;:&nbsp;' + '<span style="color: #000;">' + arg_albums_clusters[ith].length + '</span>' + '<span style="color: #000;">&nbsp;' + albums_clusters_avg_geo_location[ith] + '&nbsp;</span>' + '</p>');
 	});
@@ -204,6 +181,7 @@ function showPieChart(arg_albums_clusters){
 	
 	/* mouse hover event */
 	var totalSize = address_points.length; // address_points is defined in albums.html (temp)
+	var avg_latlng_group = L.layerGroup();
 	
 	// fade all but the current sequence, and show it in the breadcrumb trail.
 	function mouseover(d, i) {
@@ -236,16 +214,36 @@ function showPieChart(arg_albums_clusters){
 	  var avg_latlng_popup = L.popup();
 	  var selected_avg_latlng = albums_clusters_latlng_set[i];
 	  avg_latlng_popup.setLatLng(selected_avg_latlng)
-		.setContent('Group-' + (i + 1)
-				+'<br>'
-				+ 'Avg. Lat: '
+		.setContent(
+				'Lat: '
 						+ selected_avg_latlng.lat
 						+ '<br>'
-						+ 'Avg. Lng: '
+						+ 'Lng: '
 						+ selected_avg_latlng.lng)
-		.openOn(map);
+		.openOn(
+				map);
 	  
-	  map.setView({lat:selected_avg_latlng.lat, lng:selected_avg_latlng.lng},10);
+	  var new_circle = L
+		.circle(
+				[ selected_avg_latlng.lat,
+				  selected_avg_latlng.lng ],
+				500,
+				{
+					color : 'red',
+					fillColor : '#f03',
+					fillOpacity : 0.5,
+					draggable : false
+				})
+		.addTo(
+				map)
+		.bindPopup(
+				'My position is Lat:'
+						+ selected_avg_latlng.lat
+						+ ' ; Lon:'
+						+ selected_avg_latlng.lng);
+	  avg_latlng_group
+		.addLayer(new_circle);
+
 	}
 
 	// Restore everything to full opacity when moving off the visualization.
