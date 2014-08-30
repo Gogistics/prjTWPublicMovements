@@ -4,7 +4,6 @@ Created on Jun 24, 2014
 
 @author: Alan Tai
 '''
-from models.models_geo_info import NewAlbumGeoInfo
 __author__ = 'Alan Tai'
 
 
@@ -32,12 +31,33 @@ class CollapsibleTreeDemoDispatcher(BaseHandler):
         template_values.update({'title':u'柯文哲-MA柯P'})
         self.render_template('/demos/collapsible_tree_chart.html', template_values)
 
-class LineChartDemoDispatcher(BaseHandler):
+class BarsChartDemoDispatcher(BaseHandler):
     def get(self):
         """ collpasible tree dispatcher """
         template_values = {}
         template_values.update({'title':u'柯文哲-MA柯P'})
-        self.render_template('/demos/line_chart.html', template_values)
+        self.render_template('/demos/bars_chart.html', template_values)
+        
+class StackBarsChartDemoDispatcher(BaseHandler):
+    def get(self):
+        """ collpasible tree dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯文哲-MA柯P'})
+        self.render_template('/demos/stacked_bars_charts.html', template_values)
+        
+class SortableBarsChartDemoDispatcher(BaseHandler):
+    def get(self):
+        """ collpasible tree dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯文哲-MA柯P'})
+        self.render_template('/demos/sortable_bars_chart.html', template_values)
+        
+class DashBoardDemoDispatcher(BaseHandler):
+    def get(self):
+        """ collpasible tree dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯文哲-MA柯P'})
+        self.render_template('/demos/dash_board.html', template_values)
 
 
 # configuration
@@ -46,7 +66,10 @@ config = dict_general.config_setting
 # app
 app = webapp2.WSGIApplication([
     webapp2.Route(r'/demos/collapsible_tree_chart', CollapsibleTreeDemoDispatcher, name='collapsible_tree_chart'),
-    webapp2.Route(r'/demos/line_chart', LineChartDemoDispatcher, name='line_chart')
+    webapp2.Route(r'/demos/line_chart', BarsChartDemoDispatcher, name='line_chart'),
+    webapp2.Route(r'/demos/stacked_bars_charts', StackBarsChartDemoDispatcher, name='stacked_bars_charts'),
+    webapp2.Route(r'/demos/sortable_bars_chart', SortableBarsChartDemoDispatcher, name='sortable_bars_chart'),
+    webapp2.Route(r'/demos/dash_board_chart', DashBoardDemoDispatcher, name='dash_board_chart')
 ], debug=True, config=config)
 
 # log
