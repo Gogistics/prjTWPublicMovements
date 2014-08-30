@@ -321,7 +321,6 @@ treeJSON = d3.json("/mis/flare.json", function(error, treeData) {
     }
 
     var overCircle = function(d) {
-    	alert(d.value);
         selectedNode = d;
         updateTempConnector();
     };
@@ -390,7 +389,6 @@ treeJSON = d3.json("/mis/flare.json", function(error, treeData) {
 
     function click(d) {
         if (d3.event.defaultPrevented) return; // click suppressed
-        if (typeof(d.size) !== 'undefined') {alert(d.size);}else{alert('check its children for selected value');}
         d = toggleChildren(d);
         update(d);
         centerNode(d);

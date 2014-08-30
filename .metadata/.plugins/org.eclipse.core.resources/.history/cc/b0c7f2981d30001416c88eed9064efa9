@@ -390,7 +390,7 @@ treeJSON = d3.json("/mis/flare.json", function(error, treeData) {
 
     function click(d) {
         if (d3.event.defaultPrevented) return; // click suppressed
-        if (typeof(d.size) !== 'undefined') {alert(d.size);}else{alert('check its children for selected value');}
+        alert(d);
         d = toggleChildren(d);
         update(d);
         centerNode(d);

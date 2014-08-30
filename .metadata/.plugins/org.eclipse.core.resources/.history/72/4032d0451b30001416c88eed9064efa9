@@ -6,13 +6,13 @@
             "name": "cluster",
             "children": [{
                 "name": "AgglomerativeCluster",
-                "size": 13938
+                "size": 3938
             }, {
                 "name": "CommunityStructure",
                 "size": 3812
             }, {
                 "name": "HierarchicalCluster",
-                "size": 36714
+                "size": 6714
             }, {
                 "name": "MergeEdge",
                 "size": 743

@@ -7,8 +7,6 @@
 
 <!-- js block -->
 {% block js_content %}
-<script type="text/javascript"
-	src="/leaflet/animated-markers-leaflet-plugin.js"></script>
 {% endblock %} {% block main_content %}
 <div id="map_kp_journey"
 	style="height: 100%; width: 100%; margin: 0px auto; z-index: 1; position: fixed;">

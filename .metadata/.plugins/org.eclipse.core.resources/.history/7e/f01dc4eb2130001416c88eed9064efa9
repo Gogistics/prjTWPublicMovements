@@ -238,7 +238,7 @@ function MainController($sce, kptService) {
 	}
 	;
 
-	// click article title to get corresponding article, then show the corresponding content on the view
+	// click article title to get corresponding article, then show content on the view
 	function clickOnArticle($event, article) {
 		if (typeof ($event) != 'undefined') {
 			$event.preventDefault();
