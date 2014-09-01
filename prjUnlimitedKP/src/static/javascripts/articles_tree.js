@@ -36,16 +36,16 @@ $.get("http://api.kptaipei.tw/v1/"
 					//console.log(JSON.stringify(tree_data, 2, 2));
 				}).then(function(){
 					if(ind === treeData.data.length - 1){
-						console.log(ind + ' ; ' + treeData.data.length );
+						//console.log(ind + ' ; ' + treeData.data.length );
 						tree_data = JSON.decycle(tree_data, 2, 2);
 
 						// delete elements which will not o be used in object
-						delete treeData['x0'];
-						delete treeData['y0'];
-						delete treeData['x'];
-						delete treeData['x'];
-						delete treeData['depth'];
-						delete treeData['id'];
+						delete tree_data['x0'];
+						delete tree_data['y0'];
+						delete tree_data['x'];
+						delete tree_data['x'];
+						delete tree_data['depth'];
+						delete tree_data['id'];
 
 						// create tree
 						update_tree(tree_data);
@@ -68,7 +68,7 @@ function update_tree(treeData) {
     var panBoundary = 50; // Within 20px from edges will pan when dragging.
     // Misc. variables
     var i = 0;
-    var duration = 1500;
+    var duration = 500;
     var root;
 
     // size of the diagram

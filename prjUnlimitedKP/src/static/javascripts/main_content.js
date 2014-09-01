@@ -220,7 +220,6 @@ function MainController($sce, kptService) {
 			//get all categories
 			vm.clickOnCategory(item.id);
 		});
-		// get articles tree data
 		
 		// get first articles category
 		// vm.clickOnCategory(initial_category_id);
