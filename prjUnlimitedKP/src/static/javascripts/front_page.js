@@ -3,8 +3,8 @@ var map;
 (function() {
 
 	// map attr. info.
-	var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
-			+ '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+	var mbAttr = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, '
+			+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
 			+ 'Imagery © <a href="http://mapbox.com">Mapbox</a>', mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
 	// gray scale map
@@ -206,7 +206,7 @@ var map;
 		}
 	}
 
-	// start animation after 500 mil-sec
+	// start animation
 	do_animation();
 	/* end of animation */
 }());

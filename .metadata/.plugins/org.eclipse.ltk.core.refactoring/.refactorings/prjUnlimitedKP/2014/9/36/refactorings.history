@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;prjUnlimitedKP/src/static/templates/base/articles_collapsible_tree.html&apos; to &apos;articles_tree.html&apos;" description="Rename resource &apos;articles_collapsible_tree.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/static/templates/base/articles_collapsible_tree.html" name="articles_tree.html" stamp="1409541401998" updateReferences="true"/>
+</session>

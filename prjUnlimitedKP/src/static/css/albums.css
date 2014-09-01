@@ -23,6 +23,21 @@
 	.album:hover{
 		cursor: pointer;
 	}
+	
+	/* pie chart */
+	.pie_segment{
+	transition: opacity 1 ease-in;
+	-o-transition: opacity 1 ease-in;
+	-moz-transition: opacity 1 ease-in;
+	-webkit-transition: opacity 1 ease-in;
+	}
+	.pie_segment:hover{
+	opacity: 0.3;
+	border: solid #000 1px;
+	}
+	.chart_label{
+	font-size: 12px;
+	}
 
 	/* override ng_controller */
 	.ng_controller {

@@ -6,7 +6,9 @@
 {% endblock %}
 
 <!-- js block -->
-{% block js_content %} {% endblock %} {% block content %}
+{% block js_content %}
+<script type="text/javascript" src="/js/articles_tree.js"></script>
+{% endblock %} {% block content %}
 <div ng-controller="MainCtrl as main" class="ng_controller">
 	<div class="col-md-4 list_block">
 		<h2>文章類別目錄</h2>

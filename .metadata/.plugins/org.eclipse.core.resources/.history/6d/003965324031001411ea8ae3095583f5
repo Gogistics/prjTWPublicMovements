@@ -1,0 +1,313 @@
+/*
+ * 
+ * Markers Clusters on OpenStreetMap
+ * Tools: Leaflet & JQuery
+ * Leaflet is for handling events on OpenStreetMap
+ * JQuery is for animation 
+ * 
+ * */
+
+//-- not applied yet --
+//trigger flags; if the value is true, then do the data visualization
+var trigger_flag = {
+	is_map_markers_cluster_ready : false,
+	is_donnut_chart_ready : false
+}
+// -- not applied yet --
+
+// close map (temp)
+$('#close_map').click(function() {
+	$('#map_albums').toggle("slow");
+});
+
+// show map
+$('#btn_show_map_markers_cluster').click(
+		function() {
+			$('#map_albums').toggle(
+					"slow",
+					function() {
+						leaflet_map.init_map();
+						// show pie chart
+						if (typeof (albums_clusters) !== 'undefined'
+								&& $('#albums_geo_location_pie_chart').has(
+										'svg').length < 1) {
+							// show pie map
+							showPieChart(leaflet_map.map, albums_clusters);
+						}
+					});
+
+		});
+
+
+
+
+
+
+// map setting
+var leaflet_map = {
+	map : undefined,
+	tiles : undefined,
+	markers : undefined,
+	my_icon : undefined,
+	init_map : function() {
+		// init map
+		if (typeof (this.map) === 'undefined') {
+					/* leaflet marker cluster */
+					this.tiles = L
+							.tileLayer(
+									'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+									{
+										maxZoom : 16,
+										attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+									}), latlng = L.latLng(album_map_center_lat,
+							album_map_center_lng); // replace the geo location
+													// with average of all geo
+													// data ; 22.639673,
+													// 120.301826
+
+			this.map = L.map('map_markers_cluster', {
+				center : latlng,
+				zoom : 8,
+				layers : [ this.tiles ]
+			});
+
+			/* cluster */
+			this.markers = L.markerClusterGroup();
+
+			/* marker config */
+			    this.my_icon = L.icon({
+				iconUrl : '/leaflet/images/kp_icon_2.png',
+				shadowUrl : '/leaflet/images/marker-shadow.png',
+
+				iconSize : [ 48, 50 ],
+				shadowSize : [ 50, 50 ],
+				iconAnchor : [ 25, 49 ],
+				shadowAnchor : [ 12, 48 ],
+				popupAnchor : [ -3, -43 ]
+			});
+
+			// address_points is defined and obtained in albums.html
+			if (typeof (address_points) !== 'undefined') {
+				for ( var i = 0; i < address_points.length; i++) {
+					var a = address_points[i];
+					var title = a['album_title'];
+					var popup_content = a['album_popup_content'];
+					var marker = L.marker(new L.LatLng(a['album_lat'],
+							a['album_lng']), {
+						title : title,
+						icon : this.my_icon
+					});
+					marker.bindPopup(popup_content, {
+						maxHeight : 500,
+						keepInView : true
+					});
+					this.markers.addLayer(marker);
+				}
+				this.map.addLayer(this.markers);
+			}
+		}
+	},
+	move_map : function(arg_i, arg_albums_clusters_latlng){
+		
+		var avg_latlng_popup = L.popup();
+		var selected_avg_latlng = arg_albums_clusters_latlng;
+		avg_latlng_popup.setLatLng(selected_avg_latlng).setContent(
+				'Group-' + (arg_i + 1) + '<br>' + 'Avg. Lat: '
+						+ selected_avg_latlng.lat + '<br>' + 'Avg. Lng: '
+						+ selected_avg_latlng.lng).openOn(this.map);
+		this.map.setView({
+			lat : selected_avg_latlng.lat,
+			lng : selected_avg_latlng.lng
+		}, 10, {
+			animation : true
+		});
+	}
+// end show markers cluster
+}
+
+
+/*
+ * 
+ * Pie Chart Tools: D3
+ * 
+ */
+
+function showPieChart(arg_map, arg_albums_clusters) {
+	// variables for sorting info
+	var albums_clusters_size = [], albums_clusters_avg_geo_location = [], albums_clusters_latlng_set = [], clusters_colors = [];
+	var avg_latlng_group = []; // avg. latlng layers on map
+
+	// retrieve data from each element
+	$.each(arg_albums_clusters, function(ith, elem) {
+		console.log('Group-' + (ith + 1) + ' ; Size-' + elem.length);
+		albums_clusters_size.push(elem.length);
+
+		// variables related to latlng for calculating avg. latlng
+		var sum_lat = 0, sum_lng = 0, avg_lat = 0, avg_lng = 0;
+		$.each(elem, function(sub_ith, sub_elem) {
+			sum_lat += sub_elem.album_lat;
+			sum_lng += sub_elem.album_lng;
+		});
+		avg_lat = (sum_lat / elem.length).toFixed(6);
+		avg_lng = (sum_lng / elem.length).toFixed(6);
+
+		// info string
+		var avg_geo_location = '(Avg. Lat: ' + avg_lat + '&nbsp;;&nbsp;'
+				+ 'Avg. Lng: ' + avg_lng + ')';
+		albums_clusters_avg_geo_location.push(avg_geo_location);
+
+		var latlng = {
+			lat : avg_lat,
+			lng : avg_lng
+		};
+		albums_clusters_latlng_set.push(latlng);
+
+		var new_circle = L.circle([ avg_lat, avg_lng ], 100, {
+			color : 'red',
+			fillColor : '#f03',
+			fillOpacity : 0.5,
+			draggable : false
+		}).bindPopup(
+				'Group-' + (ith + 1) + ' avg. Lat:' + avg_lat + ' ; avg. Lng:'
+						+ avg_lng).on('click', function(e) {
+
+			this._map.setView({
+				lat : avg_lat,
+				lng : avg_lng
+			});
+		}).addTo(arg_map);
+
+	});
+
+	// build data set for d3 pie chart
+	var albums_clusters = {
+		label : '活動分佈比例圖',
+		pct : albums_clusters_size
+	}, data = albums_clusters;
+
+	// variables config
+	var w = 320, // width and height, natch
+	h = 320, r = Math.min(w, h) / 2, // arc radius
+	dur = 750, // duration, in milliseconds
+	color = d3.scale.category20(), // color category
+	donut = d3.layout.pie().sort(null), arc = d3.svg.arc().innerRadius(r - 80)
+			.outerRadius(r - 20);
+
+	// init svg
+	var svg = d3.select("div#albums_geo_location_pie_chart").append("svg:svg")
+			.attr("width", w).attr("height", h).attr("id", "container");
+
+	var arc_grp = svg.append("svg:g").attr("class", "arcGrp").attr("transform",
+			"translate(" + (w / 2) + "," + (h / 2) + ")");
+
+	var label_group = svg.append("svg:g").attr("class", "lblGroup").attr(
+			"transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+
+	// group for center text
+	var center_group = svg.append("svg:g").attr("class", "ctrGroup").attr(
+			"transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+
+	// center label
+	var pieLabel = center_group.append("svg:text").attr("dy", ".35em").attr(
+			"class", "chart_label").attr("id","pie_chart_center_text").attr("text-anchor", "middle").text(
+			data.label);
+
+	// draw arc paths
+	var arcs = arc_grp.selectAll("path").data(donut(data.pct));
+	arcs.enter().append("svg:path").attr("stroke", "white").attr(
+			"stroke-width", 0.5).attr("fill", function(d, i) {
+
+		// get color corresponding to each cluster
+		console.log(color(i));
+		clusters_colors.push(color(i));
+
+		return color(i);
+	}).attr("class",
+	"pie_segment").attr("d", arc).each(function(d) {
+		this._current = d
+	}).on("mouseover", mouseover);
+
+	// append groups' introduction (temp)
+	$('div#albums_geo_location_pie_chart')
+			.append(
+					'<div id="albums_groups_introduction"><p style="font-weight: bold; font-size: 15px;">各群組活動數目統計</p><p style="font-weight: bold; font-size: 13px;">(滑鼠可移至上方扇形區域查看對應數據及相對應地圖位置)</p><div id="groups_information" style="height: 150px; overflow-y: auto;"></div></div>');
+	$.each(clusters_colors, function(ith, elem) {
+		$('div#groups_information').append(
+				'<p style="color:' + elem + ' ; font-size: 12px;">' + 'Group-'
+						+ (ith + 1) + '&nbsp;:&nbsp;'
+						+ '<span style="color: #000;">'
+						+ arg_albums_clusters[ith].length + '</span>'
+						+ '<span style="color: #000;">&nbsp;'
+						+ albums_clusters_avg_geo_location[ith]
+						+ '&nbsp;</span>' + '</p>');
+	});
+
+	/* mouse hover event */
+	var totalSize = address_points.length; // address_points is defined in
+											// albums.html (temp)
+
+	// mouseover event
+	function mouseover(d, i) {
+		
+		var update_d3_info = function(){
+			var deferred = $.Deferred();
+
+			// calculate percentage
+			var percentage = (100 * d.value / totalSize).toPrecision(3);
+			var percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage
+					+ "%"; // build brief information string
+
+			// if percentage is kind of too small, just show the percentage is
+			// smaller than 0.1%
+			if (percentage < 0.1) {
+				percentageString = "< 0.1%";
+			}
+			
+			//
+			$('text#pie_chart_center_text').text(percentageString);
+			console.log(percentageString);
+			
+			return deferred.promise();
+		};
+		
+		$.when(update_d3_info()).done(leaflet_map.move_map(i, albums_clusters_latlng_set[i]));
+		// pan map to the selected group's latlng
+		
+		//.......................................
+	}
+	/* end */
+	
+	function mouseout(d, i){
+		$('text#pie_chart_center_text').text('活動分佈比例圖');
+	}
+
+	/* functions for toggling chart (future use) */
+	// tweening arc
+	function arcTween(a) {
+		var i = d3.interpolate(this._current, a);
+		this._current = i(0);
+		return function(t) {
+			return arc(i(t));
+		};
+	}
+
+	// update chart
+	function updateChart(model) {
+		data = eval(model); // check which model is going to be used
+
+		arcs.data(donut(data.pct)); // recompute angles, re-bind data
+		arcs.transition().ease("elastic").duration(dur)
+				.attrTween("d", arcTween);
+
+		sliceLabel.data(donut(data.pct));
+		sliceLabel.transition().ease("elastic").duration(dur).attr("transform",
+				function(d) {
+					return "translate(" + arc.centroid(d) + ")";
+				}).style("fill-opacity", function(d) {
+			return d.value == 0 ? 1e-6 : 1;
+		});
+
+		pieLabel.text(data.label);
+	}
+	/* end */
+}

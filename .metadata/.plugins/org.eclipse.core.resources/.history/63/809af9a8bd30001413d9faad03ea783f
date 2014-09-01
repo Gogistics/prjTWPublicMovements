@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="taipei_mayor_candidate" content="Dr. Ke(Wen-Che Ke) / 柯文哲醫生">
+<meta name="contributors_kp_api" content="RGBA + 零時前端教學松  + 柯文哲辦公室">
+<meta name="contributor_kp_api_ng_version" content="Will Huang">
+<meta name="contributors_leafletjs" content="Vladimir Agafonkin & his team">
+<meta name="contributors_dir_pagination" content="Michael Bromley & Daniel Tabuenca">
+<meta name="contributor_markers_cluster" content="Dave Leaver">
+<meta name="contributor_marker_animation" content="Aaron Ogle">
+<meta name="author" content="Alan Tai">
+<meta name="location" content="Millbrae California 94030">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- icon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+<!-- css -->
+<!-- css/self-defined -->
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link type="text/css" rel="stylesheet" href="/css/main_content.css" />
+
+<!-- css/jquery -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	
+<!-- css/bootstrap -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<!-- css/leaflet -->
+<link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
+<style>
+.category,.article {
+	cursor: pointer;
+}
+</style>
+{% block css_content %} {% endblock %}
+
+<!-- JS -->
+
+<!-- js/jquery -->
+<script data-require="jquery@*" data-semver="2.0.3"
+	src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+
+<script type="text/javascript" src="/js/d3.js"></script>
+
+<!-- js/leaflet map -->
+<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+
+<!-- js/ng -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>	
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+<script type="text/javascript" src="/js/angular-ui-router.js"></script>
+
+<!-- bootstrap -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- self-defined -->
+<!-- base.js should be put after Angularjs -->
+<script type="text/javascript" src="/js/base.js"></script>
+{% block js_content %} {% endblock %}
+
+<title>{{ title|safe }}</title>
+</head>
+<body ng-app = "unlimited_kp_app">
+	{% block main_content %}
+	<p>NO Templates Found</p>
+	{% endblock %}
+</body>
+</html>

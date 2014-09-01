@@ -43,7 +43,7 @@ function kptService($http, API) {
 			url : API.SERVER + "videos/" + id + "?accessToken=" + API.KEY
 		});
 	}
-
+	
 	/* update albums geo info stored in Google datastore */
 	// handle geo-info
 	this.handleAlbumsGeoInfo = function(arg_new_albums){
@@ -157,7 +157,7 @@ function kptService($http, API) {
 		var min_lng = Math.min.apply(Math, ary_albums_lng);
 		
 		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
-		var threshold = (max_distance / 30).toFixed(6); //can be adjusted for different results
+		var threshold = (max_distance / 50).toFixed(6); //can be adjusted for different results
 		
 		// iterate groups
 		angular.forEach(arg_groups, function(group, ind){
@@ -195,6 +195,7 @@ function kptService($http, API) {
 
 }
 
+
 // handle articles categories corresponding content
 MainController.$injector = [ '$sce', 'kptService' ];
 function MainController($sce, kptService) {
@@ -203,10 +204,14 @@ function MainController($sce, kptService) {
 	vm.clickOnArticle = clickOnArticle;
 	vm.categories = {};
 	vm.content = $sce.trustAsHtml("請選擇文章");
+	
+	//
+	vm.temp_articles_categories = [];
 
 	kptService.getCategory("").success(function(results) {
-		console.log(results);
+		//console.log(JSON.stringify(results.data,2,2));
 		var initial_category_id;
+		
 		angular.forEach(results.data, function(item, ind) {
 			initial_category_id = initial_category_id || item.id;
 			vm.categories[item.id] = item;
@@ -215,28 +220,80 @@ function MainController($sce, kptService) {
 			//get all categories
 			vm.clickOnCategory(item.id);
 		});
+		// get articles tree data
 		
 		// get first articles category
-		vm.clickOnCategory(initial_category_id);
+		// vm.clickOnCategory(initial_category_id);
 	});
 
+	
 	function clickOnCategory(category_id) {
 		kptService.getCategory(category_id).success(function(results) {
-			console.log(results);
+			//console.log(JSON.stringify(results.data, 2, 2));
+			
 			var initial_article;
 			vm.categories[category_id].posts = [];
 			angular.forEach(results.data, function(item) {
 				initial_article = initial_article || item;
 				vm.categories[category_id].posts.push(item);
+				
 			});
-
-			// apply jquery toggle animation (temp)
+			
 			$('#article_category_' + category_id).toggle("slow");
 
 			vm.clickOnArticle(undefined, initial_article);
 		});
+	};
+	
+	/**/
+	function resolveReferences(json) {
+	    if (typeof json === 'string')
+	        json = JSON.parse(json);
+
+	    var byid = {}, // all objects by id
+	        refs = []; // references to objects that could not be resolved
+	    json = (function recurse(obj, prop, parent) {
+	        if (typeof obj !== 'object' || !obj) // a primitive value
+	            return obj;
+	        if (Object.prototype.toString.call(obj) === '[object Array]') {
+	            for (var i = 0; i < obj.length; i++)
+	                // check also if the array element is not a primitive value
+	                if (typeof obj[i] !== 'object' || !obj[i]) // a primitive value
+	                    return obj[i];
+	                else if ("$ref" in obj[i])
+	                    obj[i] = recurse(obj[i], i, obj);
+	                else
+	                    obj[i] = recurse(obj[i], prop, obj);
+	            return obj;
+	        }
+	        if ("$ref" in obj) { // a reference
+	            var ref = obj.$ref;
+	            if (ref in byid)
+	                return byid[ref];
+	            // else we have to make it lazy:
+	            refs.push([parent, prop, ref]);
+	            return;
+	        } else if ("$id" in obj) {
+	            var id = obj.$id;
+	            delete obj.$id;
+	            if ("$values" in obj) // an array
+	                obj = obj.$values.map(recurse);
+	            else // a plain object
+	                for (var prop in obj)
+	                    obj[prop] = recurse(obj[prop], prop, obj);
+	            byid[id] = obj;
+	        }
+	        return obj;
+	    })(json); // run it!
+
+	    for (var i = 0; i < refs.length; i++) { // resolve previously unknown references
+	        var ref = refs[i];
+	        ref[0][ref[1]] = byid[ref[2]];
+	        // Notice that this throws if you put in a reference at top-level
+	    }
+	    return json;
 	}
-	;
+	/**/
 
 	// click article title to get corresponding article, then show the corresponding content on the view
 	function clickOnArticle($event, article) {
@@ -247,8 +304,7 @@ function MainController($sce, kptService) {
 		
 		//set content and bind html on controller and pass it to view
 		vm.content = $sce.trustAsHtml(article.content);
-	}
-	;
+	};
 }
 
 // albums
