@@ -29,7 +29,7 @@ class CollapsibleTreeDemoDispatcher(BaseHandler):
         """ collpasible tree dispatcher """
         template_values = {}
         template_values.update({'title':u'柯文哲-MA柯P'})
-        self.render_template('/demos/collapsible_tree_chart.html', template_values)
+        self.render_template('/base/articles_tree.html', template_values)
 
 class BarsChartDemoDispatcher(BaseHandler):
     def get(self):
