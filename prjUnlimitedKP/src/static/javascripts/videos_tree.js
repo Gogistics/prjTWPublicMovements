@@ -33,7 +33,7 @@ $.get("http://api.kptaipei.tw/v1/"
 					temp_articles_categories.push(temp_articles_obj);
 
 
-					tree_data['name'] = '柯文集';
+					tree_data['name'] = '柯影集';
 					tree_data['children'] = temp_articles_categories;
 					//console.log(JSON.stringify(tree_data, 2, 2));
 				}).then(function(){
@@ -42,23 +42,16 @@ $.get("http://api.kptaipei.tw/v1/"
 						tree_data = JSON.decycle(tree_data, 2, 2);
 
 						// delete elements which will not o be used in object
-						delete tree_data['x0'];
-						delete tree_data['y0'];
-						delete tree_data['x'];
-						delete tree_data['x'];
-						delete tree_data['depth'];
-						delete tree_data['id'];
-
-						//console.log(JSON.stringify(tree_data,2,2));
+						
 						// create tree
-						update_tree(tree_data);
+						create_tree(tree_data);
 					}
 				});
 
 			});
 		});
 //Get JSON data
-function update_tree(treeData) {
+function create_tree(treeData) {
 	
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -113,17 +106,17 @@ function update_tree(treeData) {
 
 
     // sort the tree according to the node names
-
     function sortTree() {
         tree.sort(function(a, b) {
             return b.name.toLowerCase() < a.name.toLowerCase() ? 1 : -1;
         });
     }
-    // Sort the tree initially incase the JSON isn't in a sorted order.
-    sortTree();
+    // Sort the tree initially in case the JSON isn't in a sorted order.
+    
+    /* stop sorting */
+    //sortTree();
 
-    // TODO: Pan function, can be better implemented.
-
+    // Pan function, can be better implemented.
     function pan(domNode, direction) {
         var speed = panSpeed;
         if (panTimer) {
@@ -301,7 +294,6 @@ function update_tree(treeData) {
     }
 
     // Helper functions for collapsing and expanding nodes.
-
     function collapse(d) {
         if (d.children) {
             d._children = d.children;
@@ -357,7 +349,6 @@ function update_tree(treeData) {
     };
 
     // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
-
     function centerNode(source) {
         scale = zoomListener.scale();
         x = -source.y0;
@@ -578,6 +569,8 @@ function update_tree(treeData) {
     root.y0 = 0;
 
     // Layout the tree initially and center on the root node.
+    
+    toggleChildren(root);
     update(root);
     centerNode(root);
 };

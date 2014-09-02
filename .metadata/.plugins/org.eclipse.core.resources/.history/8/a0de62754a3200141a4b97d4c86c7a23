@@ -1,54 +1,66 @@
-var tree_data = {};
-var temp_articles_categories = [];
-$.get("http://api.kptaipei.tw/v1/"
-		+ "category/?accessToken=kp53f5626b5f4bd7.27954991",
-		function(treeData) {
-			// console.log(JSON.stringify(treeData, 2, 2));
+{% extends "/base/base.html"%}
 
-			$.each(treeData.data, function(ind, item) {
-				$.get("http://api.kptaipei.tw/v1/" + "category/" + item.id
-						+ "?accessToken=kp53f5626b5f4bd7.27954991", function(
-						results) {
-					// console.log(JSON.stringify(results,2,2));
+<!-- css block -->
+{% block css_content %}
+<style type="text/css">
+  
+	.node {
+    cursor: pointer;
+  }
 
-					var temp_articles_category = [];
-					var temp_articles_obj = {};
-					var category_name;
+  .overlay{
+      background-color:#EEE;
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-size:15px; 
+    font-family:sans-serif;
+  }
+   
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
 
-					$.each(results.data, function(ind, item) {
-						//console.log(item.title);
-						var temp_article_detail = {};
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
 
-						temp_article_detail['name'] = item.title;
-						temp_article_detail['size'] = item.id;
-						temp_article_detail['link'] = item.url;
-						category_name = item.category_name;
+  .ghostCircle.show{
+      display:block;
+  }
 
-						temp_articles_category.push(temp_article_detail);
-					});
-					temp_articles_obj['name'] = category_name;
-					temp_articles_obj['children'] = temp_articles_category;
-					temp_articles_categories.push(temp_articles_obj);
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
 
+</style>
+{% endblock %}
 
-					tree_data['name'] = '柯文集';
-					tree_data['children'] = temp_articles_categories;
-					//console.log(JSON.stringify(tree_data, 2, 2));
-				}).then(function(){
-					if(ind === treeData.data.length - 1){
-						//console.log(ind + ' ; ' + treeData.data.length );
-						tree_data = JSON.decycle(tree_data, 2, 2);
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+{% endblock %}
 
-						// create tree
-						update_tree(tree_data);
-					}
-				});
+{% block main_content %}
+<div id="tree-container"></div>
 
-			});
-		});
+<!-- js -->
+<script type="text/javascript">
+<!--
 //Get JSON data
-function update_tree(treeData) {
-	
+treeJSON = d3.json("/mis/flare.json", function(error, treeData) {
+	console.log(JSON.stringify(treeData,2,2));
+
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
@@ -56,11 +68,11 @@ function update_tree(treeData) {
     var selectedNode = null;
     var draggingNode = null;
     // panning variables
-    var panSpeed = 2000;
-    var panBoundary = 50; // Within 20px from edges will pan when dragging.
+    var panSpeed = 200;
+    var panBoundary = 20; // Within 20px from edges will pan when dragging.
     // Misc. variables
     var i = 0;
-    var duration = 500;
+    var duration = 750;
     var root;
 
     // size of the diagram
@@ -377,9 +389,7 @@ function update_tree(treeData) {
 
     function click(d) {
         if (d3.event.defaultPrevented) return; // click suppressed
-        if (typeof(d.link) !== 'undefined') {
-        	window.open(d.link,'_blank');
-        	}
+        if (typeof(d.size) !== 'undefined') {alert(d.size);}else{alert('check its children for selected value');}
         d = toggleChildren(d);
         update(d);
         centerNode(d);
@@ -567,7 +577,9 @@ function update_tree(treeData) {
     root.y0 = 0;
 
     // Layout the tree initially and center on the root node.
-    toggleChildren(root);
     update(root);
     centerNode(root);
-};
+});
+//-->
+</script>
+{% endblock %}

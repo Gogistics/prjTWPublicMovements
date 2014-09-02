@@ -567,7 +567,6 @@ function update_tree(treeData) {
     root.y0 = 0;
 
     // Layout the tree initially and center on the root node.
-    toggleChildren(root);
     update(root);
     centerNode(root);
 };

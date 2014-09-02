@@ -1,15 +1,18 @@
 var tree_data = {};
 var temp_articles_categories = [];
 $.get("http://api.kptaipei.tw/v1/"
-		+ "category/?accessToken=kp53f5626b5f4bd7.27954991",
+		+ "videos/?accessToken=kp53f5626b5f4bd7.27954991",
 		function(treeData) {
 			// console.log(JSON.stringify(treeData, 2, 2));
 
 			$.each(treeData.data, function(ind, item) {
-				$.get("http://api.kptaipei.tw/v1/" + "category/" + item.id
+
+				var category_title = item.title;
+				
+				$.get("http://api.kptaipei.tw/v1/" + "videos/" + item.id
 						+ "?accessToken=kp53f5626b5f4bd7.27954991", function(
 						results) {
-					// console.log(JSON.stringify(results,2,2));
+					console.log(JSON.stringify(results,2,2));
 
 					var temp_articles_category = [];
 					var temp_articles_obj = {};
@@ -21,17 +24,16 @@ $.get("http://api.kptaipei.tw/v1/"
 
 						temp_article_detail['name'] = item.title;
 						temp_article_detail['size'] = item.id;
-						temp_article_detail['link'] = item.url;
-						category_name = item.category_name;
+						temp_article_detail['link'] = item.link;
 
 						temp_articles_category.push(temp_article_detail);
 					});
-					temp_articles_obj['name'] = category_name;
+					temp_articles_obj['name'] = category_title;
 					temp_articles_obj['children'] = temp_articles_category;
 					temp_articles_categories.push(temp_articles_obj);
 
 
-					tree_data['name'] = '柯文集';
+					tree_data['name'] = '柯影集';
 					tree_data['children'] = temp_articles_categories;
 					//console.log(JSON.stringify(tree_data, 2, 2));
 				}).then(function(){
@@ -39,6 +41,15 @@ $.get("http://api.kptaipei.tw/v1/"
 						//console.log(ind + ' ; ' + treeData.data.length );
 						tree_data = JSON.decycle(tree_data, 2, 2);
 
+						// delete elements which will not o be used in object
+						/*delete tree_data['x0'];
+						delete tree_data['y0'];
+						delete tree_data['x'];
+						delete tree_data['x'];
+						delete tree_data['depth'];
+						delete tree_data['id'];*/
+
+						//console.log(JSON.stringify(tree_data,2,2));
 						// create tree
 						update_tree(tree_data);
 					}
@@ -567,7 +578,6 @@ function update_tree(treeData) {
     root.y0 = 0;
 
     // Layout the tree initially and center on the root node.
-    toggleChildren(root);
     update(root);
     centerNode(root);
 };

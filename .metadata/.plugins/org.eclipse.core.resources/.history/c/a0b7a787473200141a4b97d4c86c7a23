@@ -39,6 +39,14 @@ $.get("http://api.kptaipei.tw/v1/"
 						//console.log(ind + ' ; ' + treeData.data.length );
 						tree_data = JSON.decycle(tree_data, 2, 2);
 
+						// delete elements which will not o be used in object
+						/*delete tree_data['x0'];
+						delete tree_data['y0'];
+						delete tree_data['x'];
+						delete tree_data['x'];
+						delete tree_data['depth'];
+						delete tree_data['id'];*/
+
 						// create tree
 						update_tree(tree_data);
 					}
@@ -567,7 +575,7 @@ function update_tree(treeData) {
     root.y0 = 0;
 
     // Layout the tree initially and center on the root node.
-    toggleChildren(root);
     update(root);
     centerNode(root);
+    toggleChildren(root);
 };
