@@ -19,7 +19,7 @@
 
 <!-- content block -->
 {% block content %}
-<div class="ng_controller" ng-controller="AlbumCtrl as album" style="z-index: 10;">
+<div class="ng_controller" ng-controller="AlbumCtrl as album" style="z-index: 10; height: 100%;">
 	<div class="col-md-4 list_block">
 		<h2>相簿目錄</h2>
 

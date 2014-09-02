@@ -92,7 +92,7 @@
 
 <!-- map cluster for albums -->
 <div id="map_albums"
-	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto">
 	<!-- temp button of closing albums map -->
 	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
 		style=" position: fixed; top: 20px; left: 20px; width: 30px;">
