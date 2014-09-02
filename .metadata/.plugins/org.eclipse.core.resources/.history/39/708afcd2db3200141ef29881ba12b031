@@ -144,7 +144,7 @@ function kptService($http, API) {
 		return groups; //clustering result
 	};
 	
-	//cluster albums based on geo-location ; current version is simple and is better to go through iteration for optimization
+	//cluster albums based on geo-location
 	this.clusterItem = function(arg_groups, arg_item){
 		//assign new item to each group
 		//var temp_groups = [];
