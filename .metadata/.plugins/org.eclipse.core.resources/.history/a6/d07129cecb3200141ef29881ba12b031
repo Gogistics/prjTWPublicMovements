@@ -1,0 +1,472 @@
+/*
+ *  init ng-app controllers and the service
+ *  original version was contributed by Will Huang(保哥) and modified by Alan Tai
+ *  Tools: Angularjs & JQuery (for animation)
+ *  
+ *   */
+
+kp_app.value('API', {
+	KEY : "kp53f5626b5f4bd7.27954991", // personal api key
+	SERVER : "http://api.kptaipei.tw/v1/"
+}).controller('MainCtrl', MainController).controller('AlbumCtrl',
+		AlbumController).controller('VideoCtrl', VideoController).controller(
+		'PaginationCtrl', PaginationController) // dir pagination
+.service('kptService', kptService);
+
+// service for retrieving data
+kptService.$injector = [ '$http', 'API' ];
+function kptService($http, API) {
+
+	// get articles category
+	this.getCategory = function(id) {
+		console.log(API.SERVER + "category/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "category/" + id + "?accessToken=" + API.KEY
+		});
+	};
+
+	// get albums category
+	this.getAlbums = function(id) {
+		console.log(API.SERVER + "albums/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "albums/" + id + "?accessToken=" + API.KEY
+		})
+	};
+
+	// get videos category
+	this.getVideos = function(id) {
+		console.log(API.SERVER + "videos/" + id + "?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "videos/" + id + "?accessToken=" + API.KEY
+		});
+	}
+	
+	/* update albums geo info stored in Google datastore */
+	// handle geo-info
+	this.handleAlbumsGeoInfo = function(arg_new_albums){
+		var geo_info_albums = {};
+		//loop through albums info; temp latlng is set as (25.052063, 121.529980)
+		angular.forEach(arg_new_albums, function(item, ind) {
+			geo_info_albums[item.id] = {
+				'album_title' : item.title,
+				'album_description' : item.description,
+				'album_thumbnail' : item.thumbnails.medium,
+				'album_link' : item.link,
+				'album_lat' : 25.052063,
+				'album_lng' : 121.529980
+			};
+		});
+
+		// original_geo_info is defined in albums.html and retrieved from database
+		var diff_elems = {};
+		if(typeof(original_geo_info) === 'undefined'){
+			//loop through all info
+			diff_elems = geo_info_albums;
+			
+			console.log(diff_elems);
+		}
+		else if(typeof(original_geo_info) !== 'undefined'
+			&& typeof (geo_info_albums) !== 'undefined'){
+			// get keys set for both original and new sets of albums info
+			var keys_new_geo_info = Object.keys(geo_info_albums);
+			var keys_original_geo_info = Object.keys(original_geo_info);
+			
+			//get diff keys
+			diff_keys = this.getDiff(keys_new_geo_info, keys_original_geo_info);
+			
+			//get filtered info set
+			angular.forEach(diff_keys, function(item,ind){
+				diff_elems[item] = geo_info_albums[item];
+			});
+			
+			//console.log(JSON.stringify(diff_elems, 2, 2));
+		}
+		
+		// if there exist any key, then send new data to server for database update
+		if(Object.keys(diff_elems).length > 0){
+			// put diff_elems into $.param and will be send to backend
+			var geo_data = $.param({'geo_data':JSON.stringify(diff_elems, 2, 2)});
+			
+			// use $http post to send data back to server and save data in Google datastore
+			var response_promise = $http({
+	            url: '/albums/geo_info_handler',
+	            method: "POST",
+	            data: geo_data,
+	            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	        });
+			
+			// success handler
+			response_promise.success(function(data, status, headers, config) {
+                console.log(data.processing_status);
+            });
+			// fail handler
+			response_promise.error(function(data, status, headers, config) {
+                console.log("AJAX failed! " + status);
+            });
+		}
+		else{
+			console.log('Nothing needs to update')
+		}
+	};
+
+	// filter the new albums info; currently jQuery is doing this task
+	this.getDiff = function(arg_update_geo_info, arg_original_albums_geo_info) {
+		return $(arg_update_geo_info).not(arg_original_albums_geo_info).get();
+	};
+	// end of "handle geo-info"
+	
+	//simple cluster for grouping albums based on geo-location
+	this.clusterAlbumsGeoLocations = function(){
+		var groups;
+		
+		if (typeof(address_points) !== 'undefined' && address_points.length > 0){
+			//init group
+			groups = [];
+			
+			//start clusetring
+			angular.forEach(address_points, function(item, ind){
+				
+				// if no group exists, then create one and push the first element to the array
+				if(groups.length <= 0){
+					groups.push([item]);
+				}
+				else{
+					// clustering process
+					groups = this.clusterItem(groups, item);
+				}
+			}, this);
+			
+		}
+		
+		return groups; //clustering result
+	};
+	
+	//cluster albums based on geo-location
+	this.clusterItem = function(arg_groups, arg_item){
+		//assign new item to each group
+		//var temp_groups = [];
+		var evaluation_result = []; //analyze temp_groups
+		
+		// calculate threshold ; ary_albums_lat & ary_albums_lng from albums.html
+		var max_lat = Math.max.apply(Math, ary_albums_lat);
+		var min_lat = Math.min.apply(Math, ary_albums_lat);
+		var max_lng = Math.max.apply(Math, ary_albums_lng);
+		var min_lng = Math.min.apply(Math, ary_albums_lng);
+		
+		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
+		var threshold = (max_distance / 50).toFixed(6); //can be adjusted for different results
+		
+		// iterate groups
+		angular.forEach(arg_groups, function(group, ind){
+			//puhs new item temp group for evaluation
+			//group.push(arg_item);
+			
+			var total_amount = 0, sum_lat = 0, sum_lng = 0, avg_lat = 0, avg_lng = 0;
+			angular.forEach(group, function(item, ind){
+				total_amount += 1;
+				sum_lat += item['album_lat'];
+				sum_lng += item['album_lng'];
+			});
+			avg_lat = (sum_lat / total_amount).toFixed(6);
+			avg_lng = (sum_lng /total_amount).toFixed(6);
+			
+			//calculate the distance from new address point to centroid of the current group
+			var distance = Math.sqrt( Math.pow((avg_lat - arg_item['album_lat']), 2) + Math.pow((avg_lng - arg_item['album_lng']), 2)).toFixed(2);
+			
+			//push calculated result into to evaluation array
+			evaluation_result.push(Number(distance));
+		});
+		
+		
+		//find min
+		var min_distance = Math.min.apply(Math, evaluation_result);
+		var group_index = evaluation_result.indexOf(min_distance);
+		//update groups
+		if(min_distance <= threshold ){
+			arg_groups[group_index].push(arg_item);
+		}else{
+			arg_groups.push([arg_item]);
+		}
+		return arg_groups;
+	};
+
+}
+
+
+// handle articles categories corresponding content
+MainController.$injector = [ '$sce', 'kptService' ];
+function MainController($sce, kptService) {
+	var vm = this;
+	vm.clickOnCategory = clickOnCategory;
+	vm.clickOnArticle = clickOnArticle;
+	vm.categories = {};
+	vm.content = $sce.trustAsHtml("請選擇文章");
+	
+	//
+	vm.temp_articles_categories = [];
+
+	kptService.getCategory("").success(function(results) {
+		//console.log(JSON.stringify(results.data,2,2));
+		var initial_category_id;
+		
+		angular.forEach(results.data, function(item, ind) {
+			initial_category_id = initial_category_id || item.id;
+			vm.categories[item.id] = item;
+			vm.categories[item.id].posts = [];
+			
+			//get all categories
+			vm.clickOnCategory(item.id);
+		});
+		
+		// get first articles category
+		// vm.clickOnCategory(initial_category_id);
+	});
+
+	
+	function clickOnCategory(category_id) {
+		kptService.getCategory(category_id).success(function(results) {
+			//console.log(JSON.stringify(results.data, 2, 2));
+			
+			var initial_article;
+			vm.categories[category_id].posts = [];
+			angular.forEach(results.data, function(item) {
+				initial_article = initial_article || item;
+				vm.categories[category_id].posts.push(item);
+				
+			});
+			
+			$('#article_category_' + category_id).toggle("slow");
+
+			vm.clickOnArticle(undefined, initial_article);
+		});
+	};
+	
+	/**/
+	function resolveReferences(json) {
+	    if (typeof json === 'string')
+	        json = JSON.parse(json);
+
+	    var byid = {}, // all objects by id
+	        refs = []; // references to objects that could not be resolved
+	    json = (function recurse(obj, prop, parent) {
+	        if (typeof obj !== 'object' || !obj) // a primitive value
+	            return obj;
+	        if (Object.prototype.toString.call(obj) === '[object Array]') {
+	            for (var i = 0; i < obj.length; i++)
+	                // check also if the array element is not a primitive value
+	                if (typeof obj[i] !== 'object' || !obj[i]) // a primitive value
+	                    return obj[i];
+	                else if ("$ref" in obj[i])
+	                    obj[i] = recurse(obj[i], i, obj);
+	                else
+	                    obj[i] = recurse(obj[i], prop, obj);
+	            return obj;
+	        }
+	        if ("$ref" in obj) { // a reference
+	            var ref = obj.$ref;
+	            if (ref in byid)
+	                return byid[ref];
+	            // else we have to make it lazy:
+	            refs.push([parent, prop, ref]);
+	            return;
+	        } else if ("$id" in obj) {
+	            var id = obj.$id;
+	            delete obj.$id;
+	            if ("$values" in obj) // an array
+	                obj = obj.$values.map(recurse);
+	            else // a plain object
+	                for (var prop in obj)
+	                    obj[prop] = recurse(obj[prop], prop, obj);
+	            byid[id] = obj;
+	        }
+	        return obj;
+	    })(json); // run it!
+
+	    for (var i = 0; i < refs.length; i++) { // resolve previously unknown references
+	        var ref = refs[i];
+	        ref[0][ref[1]] = byid[ref[2]];
+	        // Notice that this throws if you put in a reference at top-level
+	    }
+	    return json;
+	}
+	/**/
+
+	// click article title to get corresponding article, then show the corresponding content on the view
+	function clickOnArticle($event, article) {
+		if (typeof ($event) != 'undefined') {
+			$event.preventDefault();
+			$event.stopPropagation();
+		}
+		
+		//set content and bind html on controller and pass it to view
+		vm.content = $sce.trustAsHtml(article.content);
+	};
+}
+
+// albums
+AlbumController.$injector = [ '$sce', 'kptService' ];
+function AlbumController($sce, kptService, $scope) {
+	var vm = this;
+	vm.albums = [];
+	vm.getAlbum = getAlbum;
+	vm.clickOnAlbum = clickOnAlbum;
+
+	//init albums page
+	vm.getAlbum("");
+
+	// click event on album
+	function clickOnAlbum(album_id) {
+		vm.getAlbum(album_id);
+	};
+
+	function getAlbum(id) {
+		kptService.getAlbums(id).success(
+				function(results) {
+					if (id == "") {
+						vm.albums = results.data;
+						//console.log(JSON.stringify(vm.albums, 2, 2));
+
+						// build geo info. and pass the info. back to server and
+						if (vm.albums.length > 0) {
+
+							// update albums geo info
+							kptService.handleAlbumsGeoInfo(vm.albums);
+
+							// albums_clusters defined in albums.html
+							albums_clusters = kptService.clusterAlbumsGeoLocations();
+						}
+						// end
+
+						// show first album
+						vm.clickOnAlbum(results.data[0].id);
+					} else {
+						vm.album = results.data;
+					}
+				});
+	};
+
+	// ng-pagination
+	$scope.currentPage = 1;
+	$scope.pageSize = 5;
+	// end of ng-pagination
+}
+
+// videos
+VideoController.$injector = [ '$sce', 'kptService' ];
+function VideoController($sce, kptService) {
+	var vm = this;
+	vm.categories = {};
+	vm.clickOnCategory = clickOnCategory;
+	vm.clickOnVideo = clickOnVideo;
+	vm.getVideos = getVideos;
+
+	//init
+	vm.getVideos("");
+
+	function getVideos(category_id) {
+		kptService.getVideos(category_id).success(function(results) {
+			var initial_category_id;
+			var initial_playlist;
+			if (category_id == "") {
+				angular.forEach(results.data, function(item, ind) {
+					initial_category_id = initial_category_id || item.id;
+					vm.categories[item.id] = item;
+					vm.categories[item.id].videos = [];
+					
+					//get all categories
+					vm.clickOnCategory(item.id);
+				});
+				
+				//show first category
+				vm.clickOnCategory(results.data[0].id);
+			} else {
+				vm.categories[category_id].videos = [];
+				angular.forEach(results.data, function(item) {
+					initial_playlist = initial_playlist || item;
+					vm.categories[category_id].videos.push(item);
+				});
+				vm.clickOnVideo(undefined, initial_playlist);
+			}
+		});
+	}
+
+	function clickOnCategory(category_id) {
+		getVideos(category_id);
+
+		// apply jquery toggle animation
+		$('#video_category_' + category_id).toggle("slow");
+	}
+	;
+
+	function clickOnVideo($event, video) {
+		console.log(video);
+		if (typeof ($event) != 'undefined') {
+			$event.preventDefault();
+			$event.stopPropagation();
+		}
+		vm.content = video;
+		vm.content.url = $sce
+				.trustAsResourceUrl('https://www.youtube.com/embed/' + video.id);
+	}
+	;
+
+};
+
+/* pagination controller */
+function PaginationController($scope) {
+	$scope.pageChangeHandler = function(num) {
+		console.log('page changed to ' + num);
+	};
+}
+
+
+
+
+/* map handler */
+//show leaflet map
+var map;
+$(function(){
+	try {
+		map.remove();
+	} catch (err) {
+		console.log(err);
+	}
+
+	try {
+		var address = location;
+
+		$
+				.getJSON(
+						'http://nominatim.openstreetmap.org/search?format=json&limit=1&q='
+								+ 'Taipei, Taiwan',
+						function(data) {
+
+							$
+									.each(
+											data,
+											function(key, val) {
+												map = L
+														.map('main_container', {zoomControl : false, attributionControl : false})
+														.setView(
+																[
+																		val.lat,
+																		val.lon ],
+																13);
+
+												// add an OpenStreetMap tile layer
+												L
+														.tileLayer(
+																'http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(
+																map);
+
+											});
+
+						});
+	} catch (err) {
+		console.log(err);
+	}
+});
+//end of show map

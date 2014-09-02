@@ -184,8 +184,8 @@ function showPieChart(arg_map, arg_albums_clusters) {
 	h = 320, r = Math.min(w, h) / 2, // arc radius
 	dur = 750, // duration, in milliseconds
 	color = d3.scale.category20(), // color category
-	donut = d3.layout.pie().sort(null), arc = d3.svg.arc().innerRadius(r - 80)
-			.outerRadius(r - 20);
+	donut = d3.layout.pie().sort(null), arc = d3.svg.arc().innerRadius(r - 70)
+			.outerRadius(r - 10);
 
 	// init svg
 	var svg = d3.select("div#albums_geo_location_pie_chart").append("svg:svg")
@@ -219,7 +219,7 @@ function showPieChart(arg_map, arg_albums_clusters) {
 	}).attr("class",
 	"pie_segment").attr("d", arc).each(function(d) {
 		this._current = d
-	}).on("mouseover", mouseover);
+	}).on("mouseover",mouseover).on("mouseup", mouseup).on("mouseout",mouseout);
 
 	// append groups' introduction (temp)
 	$('div#albums_geo_location_pie_chart')
@@ -240,32 +240,46 @@ function showPieChart(arg_map, arg_albums_clusters) {
 	var totalSize = address_points.length; // address_points is defined in
 											// albums.html (temp)
 
-	// mouseover event
-	function mouseover(d, i) {
+	// calculate the percentage
+	function calculate_percentage(arg_data, arg_i){
+
+		// calculate percentage
+		var percentage = (100 * arg_data.value / totalSize).toPrecision(3);
+		percentageString = 'Group-' + (arg_i + 1) + ' ; 數目:'+ arg_data.value +' ; ' + '比例:' + percentage
+				+ "%"; // build brief information string
+
+		// if percentage is kind of too small, just show the percentage is
+		// smaller than 0.1%
+		if (percentage < 0.1) {
+			percentageString = "< 0.1%";
+		}
+		
+		return percentageString;
+	}
+	
+	// mouseover listener
+	function mouseover(d, i){
+		var percentageString = calculate_percentage(d, i);
+		pieLabel.text(percentageString);
+	}
+	
+	// mouseover listener
+	function mouseup(d, i) {
 		var percentageString;
 		var update_d3_info = function(){
 			var deferred = $.Deferred();
 
-			// calculate percentage
-			var percentage = (100 * d.value / totalSize).toPrecision(3);
-			percentageString = '此群組(Group-' + (i + 1) + ')比例: ' + percentage
-					+ "%"; // build brief information string
-
-			// if percentage is kind of too small, just show the percentage is
-			// smaller than 0.1%
-			if (percentage < 0.1) {
-				percentageString = "< 0.1%";
-			}
-			
-			console.log(percentageString);
+			percentageString = calculate_percentage(d, i);
 			
 			return deferred.promise();
 		};
 		
 		$.when(update_d3_info()).done(leaflet_map.move_map(percentageString, i, albums_clusters_latlng_set[i]));
 		// pan map to the selected group's latlng
-		
-		//.......................................
+	}
+	// mouseout listener
+	function mouseout(){
+		pieLabel.text('活動分部比例圖');
 	}
 	/* end */
 

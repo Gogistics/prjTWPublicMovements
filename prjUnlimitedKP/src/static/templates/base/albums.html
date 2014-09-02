@@ -1,7 +1,7 @@
 {% extends "/base/main_content.html"%}
 
 <!-- css block -->
-{% block css_content %}
+{% block sub_css_content %}
 <link type="text/css" rel="stylesheet" href="/css/albums.css" />
 <link type="text/css" rel="stylesheet"
 	href="/leaflet/marker_cluster.default.css" />
@@ -19,7 +19,7 @@
 
 <!-- content block -->
 {% block content %}
-<div class="ng_controller" ng-controller="AlbumCtrl as album">
+<div class="ng_controller" ng-controller="AlbumCtrl as album" style="z-index: 10;">
 	<div class="col-md-4 list_block">
 		<h2>相簿目錄</h2>
 

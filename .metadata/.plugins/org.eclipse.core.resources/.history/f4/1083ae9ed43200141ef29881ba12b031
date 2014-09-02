@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+@media all and (min-device-width: 901px) { /* override ng-scope */
+	.ng-scope {
+		overflow: hidden;
+	}
+	#nav_bottom_main_content {
+		width: 100%;
+		position: fixed;
+		bottom: 0px;
+		background-color: rgba(255, 62, 1, 1);
+		box-shadow: rgba(255, 62, 1, 1);
+		-o-box-shadow: rgba(255, 62, 1, 1);
+		-moz-box-shadow: rgba(255, 62, 1, 1);
+		-webkit-box-shadow: rgba(255, 62, 1, 1);
+		padding: 10px;
+		z-index: 100;
+	}
+	.navbar.navbar-default {
+		margin-left: 20px;
+		margin-bottom: 0px;
+		letter-spacing: 2px;
+		background: transparent;
+		width: 500px;
+		display: inline-block;
+		color: #fff;
+		vertical-align: top;
+		border: none;
+		box-shadow: none;
+	}
+	
+	.navbar-default .navbar-nav>li>a {
+		color: #fff;
+		font-size: 12px;
+		padding: 10px;
+		letter-spacing: 1px;
+		transition: color .3s ease-in-out;
+		-o-transition: color .3s ease-in-out;
+		-moz-transition: color .3s ease-in-out;
+		-webkit-transition: color .3s ease-in-out;
+	}
+	.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus
+		{
+		color: #333;
+	}
+}
+
+/*
+For mobile devices, the css will need to be modified and modification is not done yet
+*/
+@media all and (max-device-width: 900px) {
+	body {
+		background-color: rgba(255, 62, 1, 1);
+	}
+	/* override ng-scope */
+	.ng-scope {
+		overflow: hidden;
+	}
+	#nav_bottom_main_content {
+		width: 100%;
+		position: fixed;
+		bottom: 0px;
+		background-color: rgba(255, 62, 1, 1);
+		box-shadow: rgba(255, 62, 1, 1);
+		-o-box-shadow: rgba(255, 62, 1, 1);
+		-moz-box-shadow: rgba(255, 62, 1, 1);
+		-webkit-box-shadow: rgba(255, 62, 1, 1);
+		padding: 10px;
+	}
+}

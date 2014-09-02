@@ -438,14 +438,14 @@ function create_tree(treeData) {
             .attr('class', 'nodeCircle')
             .attr("r", 5)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                return d._children ? "#fea628" : "#fff";
             });
 
         nodeEnter.append("text")
             .attr("x", function(d) {
                 return d.children || d._children ? -20 : 20;
             })
-            .attr("dy", ".30em")
+            .attr("dy", ".35em")
             .attr('class', 'nodeText')
             .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
@@ -485,7 +485,7 @@ function create_tree(treeData) {
         node.select("circle.nodeCircle")
             .attr("r", 8)
             .style("fill", function(d) {
-                return d._children ? "#4eb2b2" : "#fff";
+                return d._children ? "#fea628" : "#fff";
             });
 
         // Transition nodes to their new position.
