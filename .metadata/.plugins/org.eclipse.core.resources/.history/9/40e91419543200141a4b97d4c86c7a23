@@ -1,0 +1,60 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block css_content %}
+
+<style type="text/css">
+  
+	.node {
+    cursor: pointer;
+  }
+
+  .overlay{
+      background-color: #f13b02;
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-size:20px;
+    letter-spacing: 4px; 
+  }
+   
+  .link {
+    fill: none;
+    stroke: #4eb2b2;
+    stroke-width: 1.5px;
+    box-shadow: 0 0 3px rgba(0,0,0,.8);
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
+
+</style>
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/cycle.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="tree-container"></div>
+<script type="text/javascript" src="/js/videos_tree.js"></script>
+{% endblock %}

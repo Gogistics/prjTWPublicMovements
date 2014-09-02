@@ -441,9 +441,9 @@ function update_tree(treeData) {
 
         nodeEnter.append("text")
             .attr("x", function(d) {
-                return d.children || d._children ? -10 : 10;
+                return d.children || d._children ? -20 : 20;
             })
-            .attr("dy", ".35em")
+            .attr("dy", ".30em")
             .attr('class', 'nodeText')
             .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
@@ -470,7 +470,7 @@ function update_tree(treeData) {
         // Update the text to reflect whether node has children or not.
         node.select('text')
             .attr("x", function(d) {
-                return d.children || d._children ? -10 : 10;
+                return d.children || d._children ? -20 : 20;
             })
             .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
@@ -483,7 +483,7 @@ function update_tree(treeData) {
         node.select("circle.nodeCircle")
             .attr("r", 8)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                return d._children ? "#4eb2b2" : "#fff";
             });
 
         // Transition nodes to their new position.
