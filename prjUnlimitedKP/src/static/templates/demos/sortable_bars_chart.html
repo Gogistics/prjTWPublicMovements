@@ -75,6 +75,7 @@ label {
 			"translate(" + margin.left + "," + margin.top + ")");
 
 	d3.tsv("/mis/data.tsv", function(error, data) {
+		console.log(JSON.stringify(data));
 
 		data.forEach(function(d) {
 			d.frequency = +d.frequency;

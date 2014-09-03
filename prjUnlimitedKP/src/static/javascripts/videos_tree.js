@@ -36,6 +36,8 @@ $.get("http://api.kptaipei.tw/v1/"
 					tree_data['name'] = '柯影集';
 					tree_data['children'] = temp_articles_categories;
 					//console.log(JSON.stringify(tree_data, 2, 2));
+					
+					// .then can be changed to $.when.apply($, deferred_ary).done(function(){});
 				}).then(function(){
 					if(ind === treeData.data.length - 1){
 						//console.log(ind + ' ; ' + treeData.data.length );

@@ -144,6 +144,29 @@ function kptService($http, API) {
 		return groups; //clustering result
 	};
 	
+	this.clusterAlbumsBasedonTime = function(){
+		var groups, clusters_based_on_time;
+		if(typeof(address_points) !== 'undefined' && address_points.length > 0){
+			groups = {};
+			angular.forEach(address_points, function(item, ind){
+				if(item.album_create_datetime in groups){
+					groups[item.album_create_datetime] += 1;
+				}
+				else{
+					groups[item.album_create_datetime] = 1;
+				}
+			});
+			
+			//
+			clusters_based_on_time = [];
+			angular.forEach(groups, function(item, key){
+				clusters_based_on_time.push({"date":key, "frequency":item});
+			});
+		}
+		
+		return clusters_based_on_time;
+	}
+	
 	//cluster albums based on geo-location ; current version is simple and is better to go through iteration for optimization
 	this.clusterItem = function(arg_groups, arg_item){
 		//assign new item to each group
@@ -243,56 +266,6 @@ function MainController($sce, kptService) {
 			vm.clickOnArticle(undefined, initial_article);
 		});
 	};
-	
-	/**/
-	function resolveReferences(json) {
-	    if (typeof json === 'string')
-	        json = JSON.parse(json);
-
-	    var byid = {}, // all objects by id
-	        refs = []; // references to objects that could not be resolved
-	    json = (function recurse(obj, prop, parent) {
-	        if (typeof obj !== 'object' || !obj) // a primitive value
-	            return obj;
-	        if (Object.prototype.toString.call(obj) === '[object Array]') {
-	            for (var i = 0; i < obj.length; i++)
-	                // check also if the array element is not a primitive value
-	                if (typeof obj[i] !== 'object' || !obj[i]) // a primitive value
-	                    return obj[i];
-	                else if ("$ref" in obj[i])
-	                    obj[i] = recurse(obj[i], i, obj);
-	                else
-	                    obj[i] = recurse(obj[i], prop, obj);
-	            return obj;
-	        }
-	        if ("$ref" in obj) { // a reference
-	            var ref = obj.$ref;
-	            if (ref in byid)
-	                return byid[ref];
-	            // else we have to make it lazy:
-	            refs.push([parent, prop, ref]);
-	            return;
-	        } else if ("$id" in obj) {
-	            var id = obj.$id;
-	            delete obj.$id;
-	            if ("$values" in obj) // an array
-	                obj = obj.$values.map(recurse);
-	            else // a plain object
-	                for (var prop in obj)
-	                    obj[prop] = recurse(obj[prop], prop, obj);
-	            byid[id] = obj;
-	        }
-	        return obj;
-	    })(json); // run it!
-
-	    for (var i = 0; i < refs.length; i++) { // resolve previously unknown references
-	        var ref = refs[i];
-	        ref[0][ref[1]] = byid[ref[2]];
-	        // Notice that this throws if you put in a reference at top-level
-	    }
-	    return json;
-	}
-	/**/
 
 	// click article title to get corresponding article, then show the corresponding content on the view
 	function clickOnArticle($event, article) {
@@ -337,6 +310,7 @@ function AlbumController($sce, kptService, $scope) {
 
 							// albums_clusters defined in albums.html
 							albums_clusters = kptService.clusterAlbumsGeoLocations();
+							albums_cluster_based_on_time = kptService.clusterAlbumsBasedonTime();
 						}
 						// end
 

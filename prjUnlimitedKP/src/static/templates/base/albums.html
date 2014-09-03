@@ -7,6 +7,38 @@
 	href="/leaflet/marker_cluster.default.css" />
 <link type="text/css" rel="stylesheet"
 	href="/leaflet/marker_cluster.css" />
+	
+	
+<!-- for sorted bars chart (temp) -->
+<style>
+.axis text {
+	font: 10px sans-serif;
+}
+
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.bar {
+	fill: steelblue;
+	-webkit-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+.bar:hover{
+	fill-opacity: .5;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.d3-tip{
+z-index: 1000;
+}
+
+</style>
 {% endblock %}
 
 <!-- js block -->
@@ -15,6 +47,7 @@
 <script type="text/javascript"
 	src="/leaflet/leaflet.markercluster-src.js"></script>
 <script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
 {% endblock %}
 
 <!-- content block -->
@@ -91,14 +124,14 @@
 </div>
 
 <!-- map cluster for albums -->
-<div id="map_albums"
+<div id="data_analysis_block"
 	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
 	<!-- temp button of closing albums map -->
 	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
 		style=" position: fixed; top: 20px; left: 20px; width: 30px;">
 
 	<!-- map & pie chart -->
-	<div style="margin: 30px auto; text-align: center;">
+	<div style="margin: 30px auto; text-align: center; display: block;">
 		<!-- markers cluster -->
 		<div id="map_markers_cluster"
 			style="margin: 0px auto; width: 800px; height: 600px; border: solid 1px #bbb; border-radius: 3px; display: inline-block; vertical-align: top;">
@@ -112,9 +145,15 @@
 		</div>
 	</div>
 
+	<div style="display: block; margin: 30px auto;">
+		<div id="sorted_bars_charts" style="margin: 0 auto; background: #fff; border-radius: 3px; width: 1200px; padding: 30px;">
+		
+	<label style="margin: 5px auto; display: block;"><input id="sorting_checkbox" type="checkbox" style="margin: 0px 20px;">資料排序</label>
+		
+		</div>
+	</div>
 
 </div>
-
 
 <script type="text/javascript">
 /*
@@ -130,6 +169,7 @@ var original_geo_info; // object built based on albums_geo_info
 var address_points; // array built based on albums_geo_info and is used for markers cluster
 
 var albums_clusters; // for geo-info analysis purpose
+var albums_cluster_based_on_time;
 
 var album_map_center_lat = 22.619673; //default lat
 var album_map_center_lng = 120.301826; //defualt lng
@@ -152,15 +192,17 @@ ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
 ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
 
 //array can be changed to object; it's easy to get the value with the corresponding key
-//address_points.push([Number('{{elem.album_lat|float}}'), Number('{{elem.album_lng|float}}'), '{{elem.album_title|safe}}' ,'<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>']);
 address_points.push({'album_id' : '{{elem.album_id|safe}}',
 	                 'album_lat' : Number('{{elem.album_lat|float}}'),
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
 	                 'album_title' : '{{elem.album_title|safe}}',
+	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
 	                 'album_popup_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
 
 {% endfor %}
 // end of loo through the query result
+
+//console.log(JSON.stringify(address_points,2,2));
 
 //find out map center
 album_map_center_lat = ( Math.max.apply(Math, ary_albums_lat) + Math.min.apply(Math, ary_albums_lat) ) / 2;
