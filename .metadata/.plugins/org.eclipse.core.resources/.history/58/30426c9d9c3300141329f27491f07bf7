@@ -123,12 +123,12 @@ L.AnimatedMarker = L.Marker.extend({
     }, speed);
   },
 
-  // start the animation
+  // Start the animation
   start: function() {
     this.animate();
   },
 
-  // stop the animation in place
+  // Stop the animation in place
   stop: function() {
     if (this._tid) {
       clearTimeout(this._tid);

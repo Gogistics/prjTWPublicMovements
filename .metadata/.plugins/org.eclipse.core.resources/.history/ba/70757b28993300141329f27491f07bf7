@@ -3,11 +3,7 @@
  * Markers Clusters on OpenStreetMap
  * Tools: Leaflet & JQuery
  * Leaflet is for handling events on OpenStreetMap
- * JQuery is for animation
- * 
- * PS: I really appreciate all the contributions; without these contributions, it's impossible to implement the application in two weeks
- * The version is just for Demo purpose and not optimized yet, especially the async. features so please feel free to modify the project in anyways
- *  
+ * JQuery is for animation 
  * 
  * */
 

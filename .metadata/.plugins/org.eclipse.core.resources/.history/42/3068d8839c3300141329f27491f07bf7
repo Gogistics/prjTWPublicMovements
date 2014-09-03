@@ -77,7 +77,7 @@ L.AnimatedMarker = L.Marker.extend({
     }
 
     // Move to the next vertex
-    // two ways of showing popup message
+    // two ways of show popup message
     /*
      * 1) this.bindPopup('Hello').openPopup();
      * 2) var popup = L.popup()
@@ -99,7 +99,7 @@ L.AnimatedMarker = L.Marker.extend({
         map.addLayer(popup1);
     }
     
-    // circle setting
+    
     circle = L.circle(this._latlngs[this._i], 15, {
 	    color: '#f00',
 	    fillColor: '#f06',
@@ -123,12 +123,12 @@ L.AnimatedMarker = L.Marker.extend({
     }, speed);
   },
 
-  // start the animation
+  // Start the animation
   start: function() {
     this.animate();
   },
 
-  // stop the animation in place
+  // Stop the animation in place
   stop: function() {
     if (this._tid) {
       clearTimeout(this._tid);
