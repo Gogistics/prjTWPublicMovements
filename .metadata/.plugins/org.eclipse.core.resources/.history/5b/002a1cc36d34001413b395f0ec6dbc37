@@ -709,6 +709,7 @@ function create_tree(treeData) {
   }
 
   var overCircle = function(d) {
+  	alert(d.value);
       selectedNode = d;
       updateTempConnector();
   };

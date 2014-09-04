@@ -4,18 +4,17 @@
 {% block sub_css_content %}
 
 <style type="text/css">
-  body{
-  	background-color: rgba(255, 62, 1, 0);
+body{
+	background-color: rgba(255, 62, 1, 0);
 		box-shadow: 0 5px 5px rgba(191, 54, 12, 1);
-  }
+}
+  
 	.node {
     cursor: pointer;
   }
 
   .overlay{
       background-color: rgba(224,55,2,0.8);
-      width: 100%;
-      height: 100%;
   }
    
   .node circle {
@@ -31,7 +30,7 @@
   }
   
   .nodeText{
-  fill: white; /* D3, change text color by setting fill */
+  	fill: #fff;
   }
    
   .link {
@@ -64,6 +63,6 @@
 {% endblock %}
 
 {% block content %}
-<div id="tree-container"></div>
-<script type="text/javascript" src="/js/videos_tree.js"></script>
+<div id="tree-container" style="background-color: transparent;"></div>
+<script type="text/javascript" src="/js/articles_tree.js"></script>
 {% endblock %}
