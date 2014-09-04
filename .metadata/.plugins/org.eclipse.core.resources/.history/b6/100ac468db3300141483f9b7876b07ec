@@ -448,7 +448,7 @@ $(function(){
 //end of show map
 
 
-/* create information tree (currently for articles_tree and videos_tree) */
+/* create information tree */
 function create_tree(treeData) {
 	
   // Calculate total nodes, max label length
