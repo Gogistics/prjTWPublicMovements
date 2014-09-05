@@ -36,7 +36,7 @@ $('#btn_show_map_markers_cluster').click(
 								&& $('div#albums_geo_location_pie_chart').has(
 										'svg').length < 1) {
 							// show pie map
-							showPieChart(leaflet_map.map, albums_clusters);
+							show_pie_chart(leaflet_map.map, albums_clusters);
 						}
 						
 						if(typeof(albums_cluster_based_on_time) !== 'undefined' && $('div#sorted_bars_charts').has('svg').length < 1){
@@ -134,7 +134,7 @@ var leaflet_map = {
  * 
  */
 
-function showPieChart(arg_map, arg_albums_clusters) {
+function show_pie_chart(arg_map, arg_albums_clusters) {
 	// variables for sorting info
 	var albums_clusters_size = [], albums_clusters_avg_geo_location = [], albums_clusters_latlng_set = [], clusters_colors = [];
 	var avg_latlng_group = []; // avg. latlng layers on map

@@ -2,7 +2,7 @@
 
 @media all and (min-device-width: 901px) { /* override ng-scope */
 	.ng-scope {
-		overflow: hidden;
+		overflow: auto;
 	}
 	#nav_bottom_main_content {
 		width: 100%;

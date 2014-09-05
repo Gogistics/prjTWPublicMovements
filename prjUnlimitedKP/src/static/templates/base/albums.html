@@ -8,37 +8,6 @@
 <link type="text/css" rel="stylesheet"
 	href="/leaflet/marker_cluster.css" />
 	
-	
-<!-- for sorted bars chart (temp) -->
-<style>
-.axis text {
-	font: 10px sans-serif;
-}
-
-.axis path,.axis line {
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
-}
-
-.bar {
-	fill: steelblue;
-	-webkit-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
-}
-.bar:hover{
-	fill-opacity: .5;
-}
-
-.x.axis path {
-	display: none;
-}
-
-.d3-tip{
-z-index: 1000;
-}
-
-</style>
 {% endblock %}
 
 <!-- js block -->
@@ -58,7 +27,7 @@ z-index: 1000;
 
 		<!-- ng-paginator -->
 		<div
-			style="margin: 0px auto; padding: 5px; background-color: #428bca; border-radius: 4px;">
+			style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
 			<div class="row" style="margin: 5px auto;">
 				<div class="col-xs-4">
 					<label for="search" style="color: #fff;">收尋/過濾</label> <input
@@ -79,8 +48,6 @@ z-index: 1000;
 						value="活動分佈">
 				</div>
 			</div>
-			<hr
-				style="border: none; border-bottom: #428bca dotted 1px; margin: 1px auto;">
 		</div>
 		<!-- end of ng-paginator -->
 
@@ -100,7 +67,7 @@ z-index: 1000;
 		<!-- pagination controller block -->
 		<div ng-controller="PaginationCtrl">
 			<hr
-				style="border: none; border-bottom: #428bca dotted 1px; margin: 1px auto;">
+				style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
 			<small>頁面選單 </small>
 			<div class="text-center">
 				<dir-pagination-controls boundary-links="true"
