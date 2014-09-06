@@ -61,7 +61,7 @@ class AlbumsGeoInfoDispatcher(BaseHandler):
 #for data migration use; not open now   
 class AlbumsDataMigration(BaseHandler):
     def get(self):
-        """ temp. function for handling data migration; not running """
+        """ temp function for handling data migration; not running """
 #         old_albums_info = AlbumGeoInfo.query()
 #         if old_albums_info.count() > 0:
 #             for entity in old_albums_info:
