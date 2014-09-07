@@ -58,7 +58,7 @@
 				
 			<!-- new ng list to meet pagination requirement -->
 			<li
-				dir-paginate="item in album.albums | filter:q | itemsPerPage: pageSize | orderBy: sort_order_param"
+				dir-paginate="item in album.albums | filter:q | itemsPerPage: pageSize"
 				ng-click="album.clickOnAlbum(item.id)" class='album'
 				current-page="currentPage">[[item.title]]</li>
 			<!-- end of new ng list -->

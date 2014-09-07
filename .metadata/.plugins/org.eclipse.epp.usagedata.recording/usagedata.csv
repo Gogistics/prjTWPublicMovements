@@ -1,2 +1,51 @@
 what,kind,bundleId,bundleVersion,description,time
-stopped,bundle,org.eclipse.jst.server.generic.jonas,1.5.205.v200805140145,"org.eclipse.jst.server.generic.jonas",1409983122321
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410060967562
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410060981173
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410060981931
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410060982274
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410060993648
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1410060996547
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1410060997029
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1410060997947
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410060998811
+error,log,,,"Unexpected runtime error while computing a text hover",1410060999537
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061025363
+activated,editor,org.eclipse.wst.html.ui,1.0.602.v201202091936,"org.eclipse.wst.html.core.htmlsource.source",1410061029108
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410061043851
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061045417
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410061048498
+error,log,,,"Unexpected runtime error while computing a text hover",1410061049539
+activated,editor,org.eclipse.wst.html.ui,1.0.602.v201202091936,"org.eclipse.wst.html.core.htmlsource.source",1410061051919
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1410061055416
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061096074
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1410061102362
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410061102817
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061196493
+activated,view,org.python.pydev,2.8.2.2013090511,"org.python.pydev.navigator.view",1410061200736
+opened,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061201021
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061201136
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061216016
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061235410
+activated,editor,org.eclipse.wst.html.ui,1.0.602.v201202091936,"org.eclipse.wst.html.core.htmlsource.source",1410061238489
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061267077
+error,log,,,"Unexpected runtime error while computing a text hover",1410061287184
+error,log,,,"Unexpected runtime error while computing a text hover",1410061287531
+error,log,,,"Unexpected runtime error while computing a text hover",1410061288921
+error,log,,,"Unexpected runtime error while computing a text hover",1410061288948
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410061312876
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061314958
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061318548
+activated,editor,org.eclipse.wst.html.ui,1.0.602.v201202091936,"org.eclipse.wst.html.core.htmlsource.source",1410061320324
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061328933
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061369001
+activated,editor,org.eclipse.wst.jsdt.ui,1.1.102.v201201131900,"org.eclipse.wst.jsdt.ui.CompilationUnitEditor",1410061371432
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410061381338
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061384178
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061667829
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410061669600
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410062007306
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410062019502
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1410062038176
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410062039091
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410062055877
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1410062063631
