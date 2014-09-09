@@ -287,6 +287,7 @@ AlbumController.$injector = [ '$sce', 'kptService' ];
 function AlbumController($sce, kptService, $scope) {
 	// sort-order param which can be changed minus sign means reverse sort order
 	$scope.sort_order_param = '-title';
+	$scope.album_title = ''; //album title
 	
 	//
 	var vm = this;
@@ -325,6 +326,7 @@ function AlbumController($sce, kptService, $scope) {
 						vm.clickOnAlbum(results.data[0].id);
 					} else {
 						vm.album = results.data;
+						$scope.album_title = vm.album.set.title;
 					}
 				});
 	};

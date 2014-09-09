@@ -81,7 +81,7 @@
 	<!-- photos block -->
 	<div
 		class="photo-container col-xs-12 col-sm-6 col-md-8 col-xs-6 content_block">
-		<h2>[[album.set.title]]</h2>
+		<h2 style="text-align: center;">[[album_title]]</h2>
 		<ul class="photos row">
 			<li class="col-md-4 photo" ng-repeat="item in album.album.photos"><a
 				target="_blank" ng-href="[[item.link]]"><img
@@ -179,4 +179,5 @@ album_map_center_lng = ( Math.max.apply(Math, ary_albums_lng) + Math.min.apply(M
 
 </script>
 <script type="text/javascript" src="/js/albums.js"></script>
+<script type="text/javascript" src="/js/particles_swarm_optimization.js"></script>
 {% endblock %}

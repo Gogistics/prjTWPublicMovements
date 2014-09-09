@@ -1,0 +1,61 @@
+particles_swarm_optimization = {
+		config : {
+			ranges : [[-15, 15],[-15, 15]], // ranges of particles
+			particles_size : 20;
+			iteration : 100, //iteration number
+			max_min : -1, // 1 means to find max; -1 means to find min
+			Emax : Number.MAX_VALUE,
+			Emin : -Number.MAX_VALUE,
+			Type : 0, // 0 for real number; 1 for integer
+			
+			c1 : 2.05,
+			c2 : 4.1 - 2.05, // c2 = 4.1 - c1
+			c : 0.729, //constrain factor
+			
+			diff_ranges : [],
+			low_boundaries : [],
+			
+			particels_values : [],
+			particles_initial_values : [],
+			
+			particles_velocity : [],
+			particles_initial_velocity : [], // can be zero or certain reasonable values based on each particle range
+
+			performance_index_set : [],
+			performance_initial_index_set : [],
+			
+			learning_rate : 0,
+			min_learning_rate : 0.4, //minimum learning rate of social parameter
+			max_learning_rate : 0.9, //maximum learning rate of social parameter
+			c1_min : 1.9, //minimum learning rate of cognitive parameter
+			c1_max : 2.1, //maximum learning rate of cognitive parameter
+			
+			min_cost : 0,
+			mean_cost : 0,
+			local_optimal : 0,
+			global_optimal : 0,
+			RMS_cost : 0
+		},
+		
+		init_pso : function(){
+			//
+			particles_size = this.config.ranges.length;
+			for (var ith = 0; ith < particles_size; ith++ ){
+				//
+				this.config.diff_ranges.push(this.config.ranges[ith][1] - this.config.ranges[ith][0]);
+				this.config.low_boundaries.push(this.config.ranges[ith][0]);
+				
+				//
+				this.config.particels_values.push( this.config.ranges[ith][0] + Math.random()*(this.config.ranges[ith][1] - this.config.ranges[ith][0]));
+				this.config.particles_initial_values.push( this.config.ranges[ith][0] + Math.random()*(this.config.ranges[ith][1] - this.config.ranges[ith][0]));
+				this.config.particles_velocity.push(0);
+				this.config.particles_initial_velocity.push(0);
+				
+				//
+				var PI = (0.007*x1.*(-x2-1)).*(cos(x1+0.3)-sin(x2))+(1-sin(x1));
+				this.config.performance_index_set.push();
+			}
+		}
+
+
+}

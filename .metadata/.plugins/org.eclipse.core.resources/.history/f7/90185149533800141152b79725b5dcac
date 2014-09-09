@@ -1,0 +1,32 @@
+particles_swarm_optimization = {
+		config : {
+			ranges : [], // ranges of particles
+			iteration : 100, //iteration number
+			max_min : -1, // 1 means to find max; -1 means to find min
+			Emax : Number.MAX_VALUE,
+			Emin : -Number.MAX_VALUE,
+			Type : 0, // 0 for real number; 1 for integer
+			
+			c1 : 2.05,
+			c2 : 4.1 - 2.05, // c2 = 4.1 - c1
+			c : 0.729, //constrain factor
+			
+			diff_ranges : [],
+			low_boundaries : [],
+			particels_values : [],
+			
+			particles_initial_velocity : [], // can be zero or certain reasonable values based on each particle range
+			
+			performance_index_set : [],
+			min_cost : 0,
+			mean_cost : 0,
+			global_optimal : 0,
+			RMS_cost : 0
+		},
+		
+		init_pso : function(){
+			//
+		}
+
+
+}
