@@ -164,7 +164,7 @@ var map;
 							// add marker on map and push it into array
 							marker
 									.bindPopup(
-											'<img alt="taipei_station" src="/img/kp_attitute.jpg" style="width: 300px;"><p style="color: #000;"><span style="color: #ff2005; font-weight: bold; font-size: 13px;">MA<span style="color: #ee8c00; font-weight: 100;">柯</span>P</span> (請按地圖開始動畫)</p><p style="color: #000; letter-spacing: 1px;">目前動畫資料為Demo用，希望未來能改版成聯繫到柯P真實的行腳記錄，記錄的目的可讓民眾了解資金運用的分配(辦活動基本上一定會有開銷)和在不同區域所舉辦的活動性質，在照相集頁面中加入分類功能，把柯P的活動據點結合Leaflet.js和D3.js做分析及視覺化(例如分部區域及比例)。樹狀設計概念則是提供使用者從組文章與主題的關連。</p>',
+											'<img alt="taipei_station" src="/img/kp_attitute.jpg" style="width: 300px;"><p style="color: #000;"><span style="color: #ff2005; font-weight: bold; font-size: 13px;">MA<span style="color: #ee8c00; font-weight: 100;">柯</span>P</span> (請按地圖開始動畫)</p><p style="color: #000; letter-spacing: 1px;">目前動畫資料為Demo用，希望未來能改版成聯繫到柯P真實的行腳記錄，記錄的目的可讓民眾了解資金運用的分配(辦活動基本上一定會有開銷)和在不同區域所舉辦的活動性質，在照相集頁面中加入分類功能，把柯P的活動據點結合Leaflet.js和D3.js做分析及視覺化(例如分部區域及比例)。樹狀設計概念則是提供使用者重組文章與主題的關連。</p>',
 											{
 												keepInView : true
 											}).addTo(map).openPopup();

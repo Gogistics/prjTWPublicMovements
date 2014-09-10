@@ -1,0 +1,67 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="ng_controller" ng-controller="FinancialCtrl as financial_details" class="ng_controller">
+	<div class="col-md-4" style="width: 100%;">
+		<h2 style="text-align: center;">柯文哲競選財務明細四月至七月</h2>
+		<!-- ng-paginator -->
+		<div
+			style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+			<div class="row" style="margin: 5px auto;">
+				<div class="col-xs-4">
+					<label for="search" style="color: #fff;">收尋/過濾</label> <input
+						ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+						class="form-control" placeholder="過濾關鍵字">
+				</div>
+				<div class="col-xs-4">
+					<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+						type="number" min="1" max="100"
+						style="height: 30px; font-size: 13px;" class="form-control"
+						ng-model="pageSize">
+				</div>
+			</div>
+		</div>
+		<!-- end of ng-paginator -->
+
+
+		<!--  -->
+		<ul class="categories" style="margin-bottom: 30px;">
+			<!-- new ng list to meet pagination requirement -->
+			<li
+				dir-paginate="item in financial_details.financial_detail | filter:q | itemsPerPage: pageSize"
+				current-page="currentPage" style="margin: 5px auto;">
+				
+				[[item.account]]
+				
+				
+				<hr style="border: none; border-bottom: dashed 1px #aaa; margin: 5px auto;">
+				</li>
+			<!-- end of new ng list -->
+		</ul>
+
+		<!-- pagination controller block -->
+		<div ng-controller="PaginationCtrl">
+			<hr
+				style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+			<small>頁面選單 </small>
+			<div class="text-center">
+				<dir-pagination-controls boundary-links="true"
+					on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+			</div>
+		</div>
+		<!-- end of pagination controller block -->
+		
+	</div>
+</div>
+{% endblock %}

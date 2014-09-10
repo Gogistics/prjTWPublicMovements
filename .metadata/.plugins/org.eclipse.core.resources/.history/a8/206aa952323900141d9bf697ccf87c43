@@ -1,0 +1,20 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+{% endblock %} {% block content %}
+<div ng-controller="FinancialCtrl" class="ng_controller">
+	<div class="col-md-4 list_block">
+		<h2>財務明細</h2>
+		<ul class="categories">
+			<li class='category'>
+				
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}

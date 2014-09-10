@@ -11,3 +11,4 @@ class HtmlPagesReference():
         self.articles =  '/base/articles_tree.html' #'/base/articles.html'
         self.albums = '/base/albums.html'
         self.videos = '/base/videos_tree.html' #'/base/videos.html'
+        self.financial = '/base/financial.html'

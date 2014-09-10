@@ -25,7 +25,7 @@ dict_html_ref = HtmlPagesReference()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class CollapsibleTreeDemoDispatcher(BaseHandler):
+class FrontPageDispatcher(BaseHandler):
     def get(self):
         """ front page dispatcher """
         template_values = {}
@@ -58,16 +58,24 @@ class VideosDispatcher(BaseHandler):
         template_values = {}
         template_values.update({'title':u'柯文哲影像集'})
         self.render_template(dict_html_ref.videos, template_values)
+        
+class FinancialDispatcher(BaseHandler):
+    def get(self):
+        """ videos dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯在陽光下'})
+        self.render_template(dict_html_ref.financial, template_values)
 
 # configuration
 config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/', CollapsibleTreeDemoDispatcher, name='front_page'),
+    webapp2.Route(r'/', FrontPageDispatcher, name='front_page'),
     webapp2.Route(r'/base/articles', ArticlesDispatcher, name='articles'),
     webapp2.Route(r'/base/albums', AlbumsDispatcher, name='albums'),
-    webapp2.Route(r'/base/videos', VideosDispatcher, name='videos')
+    webapp2.Route(r'/base/videos', VideosDispatcher, name='videos'),
+    webapp2.Route(r'/base/financial', FinancialDispatcher, name='financial')
 ], debug=True, config=config)
 
 # log

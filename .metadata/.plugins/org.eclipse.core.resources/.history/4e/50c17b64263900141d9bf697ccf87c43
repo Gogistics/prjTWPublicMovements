@@ -1,0 +1,20 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+{% endblock %} {% block content %}
+<div ng-controller="MainCtrl as main" class="ng_controller">
+	<div class="col-md-4 list_block">
+		<h2>文章類別目錄</h2>
+		<ul class="categories">
+			<li class='category' ng-repeat="">
+				
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}

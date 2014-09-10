@@ -1,0 +1,23 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+{% endblock %}
+
+{% block content %}
+<div ng-controller="FinancialCtrl as financial_details" class="ng_controller">
+	<div class="col-md-4 list_block">
+		<h2>財務明細</h2>
+		<ul class="categories">
+			<li ng-repeat = "item in financial_details.financial_detail" >[[item.account]]</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}

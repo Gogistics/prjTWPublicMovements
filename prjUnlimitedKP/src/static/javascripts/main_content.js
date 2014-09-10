@@ -11,9 +11,12 @@
 kp_app.value('API', {
 	KEY : "kp53f5626b5f4bd7.27954991", // personal api key
 	SERVER : "http://api.kptaipei.tw/v1/"
-}).controller('MainCtrl', MainController).controller('AlbumCtrl',
-		AlbumController).controller('VideoCtrl', VideoController).controller(
-		'PaginationCtrl', PaginationController) // dir pagination
+})
+.controller('MainCtrl', MainController)
+.controller('AlbumCtrl', AlbumController)
+.controller('VideoCtrl', VideoController)
+.controller('FinancialCtrl', FinancialDetailController)
+.controller('PaginationCtrl', PaginationController) // dir pagination
 .service('kptService', kptService);
 
 // service for retrieving data
@@ -47,11 +50,19 @@ function kptService($http, API) {
 		});
 	}
 	
+	// get financial category
+	this.getFinancialDetails = function(id){
+		console.log(API.SERVER + "financial/all/?accessToken=" + API.KEY);
+		return $http({
+			method : "GET",
+			url : API.SERVER + "financial/all/?accessToken=" + API.KEY
+		});
+	}
+	
 	/* update albums geo info stored in Google datastore */
 	// handle geo-info
 	this.handleAlbumsGeoInfo = function(arg_new_albums){
 		var geo_info_albums = {};
-		//loop through albums info; temp latlng is set as (25.052063, 121.529980)
 		angular.forEach(arg_new_albums, function(item, ind) {
 			geo_info_albums[item.id] = {
 				'album_title' : item.title,
@@ -63,10 +74,11 @@ function kptService($http, API) {
 			};
 		});
 
-		// original_geo_info is defined in albums.html and retrieved from database
+		// original_geo_info is defined in albums.html and retrieved from
+		// database
 		var diff_elems = {};
 		if(typeof(original_geo_info) === 'undefined'){
-			//loop through all info
+			// loop through all info
 			diff_elems = geo_info_albums;
 			
 			console.log(diff_elems);
@@ -77,23 +89,25 @@ function kptService($http, API) {
 			var keys_new_geo_info = Object.keys(geo_info_albums);
 			var keys_original_geo_info = Object.keys(original_geo_info);
 			
-			//get diff keys
+			// get diff keys
 			diff_keys = this.getDiff(keys_new_geo_info, keys_original_geo_info);
 			
-			//get filtered info set
+			// get filtered info set
 			angular.forEach(diff_keys, function(item,ind){
 				diff_elems[item] = geo_info_albums[item];
 			});
 			
-			//console.log(JSON.stringify(diff_elems, 2, 2));
+			// console.log(JSON.stringify(diff_elems, 2, 2));
 		}
 		
-		// if there exist any key, then send new data to server for database update
+		// if there exist any key, then send new data to server for database
+		// update
 		if(Object.keys(diff_elems).length > 0){
 			// put diff_elems into $.param and will be send to backend
 			var geo_data = $.param({'geo_data':JSON.stringify(diff_elems, 2, 2)});
 			
-			// use $http post to send data back to server and save data in Google datastore
+			// use $http post to send data back to server and save data in
+			// Google datastore
 			var response_promise = $http({
 	            url: '/albums/geo_info_handler',
 	            method: "POST",
@@ -121,18 +135,19 @@ function kptService($http, API) {
 	};
 	// end of "handle geo-info"
 	
-	//simple cluster for grouping albums based on geo-location
+	// simple cluster for grouping albums based on geo-location
 	this.clusterAlbumsGeoLocations = function(){
 		var groups;
 		
 		if (typeof(address_points) !== 'undefined' && address_points.length > 0){
-			//init group
+			// init group
 			groups = [];
 			
-			//start clusetring
+			// start clusetring
 			angular.forEach(address_points, function(item, ind){
 				
-				// if no group exists, then create one and push the first element to the array
+				// if no group exists, then create one and push the first
+				// element to the array
 				if(groups.length <= 0){
 					groups.push([item]);
 				}
@@ -144,7 +159,7 @@ function kptService($http, API) {
 			
 		}
 		
-		return groups; //clustering result
+		return groups; // clustering result
 	};
 	
 	this.clusterAlbumsBasedonTime = function(){
@@ -170,25 +185,28 @@ function kptService($http, API) {
 		return clusters_based_on_time;
 	}
 	
-	//cluster albums based on geo-location ; current version is simple and is better to go through iteration for optimization
+	// cluster albums based on geo-location ; current version is simple and is
+	// better to go through iteration for optimization
 	this.clusterItem = function(arg_groups, arg_item){
-		//assign new item to each group
-		//var temp_groups = [];
-		var evaluation_result = []; //analyze temp_groups
+		// assign new item to each group
+		// var temp_groups = [];
+		var evaluation_result = []; // analyze temp_groups
 		
-		// calculate threshold ; ary_albums_lat & ary_albums_lng from albums.html
+		// calculate threshold ; ary_albums_lat & ary_albums_lng from
+		// albums.html
 		var max_lat = Math.max.apply(Math, ary_albums_lat);
 		var min_lat = Math.min.apply(Math, ary_albums_lat);
 		var max_lng = Math.max.apply(Math, ary_albums_lng);
 		var min_lng = Math.min.apply(Math, ary_albums_lng);
 		
 		var max_distance = Math.sqrt( Math.pow((max_lat - min_lat), 2) + Math.pow((max_lng - min_lng), 2)).toFixed(2);
-		var threshold = (max_distance / 50).toFixed(6); //can be adjusted for different results
+		var threshold = (max_distance / 50).toFixed(6); // can be adjusted for
+														// different results
 		
 		// iterate groups
 		angular.forEach(arg_groups, function(group, ind){
-			//puhs new item temp group for evaluation
-			//group.push(arg_item);
+			// puhs new item temp group for evaluation
+			// group.push(arg_item);
 			
 			var total_amount = 0, sum_lat = 0, sum_lng = 0, avg_lat = 0, avg_lng = 0;
 			angular.forEach(group, function(item, ind){
@@ -199,18 +217,19 @@ function kptService($http, API) {
 			avg_lat = (sum_lat / total_amount).toFixed(6);
 			avg_lng = (sum_lng /total_amount).toFixed(6);
 			
-			//calculate the distance from new address point to centroid of the current group
+			// calculate the distance from new address point to centroid of the
+			// current group
 			var distance = Math.sqrt( Math.pow((avg_lat - arg_item['album_lat']), 2) + Math.pow((avg_lng - arg_item['album_lng']), 2)).toFixed(2);
 			
-			//push calculated result into to evaluation array
+			// push calculated result into to evaluation array
 			evaluation_result.push(Number(distance));
 		});
 		
 		
-		//find min
+		// find min
 		var min_distance = Math.min.apply(Math, evaluation_result);
 		var group_index = evaluation_result.indexOf(min_distance);
-		//update groups
+		// update groups
 		if(min_distance <= threshold ){
 			arg_groups[group_index].push(arg_item);
 		}else{
@@ -235,7 +254,7 @@ function MainController($sce, kptService) {
 	vm.temp_articles_categories = [];
 
 	kptService.getCategory("").success(function(results) {
-		//console.log(JSON.stringify(results.data,2,2));
+		// console.log(JSON.stringify(results.data,2,2));
 		var initial_category_id;
 		
 		angular.forEach(results.data, function(item, ind) {
@@ -243,7 +262,7 @@ function MainController($sce, kptService) {
 			vm.categories[item.id] = item;
 			vm.categories[item.id].posts = [];
 			
-			//get all categories
+			// get all categories
 			vm.clickOnCategory(item.id);
 		});
 		
@@ -254,7 +273,7 @@ function MainController($sce, kptService) {
 	
 	function clickOnCategory(category_id) {
 		kptService.getCategory(category_id).success(function(results) {
-			//console.log(JSON.stringify(results.data, 2, 2));
+			// console.log(JSON.stringify(results.data, 2, 2));
 			
 			var initial_article;
 			vm.categories[category_id].posts = [];
@@ -270,14 +289,15 @@ function MainController($sce, kptService) {
 		});
 	};
 
-	// click article title to get corresponding article, then show the corresponding content on the view
+	// click article title to get corresponding article, then show the
+	// corresponding content on the view
 	function clickOnArticle($event, article) {
 		if (typeof ($event) != 'undefined') {
 			$event.preventDefault();
 			$event.stopPropagation();
 		}
 		
-		//set content and bind html on controller and pass it to view
+		// set content and bind html on controller and pass it to view
 		vm.content = $sce.trustAsHtml(article.content);
 	};
 }
@@ -287,7 +307,7 @@ AlbumController.$injector = [ '$sce', 'kptService' ];
 function AlbumController($sce, kptService, $scope) {
 	// sort-order param which can be changed minus sign means reverse sort order
 	$scope.sort_order_param = '-title';
-	$scope.album_title = ''; //album title
+	$scope.album_title = ''; // album title
 	
 	//
 	var vm = this;
@@ -295,7 +315,7 @@ function AlbumController($sce, kptService, $scope) {
 	vm.getAlbum = getAlbum;
 	vm.clickOnAlbum = clickOnAlbum;
 
-	//init albums page
+	// init albums page
 	vm.getAlbum("");
 
 	// click event on album
@@ -308,7 +328,7 @@ function AlbumController($sce, kptService, $scope) {
 				function(results) {
 					if (id == "") {
 						vm.albums = results.data;
-						//console.log(JSON.stringify(vm.albums, 2, 2));
+						// console.log(JSON.stringify(vm.albums, 2, 2));
 
 						// build geo info. and pass the info. back to server and
 						if (vm.albums.length > 0) {
@@ -346,7 +366,7 @@ function VideoController($sce, kptService) {
 	vm.clickOnVideo = clickOnVideo;
 	vm.getVideos = getVideos;
 
-	//init
+	// init
 	vm.getVideos("");
 
 	function getVideos(category_id) {
@@ -359,11 +379,11 @@ function VideoController($sce, kptService) {
 					vm.categories[item.id] = item;
 					vm.categories[item.id].videos = [];
 					
-					//get all categories
+					// get all categories
 					vm.clickOnCategory(item.id);
 				});
 				
-				//show first category
+				// show first category
 				vm.clickOnCategory(results.data[0].id);
 			} else {
 				vm.categories[category_id].videos = [];
@@ -398,6 +418,49 @@ function VideoController($sce, kptService) {
 
 };
 
+// videos
+FinancialDetailController.$injector = [ '$sce', 'kptService' ];
+function FinancialDetailController($sce, kptService, $scope) {
+	var vm = this;
+	vm.getFinancialDetail = getFinancialDetail;
+
+	// get financial detail
+	vm.getFinancialDetail();
+
+	function getFinancialDetail() {
+		kptService.getFinancialDetails().success(function(results) {
+			vm.financial_detail = [];
+			accounts = [];
+			
+			vm.financial_detail = results.data;
+			console.log(JSON.stringify(vm.financial_detail,2,2));
+			angular.forEach(results.data, function(item, ind) {
+					if(item.price != 0){
+						//console.log(item);
+						/*
+						 * out.push("<tr class='type-",item.type,"'>", "<td>",item.type
+						 * =="income" ? "收入" :"支出","</td>", "<td>",item.start_date,"</td>", "<td>",item.end_date,"</td>", "<td>",item.account,"</td>", "<td>",item.label,"</td>", "<td>",item.price,"</td>", "<td></td></tr>" );
+						 */
+						if(accounts[item.account]  == null){
+							// accounts[item.account] = {sum:0,type:item.type};
+						}
+						// accounts[item.account].sum +=
+						// parseInt(item.price,10);
+					};
+				
+			});
+		});
+	};
+	
+	// ng-pagination
+	$scope.currentPage = 1;
+	$scope.pageSize = 5;
+	// end of ng-pagination
+};
+
+
+
+
 /* pagination controller */
 function PaginationController($scope) {
 	$scope.pageChangeHandler = function(num) {
@@ -408,7 +471,7 @@ function PaginationController($scope) {
 
 
 /* map handler */
-//show leaflet map
+// show leaflet map
 var map;
 $(function(){
 	try {
@@ -438,7 +501,8 @@ $(function(){
 																		val.lon ],
 																13);
 
-												// add an OpenStreetMap tile layer
+												// add an OpenStreetMap tile
+												// layer
 												L
 														.tileLayer(
 																'http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(
@@ -451,7 +515,7 @@ $(function(){
 		console.log(err);
 	}
 });
-//end of show map
+// end of show map
 
 
 /* create information tree (currently for articles_tree and videos_tree) */
@@ -484,7 +548,8 @@ function create_tree(treeData) {
           return [d.y, d.x];
       });
 
-  // A recursive helper function for performing some setup by walking through all nodes
+  // A recursive helper function for performing some setup by walking through
+	// all nodes
   function visit(parent, visitFn, childrenFn) {
       if (!parent) return;
 
@@ -518,7 +583,7 @@ function create_tree(treeData) {
   // Sort the tree initially in case the JSON isn't in a sorted order.
   
   /* stop sorting */
-  //sortTree();
+  // sortTree();
 
   // Pan function, can be better implemented.
   function pan(domNode, direction) {
@@ -552,7 +617,8 @@ function create_tree(treeData) {
   }
 
 
-  // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
+  // define the zoomListener which calls the zoom function on the "zoom" event
+	// constrained within the scaleExtents
   var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
   function initiateDrag(d, domNode) {
@@ -561,8 +627,12 @@ function create_tree(treeData) {
       d3.selectAll('.ghostCircle').attr('class', 'ghostCircle show');
       d3.select(domNode).attr('class', 'node activeDrag');
 
-      svgGroup.selectAll("g.node").sort(function(a, b) { // select the parent and sort the path's
-          if (a.id != draggingNode.id) return 1; // a is not the hovered element, send "a" to the back
+      svgGroup.selectAll("g.node").sort(function(a, b) { // select the parent
+															// and sort the
+															// path's
+          if (a.id != draggingNode.id) return 1; // a is not the hovered
+													// element, send "a" to the
+													// back
           else return -1; // a is the hovered element, bring "a" to the front
       });
       // if nodes has children, remove the links and nodes
@@ -614,7 +684,10 @@ function create_tree(treeData) {
           dragStarted = true;
           nodes = tree.nodes(d);
           d3.event.sourceEvent.stopPropagation();
-          // it's important that we suppress the mouseover event on the node being dragged. Otherwise it will absorb the mouseover event and the underlying node will not detect it d3.select(this).attr('pointer-events', 'none');
+          // it's important that we suppress the mouseover event on the node
+			// being dragged. Otherwise it will absorb the mouseover event and
+			// the underlying node will not detect it
+			// d3.select(this).attr('pointer-events', 'none');
       })
       .on("drag", function(d) {
           if (d == root) {
@@ -625,7 +698,8 @@ function create_tree(treeData) {
               initiateDrag(d, domNode);
           }
 
-          // get coords of mouseEvent relative to svg container to allow for panning
+          // get coords of mouseEvent relative to svg container to allow for
+			// panning
           relCoords = d3.mouse($('svg').get(0));
           if (relCoords[0] < panBoundary) {
               panTimer = true;
@@ -659,7 +733,8 @@ function create_tree(treeData) {
           }
           domNode = this;
           if (selectedNode) {
-              // now remove the element from the parent, and insert it into the new elements children
+              // now remove the element from the parent, and insert it into
+				// the new elements children
               var index = draggingNode.parent.children.indexOf(draggingNode);
               if (index > -1) {
                   draggingNode.parent.children.splice(index, 1);
@@ -674,7 +749,8 @@ function create_tree(treeData) {
                   selectedNode.children = [];
                   selectedNode.children.push(draggingNode);
               }
-              // Make sure that the node being added to is expanded so user can see added node is correctly moved
+              // Make sure that the node being added to is expanded so user
+				// can see added node is correctly moved
               expand(selectedNode);
               sortTree();
               endDrag();
@@ -687,7 +763,8 @@ function create_tree(treeData) {
       selectedNode = null;
       d3.selectAll('.ghostCircle').attr('class', 'ghostCircle');
       d3.select(domNode).attr('class', 'node');
-      // now restore the mouseover event or we won't be able to drag a 2nd time
+      // now restore the mouseover event or we won't be able to drag a 2nd
+		// time
       d3.select(domNode).select('.ghostCircle').attr('pointer-events', '');
       updateTempConnector();
       if (draggingNode !== null) {
@@ -723,11 +800,13 @@ function create_tree(treeData) {
       updateTempConnector();
   };
 
-  // Function to update the temporary connector indicating dragging affiliation
+  // Function to update the temporary connector indicating dragging
+	// affiliation
   var updateTempConnector = function() {
       var data = [];
       if (draggingNode !== null && selectedNode !== null) {
-          // have to flip the source coordinates since we did this for the existing connectors on the original tree
+          // have to flip the source coordinates since we did this for the
+			// existing connectors on the original tree
           data = [{
               source: {
                   x: selectedNode.y0,
@@ -751,7 +830,8 @@ function create_tree(treeData) {
       link.exit().remove();
   };
 
-  // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
+  // Function to center node when clicked/dropped so node doesn't get lost
+	// when collapsing/moving with large amount of children.
   function centerNode(source) {
       scale = zoomListener.scale();
       x = -source.y0;
@@ -791,8 +871,10 @@ function create_tree(treeData) {
   }
 
   function update(source) {
-      // Compute the new height, function counts total children of root node and sets tree height accordingly.
-      // This prevents the layout looking squashed when new nodes are made visible or looking sparse when nodes are removed
+      // Compute the new height, function counts total children of root node
+		// and sets tree height accordingly.
+      // This prevents the layout looking squashed when new nodes are made
+		// visible or looking sparse when nodes are removed
       // This makes the layout more consistent.
       var levelWidth = [1];
       var childCount = function(level, n) {
@@ -807,7 +889,7 @@ function create_tree(treeData) {
           }
       };
       childCount(0, root);
-      var newHeight = d3.max(levelWidth) * 25; // 25 pixels per line  
+      var newHeight = d3.max(levelWidth) * 25; // 25 pixels per line
       tree = tree.size([newHeight, viewerWidth]);
 
       // Compute the new tree layout.
@@ -816,8 +898,9 @@ function create_tree(treeData) {
 
       // Set widths between levels based on maxLabelLength.
       nodes.forEach(function(d) {
-          d.y = (d.depth * (maxLabelLength * 10)); //maxLabelLength * 10px
-          // alternatively to keep a fixed scale one can set a fixed depth per level
+          d.y = (d.depth * (maxLabelLength * 10)); // maxLabelLength * 10px
+          // alternatively to keep a fixed scale one can set a fixed depth per
+			// level
           // Normalize for fixed-depth by commenting out below line
           // d.y = (d.depth * 500); //500px per level.
       });
@@ -884,7 +967,8 @@ function create_tree(treeData) {
               return d.name;
           });
 
-      // Change the circle fill depending on whether it has children and is collapsed
+      // Change the circle fill depending on whether it has children and is
+		// collapsed
       node.select("circle.nodeCircle")
           .attr("r", 8)
           .style("fill", function(d) {
@@ -963,7 +1047,8 @@ function create_tree(treeData) {
       });
   }
 
-  // Append a group which holds all nodes and which the zoom Listener can act upon.
+  // Append a group which holds all nodes and which the zoom Listener can act
+	// upon.
   var svgGroup = baseSvg.append("g");
 
   // Define the root
