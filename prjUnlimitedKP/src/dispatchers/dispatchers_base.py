@@ -75,7 +75,7 @@ app = webapp2.WSGIApplication([
     webapp2.Route(r'/base/articles', ArticlesDispatcher, name='articles'),
     webapp2.Route(r'/base/albums', AlbumsDispatcher, name='albums'),
     webapp2.Route(r'/base/videos', VideosDispatcher, name='videos'),
-    webapp2.Route(r'/base/financial', FinancialDispatcher, name='financial')
+    webapp2.Route(r'/base/financial_summary', FinancialDispatcher, name='financial')
 ], debug=True, config=config)
 
 # log

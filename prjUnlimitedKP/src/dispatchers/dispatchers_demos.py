@@ -59,6 +59,13 @@ class DashBoardDemoDispatcher(BaseHandler):
         template_values.update({'title':u'柯文哲-MA柯P'})
         self.render_template('/demos/dash_board.html', template_values)
 
+class FinancialBarsChartDispatcher(BaseHandler):
+    def get(self):
+        """ collpasible tree dispatcher """
+        template_values = {}
+        template_values.update({'title':u'柯文哲-MA柯P'})
+        self.render_template('/demos/financial_bars_chart_credit.html', template_values)
+
 
 # configuration
 config = dict_general.config_setting
@@ -69,7 +76,8 @@ app = webapp2.WSGIApplication([
     webapp2.Route(r'/demos/line_chart', BarsChartDemoDispatcher, name='line_chart'),
     webapp2.Route(r'/demos/stacked_bars_charts', StackBarsChartDemoDispatcher, name='stacked_bars_charts'),
     webapp2.Route(r'/demos/sortable_bars_chart', SortableBarsChartDemoDispatcher, name='sortable_bars_chart'),
-    webapp2.Route(r'/demos/dash_board_chart', DashBoardDemoDispatcher, name='dash_board_chart')
+    webapp2.Route(r'/demos/dash_board_chart', DashBoardDemoDispatcher, name='dash_board_chart'),
+    webapp2.Route(r'/demos/financial_bars_chart_credit', FinancialBarsChartDispatcher, name='dash_board_chart')
 ], debug=True, config=config)
 
 # log

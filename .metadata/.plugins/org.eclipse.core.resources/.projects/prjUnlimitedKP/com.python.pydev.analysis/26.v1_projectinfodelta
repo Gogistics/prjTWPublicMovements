@@ -1,16 +1,1 @@
-INSTUPdispatchers.dispatchers_base
-D:\prjTWPublicMovements\prjUnlimitedKP\src\dispatchers\dispatchers_base.py
-INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&1|6|2|0&&2|7|2|6&&1|8|2|0&&2|7|2|8&&1|9|2|0&&2|7|2|9&&1|10|2|0&&2|7|2|10&&1|11|2|0&&2|7|2|11&&3|12|2|0&&3|13|2|0
-app=13
-FinancialDispatcher=11
-__author__=1
-get=7
-jinja_environment=5
-ArticlesDispatcher=8
-AlbumsDispatcher=9
-VideosDispatcher=10
-dispatchers.dispatchers_base=2
-FrontPageDispatcher=6
-dict_general=3
-config=12
-dict_html_ref=4
+DELSTRdispatchers.dispatchers_demos

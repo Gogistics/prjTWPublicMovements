@@ -8,14 +8,14 @@
 // Integrated with Google App Engine, the $interpolateProvider should change; the startSymbol and endSymbol should be changed to avoid the symbols of jinja2 template and consistent 
 
 
-// financial type filter
+// financial types filter
 angular.module('kp_api_filters', []).filter('financial_type', function() {
   return function(input) {
-    return input == "income" ? "收入" : "支出" ;
+    return input == "income" ? "入帳" : "支出" ;
   };
 });
 
-
+// create ng-module and modify interpolateProvide
 var kp_app = angular.module('unlimited_kp_app', ['ngRoute', 'kp_api_filters'], function($interpolateProvider) {
 	$interpolateProvider.startSymbol('[[');
 	$interpolateProvider.endSymbol(']]');

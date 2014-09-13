@@ -1,0 +1,19 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<style>
+</style>
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+{% endblock %} {% block main_content %}
+<div id="financial_bars-chart-container"></div>
+
+<!-- js -->
+<script type="text/javascript">
+</script>
+{% endblock %}
