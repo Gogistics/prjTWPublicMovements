@@ -441,43 +441,112 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			vm.total_debit = 0;
 			
 			// new data structure for ananlysis
+			vm.credit_accounts = [];
+			vm.debit_accounts = [];
 			vm.debit_grouped_bars_chart = {};
 			vm.credit_grouped_bars_chart = {};
 			
 			vm.financial_detail = results.data;
-			//console.log(JSON.stringify(vm.financial_detail,2,2));
+			console.log(JSON.stringify(vm.financial_detail,2,2));
 			angular.forEach(results.data, function(item, ind) {
 					if(item.price != 0){
 						if(item.type === 'income'){
+							// get data ready for credit list
 							vm.credit.push(item);
 							vm.total_credit += item.price;
-							var start_date = item.start_date;
-							var start_year_month = start_date.substring(0,start_date.lastIndexOf('/'));
-							if (vm.debit_grouped_bars_chart[start_year_month] === null){
-								
+							
+							// build data structure for grouped bars chart analysis
+							var start_timestamp = new Date(item.start_timestamp);
+							var start_year_month = start_timestamp.getFullYear() + '/' + (start_timestamp.getMonth() + 2);
+							console.log(start_timestamp.getFullYear() + '/' + (start_timestamp.getMonth() + 2));
+							//var start_date = item.start_date;
+							//var start_year_month = start_date.substring(0,start_date.lastIndexOf('/'));
+							
+							//
+							if(vm.credit_accounts.indexOf(item.account) === -1){
+								vm.credit_accounts.push(item.account);
 							}
-							console.log(start_year_month);
+							
+							if (typeof(vm.credit_grouped_bars_chart[start_year_month]) === 'undefined'){
+								var account = item.account;
+								var price = item.price;
+								vm.credit_grouped_bars_chart[start_year_month] = {};
+								vm.credit_grouped_bars_chart[start_year_month]['State'] = start_year_month;
+								vm.credit_grouped_bars_chart[start_year_month][account] = Number(price);
+							}
+							else{
+								if(typeof(vm.credit_grouped_bars_chart[start_year_month][item.account]) === 'undefined'){
+									vm.credit_grouped_bars_chart[start_year_month][item.account] = Number(item.price);
+								}
+								else{
+									vm.credit_grouped_bars_chart[start_year_month][item.account] += Number(item.price);
+								}
+							}
+							//console.log(JSON.stringify(vm.debit_grouped_bars_chart,2,2));
 						}
 						else{
+							// get data ready for debit list
 							vm.debit.push(item);
 							vm.total_debit += item.price;
+							
+							// build data structure for grouped bars chart analysis
+							var start_timestamp = new Date(item.start_timestamp);
+							var start_year_month = start_timestamp.getFullYear() + '/' + (start_timestamp.getMonth() + 1);
+							console.log(start_timestamp.getFullYear() + '/' + (start_timestamp.getMonth() + 1));
+							//var start_date = item.start_date;
+							//var start_year_month = start_date.substring(0,start_date.lastIndexOf('/'));
+							
+							//
+							if(vm.debit_accounts.indexOf(item.account) === -1){
+								vm.debit_accounts.push(item.account);
+							}
+							
+							if (typeof(vm.debit_grouped_bars_chart[start_year_month]) === 'undefined'){
+								var account = item.account;
+								var price = item.price;
+								vm.debit_grouped_bars_chart[start_year_month] = {};
+								vm.debit_grouped_bars_chart[start_year_month]['State'] = start_year_month;
+								vm.debit_grouped_bars_chart[start_year_month][account] = Number(price);
+							}
+							else{
+								if(typeof(vm.debit_grouped_bars_chart[start_year_month][item.account]) === 'undefined'){
+									vm.debit_grouped_bars_chart[start_year_month][item.account] = Number(item.price);
+								}
+								else{
+									vm.debit_grouped_bars_chart[start_year_month][item.account] += Number(item.price);
+								}
+							}
+							//console.log(JSON.stringify(vm.debit_grouped_bars_chart,2,2));
 						}
 					};
-					
-					// for data analysis purpose and will be updated later on
-					/*if(item.price != 0){
-						if(item.type === 'income'){
-							if(vm.credit['freq'] === null){
-								
-							}
-							vm.credit.push({date:item.start_date, freq:{}});
-						}
-						else{
-							vm.debit.push({date:item.start_date, freq:{}});
-						}
-					};*/
 			});
 			
+			// temp
+			financial_grouped_bars_chart_credit_data = [];
+			angular.forEach(vm.credit_grouped_bars_chart, function(item_credit_detail, ind){
+				
+				angular.forEach(vm.credit_accounts, function(item_account, ind){
+					if(typeof(item_credit_detail[item_account]) === 'undefined'){
+						item_credit_detail[item_account] = 0;
+					}
+				});
+				
+				financial_grouped_bars_chart_credit_data.push(item_credit_detail);
+			});
+			
+			financial_grouped_bars_chart_debit_data = [];
+			angular.forEach(vm.debit_grouped_bars_chart, function(item_debit_detail, ind){
+				
+				angular.forEach(vm.debit_accounts, function(item_account, ind){
+					if(typeof(item_debit_detail[item_account]) === 'undefined'){
+						item_debit_detail[item_account] = 0;
+					}
+				});
+				
+				financial_grouped_bars_chart_debit_data.push(item_debit_detail);
+			});
+			// temp
+
 			
 			// ctaegorize financial types including credit and debit
 			vm.categorize_financial_type = function(){

@@ -1,0 +1,166 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+<link type="text/css" rel="stylesheet" href="/css/financial.css" />
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+{% endblock %} {% block content %}
+
+<div>
+	<!-- credit -->
+	<div class="ng_controller"
+		ng-controller="FinancialCtrl as financial_details"
+		class="ng_controller">
+		<div class="col-md-4" style="width: 100%;">
+			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)-入帳新台幣[[financial_details.total_credit | number]]</h2>
+			<!-- ng-paginator -->
+			<div
+				style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+				<div class="row" style="margin: 5px auto;">
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">收尋/過濾</label> <input
+							ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+							class="form-control" placeholder="過濾關鍵字">
+					</div>
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+							type="number" min="1" max="100"
+							style="height: 30px; font-size: 13px;" class="form-control"
+							ng-model="pageSize">
+					</div>
+				</div>
+			</div>
+			<!-- end of ng-paginator -->
+
+
+			<!-- financial categories -->
+			<div class="categories"
+				style="margin-top: 10px; margin-bottom: 30px;">
+				<table class="table-bordered table">
+					<tr>
+					<td>帳目類別</td>
+						<td>開始時間</td>
+						<td>結束時間</td>
+						<td>會計科目</td>
+						<td>內容</td>
+						<td>金額(新臺幣)</td>
+						<td>附註</td>
+					</tr>
+					<tbody>
+						<!-- new ng list to meet pagination requirement -->
+						<tr
+							dir-paginate="item in financial_details.credit | filter:q | itemsPerPage: pageSize"
+							current-page="currentPage" style="margin: 5px auto;">
+							<td>[[item.type | financial_type]]</td>
+							<td>[[item.start_date]]</td>
+							<td>[[item.end_date]]</td>
+							<td>[[item.account]]</td>
+							<td>[[item.label]]</td>
+							<td>[[item.price]]</td>
+							<td>暫無資料</td>
+						</tr>
+						<!-- end of new ng list -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- pagination controller block -->
+			<div ng-controller="PaginationCtrl">
+				<hr
+					style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+				<small>頁面選單 </small>
+				<div class="text-center">
+					<dir-pagination-controls boundary-links="true"
+						on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+				</div>
+			</div>
+			<!-- end of pagination controller block -->
+		</div>
+	</div>
+
+
+	<!-- debit -->
+	<div class="ng_controller"
+		ng-controller="FinancialCtrl as financial_details"
+		class="ng_controller">
+		<div class="col-md-4" style="width: 100%;">
+			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)-支出新台幣[[financial_details.total_debit | number]]</h2>
+			<!-- ng-paginator -->
+			<div
+				style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+				<div class="row" style="margin: 5px auto;">
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">收尋/過濾</label> <input
+							ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+							class="form-control" placeholder="過濾關鍵字">
+					</div>
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+							type="number" min="1" max="100"
+							style="height: 30px; font-size: 13px;" class="form-control"
+							ng-model="pageSize">
+					</div>
+				</div>
+			</div>
+			<!-- end of ng-paginator -->
+
+
+			<!-- financial categories -->
+			<div class="categories"
+				style="margin-top: 10px; margin-bottom: 30px;">
+				<table class="table-bordered table">
+					<tr>
+					<td>帳目類別</td>
+						<td>開始時間</td>
+						<td>結束時間</td>
+						<td>會計科目</td>
+						<td>內容</td>
+						<td>金額(新臺幣)</td>
+						<td>附註</td>
+					</tr>
+					<tbody>
+						<!-- new ng list to meet pagination requirement -->
+						<tr
+							dir-paginate="item in financial_details.debit | filter:q | itemsPerPage: pageSize"
+							current-page="currentPage" style="margin: 5px auto;">
+							<td>[[item.type | financial_type]]</td>
+							<td>[[item.start_date]]</td>
+							<td>[[item.end_date]]</td>
+							<td>[[item.account]]</td>
+							<td>[[item.label]]</td>
+							<td>[[item.price]]</td>
+							<td>暫無資料</td>
+						</tr>
+						<!-- end of new ng list -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- pagination controller block -->
+			<div ng-controller="PaginationCtrl">
+				<hr
+					style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+				<small>頁面選單 </small>
+				<div class="text-center">
+					<dir-pagination-controls boundary-links="true"
+						on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+				</div>
+			</div>
+			<!-- end of pagination controller block -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+//-->
+</script>
+
+{% endblock %}

@@ -1,0 +1,372 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+<link type="text/css" rel="stylesheet" href="/css/financial.css" />
+
+<style>
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.bar {
+	fill: steelblue;
+	-webkit-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+.bar:hover {
+	opacity: 0.5;
+}
+
+
+.x.axis path {
+	display: none;
+}
+
+/* d3 tips */
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border-radius: 3px;
+  border: rgba(100,100,100,0.95);
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+{% endblock %} {% block content %}
+
+<div>
+	<!-- credit -->
+	<div class="ng_controller"
+		ng-controller="FinancialCtrl as financial_details"
+		class="ng_controller">
+		<div class="col-md-4" style="width: 100%;">
+			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)-入帳新台幣[[financial_details.total_credit
+				| number]]</h2>
+			<!-- ng-paginator -->
+			<div
+				style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+				<div class="row" style="margin: 5px auto;">
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">收尋/過濾</label> <input
+							ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+							class="form-control" placeholder="過濾關鍵字">
+					</div>
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+							type="number" min="1" max="100"
+							style="height: 30px; font-size: 13px;" class="form-control"
+							ng-model="pageSize">
+					</div>
+				</div>
+			</div>
+			<!-- end of ng-paginator -->
+
+
+			<!-- financial categories -->
+			<div class="categories"
+				style="margin-top: 10px; margin-bottom: 30px;">
+				<table class="table-bordered table">
+					<tr>
+						<td>帳目類別</td>
+						<td>開始時間</td>
+						<td>結束時間</td>
+						<td>會計科目</td>
+						<td>內容</td>
+						<td>金額(新臺幣)</td>
+						<td>附註</td>
+					</tr>
+					<tbody>
+						<!-- new ng list to meet pagination requirement -->
+						<tr
+							dir-paginate="item in financial_details.credit | filter:q | itemsPerPage: pageSize"
+							current-page="currentPage" style="margin: 5px auto;">
+							<td>[[item.type | financial_type]]</td>
+							<td>[[item.start_date]]</td>
+							<td>[[item.end_date]]</td>
+							<td>[[item.account]]</td>
+							<td>[[item.label]]</td>
+							<td>[[item.price]]</td>
+							<td>暫無資料</td>
+						</tr>
+						<!-- end of new ng list -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- pagination controller block -->
+			<div ng-controller="PaginationCtrl">
+				<hr
+					style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+				<small>頁面選單 </small>
+				<div class="text-center">
+					<dir-pagination-controls boundary-links="true"
+						on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+				</div>
+			</div>
+			<!-- end of pagination controller block -->
+		</div>
+	</div>
+
+
+	<!-- debit -->
+	<div class="ng_controller"
+		ng-controller="FinancialCtrl as financial_details"
+		class="ng_controller">
+		<div class="col-md-4" style="width: 100%;">
+			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)-支出新台幣[[financial_details.total_debit
+				| number]]</h2>
+			<!-- ng-paginator -->
+			<div
+				style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+				<div class="row" style="margin: 5px auto;">
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">收尋/過濾</label> <input
+							ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+							class="form-control" placeholder="過濾關鍵字">
+					</div>
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+							type="number" min="1" max="100"
+							style="height: 30px; font-size: 13px;" class="form-control"
+							ng-model="pageSize">
+					</div>
+				</div>
+			</div>
+			<!-- end of ng-paginator -->
+
+
+			<!-- financial categories -->
+			<div class="categories"
+				style="margin-top: 10px; margin-bottom: 30px;">
+				<table class="table-bordered table">
+					<tr>
+						<td>帳目類別</td>
+						<td>開始時間</td>
+						<td>結束時間</td>
+						<td>會計科目</td>
+						<td>內容</td>
+						<td>金額(新臺幣)</td>
+						<td>附註</td>
+					</tr>
+					<tbody>
+						<!-- new ng list to meet pagination requirement -->
+						<tr
+							dir-paginate="item in financial_details.debit | filter:q | itemsPerPage: pageSize"
+							current-page="currentPage" style="margin: 5px auto;">
+							<td>[[item.type | financial_type]]</td>
+							<td>[[item.start_date]]</td>
+							<td>[[item.end_date]]</td>
+							<td>[[item.account]]</td>
+							<td>[[item.label]]</td>
+							<td>[[item.price]]</td>
+							<td>暫無資料</td>
+						</tr>
+						<!-- end of new ng list -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- pagination controller block -->
+			<div ng-controller="PaginationCtrl">
+				<hr
+					style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+				<small>頁面選單 </small>
+				<div class="text-center">
+					<dir-pagination-controls boundary-links="true"
+						on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+				</div>
+			</div>
+			<!-- end of pagination controller block -->
+		</div>
+	</div>
+	
+	
+	<!--  -->
+	<div id="financial_debit_data_analysis_block"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
+	<!-- temp button of closing albums map -->
+	<img id="close_map" title="關閉地圖" src="/img/close_exit_delete.png"
+		style=" position: fixed; top: 20px; left: 20px; width: 30px;">
+
+	<!-- map & pie chart -->
+	<div style="margin: 30px auto; text-align: center; display: block;">
+		<!--  -->
+		<div id="financial_bars-chart-container"></div>
+	</div>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+<!--
+// close map (temp)
+$('#close_map').click(function() {
+	$('div#financial_data_analysis_block').toggle("slow");
+});
+
+// show map
+$('#btn_show_financial_debit_grouped_bars_chart').click(
+		function() {
+			$('div#financial_debit_data_analysis_block').toggle(
+					"slow",
+					function() {
+						leaflet_map.init_map();
+						// show pie chart
+						if (typeof (albums_clusters) !== 'undefined'
+								&& $('div#albums_geo_location_pie_chart').has(
+										'svg').length < 1) {
+							// show pie map
+							show_pie_chart(leaflet_map.map, albums_clusters);
+						}
+						
+						if(typeof(albums_cluster_based_on_time) !== 'undefined' && $('div#sorted_bars_charts').has('svg').length < 1){
+							show_sorted_bars_chart(albums_cluster_based_on_time);
+						}
+					});
+
+		});
+
+
+// show data
+var financial_grouped_bars_chart_data;
+function show_grouped_bars_chart(data){
+	if($('div#financial_bars-chart-container').has('svg').length < 1){
+		var margin = {
+			top : 20,
+			right : 20,
+			bottom : 30,
+			left : 40
+		}, width = 960 - margin.left - margin.right, height = 500 - margin.top
+				- margin.bottom;
+
+		var x0 = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1);
+
+		var x1 = d3.scale.ordinal();
+
+		var y = d3.scale.linear().range([ height, 0 ]);
+
+		var color = d3.scale.ordinal().range(
+				[ "#98abc5", "#8a89a6", "#7b6888", "#a05d56", "#d0743c",
+						"#ff8c00" ]);
+
+		var xAxis = d3.svg.axis().scale(x0).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(
+				d3.format(".2s"));
+
+		var svg = d3.select("#financial_bars-chart-container").append("svg").attr("width",
+				width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr("transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
+				function(d) {
+					return "<strong>" + d.name
+							+ ":</strong><span style='color:red'>" + d.value
+							+ "</span>";
+				});
+
+		// start
+		var ageNames = d3.keys(data[0]).filter(function(key) {
+			return key !== "State";
+		});
+
+		data.forEach(function(d) {
+			d.ages = ageNames.map(function(name) {
+				return {
+					name : name,
+					value : +d[name]
+				};
+			});
+		});
+
+		x0.domain(data.map(function(d) {
+			return d.State;
+		}));
+		x1.domain(ageNames).rangeRoundBands([ 0, x0.rangeBand() ]);
+		y.domain([ 0, d3.max(data, function(d) {
+			return d3.max(d.ages, function(d) {
+				return d.value;
+			});
+		}) ]);
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr(
+				"transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em").style(
+				"text-anchor", "end").text("Population");
+
+		var state = svg.selectAll(".state").data(data).enter().append("g").attr(
+				"class", "g").attr("transform", function(d) {
+			return "translate(" + x0(d.State) + ",0)";
+		});
+
+		state.selectAll("rect").data(function(d) {
+			return d.ages;
+		}).enter().append("rect").attr("width", x1.rangeBand()).attr("x",
+				function(d) {
+					return x1(d.name);
+				}).attr("y", function(d) {
+			return y(d.value);
+		}).attr("height", function(d) {
+			return height - y(d.value);
+		}).style("fill", function(d) {
+			return color(d.name);
+		}).on('mouseover', tip.show).on('mouseout', tip.hide);
+
+		var legend = svg.selectAll(".legend").data(ageNames.slice().reverse())
+				.enter().append("g").attr("class", "legend").attr("transform",
+						function(d, i) {
+							return "translate(0," + i * 20 + ")";
+						});
+
+		legend.append("rect").attr("x", width - 18).attr("width", 18).attr(
+				"height", 18).style("fill", color);
+
+		legend.append("text").attr("x", width - 24).attr("y", 9)
+				.attr("dy", ".35em").style("text-anchor", "end").text(function(d) {
+					return d;
+				});
+
+		// apply tips
+		svg.call(tip);
+	}
+}
+//-->
+</script>
+
+{% endblock %}
