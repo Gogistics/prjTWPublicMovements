@@ -570,7 +570,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 						item_credit_detail[item_account] = 0;
 					}
 					
-					if(typeof(vm.credit_sum[item_account]) === 'undefined'){
+					if(typeof(vm.credit_sum[item_account] === 'undefined')){
 						vm.credit_sum[item_account] = item_credit_detail[item_account];
 					}
 					else{
@@ -578,49 +578,29 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 					}
 				});
 				
-				// console.log(JSON.stringify(item_credit_detail,2,2));
+				console.log(JSON.stringify(item_credit_detail,2,2));
 				
 				financial_grouped_bars_chart_credit_data.push(item_credit_detail);
 			});
-			financial_grouped_bars_chart_credit_data.push(vm.credit_sum);
 			
-			//
 			financial_grouped_bars_chart_debit_data = [];
-			vm.debit_sum = {'State':'單總評比'};
 			angular.forEach(vm.debit_grouped_bars_chart, function(item_debit_detail, ind){
 				
 				angular.forEach(vm.debit_accounts, function(item_account, ind){
 					if(typeof(item_debit_detail[item_account]) === 'undefined'){
 						item_debit_detail[item_account] = 0;
 					}
-					
-					if(typeof(vm.debit_sum[item_account]) === 'undefined'){
-						vm.debit_sum[item_account] = item_debit_detail[item_account];
-					}
-					else{
-						vm.debit_sum[item_account] += item_debit_detail[item_account];
-					}
 				});
 				
 				financial_grouped_bars_chart_debit_data.push(item_debit_detail);
 			});
-			financial_grouped_bars_chart_debit_data.push(vm.debit_sum);
-			// end of debit
 			
-			
-			// summary
 			financial_summary_grouped_bars_chart = [];
-			vm.credit_debit_sum = {'State':'單總評比', '收入':0, '支出':0, '收支差異-收入減支出':0};
 			angular.forEach(vm.summary_of_total_credit_debit, function(item_summary, ind){
 				item_summary['收支差異-收入減支出'] = item_summary['收入'] - item_summary['支出'];
-				vm.credit_debit_sum['收入'] += item_summary['收入'];
-				vm.credit_debit_sum['支出'] += item_summary['支出'];
-				vm.credit_debit_sum['收支差異-收入減支出'] += item_summary['收支差異-收入減支出'];
-				
-				
 				financial_summary_grouped_bars_chart.push(item_summary);
 			});
-			financial_summary_grouped_bars_chart.push(vm.credit_debit_sum);
+			// console.log(JSON.stringify(financial_summary_grouped_bars_chart,2,2));
 			// temp
 
 			

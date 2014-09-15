@@ -605,7 +605,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 				financial_grouped_bars_chart_debit_data.push(item_debit_detail);
 			});
 			financial_grouped_bars_chart_debit_data.push(vm.debit_sum);
-			// end of debit
+			//
 			
 			
 			// summary
