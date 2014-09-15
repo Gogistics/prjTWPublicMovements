@@ -303,7 +303,7 @@ function MainController($sce, kptService) {
 }
 
 // albums
-AlbumController.$injector = [ '$sce', 'kptService', '$scope' ];
+AlbumController.$injector = [ '$sce', 'kptService' ];
 function AlbumController($sce, kptService, $scope) {
 	// sort-order param which can be changed minus sign means reverse sort order
 	$scope.sort_order_param = '-title';
