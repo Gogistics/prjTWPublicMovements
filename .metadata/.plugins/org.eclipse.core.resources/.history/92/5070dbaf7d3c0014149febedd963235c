@@ -496,13 +496,11 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							
 							// for summary grouped bars chart
 							if(typeof(vm.summary_of_total_credit_debit[start_year_month]) === 'undefined'){
-								vm.summary_of_total_credit_debit[start_year_month] = {};
-								vm.summary_of_total_credit_debit[start_year_month]['State'] = start_year_month;
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] = item.price;
-								vm.summary_of_total_credit_debit[start_year_month]['支出'] = 0;
+								summary_of_total_credit_debit[start_year_month]['State'] = start_year_month;
+								summary_of_total_credit_debit[start_year_month]['收入'] = item.price;
 							}
 							else{
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] += item.price;
+								summary_of_total_credit_debit[start_year_month]['收入'] += item.price;
 							}
 						}
 						else{
@@ -548,10 +546,8 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							
 							// for summary grouped bars chart
 							if(typeof(vm.summary_of_total_credit_debit[start_year_month]) === 'undefined'){
-								vm.summary_of_total_credit_debit[start_year_month] = {};
 								vm.summary_of_total_credit_debit[start_year_month]['State'] = start_year_month;
 								vm.summary_of_total_credit_debit[start_year_month]['支出'] = item.price;
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] = 0;
 							}
 							else{
 								vm.summary_of_total_credit_debit[start_year_month]['支出'] += item.price;
@@ -587,10 +583,8 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			
 			financial_summary_grouped_bars_chart = [];
 			angular.forEach(vm.summary_of_total_credit_debit, function(item_summary, ind){
-				item_summary['收支差異(收入減支出)'] = item_summary['收入'] - item_summary['支出'];
-				financial_summary_grouped_bars_chart.push(item_summary);
+				console.log(JSON.stringify(item_summary, 2, 2));
 			});
-			console.log(JSON.stringify(financial_summary_grouped_bars_chart,2,2));
 			// temp
 
 			

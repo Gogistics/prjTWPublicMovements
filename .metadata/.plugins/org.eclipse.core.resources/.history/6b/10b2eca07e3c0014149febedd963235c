@@ -590,7 +590,6 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 				item_summary['收支差異(收入減支出)'] = item_summary['收入'] - item_summary['支出'];
 				financial_summary_grouped_bars_chart.push(item_summary);
 			});
-			console.log(JSON.stringify(financial_summary_grouped_bars_chart,2,2));
 			// temp
 
 			

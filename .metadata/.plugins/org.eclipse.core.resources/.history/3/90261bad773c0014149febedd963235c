@@ -446,7 +446,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			vm.debit_grouped_bars_chart = {};
 			vm.credit_grouped_bars_chart = {};
 			
-			vm.summary_of_total_credit_debit = {};
+			vm.summary_of_total_credit_debit = {'收入':0, '支出':0, '收支差':0};
 			
 			vm.financial_detail = results.data;
 			console.log(JSON.stringify(vm.financial_detail,2,2));
@@ -461,8 +461,8 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							// var start_timestamp = new Date(item.start_timestamp);
 							// var start_year_month = start_timestamp.getFullYear() + '/' + (start_timestamp.getMonth() + 2);
 							
-							// var start_date = item.start_date;
-							// var start_year_month = start_date.substring(0,start_date.lastIndexOf('/'));
+							//var start_date = item.start_date;
+							//var start_year_month = start_date.substring(0,start_date.lastIndexOf('/'));
 							
 							//
 							var start_date = item.start_date;
@@ -470,7 +470,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							var start_year = start_date.substring(0,start_date.indexOf('/'));
 							
 							var start_year_month = start_year + '/' + Number(start_month);
-							// console.log(start_year_month);
+							console.log(start_year_month);
 							
 							// build accounts set
 							if(vm.credit_accounts.indexOf(item.account) === -1){
@@ -493,17 +493,6 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 								}
 							}
 							//console.log(JSON.stringify(vm.debit_grouped_bars_chart,2,2));
-							
-							// for summary grouped bars chart
-							if(typeof(vm.summary_of_total_credit_debit[start_year_month]) === 'undefined'){
-								vm.summary_of_total_credit_debit[start_year_month] = {};
-								vm.summary_of_total_credit_debit[start_year_month]['State'] = start_year_month;
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] = item.price;
-								vm.summary_of_total_credit_debit[start_year_month]['支出'] = 0;
-							}
-							else{
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] += item.price;
-							}
 						}
 						else{
 							// get data ready for debit list
@@ -522,7 +511,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							var start_year = start_date.substring(0,start_date.indexOf('/'));
 							
 							var start_year_month = start_year + '/' + Number(start_month);
-							// console.log( start_year_month );
+							console.log( start_year_month );
 							
 							//
 							if(vm.debit_accounts.indexOf(item.account) === -1){
@@ -545,17 +534,6 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 								}
 							}
 							//console.log(JSON.stringify(vm.debit_grouped_bars_chart,2,2));
-							
-							// for summary grouped bars chart
-							if(typeof(vm.summary_of_total_credit_debit[start_year_month]) === 'undefined'){
-								vm.summary_of_total_credit_debit[start_year_month] = {};
-								vm.summary_of_total_credit_debit[start_year_month]['State'] = start_year_month;
-								vm.summary_of_total_credit_debit[start_year_month]['支出'] = item.price;
-								vm.summary_of_total_credit_debit[start_year_month]['收入'] = 0;
-							}
-							else{
-								vm.summary_of_total_credit_debit[start_year_month]['支出'] += item.price;
-							}
 						}
 					};
 			});
@@ -584,18 +562,9 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 				
 				financial_grouped_bars_chart_debit_data.push(item_debit_detail);
 			});
-			
-			financial_summary_grouped_bars_chart = [];
-			angular.forEach(vm.summary_of_total_credit_debit, function(item_summary, ind){
-				item_summary['收支差異(收入減支出)'] = item_summary['收入'] - item_summary['支出'];
-				financial_summary_grouped_bars_chart.push(item_summary);
-			});
-			console.log(JSON.stringify(financial_summary_grouped_bars_chart,2,2));
 			// temp
 
 			
-			
-			// apply defer to handle data (temp)
 			// ctaegorize financial types including credit and debit
 			vm.categorize_financial_type = function(){
 				categorize_credit_data_by_date()

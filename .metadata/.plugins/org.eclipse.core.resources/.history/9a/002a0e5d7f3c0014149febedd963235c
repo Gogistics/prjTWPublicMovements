@@ -99,7 +99,7 @@
 							value="顯示圖表">
 							
 							<input
-							id="btn_show_financial_summary_data_analysis_block" type="button"
+							id="btn_show_summary_financial_credit_data_analysis_block" type="button"
 							class="form-control"
 							style="height: 30px; width: 150px; font-size: 13px; background-color: #fff; color: #000; border: none; display: inline-block;"
 							value="顯示綜合比較圖表">
@@ -234,7 +234,7 @@
 </div>
 
 
-<!-- credit -->
+<!--  -->
 <div id="financial_credit_data_analysis_block"
 	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
 	<!-- temp button of closing albums map -->
@@ -250,7 +250,7 @@
 	</div>
 </div>
 
-<!-- debit -->
+<!--  -->
 <div id="financial_debit_data_analysis_block"
 	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
 	<!-- temp button of closing albums map -->
@@ -262,22 +262,6 @@
 	<div style="margin: 30px auto; text-align: center; display: block;">
 		<!--  -->
 		<div id="financial_debit_bars_chart_container"
-			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
-	</div>
-</div>
-
-<!-- summary -->
-<div id="financial_summary_data_analysis_block"
-	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
-	<!-- temp button of closing albums map -->
-	<img id="close_summary_data_analysis_chart" title="關閉地圖"
-		src="/img/close_exit_delete.png"
-		style="position: fixed; top: 20px; left: 20px; width: 30px;">
-
-	<!-- map & pie chart -->
-	<div style="margin: 30px auto; text-align: center; display: block;">
-		<!--  -->
-		<div id="financial_summary_bars_chart_container"
 			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
 	</div>
 </div>
@@ -338,23 +322,23 @@
 	
 	// summary
 	// close map (temp)
-	$('img#close_summary_data_analysis_chart').click(function() {
-		$('div#financial_summary_data_analysis_block').toggle("slow");
+	$('img#close_debit_data_analysis_chart').click(function() {
+		$('div#financial_debit_data_analysis_block').toggle("slow");
 	});
 
 	// show map
-	$('#btn_show_financial_summary_data_analysis_block')
+	$('#btn_show_financial_debit_data_analysis_block')
 			.click(
 					function() {
-						$('div#financial_summary_data_analysis_block')
+						$('div#financial_debit_data_analysis_block')
 								.toggle(
 										"slow",
 										function() {
 											if (typeof (financial_grouped_bars_chart_credit_data) !== 'undefined'
 													&& $(
-															'div#financial_summary_bars_chart_container')
+															'div#financial_debit_bars_chart_container')
 															.has('svg').length < 1) {
-												show_grouped_bars_chart(financial_summary_grouped_bars_chart, '#financial_summary_bars_chart_container');
+												show_grouped_bars_chart(financial_grouped_bars_chart_debit_data, '#financial_debit_bars_chart_container');
 											}
 										});
 
