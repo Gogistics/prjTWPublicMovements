@@ -24,6 +24,9 @@ handlers:
 - url: /js
   static_dir: static/javascripts
 
+- url: /numeral_js
+  static_dir: static/numeral-js
+
 - url: /img
   static_dir: static/images
 

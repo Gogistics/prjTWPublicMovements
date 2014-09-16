@@ -436,6 +436,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			// financial categories; credit and debit
 			vm.debit = [];
 			vm.credit = [];
+			vm.credit_debit = [];
 			
 			vm.total_credit = 0;
 			vm.total_debit = 0;
@@ -456,6 +457,9 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							// get data ready for credit list
 							vm.credit.push(item);
 							vm.total_credit += item.price;
+							
+							item['type'] = '入帳';
+							vm.credit_debit.push(item);
 							
 							// build data structure for grouped bars chart analysis
 							// var start_timestamp = new Date(item.start_timestamp);
@@ -509,6 +513,9 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 							// get data ready for debit list
 							vm.debit.push(item);
 							vm.total_debit += item.price;
+
+							item['type'] = '支出';
+							vm.credit_debit.push(item);
 							
 							// build data structure for grouped bars chart analysis
 							// var start_timestamp = new Date(item.start_timestamp);
