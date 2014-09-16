@@ -72,7 +72,7 @@
 		ng-controller="FinancialCtrl as financial_details">
 		<div class="col-md-4" style="width: 100%;">
 			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)</h2>
-			<h4 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h4>
+			<h2 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h2>
 			
 			<!-- ng-paginator -->
 			<div
@@ -220,33 +220,25 @@
 		$('div#financial_credit_data_analysis_block').toggle("slow");
 	});
 
-	// show
-	var financial_grouped_bars_chart_credit_data;
-	var financial_grouped_bars_chart_debit_data;
-	var financial_summary_grouped_bars_chart;
-	
+	// show map
 	$('input.form-control')
 			.click(
 					function() {
 						var obj_key = $(this).attr('id');
-						var data_source;
+						alert(obj_key.indexOf('credit'));
 						if(obj_key.indexOf('credit') !== -1){
-							data_source = financial_grouped_bars_chart_credit_data;
+							
 						}
-						else if(obj_key.indexOf('debit') !== -1){
-							data_source = financial_grouped_bars_chart_debit_data;
-						}
-						else if(obj_key.indexOf('summary') !== -1){
-							data_source = financial_summary_grouped_bars_chart;
-						}
-
-						$('div#financial_credit_bars_chart_container').empty();
+						
 						$('div#financial_credit_data_analysis_block')
 								.toggle(
 										"slow",
 										function() {
-											if (typeof (data_source) !== 'undefined') {
-												show_grouped_bars_chart(data_source , 'div#financial_credit_bars_chart_container');
+											if (typeof (financial_grouped_bars_chart_credit_data) !== 'undefined'
+													&& $(
+															'div#financial_credit_bars_chart_container')
+															.has('svg').length < 1) {
+												show_grouped_bars_chart(financial_grouped_bars_chart_credit_data, '#financial_credit_bars_chart_container');
 											}
 										});
 
@@ -310,6 +302,10 @@
 	
 	
 	// show data
+	var financial_grouped_bars_chart_credit_data;
+	var financial_grouped_bars_chart_debit_data;
+	var financial_summary_grouped_bars_chart;
+	
 	function show_grouped_bars_chart(data, arg_selected_div) {
 			var margin = {
 				top : 20,

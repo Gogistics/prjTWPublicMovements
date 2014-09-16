@@ -72,7 +72,7 @@
 		ng-controller="FinancialCtrl as financial_details">
 		<div class="col-md-4" style="width: 100%;">
 			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)</h2>
-			<h4 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h4>
+			<h2 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h2>
 			
 			<!-- ng-paginator -->
 			<div
@@ -232,20 +232,23 @@
 						var data_source;
 						if(obj_key.indexOf('credit') !== -1){
 							data_source = financial_grouped_bars_chart_credit_data;
+							alert(obj_key);
 						}
 						else if(obj_key.indexOf('debit') !== -1){
 							data_source = financial_grouped_bars_chart_debit_data;
+							alert(obj_key);
 						}
 						else if(obj_key.indexOf('summary') !== -1){
 							data_source = financial_summary_grouped_bars_chart;
+							alert(obj_key);
 						}
-
-						$('div#financial_credit_bars_chart_container').empty();
+						
 						$('div#financial_credit_data_analysis_block')
 								.toggle(
 										"slow",
 										function() {
 											if (typeof (data_source) !== 'undefined') {
+												$('div#financial_credit_bars_chart_container').empty();
 												show_grouped_bars_chart(data_source , 'div#financial_credit_bars_chart_container');
 											}
 										});

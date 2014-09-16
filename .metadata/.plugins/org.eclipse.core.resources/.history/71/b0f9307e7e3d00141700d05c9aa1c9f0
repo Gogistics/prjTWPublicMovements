@@ -72,7 +72,7 @@
 		ng-controller="FinancialCtrl as financial_details">
 		<div class="col-md-4" style="width: 100%;">
 			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)</h2>
-			<h4 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h4>
+			<h2 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h2>
 			
 			<!-- ng-paginator -->
 			<div
