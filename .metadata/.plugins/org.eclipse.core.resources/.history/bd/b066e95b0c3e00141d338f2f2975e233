@@ -253,6 +253,62 @@
 					});
 	// end of credit
 	
+	
+	
+	/* 
+	// debit
+	// close map (temp)
+	$('img#close_debit_data_analysis_chart').click(function() {
+		$('div#financial_debit_data_analysis_block').toggle("slow");
+	});
+
+	// show map
+	$('input#btn_show_financial_debit_data_analysis_block')
+			.click(
+					function() {
+						$('div#financial_debit_data_analysis_block')
+								.toggle(
+										"slow",
+										function() {
+											if (typeof (financial_grouped_bars_chart_credit_data) !== 'undefined'
+													&& $(
+															'div#financial_debit_bars_chart_container')
+															.has('svg').length < 1) {
+												show_grouped_bars_chart(financial_grouped_bars_chart_debit_data, '#financial_debit_bars_chart_container');
+											}
+										});
+
+					});
+	// end of debit
+	
+	
+	// summary
+	// close map (temp)
+	$('img#close_summary_data_analysis_chart').click(function() {
+		$('div#financial_summary_data_analysis_block').toggle("slow");
+	});
+
+	// show map
+	$('#btn_show_financial_summary_data_analysis_block')
+			.click(
+					function() {
+						$('div#financial_summary_data_analysis_block')
+								.toggle(
+										"slow",
+										function() {
+											if (typeof (financial_grouped_bars_chart_credit_data) !== 'undefined'
+													&& $(
+															'div#financial_summary_bars_chart_container')
+															.has('svg').length < 1) {
+												show_grouped_bars_chart(financial_summary_grouped_bars_chart, '#financial_summary_bars_chart_container');
+											}
+										});
+
+					});
+	// end of summary */
+
+	
+	
 	// show data
 	function show_grouped_bars_chart(data, arg_selected_div) {
 			var margin = {
