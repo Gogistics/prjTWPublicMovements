@@ -451,8 +451,50 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			
 			vm.financial_detail = results.data;
 			// console.log(JSON.stringify(vm.financial_detail,2,2));
+			
+			// time span of financial details
+			vm.start_year_month;
+			vm.end_year_month;
+			vm.time_span = 'NA';
+			
+			// data maniplation (temp)
 			angular.forEach(results.data, function(item, ind) {
 					if(item.price != 0){
+						
+						//
+						var start_date = item.start_date;
+						var start_month = start_date.substring(start_date.indexOf('/') + 1, start_date.lastIndexOf('/'));
+						var start_year = start_date.substring(0,start_date.indexOf('/'));
+						
+						var start_year_month = start_year + '/' + Number(start_month);
+						// console.log(start_year_month);
+						
+						// find time span
+						var new_time = new Date(Number(start_year),Number(start_month)).getTime();
+						var temp_start_time;
+						var temp_end_time;
+						if(typeof(vm.start_year_month) === 'undefined'){
+							vm.start_year_month = {'start_year':Number(start_year), 'start_month':Number(start_month)};
+						}
+						else{
+							temp_start_time = new Date(Number(vm.start_year_month['start_year']), Number(vm.start_year_month['start_month'])).getTime();
+						}
+						if(typeof(vm.end_year_month) === 'undefined'){
+							vm.end_year_month = {'end_year':Number(start_year), 'end_month':Number(start_month)};
+						}
+						else{
+							temp_end_time = new Date(Number(vm.end_year_month['end_year']), Number(vm.end_year_month['end_month'])).getTime();
+						}
+						
+						if(new_time > temp_end_time){
+							vm.end_year_month = {'end_year':Number(start_year), 'end_month':Number(start_month)};
+						}
+						if(new_time < temp_start_time){
+							vm.start_year_month = {'start_year':Number(start_year), 'start_month':Number(start_month)};
+						}
+						// end
+						
+						
 						if(item.type === 'income'){
 							// get data ready for credit list
 							vm.credit.push(item);
@@ -567,9 +609,17 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 					};
 			});
 			
+			// get financial time span
+
+			// build string of time span
+			vm.start_year_month;
+			vm.end_year_month;
+			vm.time_span = vm.start_year_month['start_year'] + '/' + vm.start_year_month['start_month'] + '至' + vm.end_year_month['end_year'] + '/' + vm.end_year_month['end_month']
+			// end
+			
 			// temp
 			financial_grouped_bars_chart_credit_data = [];
-			vm.credit_sum = {'State':'單總評比'};
+			vm.credit_sum = {'State':'加總'};
 			angular.forEach(vm.credit_grouped_bars_chart, function(item_credit_detail, ind){
 				
 				angular.forEach(vm.credit_accounts, function(item_account, ind){
@@ -593,7 +643,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			
 			//
 			financial_grouped_bars_chart_debit_data = [];
-			vm.debit_sum = {'State':'單總評比'};
+			vm.debit_sum = {'State':'加總'};
 			angular.forEach(vm.debit_grouped_bars_chart, function(item_debit_detail, ind){
 				
 				angular.forEach(vm.debit_accounts, function(item_account, ind){
@@ -617,7 +667,7 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 			
 			// summary
 			financial_summary_grouped_bars_chart = [];
-			vm.credit_debit_sum = {'State':'單總評比', '收入':0, '支出':0, '收支差異-收入減支出':0};
+			vm.credit_debit_sum = {'State':'加總', '收入':0, '支出':0, '收支差異-收入減支出':0};
 			angular.forEach(vm.summary_of_total_credit_debit, function(item_summary, ind){
 				item_summary['收支差異-收入減支出'] = item_summary['收入'] - item_summary['支出'];
 				vm.credit_debit_sum['收入'] += item_summary['收入'];
@@ -628,7 +678,8 @@ function FinancialDetailController($sce, kptService, $scope, $q) {
 				financial_summary_grouped_bars_chart.push(item_summary);
 			});
 			financial_summary_grouped_bars_chart.push(vm.credit_debit_sum);
-			// temp
+			// console.log(JSON.stringify(financial_summary_grouped_bars_chart,2,2));
+			// data maniplation (temp)
 
 			
 			

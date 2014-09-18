@@ -56,14 +56,20 @@ class VideosDispatcher(BaseHandler):
     def get(self):
         """ videos dispatcher """
         template_values = {}
-        template_values.update({'title':u'柯文哲影像集'})
+        template_values.update({'title':u'柯"影"集'})
         self.render_template(dict_html_ref.videos, template_values)
         
 class FinancialDispatcher(BaseHandler):
     def get(self):
         """ videos dispatcher """
+        albums_geo_info = NewAlbumGeoInfo.query()
+        
+        #check if query is empty
+        if albums_geo_info.count() <= 0:
+            albums_geo_info = None
+        
         template_values = {}
-        template_values.update({'title':u'柯在陽光下'})
+        template_values.update({'title':u'柯在陽光下', 'albums_geo_info': albums_geo_info})
         self.render_template(dict_html_ref.financial, template_values)
 
 # configuration

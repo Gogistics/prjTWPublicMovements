@@ -71,7 +71,7 @@
 	<div class="ng_controller"
 		ng-controller="FinancialCtrl as financial_details">
 		<div class="col-md-4" style="width: 100%;">
-			<h2 style="text-align: center;">柯文哲競選財務彙整(四月至七月)</h2>
+			<h2 style="text-align: center;">柯文哲競選財務彙整([[financial_details.time_span]])</h2>
 			<h4 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h4>
 			
 			<!-- ng-paginator -->
@@ -214,10 +214,37 @@
 
 <script type="text/javascript">
 <!--
+/* get albums info (presume the albums info. can represent the events info. so that the relation info. between events info. and financial info. can be found) */
+var albums_geo_info; 
+var address_points;
+
+{% if albums_geo_info %}
+albums_geo_info = "{{albums_geo_info|safe}}";
+address_points = [];
+
+//loop through the query result
+{% for elem in albums_geo_info %}
+
+//array can be changed to object; it's easy to get the value with the corresponding key
+address_points.push({'album_id' : '{{elem.album_id|safe}}',
+	                 'album_lat' : Number('{{elem.album_lat|float}}'),
+	                 'album_lng' : Number('{{elem.album_lng|float}}'),
+	                 'album_title' : '{{elem.album_title|safe}}',
+	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
+	                 'album_popup_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
+
+{% endfor %}
+console.log(JSON.stringify(address_points,2,2));
+
+{% endif %}
+/* end */
+
 	// credit
 	// close map (temp)
 	$('img#close_credit_data_analysis_chart').click(function() {
-		$('div#financial_credit_data_analysis_block').toggle("slow");
+		$('div#financial_credit_data_analysis_block').toggle("slow", function(){
+			$('div#financial_credit_bars_chart_container').empty();
+		});
 	});
 
 	// show
@@ -229,18 +256,18 @@
 			.click(
 					function() {
 						var obj_key = $(this).attr('id');
-						var data_source;
+						var data_source = [];
 						if(obj_key.indexOf('credit') !== -1){
-							data_source = financial_grouped_bars_chart_credit_data;
+							data_source = financial_grouped_bars_chart_credit_data.slice();
+							
 						}
 						else if(obj_key.indexOf('debit') !== -1){
-							data_source = financial_grouped_bars_chart_debit_data;
+							data_source = financial_grouped_bars_chart_debit_data.slice();
 						}
 						else if(obj_key.indexOf('summary') !== -1){
-							data_source = financial_summary_grouped_bars_chart;
+							data_source = financial_summary_grouped_bars_chart.slice();
 						}
 
-						$('div#financial_credit_bars_chart_container').empty();
 						$('div#financial_credit_data_analysis_block')
 								.toggle(
 										"slow",
@@ -254,7 +281,9 @@
 	// end of credit
 	
 	// show data
-	function show_grouped_bars_chart(data, arg_selected_div) {
+	function show_grouped_bars_chart(arg_data, arg_selected_div) {
+		var data = JSON.parse( JSON.stringify( arg_data ) );
+		
 			var margin = {
 				top : 20,
 				right : 150,
@@ -306,7 +335,7 @@
 				return key !== "State"; //state
 			});
 
-			data.forEach(function(d) {
+			data.forEach(function(d) {	
 				d.ages = ageNames.map(function(name) {
 					return {
 						name : name,
@@ -368,6 +397,9 @@
 
 			// apply tips
 			svg.call(tip);
+			
+			//console.log(JSON.stringify(arg_data,2,2));
+			
 	}
 //-->
 </script>
