@@ -7,8 +7,8 @@
 /* solution for fixing css breaking problem */
 
 .gsc-control-cse{
- width: 400px !important;
- border-radius: 5px !important;
+	
+ width: 300px !important;
 }
 
 .gsc-control-cse  * {

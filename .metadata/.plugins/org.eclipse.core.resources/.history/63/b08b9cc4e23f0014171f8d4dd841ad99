@@ -13,13 +13,10 @@
 {% endblock %} {% block main_content %}
 
 
-<!--  -->
-<div style="position: fixed; top: 5px; right: 5px; z-index: 10000;">
-	<gcse:search></gcse:search>
-</div>
-
 <div id="map_kp_journey"
 	style="height: 100%; width: 100%; margin: 0px auto; z-index: 1; position: fixed;">
+
+	<!--  -->
 </div>
 <div
 	style="z-index: 1000; position: absolute; bottom: 5px; width: 100%; min-width: 1200px; height: 270px; background-color: rgba(255, 62, 1, 0.93); padding: 3px; box-shadow: 0 0 2px rgba(255, 62, 1, 1);">
@@ -92,9 +89,9 @@
 			<li><a href="mailto:open@kptaipei.tw"><i class="ss ss-mail"
 					title="Email客服"></i>Email-客服</a></li>
 			<li><p>© RGBA + 柯文哲辦公室 + Gogistics Since 2014</p></li>
+			<li><gcse:search></gcse:search></li>
 		</ul>
 	</nav>
-
 </div>
 
 <!-- google search -->

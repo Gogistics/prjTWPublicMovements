@@ -13,7 +13,6 @@
 {% endblock %} {% block main_content %}
 <div id="divPlot" style="margin: 100px auto;"></div>
 
-<!-- google custom search -->
 <script>
   (function() {
     var cx = '012215824391839456636:6ukyurlhlqu';

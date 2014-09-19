@@ -5,16 +5,11 @@
 /* Slight reset to make the preview have ample padding. */
 
 /* solution for fixing css breaking problem */
-
-.gsc-control-cse{
- width: 400px !important;
- border-radius: 5px !important;
-}
-
 .gsc-control-cse  * {
  -moz-box-sizing: content-box !important;
  -webkit-box-sizing: content-box !importantx;
  box-sizing:  content-box !important;
+ width: 300px;
 }
 
 .gsc-control-cse input {

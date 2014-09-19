@@ -5,12 +5,6 @@
 /* Slight reset to make the preview have ample padding. */
 
 /* solution for fixing css breaking problem */
-
-.gsc-control-cse{
- width: 400px !important;
- border-radius: 5px !important;
-}
-
 .gsc-control-cse  * {
  -moz-box-sizing: content-box !important;
  -webkit-box-sizing: content-box !importantx;
@@ -35,8 +29,14 @@
  -webkit-box-shadow: none !important;
  box-shadow: none !important;
  
+    background: none !important;
     border: solid 1px #aaa !important;
     height: auto !important;
+}
+
+
+.gsc-input{
+	background: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif) 0% 50% no-repeat rgb(255, 255, 255) !important;
 }
 
 

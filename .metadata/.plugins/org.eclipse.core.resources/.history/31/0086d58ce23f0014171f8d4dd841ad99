@@ -8,7 +8,6 @@
 
 .gsc-control-cse{
  width: 400px !important;
- border-radius: 5px !important;
 }
 
 .gsc-control-cse  * {
