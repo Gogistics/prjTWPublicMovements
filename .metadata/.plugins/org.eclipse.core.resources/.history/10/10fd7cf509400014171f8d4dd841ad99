@@ -79,6 +79,6 @@
 {% endblock %}
 
 {% block content %}
-<div id="tree-container" style="overflow: hidden; position: fixed; height: 100%; width: 100%;"></div>
+<div id="tree-container" style="height: 100%;"></div>
 <script type="text/javascript" src="/js/videos_tree.js"></script>
 {% endblock %}

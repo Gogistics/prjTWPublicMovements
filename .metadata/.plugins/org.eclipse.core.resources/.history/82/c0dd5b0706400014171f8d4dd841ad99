@@ -13,7 +13,7 @@
 {% endblock %} {% block main_content %}
 
 
-<!-- google custom search -->
+<!--  -->
 <div style="position: fixed; top: 5px; right: 5px; z-index: 10000;">
 	<gcse:search></gcse:search>
 </div>

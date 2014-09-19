@@ -13,7 +13,7 @@
 {% endblock %} {% block main_content %}
 
 
-<!-- google custom search -->
+<!--  -->
 <div style="position: fixed; top: 5px; right: 5px; z-index: 10000;">
 	<gcse:search></gcse:search>
 </div>
@@ -96,6 +96,20 @@
 	</nav>
 
 </div>
+
+<!-- google search -->
+<script>
+	(function() {
+		var cx = '012215824391839456636:6ukyurlhlqu';
+		var gcse = document.createElement('script');
+		gcse.type = 'text/javascript';
+		gcse.async = true;
+		gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:')
+				+ '//www.google.com/cse/cse.js?cx=' + cx;
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(gcse, s);
+	})();
+</script>
 
 <!-- js -->
 <script type="text/javascript" src="/js/front_page.js"></script>

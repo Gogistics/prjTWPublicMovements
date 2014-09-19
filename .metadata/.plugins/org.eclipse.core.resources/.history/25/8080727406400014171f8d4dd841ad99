@@ -36,7 +36,7 @@
 							</ul>
 						</nav>
 	<!-- google custom search -->
-<div style="display: inline-block; float: right;">
+<div style="position: relative; right: 5px; display: inline-block;">
 	<gcse:search></gcse:search>
 </div>
 </div>

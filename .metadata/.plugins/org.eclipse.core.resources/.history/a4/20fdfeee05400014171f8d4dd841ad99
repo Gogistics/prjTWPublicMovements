@@ -3,7 +3,6 @@
 <!-- css block -->
 {% block css_content %}
 <link type="text/css" rel="stylesheet" href="/css/main_content.css" />
-<link type="text/css" rel="stylesheet" href="/css/gsc_default.css" />
 {% block sub_css_content %}
 {% endblock %}
 
@@ -33,12 +32,9 @@
 									target="_blank">錄像紀實</a></li>
 									<li><a  href="/base/financial_summary"
 									target="_blank">財務彙整</a></li>
+								<li><gcse:search></gcse:search></li>
 							</ul>
 						</nav>
-	<!-- google custom search -->
-<div style="display: inline-block; float: right;">
-	<gcse:search></gcse:search>
-</div>
 </div>
 
 <!-- init ng controllers, etc. -->
