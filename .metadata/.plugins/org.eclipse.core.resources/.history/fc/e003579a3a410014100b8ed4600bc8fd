@@ -1,0 +1,84 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+
+<style type="text/css">
+  body,html {
+		width: 100%;
+		height: 100%;
+		padding-top: 0px;
+		padding-bottom: 50px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin: 0px 0px;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+		font-family: 微軟宋體, segoe ui;
+		background-color: rgba(255, 62, 1, 0);
+		box-shadow: 0 2px 5px rgba(191, 54, 12, 0.8);
+	}
+	.ng-scope{
+  	overflow: hidden;
+  }
+	.node {
+    cursor: pointer;
+  }
+
+  .overlay{
+      background-color: rgba(224,55,2,0.8);
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-size:15px;
+    letter-spacing: 4px;
+  fill: #fff;
+  }
+  
+  .nodeText{
+  fill: white; /* D3, change text color by setting fill */
+  }
+   
+  .link {
+    fill: none;
+    stroke: #fea628;
+    stroke-width: 1.5px;
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
+
+</style>
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/cycle.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="tree-container" style="overflow: hidden; position: fixed; height: 100%; width: 100%;"></div>
+<script type="text/javascript" src="/js/videos_tree.js"></script>
+{% endblock %}

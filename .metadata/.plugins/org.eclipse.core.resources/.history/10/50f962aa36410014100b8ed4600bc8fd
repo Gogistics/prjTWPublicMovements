@@ -1,0 +1,101 @@
+{% extends "/base/base.html"%}
+
+<!-- css block -->
+{% block css_content %}
+<link type="text/css" rel="stylesheet" href="/css/front_page.css" />
+<link type="text/css" rel="stylesheet" href="/css/gsc_default.css" />
+{% endblock %}
+
+<!-- google custom search -->
+<div style="position: fixed; top: 5px; right: 5px; z-index: 10000;">
+	<gcse:search></gcse:search>
+</div>
+
+<div id="map_kp_journey"
+	style="height: 100%; width: 100%; margin: 0px auto; z-index: 1; position: fixed;">
+</div>
+<div
+	style="z-index: 1000; position: absolute; bottom: 5px; width: 100%; min-width: 1200px; height: 270px; background-color: rgba(255, 62, 1, 0.93); padding: 3px; box-shadow: 0 0 2px rgba(255, 62, 1, 1);">
+	<img alt="kp_map" src="/img/kp_map.png"
+		style="height: 100px; margin-top: -40px; margin-left: 25px; position: relative;">
+	<div style="display: block; width: 100%; height: 10px;"></div>
+
+	<div
+		style="width: 500px; position: relative; float: right; top: -60px;">
+
+		<!-- background sound track from SoundCloud -->
+		<iframe scrolling="no" frameborder="no"
+			style="display: block; width: 100%; height: 120px;"
+			src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/164078512&amp;auto_play=true&amp;loop=true&amp;"></iframe>
+	</div>
+	<div style="display: block;">
+		<div
+			style="width: 500px; background-color: transparent; display: inline-block; color: #fff;">
+
+			<nav class="navbar navbar-default"
+				style="margin-left: 20px; letter-spacing: 2px;">
+				<ul class="nav navbar-nav">
+					<li><a style="font-size: 18px;" href="/base/articles"
+						target="_blank">柯"文"集</a></li>
+					<li><a style="font-size: 18px;" href="/base/albums"
+						target="_blank">照片集</a></li>
+					<li><a style="font-size: 18px;" href="/base/videos"
+						target="_blank">錄像紀實</a></li>
+					<li><a style="font-size: 18px;" href="/base/financial_summary"
+						target="_blank">財務彙整</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<nav class="navbar navbar-default"
+		style="margin-left: 21px; position: relative; bottom: 20px;">
+		<!--  -->
+		<ul class="nav navbar-nav"
+			style="width: 100%; margin: 0px auto; display: block;">
+			<li><a href="http://kptaipei.tw/" target="_blank"
+				title="柯文哲本尊官網">柯文哲本尊官網</a></li>
+			<li><a href="http://rgba.tw" target="_blank" title="RGBA">RGBA</a></li>
+			<li><a href="http://kptaipei.tw/" target="_blank" title="柯P新政">柯P新政</a></li>
+			<li><a href="http://kptaipei.tw/?page_id=2723" target="_blank"
+				title="真・柯文哲">真・柯文哲</a></li>
+			<li><a href="http://kptaipei.tw/kp-ton/" target="_blank"
+				title="臺北調，你來定調">臺北調，你來定調</a></li>
+			<li><a href="https://donate.kptaipei.tw" target="_blank"
+				title="捐款支持">捐款支持</a></li>
+			<li><a href="http://kptaipei.tw/?page_id=2836" target="_blank"
+				title="新聞稿">新聞稿</a></li>
+			<li><a href="https://www.facebook.com/wildkp" target="_blank"
+				title="野生柯P記錄團">野生柯P記錄團</a></li>
+		</ul>
+
+		<ul class="nav navbar-nav"
+			style="width: 100%; margin: 0px auto; display: block;">
+			<li><a href="https://www.facebook.com/DoctorKoWJ"
+				target="_blank"><i class="ss ss-facebook" title="facebook 粉絲專頁"></i>facebook
+					粉絲專頁</a></li>
+			<li><a href="https://www.flickr.com/photos/110839995@N06/"
+				target="_blank"><i class="ss ss-flickr" title="flickr 相簿"></i>flickr
+					相簿</a></li>
+			<li><a href="http://kptaipei.tumblr.com" target="_blank"><i
+					class="ss ss-tumblr" title="tumblr 柯P新政"></i>tumblr 柯P新政</a></li>
+			<li><a
+				href="https://www.youtube.com/channel/UCllMvuz1DIPIoqNnur7_Pig"
+				target="_blank" title="youtube 影音"><i class="ss ss-youtube"></i>youtube
+					影音</a></li>
+			<li><a href="mailto:open@kptaipei.tw"><i class="ss ss-mail"
+					title="Email客服"></i>Email-客服</a></li>
+			<li><p>© RGBA + 柯文哲辦公室 + Gogistics Since 2014</p></li>
+		</ul>
+	</nav>
+
+</div>
+
+<!-- js -->
+<script type="text/javascript" src="/js/front_page.js"></script>
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript"
+	src="/leaflet/animated-markers-leaflet-plugin.js"></script>
+{% endblock %} {% block main_content %}

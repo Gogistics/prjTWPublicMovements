@@ -40,37 +40,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <!-- css/leaflet -->
 <link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
-<!-- articles tree -->
-<style>
-.category,.article {
-	cursor: pointer;
-}
-</style>
-
 {% block css_content %} {% endblock %}
-
-<!-- JS -->
-<!-- js/jquery -->
-<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
-
-<!-- js/leaflet map -->
-<script type="text/javascript" src="/leaflet/leaflet.js"></script>
-
-<!-- js/ng -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
-<script type="text/javascript" src="/js/angular-ui-router.js"></script>
-
-<!-- bootstrap -->
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-<!-- self-defined -->
-<!-- base.js should be put after Angularjs -->
-<script type="text/javascript" src="/js/base.js"></script>
-{% block js_content %} {% endblock %}
 
 <title>{{ title|safe }}</title>
 </head>
@@ -79,7 +49,7 @@
 	<p>NO Templates Found</p>
 	{% endblock %}
 
-	<!-- google anaytics -->
+	<!-- google analytics -->
 	<script>
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;
@@ -96,5 +66,30 @@
 		ga('create', 'UA-54983827-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+
+
+	<!-- js section -->
+	<!-- js/jquery -->
+	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+
+	<!-- js/leaflet map -->
+	<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+
+	<!-- js/ng -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+	<script type="text/javascript" src="/js/angular-ui-router.js"></script>
+
+	<!-- bootstrap -->
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<!-- self-defined -->
+	<!-- base.js should be put after Angularjs -->
+	<script type="text/javascript" src="/js/base.js"></script>
+	{% block js_content %} {% endblock %}
+
 </body>
 </html>

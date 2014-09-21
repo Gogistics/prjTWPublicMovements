@@ -10,17 +10,6 @@
 	
 {% endblock %}
 
-<!-- js block -->
-{% block js_content %}
-<script type="text/javascript" src="/js/dir-pagination.js"></script>
-<script type="text/javascript"
-	src="/leaflet/leaflet.markercluster-src.js"></script>
-<script type="text/javascript" src="/js/d3.js"></script>
-<script type="text/javascript" src="/js/d3_tips.js"></script>
-<script type="text/javascript" src="/js/numeric-1.2.6.min.js"></script>
-
-{% endblock %}
-
 <!-- content block -->
 {% block content %}
 <div class="ng_controller" ng-controller="AlbumCtrl as album" style="z-index: 10;">
@@ -179,6 +168,16 @@ album_map_center_lng = ( Math.max.apply(Math, ary_albums_lng) + Math.min.apply(M
 {% endif %}
 
 </script>
+{% endblock %}
+
+
+<!-- js block -->
+{% block sub_js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/leaflet/leaflet.markercluster-src.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+<script type="text/javascript" src="/js/numeric-1.2.6.min.js"></script>
 <script type="text/javascript" src="/js/albums.js"></script>
 <script type="text/javascript" src="/js/particles_swarm_optimization.js"></script>
 {% endblock %}

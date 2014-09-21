@@ -58,14 +58,7 @@
 </style>
 {% endblock %}
 
-<!-- js block -->
-{% block js_content %}
-<script type="text/javascript" src="/js/dir-pagination.js"></script>
-<script type="text/javascript" src="/js/d3.js"></script>
-<script type="text/javascript" src="/js/d3_tips.js"></script>
-<script type="text/javascript" src="/numeral_js/numeral.min.js"></script>
-{% endblock %} {% block content %}
-
+{% block content %}
 <div>
 	<!-- credit -->
 	<div class="ng_controller"
@@ -210,6 +203,16 @@
 			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
 	</div>
 </div>
+
+{% endblock %}
+
+
+<!-- js block -->
+{% block sub_js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+<script type="text/javascript" src="/numeral_js/numeral.min.js"></script>
 
 
 <script type="text/javascript">
@@ -397,11 +400,8 @@ console.log(JSON.stringify(address_points,2,2));
 
 			// apply tips
 			svg.call(tip);
-			
-			//console.log(JSON.stringify(arg_data,2,2));
-			
 	}
 //-->
 </script>
-
 {% endblock %}
+

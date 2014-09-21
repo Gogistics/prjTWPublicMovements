@@ -129,7 +129,7 @@ particles_swarm_optimization = {
 			console.log(JSON.stringify(this.config.particels_values,2,2) + 'local: ' + this.config.local_optimal + ' ; global:' + this.config.index_local_optimal + ' ; min-cost:' + this.config.min_cost);
 			
 			// test numeric library
-			consoloe.log(numeric.add([1,2,3],[6,7,8]));
+			console.log(numeric.add([1,2,3],[6,7,8]));
 		}
 }
 

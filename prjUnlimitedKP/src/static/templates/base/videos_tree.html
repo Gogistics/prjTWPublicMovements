@@ -72,13 +72,13 @@
 </style>
 {% endblock %}
 
-<!-- js block -->
-{% block js_content %}
-<script type="text/javascript" src="/js/d3.js"></script>
-<script type="text/javascript" src="/js/cycle.js"></script>
-{% endblock %}
-
 {% block content %}
 <div id="tree-container" style="overflow: hidden; position: fixed; height: 100%; width: 100%;"></div>
+{% endblock %}
+
+<!-- js block -->
+{% block sub_js_content %}
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/cycle.js"></script>
 <script type="text/javascript" src="/js/videos_tree.js"></script>
 {% endblock %}

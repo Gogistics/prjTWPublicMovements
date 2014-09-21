@@ -4,13 +4,10 @@
 {% block css_content %}
 <link type="text/css" rel="stylesheet" href="/css/main_content.css" />
 <link type="text/css" rel="stylesheet" href="/css/gsc_default.css" />
-{% block sub_css_content %}
-{% endblock %}
+	{% block sub_css_content %}
+	{% endblock %}
 
 {% endblock %}
-
-<!-- js block -->
-{% block js_content %} {% endblock %}
 
 <!-- content -->
 {% block main_content %}
@@ -18,8 +15,11 @@
 <!-- content block -->
 <div id="main_container" style="position: fixed; z-index: -1; top: 0; left: 0; width: 100%; height: 100%;">
 </div>
-{% block content %} {% endblock %}
-<!-- end of content block -->
+
+	<!-- content block -->
+	{% block content %}
+	{% endblock %}
+	<!-- end of content block -->
 
 <div id="nav_bottom_main_content">
 	<img alt="kp_map_small_logo" src="/img/kp_map.png"
@@ -41,6 +41,13 @@
 </div>
 </div>
 
+{% endblock %}
+
+<!-- js block -->
+{% block js_content %}
 <!-- init ng controllers, etc. -->
 <script type="text/javascript" src="/js/main_content.js"></script>
+	<!-- sub js section -->
+	{% block sub_js_content %}
+	{% endblock %}
 {% endblock %}

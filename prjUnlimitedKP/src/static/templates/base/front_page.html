@@ -6,13 +6,7 @@
 <link type="text/css" rel="stylesheet" href="/css/gsc_default.css" />
 {% endblock %}
 
-<!-- js block -->
-{% block js_content %}
-<script type="text/javascript"
-	src="/leaflet/animated-markers-leaflet-plugin.js"></script>
-{% endblock %} {% block main_content %}
-
-
+{% block main_content %}
 <!-- google custom search -->
 <div style="position: fixed; top: 5px; right: 5px; z-index: 10000;">
 	<gcse:search></gcse:search>
@@ -96,7 +90,11 @@
 	</nav>
 
 </div>
+{% endblock %}
 
-<!-- js -->
+<!-- js block -->
+{% block js_content %}
+<script type="text/javascript"
+	src="/leaflet/animated-markers-leaflet-plugin.js"></script>
 <script type="text/javascript" src="/js/front_page.js"></script>
 {% endblock %}
