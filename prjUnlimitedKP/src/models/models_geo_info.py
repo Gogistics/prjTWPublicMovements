@@ -14,7 +14,7 @@ class NewAlbumGeoInfo(ndb.Model):
     """ albums geo info properties; all properties can be also created dynamically """
     album_id = ndb.StringProperty()
     album_title = ndb.StringProperty()
-    album_description = ndb.StringProperty()
+    album_description = ndb.StringProperty(indexed = False)
     album_thumbnail = ndb.StringProperty()
     album_link = ndb.StringProperty()
     

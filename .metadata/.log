@@ -8026,3 +8026,90 @@ Binding(CTRL+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	com.python.pydev.contexts.window,,,system)
+!SESSION 2014-10-01 00:16:37.047 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data D:\prjTWPublicMovements -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.python.pydev.shared_core 1 1 2014-10-01 00:16:57.350
+!MESSAGE Unable to track file that does not exist: C:\Python27\lib\plat-win
+!STACK 0
+java.lang.RuntimeException: Unable to track file that does not exist: C:\Python27\lib\plat-win
+	at org.python.pydev.shared_core.log.Log.logInfo(Log.java:52)
+	at org.python.pydev.shared_core.path_watch.PathWatch.track(PathWatch.java:258)
+	at org.python.pydev.editor.codecompletion.revisited.SyncSystemModulesManagerScheduler.afterSetInfos(SyncSystemModulesManagerScheduler.java:462)
+	at org.python.pydev.editor.codecompletion.revisited.SyncSystemModulesManagerScheduler.afterSetInfos(SyncSystemModulesManagerScheduler.java:443)
+	at org.python.pydev.editor.codecompletion.revisited.SyncSystemModulesManagerScheduler.registerInterpreterManager(SyncSystemModulesManagerScheduler.java:66)
+	at org.python.pydev.editor.codecompletion.revisited.SyncSystemModulesManagerScheduler.start(SyncSystemModulesManagerScheduler.java:88)
+	at org.python.pydev.plugin.PydevPlugin$1.run(PydevPlugin.java:206)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.python.pydev.shared_core 1 1 2014-10-01 00:17:33.083
+!MESSAGE Info: Rebuilding internal caches: D:\prjTWPublicMovements\.metadata\.plugins\com.python.pydev.analysis\python_v1_258tvcdekrk5tmtf5h0ez044z\python.pydevsysteminfo
+!STACK 0
+java.lang.RuntimeException: Version does not match. Found: -- VERSION_3. Expected: -- VERSION_4
+	at com.python.pydev.analysis.additionalinfo.AbstractAdditionalDependencyInfo.loadContentsFromFile(AbstractAdditionalDependencyInfo.java:752)
+	at com.python.pydev.analysis.additionalinfo.AbstractAdditionalDependencyInfo.load(AbstractAdditionalDependencyInfo.java:668)
+	at com.python.pydev.analysis.additionalinfo.AdditionalSystemInterpreterInfo.getAdditionalSystemInfo(AdditionalSystemInterpreterInfo.java:153)
+	at com.python.pydev.analysis.additionalinfo.AdditionalSystemInterpreterInfo.getAdditionalSystemInfo(AdditionalSystemInterpreterInfo.java:124)
+	at com.python.pydev.analysis.additionalinfo.AdditionalSystemInterpreterInfo.recreateAllInfo(AdditionalSystemInterpreterInfo.java:171)
+	at com.python.pydev.analysis.additionalinfo.builders.InterpreterObserver.notifyDefaultPythonpathRestored(InterpreterObserver.java:35)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.restorePythopathForInterpreters(AbstractInterpreterManager.java:726)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.setInfos(AbstractInterpreterManager.java:643)
+	at org.python.pydev.editor.codecompletion.revisited.SynchSystemModulesManager.applySelectedChangesToInterpreterInfosPythonpath(SynchSystemModulesManager.java:219)
+	at org.python.pydev.editor.codecompletion.revisited.SynchSystemModulesManager$JobApplyChanges.run(SynchSystemModulesManager.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2014-10-01 00:24:33.598
+!MESSAGE Usage data upload to http://udc.eclipse.org/upload.php failed with error code 404.
+!SESSION 2014-10-03 10:50:15.047 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data D:\prjTWPublicMovements -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2014-10-03 10:52:53.065
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-10-03 10:52:53.066
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.wst.jsdt.ui.navigate.open.type,Open Type,
+		Open a type in a JavaScript editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.jsdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench,Python Show Global Tokens (Global),
+		Python Show Global Tokens (Global),
+		Category(org.python.pydev.ui.category.source,PyDev - Editor,PyDev editor category,true),
+		ActionDelegateHandlerProxy(null,com.python.pydev.analysis.actions.PyGlobalsBrowserWorkbench),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.python.pydev.contexts.window,,,system)
+
+!ENTRY org.python.pydev.shared_core 1 1 2014-10-03 10:52:58.570
+!MESSAGE Info: Rebuilding internal caches: D:\prjTWPublicMovements\.metadata\.plugins\org.eclipse.core.resources\.projects\prjUnlimitedKP\com.python.pydev.analysis\AdditionalProjectInterpreterInfo.pydevinfo
+!STACK 0
+java.lang.RuntimeException: Version does not match. Found: -- VERSION_3. Expected: -- VERSION_4
+	at com.python.pydev.analysis.additionalinfo.AbstractAdditionalDependencyInfo.loadContentsFromFile(AbstractAdditionalDependencyInfo.java:752)
+	at com.python.pydev.analysis.additionalinfo.AbstractAdditionalDependencyInfo.load(AbstractAdditionalDependencyInfo.java:668)
+	at com.python.pydev.analysis.additionalinfo.AdditionalProjectInterpreterInfo.getAdditionalInfoForProject(AdditionalProjectInterpreterInfo.java:227)
+	at com.python.pydev.analysis.builder.AnalysisBuilderRunnable.doAnalysis(AnalysisBuilderRunnable.java:156)
+	at com.python.pydev.analysis.builder.AbstractAnalysisBuilderRunnable.run(AbstractAnalysisBuilderRunnable.java:152)
+	at org.python.pydev.core.concurrency.RunnableAsJobsPoolThread$1.run(RunnableAsJobsPoolThread.java:140)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
