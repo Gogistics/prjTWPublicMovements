@@ -10,7 +10,7 @@
 
 kp_app.value('API', {
 	KEY : "kp53f5626b5f4bd7.27954991", // personal api key
-	SERVER : "http://api.kptaipei.tw/v1/"
+	SERVER : "https://api.kptaipei.tw/v1/"
 })
 .controller('MainCtrl', MainController)
 .controller('AlbumCtrl', AlbumController)
@@ -756,7 +756,7 @@ $(function(){
 
 		$
 				.getJSON(
-						'https://nominatim.openstreetmap.org/search?format=json&limit=1&q='
+						'http://nominatim.openstreetmap.org/search?format=json&limit=1&q='
 								+ 'Taipei, Taiwan',
 						function(data) {
 

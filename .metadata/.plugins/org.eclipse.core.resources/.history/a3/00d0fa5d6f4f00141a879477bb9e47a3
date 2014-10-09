@@ -756,7 +756,7 @@ $(function(){
 
 		$
 				.getJSON(
-						'https://nominatim.openstreetmap.org/search?format=json&limit=1&q='
+						'http://nominatim.openstreetmap.org/search?format=json&limit=1&q='
 								+ 'Taipei, Taiwan',
 						function(data) {
 
