@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+@media all and (min-device-width: 901px) {
+}
+
+/*
+For mobile devices, the css will need to be modified and modification is not done yet
+*/
+@media all and (max-device-width: 900px) {
+}

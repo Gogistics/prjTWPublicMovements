@@ -2,7 +2,7 @@
 
 <!-- css block -->
 {% block sub_css_content %}
-<link type="text/css" rel="stylesheet" href="/css/videos_tree.css" />
+
 {% endblock %}
 
 {% block content %}

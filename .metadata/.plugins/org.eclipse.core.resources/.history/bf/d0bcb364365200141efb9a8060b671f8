@@ -161,7 +161,6 @@
 <script type="text/javascript" src="/js/d3.js"></script>
 <script type="text/javascript" src="/js/d3_tips.js"></script>
 <script type="text/javascript" src="/numeral_js/numeral.min.js"></script>
-<script type="text/javascript" src="/js/financial.js"></script>
 <script type="text/javascript">
 <!--
 /* get albums info (presume the albums info. can represent the events info. so that the relation info. between events info. and financial info. can be found) */
@@ -187,6 +186,8 @@ address_points.push({'album_id' : '{{elem.album_id|safe}}',
 // console.log(JSON.stringify(address_points,2,2));
 
 {% endif %}
+/* end */
+
 //-->
 </script>
 {% endblock %}
