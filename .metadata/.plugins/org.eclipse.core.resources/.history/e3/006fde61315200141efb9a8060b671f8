@@ -138,15 +138,15 @@
 	
 	/* temp button of closing albums map */
 	#close_map:hover{
-		cursor: pointer;
+	cursor: pointer;
 	}
 	
 	/**/
 	.axis text {
-		font: 10px sans-serif;
-	}
-	
-	.axis path,.axis line {
+	font: 10px sans-serif;
+}
+
+.axis path,.axis line {
 	fill: none;
 	stroke: #000;
 	shape-rendering: crispEdges;
@@ -155,47 +155,18 @@
 .bar {
 	fill: steelblue;
 	-webkit-transition: opacity .5s ease-in-out;
-	transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
 }
-
-.bar:hover {
-	opacity: 0.5;
+.bar:hover{
+	fill-opacity: .5;
 }
 
 .x.axis path {
 	display: none;
 }
 
-/* d3 tips */
-.d3-tip {
-	line-height: 1;
-	font-weight: bold;
-	padding: 12px;
-	background: rgba(255, 255, 255, 0.8);
-	color: #000;
-	border-radius: 3px;
-	border: rgba(100, 100, 100, 0.95);
-	z-index: 10000;
-}
-
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-	box-sizing: border-box;
-	display: inline;
-	font-size: 10px;
-	width: 100%;
-	line-height: 1;
-	color: rgba(0, 0, 0, 0.8);
-	content: "\25BC";
-	position: absolute;
-	text-align: center;
-}
-
-/* Style northward tooltips differently */
-.d3-tip.n:after {
-	margin: -1px 0 0 0;
-	top: 100%;
-	left: 0;
+.d3-tip{
+z-index: 1000;
 }
 	
 }

@@ -34,7 +34,7 @@
 					<div class="col-xs-4">
 						<label for="search" style="color: #fff;">入帳資料分析</label>
 						
-						<div id="btns_of_showing_plots">
+						<div id="btns">
 						<input
 							id="btn_show_financial_credit_data_analysis_block" type="button"
 							class="form-control"
@@ -203,7 +203,7 @@ console.log(JSON.stringify(address_points,2,2));
 	var financial_grouped_bars_chart_debit_data;
 	var financial_summary_grouped_bars_chart;
 	
-	$('#btns_of_showing_plots > input.form-control')
+	$('input.form-control')
 			.click(
 					function() {
 						var obj_key = $(this).attr('id');

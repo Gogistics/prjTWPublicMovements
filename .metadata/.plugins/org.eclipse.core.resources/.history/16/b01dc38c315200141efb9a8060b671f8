@@ -4,6 +4,58 @@
 {% block sub_css_content %}
 <link type="text/css" rel="stylesheet" href="/css/financial.css" />
 
+<style>
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.bar {
+	fill: steelblue;
+	-webkit-transition: opacity .5s ease-in-out;
+	transition: opacity .5s ease-in-out;
+}
+
+.bar:hover {
+	opacity: 0.5;
+}
+
+.x.axis path {
+	display: none;
+}
+
+/* d3 tips */
+.d3-tip {
+	line-height: 1;
+	font-weight: bold;
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.8);
+	color: #000;
+	border-radius: 3px;
+	border: rgba(100, 100, 100, 0.95);
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.8);
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -34,7 +86,7 @@
 					<div class="col-xs-4">
 						<label for="search" style="color: #fff;">入帳資料分析</label>
 						
-						<div id="btns_of_showing_plots">
+						<div>
 						<input
 							id="btn_show_financial_credit_data_analysis_block" type="button"
 							class="form-control"
@@ -203,7 +255,7 @@ console.log(JSON.stringify(address_points,2,2));
 	var financial_grouped_bars_chart_debit_data;
 	var financial_summary_grouped_bars_chart;
 	
-	$('#btns_of_showing_plots > input.form-control')
+	$('input.form-control')
 			.click(
 					function() {
 						var obj_key = $(this).attr('id');

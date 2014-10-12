@@ -203,7 +203,7 @@ console.log(JSON.stringify(address_points,2,2));
 	var financial_grouped_bars_chart_debit_data;
 	var financial_summary_grouped_bars_chart;
 	
-	$('#btns_of_showing_plots > input.form-control')
+	$('input.form-control')
 			.click(
 					function() {
 						var obj_key = $(this).attr('id');
