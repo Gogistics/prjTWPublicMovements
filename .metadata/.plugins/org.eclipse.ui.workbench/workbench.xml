@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="50" version="2.0">
+<workbench progressCount="79" version="2.0">
 <workbenchAdvisor/>
 <window height="461" maximized="true" width="1336" x="23" y="22">
 <fastViewData fastViewLocation="1024"/>
@@ -20,14 +20,14 @@
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -45,17 +45,17 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" partName="albums.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/albums.html" title="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2048"/>
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="base.html" partName="base.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/base.html" title="base.html" tooltip="prjUnlimitedKP/src/static/templates/base/base.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="968" selectionTopPixel="248"/>
 </editor>
-<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" partName="main_content.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/main_content.js" title="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="24528" selectionTopPixel="4575"/>
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" partName="front_page.html" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base/front_page.html" title="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1307" selectionTopPixel="211"/>
 </editor>
-<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" partName="dispatchers_albums" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" title="dispatchers_albums" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" partName="front_page.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/front_page.js" title="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
+<editorState selectionHorizontalPixel="448" selectionLength="0" selectionOffset="5532" selectionTopPixel="2054"/>
 </editor>
 </editors>
 <views>
@@ -85,17 +85,17 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/mis"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/css"/>
+<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base"/>
-<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/mis/robots.txt"/>
+<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 </viewState>
 </view>
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 </views>
-<perspectives activePart="org.python.pydev.navigator.view" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -286,17 +286,172 @@
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/financial.css"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/articles_tree.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/articles_tree.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/videos_tree.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/videos_tree.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/prjUnlimitedKP/src/static/css/articles_tree.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/articles_tree.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/articles_tree.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/prjUnlimitedKP/src/static/templates/base/main_content.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 </editors>
-<item historyLabel="albums.html" index="0">
+<item historyLabel="albums.html" index="1">
+<position/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="8217" y="0"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position/>
+</item>
+<item historyLabel="articles_tree.css" index="3">
+<position info="not_deleted" x="2310" y="0"/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="8217" y="0"/>
+</item>
+<item historyLabel="articles_tree.css" index="3">
+<position/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="0" y="8220"/>
+</item>
+<item historyLabel="articles_tree.css" index="3">
+<position info="not_deleted" x="63" y="0"/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="0" y="8220"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position/>
+</item>
+<item historyLabel="articles_tree.css" index="3">
+<position info="not_deleted" x="2307" y="0"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position/>
+</item>
+<item historyLabel="albums.html" index="1">
+<position info="not_deleted" x="87" y="64"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position/>
+</item>
+<item historyLabel="albums.html" index="1">
+<position info="not_deleted" x="87" y="64"/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="131" y="0"/>
+</item>
+<item historyLabel="videos_tree.html" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main_content.js" index="1">
-<position info="not_deleted" x="24528" y="0"/>
+<item historyLabel="videos_tree.css" index="5">
+<position info="not_deleted" x="2402" y="0"/>
 </item>
-<item active="true" historyLabel="dispatchers_albums" index="2">
+<item historyLabel="articles_tree.css" index="6">
+<position info="not_deleted" x="0" y="2310"/>
+</item>
+<item historyLabel="videos_tree.css" index="5">
+<position info="not_deleted" x="2402" y="0"/>
+</item>
+<item historyLabel="articles_tree.css" index="6">
+<position info="not_deleted" x="0" y="2310"/>
+</item>
+<item historyLabel="videos_tree.css" index="5">
+<position/>
+</item>
+<item historyLabel="videos_tree.html" index="4">
+<position info="not_deleted" x="160" y="0"/>
+</item>
+<item historyLabel="videos_tree.css" index="5">
+<position/>
+</item>
+<item historyLabel="videos_tree.html" index="4">
+<position info="not_deleted" x="160" y="0"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position info="not_deleted" x="89" y="73"/>
+</item>
+<item historyLabel="videos_tree.css" index="5">
+<position info="not_deleted" x="1159" y="0"/>
+</item>
+<item historyLabel="videos_tree.html" index="4">
+<position info="not_deleted" x="147" y="0"/>
+</item>
+<item historyLabel="videos_tree.css" index="5">
+<position info="not_deleted" x="1159" y="0"/>
+</item>
+<item historyLabel="articles_tree.html" index="2">
+<position info="not_deleted" x="201" y="0"/>
+</item>
+<item historyLabel="financial.css" index="0">
+<position info="not_deleted" x="131" y="0"/>
+</item>
+<item historyLabel="articles_tree.js" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="base.js" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="9">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="base.js" index="8">
+<position info="not_deleted" x="883" y="125"/>
+</item>
+<item historyLabel="main_content.js" index="9">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="base.js" index="8">
+<position info="not_deleted" x="104" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="9">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="base.js" index="8">
+<position info="not_deleted" x="104" y="0"/>
+</item>
+<item historyLabel="main_content.js" index="9">
+<position info="not_deleted" x="8102" y="0"/>
+</item>
+<item historyLabel="articles_tree.js" index="10">
+<position info="not_deleted" x="1348" y="0"/>
+</item>
+<item historyLabel="base.js" index="11">
+<position info="not_deleted" x="104" y="0"/>
+</item>
+<item historyLabel="base.html" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="base.js" index="13">
+<position info="not_deleted" x="104" y="0"/>
+</item>
+<item historyLabel="base.html" index="12">
+<position info="not_deleted" x="968" y="0"/>
+</item>
+<item historyLabel="front_page.html" index="14">
+<position info="not_deleted" x="1307" y="0"/>
+</item>
+<item historyLabel="main_content.html" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="front_page.html" index="14">
+<position info="not_deleted" x="1307" y="0"/>
+</item>
+<item active="true" historyLabel="front_page.js" index="16">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
@@ -318,23 +473,8 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="app.yaml" tooltip="prjUnlimitedKP/src/app.yaml">
-<persistable path="/prjUnlimitedKP/src/app.yaml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py">
-<persistable path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js">
-<persistable path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="handler_webapp2_extra_auth.py" tooltip="prjUnlimitedKP/src/handlers/handler_webapp2_extra_auth.py">
-<persistable path="/prjUnlimitedKP/src/handlers/handler_webapp2_extra_auth.py"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="models_geo_info.py" tooltip="prjUnlimitedKP/src/models/models_geo_info.py">
-<persistable path="/prjUnlimitedKP/src/models/models_geo_info.py"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="front_page.js" tooltip="prjUnlimitedKP/src/static/javascripts/front_page.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/front_page.js"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="main_content.html" tooltip="prjUnlimitedKP/src/static/templates/base/main_content.html">
 <persistable path="/prjUnlimitedKP/src/static/templates/base/main_content.html"/>
@@ -342,26 +482,41 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="front_page.html" tooltip="prjUnlimitedKP/src/static/templates/base/front_page.html">
 <persistable path="/prjUnlimitedKP/src/static/templates/base/front_page.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="videos.html" tooltip="prjUnlimitedKP/src/static/templates/base/videos.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/videos.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="base.html" tooltip="prjUnlimitedKP/src/static/templates/base/base.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/base.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="articles.html" tooltip="prjUnlimitedKP/src/static/templates/base/articles.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/articles.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="particles_swarm_optimization.js" tooltip="prjUnlimitedKP/src/static/javascripts/particles_swarm_optimization.js">
-<persistable path="/prjUnlimitedKP/src/static/javascripts/particles_swarm_optimization.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="videos_tree.html" tooltip="prjUnlimitedKP/src/static/templates/base/videos_tree.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/videos_tree.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="articles_tree.html" tooltip="prjUnlimitedKP/src/static/templates/base/articles_tree.html">
-<persistable path="/prjUnlimitedKP/src/static/templates/base/articles_tree.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="main_content.js" tooltip="prjUnlimitedKP/src/static/javascripts/main_content.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/main_content.js"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="base.js" tooltip="prjUnlimitedKP/src/static/javascripts/base.js">
 <persistable path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="main_content.css" tooltip="prjUnlimitedKP/src/static/css/main_content.css">
-<persistable path="/prjUnlimitedKP/src/static/css/main_content.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="articles_tree.js" tooltip="prjUnlimitedKP/src/static/javascripts/articles_tree.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/articles_tree.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="articles_tree.html" tooltip="prjUnlimitedKP/src/static/templates/base/articles_tree.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/articles_tree.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="articles_tree.css" tooltip="prjUnlimitedKP/src/static/css/articles_tree.css">
+<persistable path="/prjUnlimitedKP/src/static/css/articles_tree.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="videos_tree.css" tooltip="prjUnlimitedKP/src/static/css/videos_tree.css">
+<persistable path="/prjUnlimitedKP/src/static/css/videos_tree.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="videos_tree.html" tooltip="prjUnlimitedKP/src/static/templates/base/videos_tree.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/videos_tree.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="albums.html" tooltip="prjUnlimitedKP/src/static/templates/base/albums.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/albums.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="financial.css" tooltip="prjUnlimitedKP/src/static/css/financial.css">
+<persistable path="/prjUnlimitedKP/src/static/css/financial.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="financial.js" tooltip="prjUnlimitedKP/src/static/javascripts/financial.js">
+<persistable path="/prjUnlimitedKP/src/static/javascripts/financial.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="financial.html" tooltip="prjUnlimitedKP/src/static/templates/base/financial.html">
+<persistable path="/prjUnlimitedKP/src/static/templates/base/financial.html"/>
 </file>
 </mruList>
 </workbench>
