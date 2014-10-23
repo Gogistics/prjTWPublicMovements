@@ -63,8 +63,7 @@ var leaflet_map = {
 									{
 										maxZoom : 16,
 										attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
-									}), latlng = L.latLng(album_map_center_lat,
-							album_map_center_lng); // replace the geo location
+									}), latlng = L.latLng(album_map_center_lat, album_map_center_lng); // replace the geo location
 													// with average of all geo
 													// data ; 22.639673,
 													// 120.301826

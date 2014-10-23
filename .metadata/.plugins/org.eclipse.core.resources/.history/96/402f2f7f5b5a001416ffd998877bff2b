@@ -142,9 +142,8 @@ var ary_albums_lat = [], ary_albums_lng = [];
 
 //loop through the query result
 {% for elem in albums_geo_info %}
-var album_title = "{{elem.album_title|safe}}";
+var album_title = {{elem.album_title|safe}};
 album_title = album_title.replace(/\'/g, "&#39;");
-album_title = album_title.replace(/\'/g, "&#34;");
 original_geo_info['{{elem.album_id|safe}}'] = {'album_title':album_title};
 
 ary_albums_lat.push(Number('{{elem.album_lat|float}}'));
@@ -154,9 +153,9 @@ ary_albums_lng.push(Number('{{elem.album_lng|float}}'));
 address_points.push({'album_id' : '{{elem.album_id|safe}}',
 	                 'album_lat' : Number('{{elem.album_lat|float}}'),
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
-	                 'album_title' : album_title,
+	                 'album_title' : '{{elem.album_title|safe}}',
 	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
-	                 'album_popup_content' : '<p>'+ album_title +'</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
+	                 'album_popup_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
 
 {% endfor %}
 // end of loo through the query result
