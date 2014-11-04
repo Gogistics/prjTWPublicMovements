@@ -837,12 +837,8 @@ function create_tree(treeData) {
 
   // Call visit function to establish maxLabelLength
   visit(treeData, function(d) {
-      if (d.name === undefined){
-    	  return
-      }
-      else{
-          totalNodes++;
-      }
+      totalNodes++;
+      console.log(JSON.stringify(d.name,2,2);
       maxLabelLength = Math.max(d.name.length, maxLabelLength);
 
   }, function(d) {
