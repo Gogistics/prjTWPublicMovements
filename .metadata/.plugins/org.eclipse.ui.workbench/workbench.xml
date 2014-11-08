@@ -20,14 +20,14 @@
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -47,6 +47,7 @@
 <part id="6"/>
 <part id="7"/>
 <part id="8"/>
+<part id="9"/>
 </presentation>
 </folder>
 </info>
@@ -83,9 +84,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/dir-pagination.js"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="585" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="base.js" partName="base.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/base.js" title="base.js" tooltip="prjUnlimitedKP/src/static/javascripts/base.js" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="base.js" partName="base.js" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/base.js" title="base.js" tooltip="prjUnlimitedKP/src/static/javascripts/base.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="dispatchers_base.py" partName="dispatchers_base" path="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers/dispatchers_base.py" title="dispatchers_base" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_base.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="496" selectionTopPixel="12"/>
 </editor>
 </editors>
 <views>
@@ -115,18 +120,13 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/dispatchers"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/ng_templates"/>
-<expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates"/>
 <expanded IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/templates/base"/>
-<selected IMemento.internal.id="D:/prjTWPublicMovements/prjUnlimitedKP/src/static/javascripts/base.js"/>
 </viewState>
 </view>
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 </views>
-<perspectives activePart="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="org.python.pydev.navigator.view" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -329,10 +329,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/dir-pagination.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/albums.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
 </editors>
-<item historyLabel="albums.html" index="1">
-<position info="not_deleted" x="5448" y="0"/>
-</item>
 <item historyLabel="albums.js" index="2">
 <position info="not_deleted" x="9" y="0"/>
 </item>
@@ -477,7 +475,10 @@
 <item historyLabel="main_content.js" index="5">
 <position info="not_deleted" x="23928" y="0"/>
 </item>
-<item active="true" historyLabel="base.js" index="11">
+<item historyLabel="base.js" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="dispatchers_base" index="12">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
@@ -499,6 +500,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="dispatchers_base.py" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_base.py">
+<persistable path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="base.js" tooltip="prjUnlimitedKP/src/static/javascripts/base.js">
 <persistable path="/prjUnlimitedKP/src/static/javascripts/base.js"/>
 </file>
@@ -519,9 +523,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="particles_swarm_optimization.js" tooltip="prjUnlimitedKP/src/static/javascripts/particles_swarm_optimization.js">
 <persistable path="/prjUnlimitedKP/src/static/javascripts/particles_swarm_optimization.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="dispatchers_base.py" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_base.py">
-<persistable path="/prjUnlimitedKP/src/dispatchers/dispatchers_base.py"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="dispatchers_albums.py" tooltip="prjUnlimitedKP/src/dispatchers/dispatchers_albums.py">
 <persistable path="/prjUnlimitedKP/src/dispatchers/dispatchers_albums.py"/>

@@ -20,6 +20,7 @@ from handlers.handler_webapp2_extra_auth import BaseHandler
 dict_general = KeysVaulesGeneral()
 dict_html_ref = HtmlPagesReference()
 
+
 # jinja environment
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
