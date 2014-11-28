@@ -345,7 +345,7 @@ function show_sorted_bars_chart(arg_albums_cluster_based_on_time){
 
 		var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
 
-		var yAxis = d3.svg.axis().scale(y).orient("left").ticks(6).tickFormat(formatPercent);
+		var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(formatPercent);
 
 		var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 				function(d) {

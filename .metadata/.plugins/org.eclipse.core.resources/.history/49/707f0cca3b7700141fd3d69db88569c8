@@ -3,21 +3,10 @@
 <!-- css block -->
 {% block sub_css_content %}
 <link type="text/css" rel="stylesheet" href="/css/financial.css" />
+
 {% endblock %}
 
 {% block content %}
-<style>
-<!--
-.grid .tick{
-	stroke: lightgrey;
-	stroke-opacity: 0.6;
-	shape-rendering: crispEdges;
-}
-.grid path{
-	stroke-width: 0;
-}
--->
-</style>
 <div>
 	<!-- credit -->
 	<div class="ng_controller"

@@ -76,7 +76,7 @@ function show_grouped_bars_chart(arg_data, arg_selected_div) {
 
 	//
 	function make_x_axis(){
-		return d3.svg.axis().scale(x0).orient("bottom").ticks(5);
+		return d3.svg.axis().scale(x).orient("bottom").ticks(5);
 	}
 	
 	//

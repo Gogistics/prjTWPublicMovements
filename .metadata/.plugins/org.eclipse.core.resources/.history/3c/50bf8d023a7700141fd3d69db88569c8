@@ -64,9 +64,9 @@ function show_grouped_bars_chart(arg_data, arg_selected_div) {
 			[ "#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c",
 					"#ff8c00" ]);
 
-	var xAxis = d3.svg.axis().scale(x0).orient("bottom").ticks(6);
+	var xAxis = d3.svg.axis().scale(x0).orient("bottom");
 
-	var yAxis = d3.svg.axis().scale(y).orient("left").ticks(6).tickFormat(
+	var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(
 			d3.format(".2s"));
 
 	var svg = d3.select(arg_selected_div).append("svg").attr("width",
@@ -74,16 +74,6 @@ function show_grouped_bars_chart(arg_data, arg_selected_div) {
 			height + margin.top + margin.bottom).append("g").attr("transform",
 			"translate(" + margin.left + "," + margin.top + ")");
 
-	//
-	function make_x_axis(){
-		return d3.svg.axis().scale(x0).orient("bottom").ticks(5);
-	}
-	
-	//
-	function make_y_axis(){
-		return d3.svg.axis().scale(y).orient("left").ticks(5);
-	}
-	
 	var tip = d3
 			.tip()
 			.attr('class', 'd3-tip')
@@ -132,11 +122,6 @@ function show_grouped_bars_chart(arg_data, arg_selected_div) {
 			"transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em").style(
 			"text-anchor", "end").text("金額(新台幣)");
 
-	// draw grid lines
-	svg.append("g").attr("class", "grid").attr("transform", "translate(0," + height + ")").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(""));
-	svg.append("g").attr("class", "grid").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(""))
-	// end of "draw grid lines"
-	
 	var state = svg.selectAll(".state").data(data).enter().append("g").attr(
 			"class", "g").attr("transform", function(d) {
 		return "translate(" + x0(d.State) + ",0)"; // state

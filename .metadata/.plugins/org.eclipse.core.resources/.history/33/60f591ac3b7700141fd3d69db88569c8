@@ -3,21 +3,10 @@
 <!-- css block -->
 {% block sub_css_content %}
 <link type="text/css" rel="stylesheet" href="/css/financial.css" />
+
 {% endblock %}
 
 {% block content %}
-<style>
-<!--
-.grid .tick{
-	stroke: lightgrey;
-	stroke-opacity: 0.6;
-	shape-rendering: crispEdges;
-}
-.grid path{
-	stroke-width: 0;
-}
--->
-</style>
 <div>
 	<!-- credit -->
 	<div class="ng_controller"
@@ -185,10 +174,6 @@ address_points = [];
 
 //loop through the query result
 {% for elem in albums_geo_info %}
-var album_title = "{{elem.album_title|safe}}";
-album_title = album_title.replace(/\'/g, "&#39;"); //replace single quote with ascii
-album_title = album_title.replace(/\'/g, "&#34;"); //replace double quote with ascii
-original_geo_info['{{elem.album_id|safe}}'] = {'album_title':album_title};
 
 //array can be changed to object; it's easy to get the value with the corresponding key
 address_points.push({'album_id' : '{{elem.album_id|safe}}',
@@ -196,7 +181,7 @@ address_points.push({'album_id' : '{{elem.album_id|safe}}',
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
 	                 'album_title' : '{{elem.album_title|safe}}',
 	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
-	                 'album_popup_content' : '<p>'+ album_title +'</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
+	                 'album_popup_content' : '<p>{{elem.album_title|safe}}</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
 
 {% endfor %}
 // console.log(JSON.stringify(address_points,2,2));
