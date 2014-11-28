@@ -13,14 +13,7 @@
 {% block content %}
 <style>
 <!--
-.grid .tick{
-	stroke: lightgrey;
-	stroke-opacity: 0.6;
-	shape-rendering: crispEdges;
-}
-.grid path{
-	stroke-width: 0;
-}
+
 -->
 </style>
 <div class="ng_controller" ng-controller="AlbumCtrl as album" style="z-index: 10;">

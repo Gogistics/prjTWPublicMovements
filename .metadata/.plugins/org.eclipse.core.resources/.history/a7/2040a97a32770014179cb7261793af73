@@ -329,111 +329,95 @@ function show_pie_chart(arg_map, arg_albums_clusters) {
 /* sorted bars chart */
 function show_sorted_bars_chart(arg_albums_cluster_based_on_time){
 	var data = arg_albums_cluster_based_on_time;
-	var margin = {
-			top : 20,
-			right : 20,
-			bottom : 30,
-			left : 40
-		}, width = 960 - margin.left - margin.right, height = 500 - margin.top
-				- margin.bottom;
+		var margin = {
+				top : 20,
+				right : 20,
+				bottom : 30,
+				left : 40
+			}, width = 960 - margin.left - margin.right, height = 500 - margin.top
+					- margin.bottom;
 
-		var formatPercent = d3.format(".0");
+			var formatPercent = d3.format(".0");
 
-		var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .4, 1);
+			var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .4, 1);
 
-		var y = d3.scale.linear().range([ height, 0 ]);
+			var y = d3.scale.linear().range([ height, 0 ]);
 
-		var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
+			var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
 
-		var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(formatPercent);
+			var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(formatPercent);
 
-		var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
-				function(d) {
-					return "<div style='background-color: #fff; padding: 3px; border-radius: 2px;'><strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
-							+ d.frequency + "</span></dv>";
-				});
+			var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
+					function(d) {
+						return "<strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
+								+ d.frequency + "</span>";
+					});
 
-		var svg = d3.select("div#sorted_bars_charts").append("svg").attr("width",
-				width + margin.left + margin.right).attr("height",
-				height + margin.top + margin.bottom).append("g").attr("transform",
-				"translate(" + margin.left + "," + margin.top + ")");
+			var svg = d3.select("div#sorted_bars_charts").append("svg").attr("width",
+					width + margin.left + margin.right).attr("height",
+					height + margin.top + margin.bottom).append("g").attr("transform",
+					"translate(" + margin.left + "," + margin.top + ")");
 
-		//
-		function make_x_axis(){
-			return d3.svg.axis().scale(x).orient("bottom").ticks(5);
-		}
-		
-		//
-		function make_y_axis(){
-			return d3.svg.axis().scale(y).orient("left").ticks(5);
-		}
-	
-
-		data.forEach(function(d) {
-			d.frequency = +d.frequency;
-		});
-
-		x.domain(data.map(function(d) {
-			return d.date;
-		}));
-		y.domain([ 0, d3.max(data, function(d) {
-			return d.frequency;
-		}) ]);
-
-		// month labels
-		svg.append("g").attr("class", "x axis").attr("transform",
-				"translate(0," + height + ")").call(xAxis).append("text").attr("x", width).attr("y", 20).attr("dx", "1em").style("text-anchor", "end").text("月份");
-
-		// unit of y axis
-		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
-				.attr("transform", "rotate(-90)").attr("y", 10).attr("x", margin.top - 40).attr("dy",
-						"1em").style("text-anchor", "end").text("活動頻率");
 		
 		
-		// draw grid lines
-		svg.append("g").attr("class", "grid").attr("transform", "translate(0," + height + ")").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(""));
-		svg.append("g").attr("class", "grid").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(""))
-		// end of "draw grid lines"
 
-		svg.selectAll(".bar").data(data).enter().append("rect").attr("class",
-				"bar").attr("x", function(d) {
-			return x(d.date);
-		}).attr("width", x.rangeBand()).attr("y", function(d) {
-			return y(d.frequency);
-		}).attr("height", function(d) {
-			return height - y(d.frequency);
-		}).on('mouseover', tip.show).on('mouseout', tip.hide);
-
-		d3.select("input#sorting_checkbox").on("change", change);
-
-		var sortTimeout = setTimeout(function() {
-			d3.select("input#sorting_checkbox").property("checked", true).each(change);
-		}, 2000);
-
-		function change() {
-			clearTimeout(sortTimeout);
-
-			// Copy-on-write since tweens are evaluated after a delay.
-			var x0 = x.domain(data.sort(this.checked ? function(a, b) {
-				return b.frequency - a.frequency;
-			} : function(a, b) {
-				return d3.ascending(a.date, b.date);
-			}).map(function(d) {
-				return d.date;
-			})).copy();
-
-			var transition = svg.transition().duration(750), delay = function(
-					d, i) {
-				return i * 50;
-			};
-
-			transition.selectAll(".bar").delay(delay).attr("x", function(d) {
-				return x0(d.date);
+			data.forEach(function(d) {
+				d.frequency = +d.frequency;
 			});
 
-			transition.select(".x.axis").call(xAxis).selectAll("g")
-					.delay(delay);
-		}
+			x.domain(data.map(function(d) {
+				return d.date;
+			}));
+			y.domain([ 0, d3.max(data, function(d) {
+				return d.frequency;
+			}) ]);
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text("活動頻率");
+
+			svg.selectAll(".bar").data(data).enter().append("rect").attr("class",
+					"bar").attr("x", function(d) {
+				return x(d.date);
+			}).attr("width", x.rangeBand()).attr("y", function(d) {
+				return y(d.frequency);
+			}).attr("height", function(d) {
+				return height - y(d.frequency);
+			}).on('mouseover', tip.show).on('mouseout', tip.hide);
+
+			d3.select("input#sorting_checkbox").on("change", change);
+
+			var sortTimeout = setTimeout(function() {
+				d3.select("input#sorting_checkbox").property("checked", true).each(change);
+			}, 2000);
+
+			function change() {
+				clearTimeout(sortTimeout);
+
+				// Copy-on-write since tweens are evaluated after a delay.
+				var x0 = x.domain(data.sort(this.checked ? function(a, b) {
+					return b.frequency - a.frequency;
+				} : function(a, b) {
+					return d3.ascending(a.date, b.date);
+				}).map(function(d) {
+					return d.date;
+				})).copy();
+
+				var transition = svg.transition().duration(750), delay = function(
+						d, i) {
+					return i * 50;
+				};
+
+				transition.selectAll(".bar").delay(delay).attr("x", function(d) {
+					return x0(d.date);
+				});
+
+				transition.select(".x.axis").call(xAxis).selectAll("g")
+						.delay(delay);
+			}
 
 		// apply tips
 		svg.call(tip);

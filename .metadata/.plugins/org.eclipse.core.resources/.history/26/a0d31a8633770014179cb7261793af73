@@ -349,7 +349,7 @@ function show_sorted_bars_chart(arg_albums_cluster_based_on_time){
 
 		var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 				function(d) {
-					return "<div style='background-color: #fff; padding: 3px; border-radius: 2px;'><strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
+					return "<div style='background-color: #fff; opacity: .5;'><strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
 							+ d.frequency + "</span></dv>";
 				});
 
@@ -380,19 +380,15 @@ function show_sorted_bars_chart(arg_albums_cluster_based_on_time){
 			return d.frequency;
 		}) ]);
 
-		// month labels
 		svg.append("g").attr("class", "x axis").attr("transform",
-				"translate(0," + height + ")").call(xAxis).append("text").attr("x", width).attr("y", 20).attr("dx", "1em").style("text-anchor", "end").text("月份");
+				"translate(0," + height + ")").call(xAxis);
 
-		// unit of y axis
 		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
-				.attr("transform", "rotate(-90)").attr("y", 10).attr("x", margin.top - 40).attr("dy",
-						"1em").style("text-anchor", "end").text("活動頻率");
-		
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end").text("活動頻率");
 		
 		// draw grid lines
-		svg.append("g").attr("class", "grid").attr("transform", "translate(0," + height + ")").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(""));
-		svg.append("g").attr("class", "grid").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(""))
+		
 		// end of "draw grid lines"
 
 		svg.selectAll(".bar").data(data).enter().append("rect").attr("class",

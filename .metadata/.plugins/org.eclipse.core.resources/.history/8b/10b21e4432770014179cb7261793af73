@@ -13,13 +13,10 @@
 {% block content %}
 <style>
 <!--
-.grid .tick{
+.grid, .tick{
 	stroke: lightgrey;
 	stroke-opacity: 0.6;
 	shape-rendering: crispEdges;
-}
-.grid path{
-	stroke-width: 0;
 }
 -->
 </style>

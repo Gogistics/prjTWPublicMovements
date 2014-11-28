@@ -349,7 +349,7 @@ function show_sorted_bars_chart(arg_albums_cluster_based_on_time){
 
 		var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 				function(d) {
-					return "<div style='background-color: #fff; padding: 3px; border-radius: 2px;'><strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
+					return "<div style='background-color: #fff; margin: 2px 5px; '><strong>"+ d.date +"&#32;活動頻率:</strong> <span style='color:red'>"
 							+ d.frequency + "</span></dv>";
 				});
 
