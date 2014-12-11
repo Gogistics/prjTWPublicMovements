@@ -74,12 +74,12 @@ function show_grouped_bars_chart(arg_data, arg_selected_div) {
 			height + margin.top + margin.bottom).append("g").attr("transform",
 			"translate(" + margin.left + "," + margin.top + ")");
 
-	//
+	// grid for x axis
 	function make_x_axis(){
 		return d3.svg.axis().scale(x0).orient("bottom").ticks(5);
 	}
 	
-	//
+	// grid for y axis
 	function make_y_axis(){
 		return d3.svg.axis().scale(y).orient("left").ticks(5);
 	}

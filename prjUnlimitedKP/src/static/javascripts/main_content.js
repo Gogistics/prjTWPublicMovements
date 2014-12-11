@@ -1076,8 +1076,7 @@ function create_tree(treeData) {
       updateTempConnector();
   };
 
-  // Function to update the temporary connector indicating dragging
-	// affiliation
+  // Function to update the temporary connector indicating dragging affiliation
   var updateTempConnector = function() {
       var data = [];
       if (draggingNode !== null && selectedNode !== null) {
