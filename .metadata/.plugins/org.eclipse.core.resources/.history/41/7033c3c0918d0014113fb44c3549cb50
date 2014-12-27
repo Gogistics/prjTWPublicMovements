@@ -1,0 +1,69 @@
+# -*- coding: utf-8 -*-
+__author__ = 'Alan Tai'
+'''
+Created on Jun 24, 2014
+
+@author: Alan Tai
+'''
+
+
+import logging
+import jinja2
+import webapp2
+import json
+
+from dictionaries.dict_keys_values import KeysVaulesGeneral
+from handlers.handler_webapp2_extra_auth import BaseHandler
+from models.models_geo_info import NewAlbumGeoInfo
+
+# dictionaries
+dict_general = KeysVaulesGeneral()
+
+# jinja environment
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
+
+# dispatchers
+class FinancialDataUploadDispatcher(BaseHandler):
+    def post(self):
+        """ handler of dealing with geo info update """
+        if self._is_json(self.request.get('financial_data')):
+            json_geo_data = json.loads(self.request.get('financial_data'))
+            for elem in json_geo_data.keys():
+                query = FinancialData.query(FinancialData.voucher == elem['props']['voucher'])
+                if query.count() == 0:
+                    new_financial_data = FinancialData()
+                    new_financial_data.voucher = elem['props']['voucher']
+                    
+                    new_financial_data.put()
+                
+            processing_status = 'success'
+            
+        else:
+            processing_status = 'received variable is not in JSON format'
+        
+        # ajax response
+        ajax_response = {'processing_status': processing_status}
+        self.response.out.headers['Content-Type'] = 'text/json'
+        self.response.out.write(json.dumps(ajax_response))
+        
+    # check if variable is in json format
+    def _is_json(self, arg_json):
+        try:
+            json.loads(arg_json)
+        except ValueError:
+            return False
+        return True
+
+
+# configuration
+config = dict_general.config_setting
+
+# app
+app = webapp2.WSGIApplication([
+    webapp2.Route(r'/finance/financial_data_handler', FinancialDataUploadDispatcher, name='financial_data_handler')
+], debug=True, config=config)
+
+# log
+logging.getLogger().setLevel(logging.DEBUG) 
+from models.models_financial_info import FinancialData
+    

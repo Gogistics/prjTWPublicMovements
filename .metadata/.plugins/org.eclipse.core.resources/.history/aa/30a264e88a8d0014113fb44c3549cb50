@@ -1,0 +1,207 @@
+{% extends "/base/main_content.html"%}
+
+<!-- css block -->
+{% block sub_css_content %}
+<link type="text/css" rel="stylesheet" href="/css/financial.css" />
+{% endblock %}
+
+{% block content %}
+<style>
+<!--
+.grid .tick{
+	stroke: lightgrey;
+	stroke-opacity: 0.6;
+	shape-rendering: crispEdges;
+}
+.grid path{
+	stroke-width: 0;
+}
+-->
+</style>
+<div>
+	<!-- credit -->
+	<div class="ng_controller"
+		ng-controller="FinancialCtrl as financial_details">
+		<div class="col-md-4" style="width: 100%;">
+			<h2 style="text-align: center;">柯文哲競選財務彙整([[financial_details.time_span]])</h2>
+			<h4 style="text-align: center;">入帳新台幣[[financial_details.total_credit | number]] ; 支出新台幣[[financial_details.total_debit | number]] ; 收支差新台幣[[financial_details.total_credit - financial_details.total_debit | number]] </h4>
+			
+			<!-- ng-paginator -->
+			<div
+				style="margin: 0px auto; padding: 5px; background-color: #ee8c00; border-radius: 4px;">
+				<div class="row" style="margin: 5px auto;">
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">收尋/過濾</label> <input
+							ng-model="q" id="search" style="height: 30px; font-size: 13px;"
+							class="form-control" placeholder="過濾關鍵字">
+					</div>
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">每頁顯示數量</label> <input
+							type="number" min="1" max="100"
+							style="height: 30px; font-size: 13px;" class="form-control"
+							ng-model="pageSize">
+					</div>
+
+					<div class="col-xs-4">
+						<label for="search" style="color: #fff;">入帳資料分析</label>
+						
+						<div id="btns_of_showing_plots">
+						<input
+							id="btn_show_financial_credit_data_analysis_block" type="button"
+							class="form-control"
+							style="height: 30px; width: 100px; font-size: 13px; background-color: #fff; color: #000; border: none; display: inline-block;"
+							value="入帳圖表">
+							
+						<input
+							id="btn_show_financial_debit_data_analysis_block" type="button"
+							class="form-control"
+							style="height: 30px; width: 100px; font-size: 13px; background-color: #fff; color: #000; border: none; display: inline-block;"
+							value="支出圖表">
+							
+						<input
+							id="btn_show_financial_summary_data_analysis_block" type="button"
+							class="form-control"
+							style="height: 30px; width: 150px; font-size: 13px; background-color: #fff; color: #000; border: none; display: inline-block;"
+							value="顯示綜合比較圖表">
+							</div>
+					</div>
+				</div>
+			</div>
+			<!-- end of ng-paginator -->
+
+
+			<!-- financial categories -->
+			<table class="table-bordered table"
+				style="margin-top: 10px; margin-bottom: 30px;">
+				<tr>
+					<td>帳目類別</td>
+					<td>開始時間</td>
+					<td>結束時間</td>
+					<td>會計科目</td>
+					<td>內容</td>
+					<td>金額(新臺幣)</td>
+					<td>附註</td>
+				</tr>
+				<tbody>
+					<!-- new ng list to meet pagination requirement -->
+					<tr
+						dir-paginate="item in financial_details.credit_debit | filter:q | itemsPerPage: pageSize"
+						current-page="currentPage" style="margin: 5px auto;">
+						<td>[[item.type]]</td>
+						<td>[[item.start_date]]</td>
+						<td>[[item.end_date]]</td>
+						<td>[[item.account]]</td>
+						<td>[[item.label]]</td>
+						<td>[[item.price]]</td>
+						<td>暫無資料</td>
+					</tr>
+					<!-- end of new ng list -->
+				</tbody>
+			</table>
+
+			<!-- pagination controller block -->
+			<div ng-controller="PaginationCtrl">
+				<hr
+					style="border: none; border-bottom: #ee8c00 dotted 1px; margin: 1px auto;">
+				<small>頁面選單 </small>
+				<div class="text-center">
+					<dir-pagination-controls boundary-links="true"
+						on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+				</div>
+			</div>
+			<!-- end of pagination controller block -->
+		</div>
+	</div>
+</div>
+
+
+<!-- credit -->
+<div id="financial_credit_data_analysis_block"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
+	<!-- temp button of closing albums map -->
+	<img id="close_credit_data_analysis_chart" title="關閉地圖"
+		src="/img/close_exit_delete.png"
+		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+
+	<!-- map & pie chart -->
+	<div style="margin: 30px auto; text-align: center; display: block;">
+		<!--  -->
+		<div id="financial_credit_bars_chart_container"
+			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
+	</div>
+</div>
+
+<!-- debit -->
+<div id="financial_debit_data_analysis_block"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
+	<!-- temp button of closing albums map -->
+	<img id="close_debit_data_analysis_chart" title="關閉地圖"
+		src="/img/close_exit_delete.png"
+		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+
+	<!-- map & pie chart -->
+	<div style="margin: 30px auto; text-align: center; display: block;">
+		<!--  -->
+		<div id="financial_debit_bars_chart_container"
+			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
+	</div>
+</div>
+
+<!-- summary -->
+<div id="financial_summary_data_analysis_block"
+	style="width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; display: none; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); overflow: auto;">
+	<!-- temp button of closing albums map -->
+	<img id="close_summary_data_analysis_chart" title="關閉地圖"
+		src="/img/close_exit_delete.png"
+		style="position: fixed; top: 20px; left: 20px; width: 30px;">
+
+	<!-- map & pie chart -->
+	<div style="margin: 30px auto; text-align: center; display: block;">
+		<!--  -->
+		<div id="financial_summary_bars_chart_container"
+			style="background-color: #fff; width: 1200px; margin: 0px auto; padding: 30px; border-radius: 3px;"></div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+<!-- js block -->
+{% block sub_js_content %}
+<script type="text/javascript" src="/js/dir-pagination.js"></script>
+<script type="text/javascript" src="/js/d3.js"></script>
+<script type="text/javascript" src="/js/d3_tips.js"></script>
+<script type="text/javascript" src="/numeral_js/numeral.min.js"></script>
+<script type="text/javascript" src="/js/financial.js"></script>
+<script type="text/javascript">
+<!--
+/* get albums info (presume the albums info. can represent the events info. so that the relation info. between events info. and financial info. can be found) */
+var albums_geo_info, address_points, original_geo_info;
+
+{% if albums_geo_info %}
+albums_geo_info = "{{albums_geo_info|safe}}";
+address_points = [];
+
+//loop through the query result
+{% for elem in albums_geo_info %}
+var album_title = "{{elem.album_title|safe}}";
+album_title = album_title.replace(/\'/g, "&#39;"); //replace single quote with ascii
+album_title = album_title.replace(/\'/g, "&#34;"); //replace double quote with ascii
+original_geo_info['{{elem.album_id|safe}}'] = {'album_title':album_title};
+
+//array can be changed to object; it's easy to get the value with the corresponding key
+address_points.push({'album_id' : '{{elem.album_id|safe}}',
+	                 'album_lat' : Number('{{elem.album_lat|float}}'),
+	                 'album_lng' : Number('{{elem.album_lng|float}}'),
+	                 'album_title' : album_title,
+	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
+	                 'album_popup_content' : '<p>'+ album_title +'</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
+
+{% endfor %}
+// console.log(JSON.stringify(address_points,2,2));
+
+{% endif %}
+//-->
+</script>
+{% endblock %}
+

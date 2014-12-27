@@ -176,8 +176,7 @@
 <script type="text/javascript">
 <!--
 /* get albums info (presume the albums info. can represent the events info. so that the relation info. between events info. and financial info. can be found) */
-var albums_geo_info; 
-var address_points;
+var albums_geo_info, address_points, original_geo_info = {}, album_title;
 
 {% if albums_geo_info %}
 albums_geo_info = "{{albums_geo_info|safe}}";
@@ -185,16 +184,16 @@ address_points = [];
 
 //loop through the query result
 {% for elem in albums_geo_info %}
-var album_title = "{{elem.album_title|safe}}";
+album_title = "{{elem.album_title|safe}}";
 album_title = album_title.replace(/\'/g, "&#39;"); //replace single quote with ascii
-album_title = album_title.replace(/\'/g, "&#34;"); //replace double quote with ascii
+album_title = album_title.replace(/\"/g, "&#34;"); //replace double quote with ascii
 original_geo_info['{{elem.album_id|safe}}'] = {'album_title':album_title};
 
 //array can be changed to object; it's easy to get the value with the corresponding key
 address_points.push({'album_id' : '{{elem.album_id|safe}}',
 	                 'album_lat' : Number('{{elem.album_lat|float}}'),
 	                 'album_lng' : Number('{{elem.album_lng|float}}'),
-	                 'album_title' : '{{elem.album_title|safe}}',
+	                 'album_title' : album_title,
 	                 'album_create_datetime' : '{{elem.create_date_time.strftime("%Y-%m")}}',
 	                 'album_popup_content' : '<p>'+ album_title +'</p><a target="_blank" href="{{elem.album_link|safe}}"><img src="{{elem.album_thumbnail|safe}}" style="width: 200px;"></a>'});
 

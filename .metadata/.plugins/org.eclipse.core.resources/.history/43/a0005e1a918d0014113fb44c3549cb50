@@ -1,0 +1,13 @@
+# -*- coding:utf-8 -*-
+'''
+Created on Dec 26, 2014
+
+@author: alantai
+'''
+from google.appengine.ext import ndb
+
+class FinancialData(ndb.Model):
+    voucher = ndb.StringProperty()
+    start_date = ndb.StringProperty()
+    label = ndb.StringProperty()
+    price = ndb.IntegerProperty()

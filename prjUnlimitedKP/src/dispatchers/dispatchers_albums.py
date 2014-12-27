@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+__author__ = 'Alan Tai'
 '''
 Created on Jun 24, 2014
 
 @author: Alan Tai
 '''
-__author__ = 'Alan Tai'
 
 
 import logging
@@ -15,15 +15,15 @@ import json
 from dictionaries.dict_keys_values import KeysVaulesGeneral
 from handlers.handler_webapp2_extra_auth import BaseHandler
 from models.models_geo_info import NewAlbumGeoInfo
+
 # dictionaries
 dict_general = KeysVaulesGeneral()
-
 
 # jinja environment
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class AlbumsGeoInfoDispatcher(BaseHandler):
+class FinancialDataUploadDispatcher(BaseHandler):
     def post(self):
         """ handler of dealing with geo info update """
         if self._is_json(self.request.get('geo_data')):
@@ -83,7 +83,7 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/albums/geo_info_handler', AlbumsGeoInfoDispatcher, name='albums_geo_info_handler')
+    webapp2.Route(r'/albums/geo_info_handler', FinancialDataUploadDispatcher, name='albums_geo_info_handler')
 ], debug=True, config=config)
 
 # log

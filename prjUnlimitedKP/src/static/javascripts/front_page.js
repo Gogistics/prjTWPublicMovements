@@ -145,16 +145,11 @@ var map;
 
 													// bind popup message on
 													// marker
-													this
-															.bindPopup(
+													this.bindPopup(
 																	'<iframe width="300" height="169" src="//www.youtube.com/embed/fkOKYjBB90k?autoplay=1" frameborder="0" allowfullscreen></iframe><p style="color: #000;">'
 																			+ '真・柯文哲: 一張躺椅'
 																			+ '</p>',
-																	{
-																		keepInView : true
-																	}).addTo(
-																	map)
-															.openPopup();
+																	{keepInView : true}).addTo(map).openPopup();
 
 													// inifite animation
 													// setTimeout(restart_animation(),

@@ -49,6 +49,9 @@ handlers:
 - url: /albums/.*
   script: dispatchers.dispatchers_albums.app
 
+- url: /finance/.*
+  script: dispatchers.dispatchers_financial_data.app
+
 - url: /demos/.*
   script: dispatchers.dispatchers_demos.app
 

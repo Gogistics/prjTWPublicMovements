@@ -237,7 +237,21 @@ function kptService($http, API) {
 		}
 		return arg_groups;
 	};
-
+	
+	//
+	this.uploadFinancialData = function(arg_data){
+		var financial_data = $.param({'financial_data':JSON.stringify(arg_data, 2, 2)});
+		
+		// use $http post to send data back to server and save data in
+		// Google datastore
+		var response_promise = $http({
+            url: '/finance/financial_data_handler',
+            method: "POST",
+            data: financial_data,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+		return response_promise;
+	}
 }
 
 
@@ -423,9 +437,23 @@ FinancialDetailController.$injector = [ '$sce', 'kptService', '$scope', '$q' ];
 function FinancialDetailController($sce, kptService, $scope, $q) {
 	var vm = this;
 	vm.getFinancialDetail = getFinancialDetail;
+	vm.uploadFinancialData = uploadFinancialData;
 
 	// get financial detail
 	vm.getFinancialDetail();
+	// vm.uploadFinancialData();
+	
+	function uploadFinancialData(){
+		var detail;
+		kptService.getFinancialDetails().success(function(results){
+			detail = results.data;
+			console.log(detail);
+			kptService.uploadFinancialData(detail).success(function(results){
+				console.log(JSON.stringify(results.processing_status,2,2));
+			});
+		})
+		
+	}
 
 	function getFinancialDetail() {
 		kptService.getFinancialDetails().success(function(results) {

@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/dispatchers/dispatcher_financial_data.py=utf-8
+encoding//src/dispatchers/dispatchers_albums.py=utf-8
+encoding//src/dispatchers/dispatchers_base.py=utf-8
+encoding//src/dispatchers/dispatchers_demos.py=utf-8
+encoding//src/models/models_financial_info.py=utf-8
+encoding//src/models/models_geo_info.py=utf-8
+encoding//src/models/models_people.py=utf-8
