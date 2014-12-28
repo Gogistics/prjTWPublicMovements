@@ -52,6 +52,9 @@ handlers:
 - url: /finance/.*
   script: dispatchers.dispatchers_financial_data.app
 
+- url: /articles/.*
+  script: dispatchers.dispatchers_articles.app
+
 - url: /demos/.*
   script: dispatchers.dispatchers_demos.app
 

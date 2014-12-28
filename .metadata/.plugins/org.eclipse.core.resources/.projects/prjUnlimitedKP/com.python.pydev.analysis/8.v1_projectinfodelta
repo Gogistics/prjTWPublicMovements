@@ -1,12 +1,1 @@
-INSTUPmodels.models_financial_info
-D:\prjTWPublicMovements\prjUnlimitedKP\src\models\models_financial_info.py
-INFOS:&&1|1|2|0&&3|3|2|1&&3|4|2|1&&3|5|2|1&&3|6|2|1&&3|7|2|1&&3|8|2|1&&3|9|2|1
-models.models_financial_info=2
-FinancialData=1
-price=5
-end_timestamp=7
-account=8
-label=4
-type=9
-start_timestamp=6
-start_date=3
+DELSTRdispatchers.dispatchers_articles

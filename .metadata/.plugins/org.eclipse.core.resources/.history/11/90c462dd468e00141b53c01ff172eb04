@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Dec 27, 2014
+
+@author: alantai
+'''
+from google.appengine.ext import ndb
+
+class ArticleInfo(ndb.Model):

@@ -1,11 +1,10 @@
 # -*- coding:utf-8 -*-
+__author__ = 'Alan Tai'
 '''
 Created on Jun 29, 2014
 
 @author: Alan Tai
 '''
-__author__ = 'Alan Tai'
-
 
 from google.appengine.ext import ndb
     

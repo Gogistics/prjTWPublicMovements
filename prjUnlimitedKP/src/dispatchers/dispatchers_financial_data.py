@@ -22,7 +22,7 @@ dict_general = KeysVaulesGeneral()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class FinancialDataUploadDispatcher(BaseHandler):
+class ArticlesDataUploadDispatcher(BaseHandler):
     def post(self):
         """ handler of dealing with geo info update """
         if self._is_json(self.request.get('financial_data')):
@@ -63,7 +63,7 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/finance/financial_data_handler', FinancialDataUploadDispatcher, name='financial_data_handler')
+    webapp2.Route(r'/finance/financial_data_handler', ArticlesDataUploadDispatcher, name='financial_data_handler')
 ], debug=True, config=config)
 
 # log

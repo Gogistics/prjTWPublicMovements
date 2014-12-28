@@ -23,7 +23,7 @@ dict_general = KeysVaulesGeneral()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class FinancialDataUploadDispatcher(BaseHandler):
+class ArticlesDataUploadDispatcher(BaseHandler):
     def post(self):
         """ handler of dealing with geo info update """
         if self._is_json(self.request.get('geo_data')):
@@ -58,32 +58,12 @@ class FinancialDataUploadDispatcher(BaseHandler):
             return False
         return True
      
-#for data migration use; not open now   
-class AlbumsDataMigration(BaseHandler):
-    def get(self):
-        """ temp. function for handling data migration; not running """
-#         old_albums_info = AlbumGeoInfo.query()
-#         if old_albums_info.count() > 0:
-#             for entity in old_albums_info:
-#                 new_entity = NewAlbumGeoInfo( id = entity.album_id)
-#                 new_entity.album_id = entity.album_id
-#                 new_entity.album_title = entity.album_title
-#                 new_entity.album_description = entity.album_description
-#                 new_entity.album_thumbnail = entity.album_thumbnail
-#                 new_entity.album_lat = entity.album_lat
-#                 new_entity.album_lng = entity.album_lng
-#                 
-#                 new_entity.put()
-#         
-#         self.response.out.headers['Content-Type'] = 'text/plain'
-#         self.response.out.write('Migration Successfully Done')
-
 # configuration
 config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/albums/geo_info_handler', FinancialDataUploadDispatcher, name='albums_geo_info_handler')
+    webapp2.Route(r'/albums/geo_info_handler', ArticlesDataUploadDispatcher, name='albums_geo_info_handler')
 ], debug=True, config=config)
 
 # log
