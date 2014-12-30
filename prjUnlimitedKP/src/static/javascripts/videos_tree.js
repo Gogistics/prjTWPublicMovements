@@ -12,8 +12,32 @@ $.get("http://api.kptaipei.tw/v1/"
 				$.get("http://api.kptaipei.tw/v1/" + "videos/" + item.id
 						+ "?accessToken=kp53f5626b5f4bd7.27954991", function(
 						results) {
-					console.log(JSON.stringify(results,2,2));
+					// console.log(JSON.stringify(results.data,2,2));
 
+					// upload data to server
+					var str_video_data = JSON.stringify( results.data ,2 ,2 );
+					upload_video_data(str_video_data);
+					function upload_video_data(arg_data){
+						$.ajax({
+							url : "/videos/videos_info_handler",
+							data : { video_data : arg_data},
+							type : 'POST',
+							success : handle_successful_result,
+							error : handle_failed_result
+						});
+					}
+					
+					
+					function handle_successful_result(response){
+						console.log(response.status);
+					}
+					
+					function handle_failed_result(response){
+						console.log(response.status);
+					}
+					
+					
+					//
 					var temp_articles_category = [];
 					var temp_articles_obj = {};
 					var category_name;

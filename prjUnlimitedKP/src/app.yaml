@@ -55,6 +55,9 @@ handlers:
 - url: /articles/.*
   script: dispatchers.dispatchers_articles.app
 
+- url: /videos/.*
+  script: dispatchers.dispatchers_videos.app
+
 - url: /demos/.*
   script: dispatchers.dispatchers_demos.app
 

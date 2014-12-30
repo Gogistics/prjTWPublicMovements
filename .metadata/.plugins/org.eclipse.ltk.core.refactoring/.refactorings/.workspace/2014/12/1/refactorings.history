@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;prjUnlimitedKP/src/static/templates/rwd&apos;" deleteContents="false" description="Delete resource &apos;prjUnlimitedKP/src/static/templates/rwd&apos;" element1="/prjUnlimitedKP/src/static/templates/rwd" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1419974880983"/>
+</session>

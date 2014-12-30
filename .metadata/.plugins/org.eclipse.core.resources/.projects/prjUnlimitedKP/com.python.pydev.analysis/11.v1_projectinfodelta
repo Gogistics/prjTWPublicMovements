@@ -1,12 +1,12 @@
-INSTUPdispatchers.dispatchers_articles
-D:\prjTWPublicMovements\prjUnlimitedKP\src\dispatchers\dispatchers_articles.py
+INSTUPdispatchers.dispatchers_videos
+D:\prjTWPublicMovements\prjUnlimitedKP\src\dispatchers\dispatchers_videos.py
 INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&1|5|2|0&&2|6|2|5&&2|7|2|5&&3|8|2|0&&3|9|2|0
 app=9
 post=6
-dispatchers.dispatchers_articles=2
 __author__=1
+VideosDataUploadDispatcher=5
 jinja_environment=4
-ArticlesDataUploadDispatcher=5
 config=8
 dict_general=3
 _is_json=7
+dispatchers.dispatchers_videos=2

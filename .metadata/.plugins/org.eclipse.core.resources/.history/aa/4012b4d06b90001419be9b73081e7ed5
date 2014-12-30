@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Dec 30, 2014
+
+@author: user
+'''
+from google.appengine.ext import ndb
+
+class VideoInfo(ndb.Model):
+    id = ndb.StringProperty()
+    sys_id = ndb.StringProperty()
+    title = ndb.StringProperty()
+    description = ndb.StringProperty()

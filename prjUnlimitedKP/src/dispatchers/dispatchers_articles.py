@@ -21,7 +21,7 @@ dict_general = KeysVaulesGeneral()
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader('static/templates'))
 
 # dispatchers
-class ArticlesDataUploadDispatcher(BaseHandler):
+class VideosDataUploadDispatcher(BaseHandler):
     def post(self):
         """ handler of dealing with geo info update """
         if self._is_json(self.request.get('article_data')):
@@ -63,7 +63,7 @@ config = dict_general.config_setting
 
 # app
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/articles/articles_info_handler', ArticlesDataUploadDispatcher, name='articles_info_handler')
+    webapp2.Route(r'/articles/articles_info_handler', VideosDataUploadDispatcher, name='articles_info_handler')
 ], debug=True, config=config)
 
 # log
