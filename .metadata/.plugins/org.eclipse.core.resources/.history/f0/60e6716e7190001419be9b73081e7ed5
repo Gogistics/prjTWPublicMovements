@@ -16,5 +16,4 @@ class ArticleInfo(ndb.Model):
     last_modify = ndb.StringProperty()
     content = ndb.TextProperty()
     plain_content = ndb.TextProperty()
-    thumbnail = ndb.StringProperty()
     

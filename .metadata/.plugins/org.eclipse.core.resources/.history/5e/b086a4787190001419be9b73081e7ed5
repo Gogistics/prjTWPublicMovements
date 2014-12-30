@@ -39,7 +39,6 @@ class VideosDataUploadDispatcher(BaseHandler):
                     new_article.last_modify = elem["last_modify"]
                     new_article.content = elem["content"]
                     new_article.plain_content = elem["plain_content"]
-                    new_article.thumbnail = elem["thumbnail"]
                     new_article.put()
             status = 'success'
             

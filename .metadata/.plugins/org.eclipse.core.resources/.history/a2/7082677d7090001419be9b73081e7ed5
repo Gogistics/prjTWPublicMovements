@@ -12,6 +12,6 @@ class VideoInfo(ndb.Model):
     id = ndb.StringProperty()
     sys_id = ndb.StringProperty()
     title = ndb.StringProperty()
-    description = ndb.TextProperty()
+    description = ndb.StringProperty()
     publishedAt = ndb.StringProperty()
     thumbnails = ndb.JsonProperty()

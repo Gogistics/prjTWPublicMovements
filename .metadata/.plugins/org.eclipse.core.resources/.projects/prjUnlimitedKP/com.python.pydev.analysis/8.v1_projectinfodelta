@@ -1,1 +1,14 @@
-DELSTRdispatchers.dispatchers_videos
+INSTUPmodels.models_article_info
+D:\prjTWPublicMovements\prjUnlimitedKP\src\models\models_article_info.py
+INFOS:&&1|1|2|0&&3|3|2|1&&3|4|2|1&&3|5|2|1&&3|6|2|1&&3|7|2|1&&3|8|2|1&&3|9|2|1&&3|10|2|1&&3|11|2|1
+content=10
+id=3
+author=6
+title=4
+models.models_article_info=2
+category_id=7
+plain_content=11
+last_modify=9
+ArticleInfo=1
+url=5
+post_date=8

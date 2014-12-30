@@ -9,7 +9,7 @@ $.get("http://api.kptaipei.tw/v1/"
 				$.get("http://api.kptaipei.tw/v1/" + "category/" + item.id
 						+ "?accessToken=kp53f5626b5f4bd7.27954991", function(
 						results) {
-					console.log(JSON.stringify( results.data ,2 ,2 ));
+					// console.log(JSON.stringify( results.data ,2 ,2 ));
 
 					// upload data to server (done)
 					// var str_article_data = JSON.stringify( results.data ,2 ,2 );

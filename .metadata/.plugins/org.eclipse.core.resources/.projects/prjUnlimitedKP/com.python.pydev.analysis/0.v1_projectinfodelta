@@ -1,1 +1,12 @@
-DELSTRdispatchers.dispatchers_videos
+INSTUPmodels.models_video_info
+D:\prjTWPublicMovements\prjUnlimitedKP\src\models\models_video_info.py
+INFOS:&&3|1|2|0&&1|3|2|0&&3|4|2|3&&3|5|2|3&&3|6|2|3&&3|7|2|3&&3|8|2|3&&3|9|2|3
+publishedAt=8
+id=4
+title=6
+__author__=1
+VideoInfo=3
+description=7
+sys_id=5
+thumbnails=9
+models.models_video_info=2
